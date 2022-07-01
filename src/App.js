@@ -3,6 +3,8 @@ import './App.css';
 
 console.log("hola")
 
+console.log("adios")
+
 function App() {
   return (
     <div className="App">
