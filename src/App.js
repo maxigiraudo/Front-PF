@@ -1,14 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
 
-<<<<<<< HEAD
 console.log("first");
-=======
+
 console.log("hola");
 
 console.log("chau");
->>>>>>> 62ecef74174e5ea29e29aea87ad5e53bf57488d9
-
+console.log("segundo cambio");
 function App() {
   return (
     <div className="App">
