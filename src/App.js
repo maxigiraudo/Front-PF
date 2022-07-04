@@ -3,10 +3,20 @@ import "./App.css";
 
 console.log("first");
 
+
+console.log("adios")
+console.log("jonathan")
+
+console.log("hola");
+console.log("Maxi");
+
+
+
 console.log("chau");
 console.log("segundo cambio");
 console.log("holahola");
 console.log("me canse de probar");
+
 function App() {
   return (
     <div className="App">
