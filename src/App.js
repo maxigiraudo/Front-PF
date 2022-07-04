@@ -4,8 +4,8 @@ import "./App.css";
 console.log("first");
 
 console.log("hola");
-console.log("hola sol")
-console.log("hola sololmos")
+
+console.log("Maxi");
 
 console.log("chau");
 console.log("segundo cambio");
