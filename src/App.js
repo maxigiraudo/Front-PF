@@ -1,41 +1,31 @@
 import logo from "./logo.svg";
 import "./App.css";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import LandingPage from "./components/LandingPage";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import Searchbar from "./components/Searchbar";
+import Order from "./components/Order";
+import Filter from "./components/Filter";
+import Card from "./components/Card";
+import Footer from "./components/Footer";
+import Detail from "./components/Detail";
+import Form from "./components/Form";
 
-console.log("first");
 
-
-console.log("adios")
-console.log("jonathan")
-
-console.log("hola");
-
-console.log("Maxi");
-
-
-console.log("chau");
-console.log("segundo cambio");
-console.log("holahola");
-console.log("me canse de probar");
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route exact path='/' element={<LandingPage/>} />
+        <Route path='/home' element={<Home/>} />
+        <Route path="/detail" element={<Detail/>}/>
+        <Route path="/form" element={<Form/>}/>
+      </Routes>
     </div>
+    </Router> 
   );
 }
-
 export default App;
