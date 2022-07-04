@@ -1,10 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
-console.log("hola")
+console.log("first");
+
 
 console.log("adios")
 console.log("jonathan")
+
+console.log("hola");
+console.log("Maxi");
+console.log("chau");
+console.log("segundo cambio");
+
 function App() {
   return (
     <div className="App">
