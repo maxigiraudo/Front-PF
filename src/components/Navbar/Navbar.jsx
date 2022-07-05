@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -11,7 +12,6 @@ export default function Navbar() {
       <nav>
         <ul>
           <div>
-            <li>SOBRE MI </li>
             <NavLink to="/form">
               <li>Create</li>
             </NavLink>
