@@ -15,12 +15,14 @@ import Form from "./components/Form/Form";
 function App() {
 
   return (
-    <Routes>
-      <Route exact path="/" element={<LandingPage />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/detail" element={<Detail />} />
-      <Route path="/form" element={<Form />} />
-    </Routes>
+    <div class="generalApp">
+      <Routes>
+        <Route exact path="/" element={<LandingPage />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/detail" element={<Detail />} />
+        <Route path="/form" element={<Form />} />
+      </Routes>
+    </div>
   );
 }
 export default App;
