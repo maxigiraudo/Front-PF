@@ -18,7 +18,7 @@ export default function Navbar() {
               <li>Create</li>
             </NavLink>
             <li>Login</li>
-            <li>Sing Up</li>
+            <li>SingUp</li>
             <li>Connect Wallet</li>
           </div>
         </ul>
