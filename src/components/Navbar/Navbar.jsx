@@ -1,15 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import styles from "./Navbar.module.css";
+import Logo from "./logo.png";
 
 export default function Navbar() {
   return (
-    <header>
-      <NavLink to="/home">
+    <header className={styles.container}>
+      <NavLink to="/home" className={styles.home}>
         <li>
-          <h1>Home</h1>
+          <img className={styles.logo} src={Logo} alt="" />
         </li>
       </NavLink>
-      <nav>
+      <nav className={styles.navBar}>
         <ul>
           <div>
             <NavLink to="/form">
