@@ -13,43 +13,44 @@
   padding: 6% 0 10% 0;
 }
 
-.Landingcubo {
-  width: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
+
+.Landingcubo{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 
 .cubo {
   width: 55%;
 }
 
-.LandingPage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 40%;
+.LandingPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
 }
 
 .logoLanding {
   width: 90%;
 }
 
-.textLanding {
-  color: #d04bff;
-  padding: 2% 0;
-  letter-spacing: 1px;
-  margin-top: 2%;
-  display: block;
-  white-space: nowrap;
-  border-right: 3px solid;
-  width: 38ch;
-  animation: typing 5s infinite alternate steps(50),
-    blink 0.5s infinite step-end alternate;
-  overflow: hidden;
-  font-weight: lighter;
-  font-size: larger;
+.textLanding{
+    color: #D04BFF;
+    padding: 2% 0;
+    letter-spacing: 1px;
+    margin-top: 2%;
+    display: block;
+    white-space: nowrap;
+    border-right: 3px solid;
+    width: 33ch;
+    animation: typing 5s infinite alternate steps(50), blink .5s  infinite step-end alternate;
+    overflow: hidden;
+    font-weight: lighter;
+    font-size: larger;
 }
 
 @keyframes typing {
@@ -62,27 +63,27 @@
     border-color: transparent;
   }
 }
+  
 
-.botonLanding {
-  border-radius: 10px;
-  font-weight: bolder;
-  background: linear-gradient(90deg, #cf4bffc5 0%, #6c63ff 100%);
-  padding: 10px;
-  width: 17.5rem;
-  cursor: pointer;
-  box-shadow: 5px 5px 20px 5px #cf4bff65;
-  border: none;
-  font-family: "Bebas Neue", cursive;
-  font-size: x-large;
-  letter-spacing: 1px;
-  margin: 10px;
+.botonLanding{
+    border-radius: 10px;
+    font-weight: bolder;
+    background: linear-gradient(90deg, #cf4bffc5 0%, #6C63FF 100%);
+    padding: 10px;
+    width: 17rem;
+    cursor: pointer;
+    box-shadow: 5px 5px 20px 5px #cf4bff65;
+    border: none;
+    font-family: 'Bebas Neue', cursive;
+    font-size: x-large;
+    letter-spacing: 1px;
 }
 
-.botonesLanding {
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  margin-top: 5%;
+.botonesLanding{
+    display: flex;
+    width: 85%;
+    justify-content: space-around;
+    margin-top: 5%;
 }
 
 .botonLanding:hover {
@@ -90,19 +91,50 @@
   letter-spacing: 1.5px;
 }
 
-.Landingbottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 10rem;
-  background: linear-gradient(#cf4bff5e 0%, #6b63ff88 100%);
-  padding: 5%;
-  color: white;
-  box-shadow: 0 50px 50px 40px #6b63ff88;
+.Landingbottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    background: linear-gradient(#cf4bff5e 0%, #6b63ff88 100%);
+    padding: 5% 5% 0 5%;
+    color: white;
+    box-shadow: 0 50px 50px 40px #6b63ff88;
 }
+
+.parrafoLanding{
+    padding: 2% 20%;
+    font-size: larger;
+    text-align: center;
+
+}
+
+.gruposLanding{
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 4%;
+}
+
+.columnaLanding{
+    display: flex;
+    flex-direction: column;
+    margin: 2%;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    text-align: center;
+}
+
+.iconoLanding{
+    font-size: 2.3rem;
+}
+
 
 .parrafoLanding {
   padding: 0 15%;
   font-size: larger;
 }
+
