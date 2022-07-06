@@ -10,7 +10,7 @@
   border-style: groove;
   border-radius: 10px;
   background-color: #16161a;
-  box-shadow: 4px 4px 10px rgba(108, 99, 255, 0.99);
+  box-shadow: 0 5px 20px 4px #6b63ff88;
   color: #d04bff;
   width: 370px;
 }
