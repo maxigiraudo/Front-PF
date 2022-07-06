@@ -107,7 +107,7 @@ export default function Form() {
                 />
 
                 <p htmlFor="Description"> </p>
-                <input
+                <textarea
                   name="description"
                   id="description"
                   type="text"
@@ -117,7 +117,11 @@ export default function Form() {
 
                 <br />
 
-                <input type="submit" className={styles.inputEnviar} />
+                <input
+                  value="CREATE"
+                  type="submit"
+                  className={styles.inputEnviar}
+                />
               </div>
             </div>
           </form>
