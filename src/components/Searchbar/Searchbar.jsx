@@ -4,10 +4,10 @@ import { BiSearchAlt } from "react-icons/bi";
 
 export default function Searchbar() {
   return (
-    <div>
+    <div className={styles.padre}>
       <form>
         <div className={styles.inputDiv}>
-          <p>{BiSearchAlt()}</p>
+          <p className={styles.lupa}>{BiSearchAlt()}</p>
           <input
             placeholder="Search items, collections and accounts..."
             className={styles.input}

@@ -1,14 +1,18 @@
 import React from "react";
-
-export default function Card({price,description,name,image}) {
+import styles from "./Card.module.css";
+export default function Card({ price, description, name, image }) {
   return (
-    <div>
+    <div className={styles.padre}>
       <h1>{name}</h1>
       <h1>{description} </h1>
       <h1>{price} </h1>
-      <img src={image} alt='nft'/>
+      <img src={image} alt="nft" />
     </div>
   );
 
 }
+
+
+
+
 
