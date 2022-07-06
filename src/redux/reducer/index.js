@@ -46,7 +46,7 @@ const initialState = {
     },
     {
       name: "MONO8",
-      description:"CONSEGUI TODAS LAS EXCLUSIVIDADES CON ESTE MONITO QUE ES CARISIMO",
+      description:"CONSEGUI TODAS LAS EXCLUSIVIDADES CON ESTE MONO QUE ES CARISIMO",
       price:8,
       image:"https://www.publimetro.com.mx/resizer/CocGeimTnro-D1hoH3ZC1Nrs1IY=/arc-photo-metroworldnews/arc2-prod/public/RSNJQRDEKNBMRC3Z4SYV64SZT4.jpg"
     }
