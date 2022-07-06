@@ -2,9 +2,10 @@
 const initialState = {
   cards: [
     {
-      name: "mono1",
-      description:"detalle1",
-      price:1,
+      name: "MONO1",
+      created:"JUAN24C",
+      description:"CONSEGUI TODAS LAS EXCLUSIVIDADES CON ESTE MONITO QUE ES CARISIMO",
+      price:40,
       image:"https://www.latercera.com/resizer/Jw37YLm2lX8o_akIpM57enxchxA=/arc-anglerfish-arc2-prod-copesa/public/XQP24CTNQND2TBDZ7AQN54D44Y.jpg"
     },
     {
