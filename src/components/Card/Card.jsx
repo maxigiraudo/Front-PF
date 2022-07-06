@@ -9,4 +9,10 @@ export default function Card({ price, description, name, image }) {
       <img src={image} alt="nft" />
     </div>
   );
+
 }
+
+
+
+
+
