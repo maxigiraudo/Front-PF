@@ -3,6 +3,7 @@ import styles from "./LandingPage.module.css";
 import { Link } from "react-router-dom";
 import logo from "./Imagenes/logowallaby.png";
 import cubos from "./Imagenes/cubos.png";
+import { IoWalletOutline, IoImageOutline, IoPricetagsOutline } from "react-icons/io5";
 
 export default function LandingPage() {
   return (
@@ -42,6 +43,25 @@ export default function LandingPage() {
           create and obtain your own token through a guided process for those
           who are not specialists in the field.
         </p>
+        <div className={styles.gruposLanding}>
+          <div className={styles.columnaLanding}>
+            <IoWalletOutline className={styles.iconoLanding}/>
+            <h3>Set up your wallet</h3>
+            <p>Once you’ve set up your wallet of choice, connect it to OpenSea by clicking the wallet icon in the top right corner.</p>
+          </div>
+          <div className={styles.columnaLanding}>
+            <IoImageOutline className={styles.iconoLanding}/>
+            <h3>Add your NFTs</h3>
+            <p>Upload your work (image, video, or 3D art), add a title and description, and customize your NFTs with properties, stats, and unlockable content.</p>
+          </div>
+          <div className={styles.columnaLanding}>
+            <IoPricetagsOutline className={styles.iconoLanding}/>
+            <h3>List them for sale</h3>
+            <p>You choose how you want to sell your NFTs, and we help you sell them!</p>
+          </div>
+
+        </div>
+
       </div>
     </div>
   );
