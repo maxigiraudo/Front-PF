@@ -1,17 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
-.contenedorLanding{
-    align-items: center;
-    display: flex;
-    background-color: #000000;
-    flex-direction: column;
-    min-height: 80rem;
+.contenedorLanding {
+  align-items: center;
+  display: flex;
+  background-color: #000000;
+  flex-direction: column;
+  min-height: 80rem;
 }
 
-.Landingtop{
-    display: flex;
-    padding: 6% 0 10% 0;
+.Landingtop {
+  display: flex;
+  padding: 6% 0 10% 0;
 }
+
 
 
 .Landingcubo{
@@ -20,10 +21,9 @@
     justify-content: center;
     align-items: center;
 
-}
 
-.cubo{
-    width: 55%;
+.cubo {
+  width: 55%;
 }
 
 .LandingPage{
@@ -34,9 +34,8 @@
     width: 50%;
 }
 
-.logoLanding{
-    width: 90%;
-
+.logoLanding {
+  width: 90%;
 }
 
 .textLanding{
@@ -54,15 +53,17 @@
     font-size: larger;
 }
 
-@keyFrames typing {
-    from { width: 0}
+@keyframes typing {
+  from {
+    width: 0;
+  }
 }
-@keyFrames blink {
-    50% { border-color: transparent}
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
 }
-
-
-    
+  
 
 .botonLanding{
     border-radius: 10px;
@@ -86,8 +87,8 @@
 }
 
 .botonLanding:hover {
-    transform: scale(1.1);
-    letter-spacing: 1.5px;
+  transform: scale(1.1);
+  letter-spacing: 1.5px;
 }
 
 .Landingbottom{
@@ -130,3 +131,10 @@
 .iconoLanding{
     font-size: 2.3rem;
 }
+
+
+.parrafoLanding {
+  padding: 0 15%;
+  font-size: larger;
+}
+

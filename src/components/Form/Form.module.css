@@ -1,0 +1,122 @@
+.containerPadre {
+  background-color: #16161a;
+}
+.padre {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+.container {
+  margin: 20px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #16161a;
+  border: 3px solid #d04bff;
+  border-style: groove;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px 5px #cf4bff65;
+}
+.two {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+  background-color: #16161a;
+  padding: 30px;
+}
+.colorh1 {
+  background: -webkit-linear-gradient(#d04bff, #6c63ff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: tomato;
+}
+.colorp {
+  background: -webkit-linear-gradient(#d04bff, #6c63ff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: tomato;
+}
+.selectFile {
+  border-radius: 10px;
+  color: black;
+  margin-left: 10px;
+  font-weight: bolder;
+  background: linear-gradient(90deg, #cf4bffc5 0%, #6c63ff 100%);
+  padding: 8px;
+  width: 17.5rem;
+  cursor: pointer;
+  box-shadow: 5px 5px 20px 5px #cf4bff65;
+  border: none;
+  font-family: "Bebas Neue", cursive;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+.selectFile:hover {
+  background: #16161a;
+  border-color: #d04bff;
+  color: #d04bff;
+}
+.jpg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+}
+.selectJpg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  margin: 30px;
+  border: 3px solid #d04bff;
+  border-style: dashed;
+  border-radius: 10px;
+}
+.selectJPGMAX {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.imagen {
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
+}
+
+.input {
+  font-family: "Oswald", sans-serif;
+  border: 3px solid #d04bff;
+  border-style: groove;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #16161a;
+  color: #d04bff;
+  box-shadow: 5px 5px 20px 5px #cf4bff65;
+}
+.inputEnviar {
+  border-radius: 10px;
+  color: black;
+  margin-left: 10px;
+  font-weight: bolder;
+  background: linear-gradient(90deg, #cf4bffc5 0%, #6c63ff 100%);
+  padding: 8px;
+  width: 17.5rem;
+  cursor: pointer;
+  box-shadow: 5px 5px 20px 5px #cf4bff65;
+  border: none;
+  font-family: "Bebas Neue", cursive;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+.inputEnviar:hover {
+  background: #16161a;
+  border-color: #d04bff;
+  color: #d04bff;
+}
+.nameEnviar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
