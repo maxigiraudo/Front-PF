@@ -97,22 +97,23 @@ export default function Form() {
                 </div>
               </div>
               <div className={styles.nameEnviar}>
+                <label className={styles.label}>Name</label>
                 <p htmlFor="name"> </p>
                 <input
                   name="name"
                   id="name"
                   type="text"
                   className={styles.input}
-                  placeholder="Name"
+                  placeholder="Write the name of the NFT... "
                 />
-
+                <label className={styles.label}>Description</label>
                 <p htmlFor="Description"> </p>
                 <textarea
                   name="description"
                   id="description"
                   type="text"
                   className={styles.input}
-                  placeholder="Description"
+                  placeholder="Write a description of the NFT..."
                 />
 
                 <br />
