@@ -31,6 +31,16 @@
   -webkit-text-fill-color: transparent;
   color: tomato;
 }
+
+.label {
+  background: -webkit-linear-gradient(#d04bff, #6c63ff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: tomato;
+  font-size: 22px;
+  font-weight: bolder;
+  padding-top: 10px;
+}
 .colorp {
   background: -webkit-linear-gradient(#d04bff, #6c63ff);
   background-clip: text;
@@ -94,6 +104,7 @@
   background-color: #16161a;
   color: #d04bff;
   box-shadow: 5px 5px 20px 5px #cf4bff65;
+  width: 150px;
 }
 .inputEnviar {
   border-radius: 10px;
