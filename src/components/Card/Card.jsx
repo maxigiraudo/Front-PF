@@ -7,10 +7,11 @@ import { Link } from "react-router-dom";
 export default function Card({ price, description, name, image, created }) {
   return (
     <div className="col-12-xs col-5-sm col-3-xl">
-      <Link className={style.link} to="/detail">
         <div className={style.container}>
           <div className={style.card}>
+          <Link className={style.link} to="/detail">
             <h1 className={style.name}>{name}</h1>
+            </Link>
             <figure>
               <img className={style.imagenRec} src={image} alt="nft" />
             </figure>
@@ -22,12 +23,11 @@ export default function Card({ price, description, name, image, created }) {
             </div>
             <div className={style.abajo}>
               <h5 className={style.price}>{price} ETH</h5>
-              <p className={style.car}>{BsFillCartCheckFill()} </p>
-              <p className={style.star}>{BsFillStarFill()} </p>
+              <button className={style.car}>{BsFillCartCheckFill()} </button>
+              <button className={style.star}>{BsFillStarFill()} </button>
             </div>
           </div>
         </div>
-      </Link>
     </div>
   );
 }
