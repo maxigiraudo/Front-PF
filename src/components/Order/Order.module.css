@@ -1,0 +1,25 @@
+.orderContenedor{
+   display: flex;
+   width: 100%;
+   align-items: center;
+   justify-content: center;
+   margin-top: 2%;
+}
+
+.orderBotones{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.orderBoton, .orderBoton1 {
+    border-radius: 8px;
+    background: linear-gradient(90deg, #cf4bffc5 0%, #6C63FF 100%);
+    padding: 5px;
+    margin: 1%;
+    width: 6rem;
+    font-family: inherit;
+    font-weight: bolder;
+    cursor: pointer;
+}

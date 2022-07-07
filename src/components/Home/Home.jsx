@@ -1,15 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
+
 import { useState } from "react";
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import Order from "../Order/Order";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import style from "./Home.module.css";
-
 
 export default function Home() {
   const allCard = useSelector((state) => state.cards);
@@ -33,25 +35,25 @@ export default function Home() {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 1
-        }
+          initialSlide: 1,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const[currentPage,setCurrentPage]= useState(1) //inicia en 1 xq empezare en la pagina 1
@@ -66,21 +68,22 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      <Order />
       <div className={style.container2}>
         <h1 className={style.text} >INGRESA A LAS CATEGORIAS QUE MAS TE GUSTEN Y DESCUBRI LOS NFT QUE ESTABAS BUSCANDO ...</h1>
         <div className={style.carousel} >
-        <Slider {...settings} >
-        {allCategory?.map((e)=>
-        <div className={style.containerC}>
-          <h1 className={style.nameC} >{e.name} </h1>
-          <img className={style.imageC} src={e.image} alt='*' />
-        </div>
-        )
-        }
+          <Slider {...settings} >
+          {allCategory?.map((e)=>
+          <div className={style.containerC}>
+            <h1 className={style.nameC} >{e.name} </h1>
+            <img className={style.imageC} src={e.image} alt='*' />
+          </div>
+          )
+          }
 
-        </Slider>
+          </Slider>
         </div>
-        </div>
+       </div>
       <div className='row gap-2 justify-center'>
             {currentNft?.map((e) => (
               <Card
@@ -92,15 +95,13 @@ export default function Home() {
               />
             ))}                   
       </div>
-      <div>
       <Paginado
-                        nftPerPage={nftPerPage}
-                        allCard={allCard.length}
-                        paginado={paginado}
-                    />
-      </div>
+            nftPerPage={nftPerPage}
+            allCard={allCard.length}
+            paginado={paginado}
+       />
       <div className={style.footer}>
-      <Footer/>
+        <Footer />
       </div>
     </>
   );

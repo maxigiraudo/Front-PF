@@ -18,7 +18,6 @@
   transition: all 400ms ease;
   background: -webkit-linear-gradient(#d04bff, #6c63ff);
   width: fit-content;
-  border: 3px solid #fff;
 }
 .description {
   display: flex;
