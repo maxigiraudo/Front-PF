@@ -44,6 +44,7 @@ export default function LandingPage() {
           who are not specialists in the field.
         </p>
         <div className={styles.gruposLanding}>
+          
           <div className={styles.columnaLanding}>
             <IoWalletOutline className={styles.iconoLanding}/>
             <h3>Set up your wallet</h3>

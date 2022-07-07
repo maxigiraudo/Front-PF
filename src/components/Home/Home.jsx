@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-
+import Order from "../Order/Order";
 import Card from "../Card/Card";
 import style from "./Home.module.css";
 
@@ -12,6 +12,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      <Order />
 
       <div className="row gap-2 justify-center">
         <div className={style.cartoneta}>
