@@ -17,7 +17,7 @@ export default function Navbar() {
         <ul>
           <div>
             <NavLink to="/form">
-              <li>Create</li>
+              <li>Create NFT</li>
             </NavLink>
             <li>Login</li>
             <li>Sing Up</li>
