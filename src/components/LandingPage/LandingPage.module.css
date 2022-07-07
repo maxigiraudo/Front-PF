@@ -13,12 +13,14 @@
   padding: 6% 0 10% 0;
 }
 
+
 .Landingcubo {
   width: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 
 .cubo {
   width: 55%;
