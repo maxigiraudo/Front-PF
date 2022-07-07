@@ -33,10 +33,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: -webkit-linear-gradient(#d04bff, #6c63ff);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: tomato;
+  color: #d04bff;
 }
 
 .navBar a {
@@ -45,8 +42,18 @@
 }
 
 .navBar ul li {
-  padding: 5px;
+  padding: 5px 10px 5px 10px;
   list-style: none;
   display: inline-block;
   margin: 10px 30px;
+  border-radius: 10px;
+  border: 3px solid #d04bff;
+  border-style: groove;
+  box-shadow: inset 5px 5px 10px #6c63ff, inset -5px -5px 10px #d04bff;
+}
+
+.navBar ul li:hover {
+  background-color: #d04bff;
+  color: black;
+  cursor: pointer;
 }
