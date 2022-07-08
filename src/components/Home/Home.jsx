@@ -90,6 +90,7 @@ export default function Home() {
             ))}
           </Slider>
         </div>
+
       </div>
       <div className={style.orderSearch}>
         <Order />
