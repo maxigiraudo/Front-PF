@@ -1,7 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,6 +10,7 @@ import Navbar from "../Navbar/Navbar";
 import Order from "../Order/Order";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
+import { getNft } from "../../redux/actions";
 import style from "./Home.module.css";
 import { Link } from "react-router-dom";
 import Searchbar from "../Searchbar/Searchbar";
@@ -18,8 +18,13 @@ import Searchbar from "../Searchbar/Searchbar";
 export default function Home() {
   const allCard = useSelector((state) => state.cards);
   const allCategory = useSelector((state) => state.category);
+  const dispatch = useDispatch();
 
-  console.log(allCategory);
+  useEffect(() => {
+    dispatch(getNft());
+  }, []);
+
+  console.log(allCard);
 
   const settings = {
     dots: true,
@@ -70,7 +75,6 @@ export default function Home() {
   return (
     <>
       <Navbar />
-
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
