@@ -1,56 +1,75 @@
-@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
-
 .cartoneta {
-    border-radius: 20px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 92%;
-    margin-left: 50px;
-  }
-  body{
-    background-color: rgb(10, 10, 10);
-  }
-  .footer{
-    margin-top: 50px;
-  }
-  .carousel{
-    width: 50%;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-left: 55px;
-  }
-  .nameC{
-    background: -webkit-linear-gradient(#d04bff, #6c63ff);
+  border-radius: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 92%;
+  margin-left: 50px;
+}
+body {
+  background-color: rgb(10, 10, 10);
+}
+.footer {
+  margin-top: 50px;
+}
+.carousel {
+  width: 50%;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 55px;
+}
+
+.nameC {
+  background: -webkit-linear-gradient(#d04bff, #6c63ff);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: tomato;
   text-align: center;
-  }
-  .imageC{
-    margin-left: 22%;
-    border-radius: 20px;
-    width: 150px;
-    height: 150px;
-    margin-top: 20px;
-  }
-  .containerC{
-    width: 80px;
-    height: 250px;
-  }
-  .container2{
-    display: flex;
-  }
-  .text{
-    background: -webkit-linear-gradient(#d04bff, #6c63ff);
+}
+.imageC {
+  margin-left: 22%;
+  border-radius: 20px;
+  width: 150px;
+  height: 150px;
+  margin-top: 20px;
+}
+.containerC {
+  width: 80px;
+  height: 250px;
+}
+.container2 {
+  display: flex;
+  padding: 0 20px 0 20px;
+  margin-top: 30px;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(41, 41, 50, 1) 100%
+  );
+  box-shadow: 2px 2px 62px 19px rgba(44, 2, 79, 0.75) inset;
+  border-bottom: 3px solid #d04bff;
+  border-top: 3px solid #d04bff;
+}
+.text {
+  background: -webkit-linear-gradient(#d04bff, #6c63ff);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: tomato;
-    width: 40%;
-    text-align: center;
-    height: 280px;
-    margin-top: 150px;
-  }
+  width: 40%;
+  text-align: center;
+  height: 280px;
+  margin-top: 150px;
+}
+.linkCard {
+  text-decoration: none;
+}
+.orderSearch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
