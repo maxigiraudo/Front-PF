@@ -7,6 +7,18 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case "GET_DETAILS":
+      const all = action.payload;
+      console.log(all);
+      return {
+        ...state,
+        detail: all,
+      };
+    case "GET_NAME_NFT":
+      return {
+        ...state,
+        cards: action.payload,
+      };
     case "ORDER_BY_NAME":
       if (action.payload === "desc") {
         return {
@@ -49,12 +61,6 @@ export default function reducer(state = initialState, action) {
         ...state,
         allCards: action.payload,
         cards: action.payload,
-      };
-
-    case "GET_DETAILS":
-      return {
-        ...state,
-        detail: action.payload,
       };
     default:
       return state;

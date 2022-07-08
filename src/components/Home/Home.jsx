@@ -22,7 +22,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getNft());
-  }, []);
+  }, [dispatch]);
 
   console.log(allCard);
 
@@ -90,11 +90,10 @@ export default function Home() {
             ))}
           </Slider>
         </div>
-
       </div>
       <div className={style.orderSearch}>
         <Order />
-        <Searchbar />
+        <Searchbar setCurrentPage={setCurrentPage} />
       </div>
 
       <div className="row gap-2 justify-center">
