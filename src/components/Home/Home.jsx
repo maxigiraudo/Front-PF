@@ -68,7 +68,6 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Order />
       <div className={style.container2}>
         <h1 className={style.text} >INGRESA A LAS CATEGORIAS QUE MAS TE GUSTEN Y DESCUBRI LOS NFT QUE ESTABAS BUSCANDO ...</h1>
         <div className={style.carousel} >
@@ -84,6 +83,7 @@ export default function Home() {
           </Slider>
         </div>
        </div>
+      <Order />
       <div className='row gap-2 justify-center'>
             {currentNft?.map((e) => (
               <Card
