@@ -20,9 +20,11 @@ export default function Home() {
   const allCategory = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     dispatch(getNft());
   }, [dispatch]);
+
 
   console.log(allCard);
 
