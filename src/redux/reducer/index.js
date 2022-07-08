@@ -1,6 +1,7 @@
 const initialState = {
   cards: [],
   allCards: [],
+  detail: [],
   category: [],
 };
 
@@ -50,6 +51,11 @@ export default function reducer(state = initialState, action) {
         cards: action.payload,
       };
 
+    case "GET_DETAILS":
+      return {
+        ...state,
+        detail: action.payload,
+      };
     default:
       return state;
   }
