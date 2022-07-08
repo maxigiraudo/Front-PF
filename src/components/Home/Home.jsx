@@ -96,9 +96,9 @@ export default function Home() {
         <Searchbar />
       </div>
 
-      <Link className={style.linkCard} to="/detail">
-        <div className="row gap-2 justify-center">
-          {currentNft?.map((e) => (
+      <div className="row gap-2 justify-center">
+        {currentNft?.map((e) => (
+          <Link to={"/detail/" + e.token_id}>
             <Card
               price={e.price}
               name={e.name}
@@ -106,9 +106,9 @@ export default function Home() {
               image={e.image}
               created={e.created}
             />
-          ))}
-        </div>
-      </Link>
+          </Link>
+        ))}
+      </div>
 
       <Paginado
         nftPerPage={nftPerPage}

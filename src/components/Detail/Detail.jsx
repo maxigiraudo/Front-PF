@@ -1,14 +1,22 @@
 import React from "react";
 import styles from "./Detail.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BsFillStarFill } from "react-icons/bs";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { useEffect } from "react";
+import { getDetail } from "../../redux/actions";
+import { useParams } from "react-router-dom";
 
 export default function Detail() {
-  const card = useSelector((state) => state.cards);
-
+  const card = useSelector((state) => state.detail);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getDetail(id));
+  }, [dispatch, id]);
+  console.log(card);
   return (
     <div className={styles.containerPadre}>
       <div className={styles.navbar}>
@@ -22,7 +30,7 @@ export default function Detail() {
           <h3 className={styles.name}>{card[0].name}</h3>
           <h5 className={styles.des}>{card[0].description}</h5>
           <div className={styles.priceCF}>
-            <h3 className={styles.price}>{card[0].price} ETH</h3>
+            {/* <h3 className={styles.price}>{card[0].price} ETH</h3> */}
             <p className={styles.car}>{BsFillCartCheckFill()} </p>
             <p className={styles.star}>{BsFillStarFill()} </p>
           </div>
