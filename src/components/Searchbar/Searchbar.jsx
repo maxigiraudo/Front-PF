@@ -21,8 +21,7 @@ export default function Searchbar(props) {
   }
 
   return (
-    <div className={styles.padre}>
-      <form>
+      <form className={styles.formSearch}>
         <div className={styles.inputDiv}>
           <p className={styles.lupa}>{BiSearchAlt()}</p>
           <input
@@ -39,6 +38,5 @@ export default function Searchbar(props) {
           />
         </div>
       </form>
-    </div>
   );
 }

@@ -4,15 +4,15 @@ import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import Order from "../Order/Order";
 import Card from "../Card/Card";
-import Paginado from "../Paginado/Paginado";
+//import Paginado from "../Paginado/Paginado";
 import { getNft } from "../../redux/actions";
 import style from "./Home.module.css";
-import { Link } from "react-router-dom";
 import Searchbar from "../Searchbar/Searchbar";
 
 export default function Home() {
@@ -63,17 +63,21 @@ export default function Home() {
     ],
   };
 
-  const [currentPage, setCurrentPage] = useState(1); //inicia en 1 xq empezare en la pagina 1
-  const [nftPerPage, setNftPerPage] = useState(8); //inicia en 8 xq tendre 8 perros por pagina
-  const indexOfLastNft = currentPage * nftPerPage; //indice del ultimo perro, cantidad de paginas * perros por paginas, en un principio seran 8
-  const indexOfFirstNft = indexOfLastNft - nftPerPage; // indice del 1er perro, dara 0
-  const currentNft = allCard.slice(indexOfFirstNft, indexOfLastNft);
+  const [currentPage, setCurrentPage] = useState(1); 
+  const [nftPerPage, setNftPerPage] = useState(6); 
+  const currentNft = allCard.slice(0, nftPerPage);
+  const [hasMore, setHasMore] = useState(true)
 
-  const paginado = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  console.log(currentNft)
+  useEffect(() => {
+    setNftPerPage((prevNft) => prevNft + 12);
+    if (nftPerPage >= 70) {
+      setHasMore(false);
+    }
+  }, [currentPage]);
+
   return (
-    <>
+    <div className={style.containergeneral}>
       <Navbar />
       <div className={style.container2}>
         <h1 className={style.text}>
@@ -92,32 +96,46 @@ export default function Home() {
         </div>
       </div>
       <div className={style.orderSearch}>
+        <Searchbar />
         <Order />
-        <Searchbar setCurrentPage={setCurrentPage} />
       </div>
 
-      <div className="row gap-2 justify-center">
-        {currentNft?.map((e) => (
-          <Link to={"/detail/" + e.token_id}>
+      <div >
+        <InfiniteScroll
+          className={style.cardHome}
+          dataLength={currentNft.length} //This is important field to render the next data
+          next={() => setCurrentPage((prevPage) => prevPage + 1)}
+          hasMore={hasMore}
+          endMessage={
+            <p style={{ textAlign: 'center' }}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
+        >
+          {currentNft?.map((e, index) => (
             <Card
+              key={index}
+              id={e.token_id}
               price={e.price}
               name={e.name}
-              description={e.description}
               image={e.image}
               created={e.created}
             />
-          </Link>
-        ))}
+          ))}
+       </InfiniteScroll>
+        
       </div>
 
-      <Paginado
-        nftPerPage={nftPerPage}
-        allCard={allCard.length}
-        paginado={paginado}
-      />
+      {//<Paginado
+        //nftPerPage={nftPerPage}
+        //allCard={allCard.length}
+        //paginado={paginado}
+      ///>
+      }
+
       <div className={style.footer}>
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
