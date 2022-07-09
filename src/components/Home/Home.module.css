@@ -31,16 +31,24 @@ body {
   text-align: center;
 }
 .imageC {
-  margin-left: 22%;
+  margin-left: 16.5%;
   border-radius: 20px;
   width: 150px;
   height: 150px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .containerC {
   width: 80px;
   height: 250px;
+  background: -webkit-linear-gradient(#d04bff, #6c63ff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: tomato;
+  border: none;
 }
+
+
+
 .container2 {
   display: flex;
   padding: 60px;
@@ -75,6 +83,7 @@ body {
   justify-content: center;
 }
 
+
 .cardHome{
   display: flex;
   flex-direction: row;
@@ -83,3 +92,17 @@ body {
   justify-content: center;
   padding: 0 5% 0 5%;
 }
+
+.option{
+  margin-top: 10px;
+  border: 1px solid white;
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+  border-radius: 15px;
+}
+.option:hover{
+  cursor: pointer;
+ border: 2px solid white;
+}
+
