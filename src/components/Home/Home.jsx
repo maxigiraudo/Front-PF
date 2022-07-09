@@ -10,19 +10,22 @@ import Navbar from "../Navbar/Navbar";
 import Order from "../Order/Order";
 import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
-import { getNft } from "../../redux/actions";
+import { getNft, getSliderNft } from "../../redux/actions";
 import style from "./Home.module.css";
 import { Link } from "react-router-dom";
 import Searchbar from "../Searchbar/Searchbar";
+import { BsMenuButtonFill } from "react-icons/bs";
 
 export default function Home() {
   const allCard = useSelector((state) => state.cards);
   const allCategory = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     dispatch(getNft());
   }, [dispatch]);
+
 
   console.log(allCard);
 
@@ -62,6 +65,10 @@ export default function Home() {
       },
     ],
   };
+  function handleFilterByName(e){
+    e.preventDefault();
+    dispatch(getSliderNft(e.target.value))
+}
 
   const [currentPage, setCurrentPage] = useState(1); //inicia en 1 xq empezare en la pagina 1
   const [nftPerPage, setNftPerPage] = useState(8); //inicia en 8 xq tendre 8 perros por pagina
@@ -71,6 +78,10 @@ export default function Home() {
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
+
+
+  
+
   };
   return (
     <>
@@ -82,12 +93,70 @@ export default function Home() {
         </h1>
         <div className={style.carousel}>
           <Slider {...settings}>
-            {allCategory?.map((e) => (
-              <div className={style.containerC}>
-                <h1 className={style.nameC}>{e.name} </h1>
-                <img className={style.imageC} src={e.image} alt="*" />
-              </div>
-            ))}
+            <div className={style.containerC}>
+              
+                <h1 className={style.nameC}>MUSIC </h1>
+                <img className={style.imageC} src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxQuotC0Qaygjj_AM6yqhGmbRQ3Gqt_MHMGA&usqp=CAU' alt="*" />
+                <option
+                className={style.option}
+                value='music' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
+            <div className={style.containerC}>
+                <h1 className={style.nameC}>DOG </h1>
+                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
+                <option
+                className={style.option}
+                value='dog' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
+            <div className={style.containerC}>
+                <h1 className={style.nameC}>CAT </h1>
+                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
+                <option
+                className={style.option}
+                value='cat' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
+            <div className={style.containerC}>
+                <h1 className={style.nameC}>JIRAFA </h1>
+                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
+                <option
+                className={style.option}
+                value='monkey' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
+            <div className={style.containerC}>
+                <h1 className={style.nameC}>ELEFANTE </h1>
+                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
+                <option
+                className={style.option}
+                value='monkey' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
+            <div className={style.containerC}>
+                <h1 className={style.nameC}>LORO </h1>
+                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
+                <option
+                className={style.option}
+                value='monkey' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
+            <div className={style.containerC}>
+                <h1 className={style.nameC}>TORTUGA </h1>
+                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
+                <option
+                className={style.option}
+                value='monkey' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
           </Slider>
         </div>
       </div>
