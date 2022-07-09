@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   margin: 10px;
+  min-height: 35rem;
 }
 .container {
   margin: 20px;

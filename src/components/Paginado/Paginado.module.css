@@ -1,6 +1,6 @@
 .container{
     text-align: center;
-    margin-top: 10px;
+    margin-top: 40px;
 }
 
 ul.pagination {
@@ -27,15 +27,14 @@ ul.pagination li button {
     border: 1px solid #d04bff;
 }
 ul.pagination li button.active {
-    background-color: #4CAF50;
     color: white;
 }
 
 ul.pagination li button:hover:not(.active) {
-    background: -webkit-linear-gradient(#d04bff, #6c63ff);
+  background: -webkit-linear-gradient(#d04bff, #6c63ff);
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: tomato;
   cursor: pointer;
-  border: 2px solid white;
+  border: 2px solid rgb(10, 10, 10);
+  box-shadow: 0 0 5px 5px #cf4bff8f;
 }

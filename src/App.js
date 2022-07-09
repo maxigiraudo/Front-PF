@@ -10,7 +10,7 @@ import About from "./components/About/About";
 
 function App() {
   return (
-    <div class="generalApp">
+    <div className="generalApp">
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />

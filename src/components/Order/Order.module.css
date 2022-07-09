@@ -1,14 +1,12 @@
 .orderContenedor{
    display: flex;
-   width: 100%;
    align-items: center;
-   justify-content: center;
-   margin-top: 2%;
+   justify-content: left;
 }
 
 .orderBotones{
     display: flex;
-    width: 100%;
+
 }
 
 .orderBoton, .orderBoton1 {

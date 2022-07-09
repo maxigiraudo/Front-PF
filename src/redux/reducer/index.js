@@ -19,6 +19,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         cards: action.payload,
       };
+    case "GET_SLIDER_NFT":
+      return{
+        ...state,
+        cards: action.payload
+      }
     case "ORDER_BY_NAME":
       if (action.payload === "desc") {
         return {
