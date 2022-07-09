@@ -22,7 +22,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getNft());
-  }, []);
+  }, [dispatch]);
 
   console.log(allCard);
 
