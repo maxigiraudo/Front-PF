@@ -8,8 +8,8 @@
   justify-content: space-between;
   align-items: center;
   background-color: #16161a;
-  border: 5px solid;
-  border-image: linear-gradient(45deg, #d04bff, #6c63ff) 10;
+  border-bottom: 2px solid #cf4bffd0;
+  
 }
 .container a {
   text-decoration: none;
@@ -21,8 +21,7 @@
   -webkit-text-fill-color: transparent;
   color: tomato;
   list-style: none;
-
-  margin-left: 20px;
+  margin-left: 35px;
 }
 .logo {
   width: 150px;

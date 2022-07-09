@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import Logo from "./logo.png";
-import Searchbar from "../Searchbar/Searchbar";
+
 
 export default function Navbar() {
   return (
@@ -12,7 +12,6 @@ export default function Navbar() {
           <img className={styles.logo} src={Logo} alt="" />
         </li>
       </NavLink>
-      <Searchbar />
       <nav className={styles.navBar}>
         <ul>
           <div>

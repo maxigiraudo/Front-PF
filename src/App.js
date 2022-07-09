@@ -9,7 +9,7 @@ import Form from "./components/Form/Form";
 
 function App() {
   return (
-    <div class="generalApp">
+    <div className="generalApp">
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
