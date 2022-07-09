@@ -62,6 +62,12 @@ export default function reducer(state = initialState, action) {
         allCards: action.payload,
         cards: action.payload,
       };
+    case "CREATE_NFT":
+      return {
+        ...state,
+        allCards: [...state.allCards].push(action.payload),
+        cards: [...state.cards].push(action.payload),
+      };
     default:
       return state;
   }

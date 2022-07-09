@@ -51,3 +51,17 @@ export function getNameNft(name) {
     }
   };
 }
+export function createNft(nft) {
+  console.log(nft);
+  return async function (dispatch) {
+    try {
+      var json = await axios.post("http://localhost:4000/api/nft", nft);
+      return dispatch({
+        type: "CREATE_NFT",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
