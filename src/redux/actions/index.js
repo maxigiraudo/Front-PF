@@ -51,3 +51,18 @@ export function getNameNft(name) {
     }
   };
 }
+
+export function getSliderNft(name) {
+  return async function (dispatch) {
+    try {
+      var json = await axios.get("http://localhost:4000/api/nfts/" + name);
+      console.log(json)
+      return dispatch({
+        type: "GET_SLIDER_NFT",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
