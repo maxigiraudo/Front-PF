@@ -17,7 +17,6 @@ export function orderByPrice(payload) {
 export function getNft() {
   return async function (dispatch) {
     let json = await axios.get("http://localhost:4000/api/nfts/monkey");
-
     return dispatch({
       type: "GET_NFT",
       payload: json.data,
@@ -28,9 +27,23 @@ export function getNft() {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      var json = await axios.get("http://localhost:4000/api/nfts/" + id);
+      let json = await axios.get("http://localhost:4000/api/nfts/" + id);
       return dispatch({
         type: "GET_DETAILS",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getNameNft(name) {
+  return async function (dispatch) {
+    try {
+      var json = await axios.get("http://localhost:4000/api/nfts?name=" + name);
+      return dispatch({
+        type: "GET_NAME_NFT",
         payload: json.data,
       });
     } catch (error) {
