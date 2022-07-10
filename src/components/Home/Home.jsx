@@ -5,18 +5,16 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import InfiniteScroll from "react-infinite-scroll-component";
-
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import Order from "../Order/Order";
 import Card from "../Card/Card";
-
-import Paginado from "../Paginado/Paginado";
 import { getNft, getSliderNft } from "../../redux/actions";
 
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
-import { BsMenuButtonFill } from "react-icons/bs";
+import Loading from "../Loading/Loading";
+
 
 export default function Home() {
   const allCard = useSelector((state) => state.cards);
@@ -86,13 +84,7 @@ export default function Home() {
   }, [currentPage]);
 
 
-  const paginado = (pageNumber) => {
-    setCurrentPage(pageNumber);
-
-
-  
-
-  };
+ 
 
   return (
     <div className={style.containergeneral}>
@@ -176,38 +168,31 @@ export default function Home() {
         <Order />
       </div>
 
-      <div >
-        <InfiniteScroll
-          className={style.cardHome}
-          dataLength={currentNft.length} //This is important field to render the next data
-          next={() => setCurrentPage((prevPage) => prevPage + 1)}
-          hasMore={hasMore}
-          endMessage={
-            <p style={{ textAlign: 'center' }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
-        >
-          {currentNft?.map((e, index) => (
-            <Card
-              key={index}
-              id={e.token_id}
-              price={e.price}
-              name={e.name}
-              image={e.image}
-              created={e.created}
-            />
-          ))}
-       </InfiniteScroll>
-        
-      </div>
-
-      {//<Paginado
-        //nftPerPage={nftPerPage}
-        //allCard={allCard.length}
-        //paginado={paginado}
-      ///>
+      {currentNft.length === 0 && currentNft ?  
+        <Loading/>
+        :  
+        <div>
+          <InfiniteScroll
+            className={style.cardHome}
+            dataLength={currentNft.length} //This is important field to render the next data
+            next={() => setCurrentPage((prevPage) => prevPage + 1)}
+            hasMore={hasMore}
+          
+          >
+            {currentNft?.map((e, index) => (
+              <Card
+                key={index}
+                id={e.token_id}
+                price={e.price}
+                name={e.name}
+                image={e.image}
+                created={e.created}
+              />
+            ))}
+          </InfiniteScroll>
+        </div>
       }
+
 
       <div className={style.footer}>
         <Footer />

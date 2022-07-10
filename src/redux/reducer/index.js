@@ -8,11 +8,8 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "GET_DETAILS":
-      const all = state.cards;
+      const all = state.allCards;
       const filtered = all.filter((m) => action.payload == m.token_id)
-      console.log(all)
-      console.log(action.payload)
-      console.log(filtered)
       return {
         ...state,
         detail: filtered,

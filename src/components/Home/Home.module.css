@@ -31,15 +31,15 @@ body {
   text-align: center;
 }
 .imageC {
-  margin-left: 16.5%;
+  margin-left: 31%;
   border-radius: 20px;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   margin-top: 10px;
 }
 .containerC {
   width: 80px;
-  height: 250px;
+  height: 200px;
   background: -webkit-linear-gradient(#d04bff, #6c63ff);
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -47,11 +47,9 @@ body {
   border: none;
 }
 
-
-
 .container2 {
   display: flex;
-  padding: 60px;
+  padding: 30px;
   margin-top: 60px;
   background: rgb(0, 0, 0);
   background: linear-gradient(
@@ -90,7 +88,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: 0 5% 0 5%;
+
 }
 
 .option{
