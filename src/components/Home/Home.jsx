@@ -10,11 +10,18 @@ import Navbar from "../Navbar/Navbar";
 import Order from "../Order/Order";
 import Card from "../Card/Card";
 import { getNft, getSliderNft } from "../../redux/actions";
-
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import Loading from "../Loading/Loading";
-
+import animals from "./images/animals (1).png";
+import art from "./images/art (1).png";
+import crypto from "./images/crypto (1).png";
+import games from "./images/games (1).png";
+import music from "./images/music (1).png";
+import photography from "./images/photography (1).png";
+import sports from "./images/sports (1).png";
+import video from "./images/video png (1).png";
+import world from "./images/world (1).png";
 
 export default function Home() {
   const allCard = useSelector((state) => state.cards);
@@ -81,11 +88,9 @@ export default function Home() {
     }
   }, [currentPage]);
 
-
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
 
   return (
     <div className={style.containergeneral}>
@@ -93,137 +98,152 @@ export default function Home() {
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
-          were looking for...
+          are looking for...
         </h1>
         <div className={style.carousel}>
           <Slider {...settings}>
             <div className={style.containerC}>
-              <h1 className={style.nameC}>MUSIC </h1>
-              <img
-                className={style.imageC}
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxQuotC0Qaygjj_AM6yqhGmbRQ3Gqt_MHMGA&usqp=CAU"
-                alt="*"
-              />
-              <option
-                className={style.option}
-                value="music"
-                onClick={(e) => handleFilterByName(e)}
-              >
-                VER
-              </option>
+              <div className={style.tres}>
+                <h1 className={style.nameC}>Animals</h1>
+
+                <div>
+                  <img className={style.imageC} src={animals} alt="*" />
+                </div>
+
+                <option
+                  className={style.option}
+                  value="animals"
+                  onClick={(e) => handleFilterByName(e)}
+                >
+                  VER
+                </option>
+              </div>
             </div>
             <div className={style.containerC}>
-              <h1 className={style.nameC}>DOG </h1>
-              <img
-                className={style.imageC}
-                src="https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156"
-                alt="*"
-              />
-              <option
-                className={style.option}
-                value="dog"
-                onClick={(e) => handleFilterByName(e)}
-              >
-                VER
-              </option>
+              <div className={style.tres}>
+                <h1 className={style.nameC}>Art</h1>
+                <img className={style.imageC} src={art} alt="*" />
+                <option
+                  className={style.option}
+                  value="art"
+                  onClick={(e) => handleFilterByName(e)}
+                >
+                  VER
+                </option>
+              </div>
             </div>
             <div className={style.containerC}>
-              <h1 className={style.nameC}>CAT </h1>
-              <img
-                className={style.imageC}
-                src="https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156"
-                alt="*"
-              />
-              <option
-                className={style.option}
-                value="cat"
-                onClick={(e) => handleFilterByName(e)}
-              >
-                VER
-              </option>
+              <div className={style.tres}>
+                <h1 className={style.nameC}>Crypto</h1>
+                <img className={style.imageC} src={crypto} alt="*" />
+                <option
+                  className={style.option}
+                  value="crypto"
+                  onClick={(e) => handleFilterByName(e)}
+                >
+                  VER
+                </option>
+              </div>
             </div>
             <div className={style.containerC}>
-              <h1 className={style.nameC}>JIRAFA </h1>
-              <img
-                className={style.imageC}
-                src="https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156"
-                alt="*"
-              />
-              <option
-                className={style.option}
-                value="monkey"
-                onClick={(e) => handleFilterByName(e)}
-              >
-                VER
-              </option>
+              <div className={style.tres}>
+                <h1 className={style.nameC}>Games</h1>
+                <img className={style.imageC} src={games} alt="*" />
+                <option
+                  className={style.option}
+                  value="games"
+                  onClick={(e) => handleFilterByName(e)}
+                >
+                  VER
+                </option>
+              </div>
             </div>
             <div className={style.containerC}>
-              <h1 className={style.nameC}>ELEFANTE </h1>
-              <img
-                className={style.imageC}
-                src="https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156"
-                alt="*"
-              />
-              <option
-                className={style.option}
-                value="monkey"
-                onClick={(e) => handleFilterByName(e)}
-              >
-                VER
-              </option>
+              <div className={style.tres}>
+                <h1 className={style.nameC}>Music</h1>
+                <img className={style.imageC} src={music} alt="*" />
+                <option
+                  className={style.option}
+                  value="music"
+                  onClick={(e) => handleFilterByName(e)}
+                >
+                  VER
+                </option>
+              </div>
             </div>
             <div className={style.containerC}>
-              <h1 className={style.nameC}>LORO </h1>
-              <img
-                className={style.imageC}
-                src="https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156"
-                alt="*"
-              />
-              <option
-                className={style.option}
-                value="monkey"
-                onClick={(e) => handleFilterByName(e)}
-              >
-                VER
-              </option>
+              <div className={style.tres}>
+                <h1 className={style.nameC}>Photography</h1>
+                <img className={style.imageC} src={photography} alt="*" />
+                <option
+                  className={style.option}
+                  value="photography"
+                  onClick={(e) => handleFilterByName(e)}
+                >
+                  VER
+                </option>
+              </div>
             </div>
             <div className={style.containerC}>
-              <h1 className={style.nameC}>TORTUGA </h1>
-              <img
-                className={style.imageC}
-                src="https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156"
-                alt="*"
-              />
-              <option
-                className={style.option}
-                value="monkey"
-                onClick={(e) => handleFilterByName(e)}
-              >
-                VER
-              </option>
+              <div className={style.tres}>
+                <h1 className={style.nameC}>Sports</h1>
+                <img className={style.imageC} src={sports} alt="*" />
+                <option
+                  className={style.option}
+                  value="sports"
+                  onClick={(e) => handleFilterByName(e)}
+                >
+                  VER
+                </option>
+              </div>
+            </div>
+            <div className={style.containerC}>
+              <div className={style.tres}>
+                <h1 className={style.nameC}>Video</h1>
+                <img className={style.imageC} src={video} alt="*" />
+                <option
+                  className={style.option}
+                  value="video"
+                  onClick={(e) => handleFilterByName(e)}
+                >
+                  VER
+                </option>
+              </div>
+            </div>
+            <div className={style.containerC}>
+              <div className={style.tres}>
+                <h1 className={style.nameC}>World</h1>
+                <img className={style.imageC} src={world} alt="*" />
+                <option
+                  className={style.option}
+                  value="world"
+                  onClick={(e) => handleFilterByName(e)}
+                >
+                  VER
+                </option>
+              </div>
             </div>
           </Slider>
         </div>
       </div>
       <div className={style.orderSearch}>
-        <Searchbar />
+        <Searchbar setCurrentPage={setCurrentPage} />
         <Order />
       </div>
-      {currentNft.length === 0 && currentNft ?  
-        <Loading/>
-        :  
+      {currentNft.length === 0 && currentNft ? (
+        <Loading />
+      ) : (
         <div>
           <InfiniteScroll
             className={style.cardHome}
             dataLength={currentNft.length} //This is important field to render the next data
             next={() => setCurrentPage((prevPage) => prevPage + 1)}
             hasMore={hasMore}
-          
           >
             {currentNft?.map((e, index) => (
               <Card
                 key={index}
-                id={e.token_id || e.id}
+                id={e.token_id || e._id}
                 price={e.price}
                 name={e.name}
                 image={e.image}
@@ -232,8 +252,7 @@ export default function Home() {
             ))}
           </InfiniteScroll>
         </div>
-      }
-
+      )}
 
       <div className={style.footer}>
         <Footer />
