@@ -6,14 +6,20 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { MoralisProvider } from "react-moralis";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
+  <MoralisProvider
+    serverUrl="https://hzgmh0bhktiz.usemoralis.com:2053/server"
+    appId="TvlbElMKEQ3ozadXOqUAthnvVYSIKgNIIrllWHBi"
+  >
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </MoralisProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,25 +1,35 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import Order from "../Order/Order";
 import Card from "../Card/Card";
+
 import Paginado from "../Paginado/Paginado";
+import { getNft, getSliderNft } from "../../redux/actions";
+
 import style from "./Home.module.css";
-import { Link } from "react-router-dom";
 import Searchbar from "../Searchbar/Searchbar";
+import { BsMenuButtonFill } from "react-icons/bs";
 
 export default function Home() {
   const allCard = useSelector((state) => state.cards);
   const allCategory = useSelector((state) => state.category);
+  const dispatch = useDispatch();
 
-  console.log(allCategory);
+
+  useEffect(() => {
+    dispatch(getNft());
+  }, [dispatch]);
+
+
+  console.log(allCard);
 
   const settings = {
     dots: true,
@@ -57,20 +67,36 @@ export default function Home() {
       },
     ],
   };
+  function handleFilterByName(e){
+    e.preventDefault();
+    dispatch(getSliderNft(e.target.value))
+}
 
-  const [currentPage, setCurrentPage] = useState(1); //inicia en 1 xq empezare en la pagina 1
-  const [nftPerPage, setNftPerPage] = useState(8); //inicia en 8 xq tendre 8 perros por pagina
-  const indexOfLastNft = currentPage * nftPerPage; //indice del ultimo perro, cantidad de paginas * perros por paginas, en un principio seran 8
-  const indexOfFirstNft = indexOfLastNft - nftPerPage; // indice del 1er perro, dara 0
-  const currentNft = allCard.slice(indexOfFirstNft, indexOfLastNft);
+  const [currentPage, setCurrentPage] = useState(1); 
+  const [nftPerPage, setNftPerPage] = useState(6); 
+  const currentNft = allCard.slice(0, nftPerPage);
+  const [hasMore, setHasMore] = useState(true)
+
+  console.log(currentNft)
+  useEffect(() => {
+    setNftPerPage((prevNft) => prevNft + 12);
+    if (nftPerPage >= 70) {
+      setHasMore(false);
+    }
+  }, [currentPage]);
+
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
-  };
-  return (
-    <>
-      <Navbar />
 
+
+  
+
+  };
+
+  return (
+    <div className={style.containergeneral}>
+      <Navbar />
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
@@ -78,42 +104,114 @@ export default function Home() {
         </h1>
         <div className={style.carousel}>
           <Slider {...settings}>
-            {allCategory?.map((e) => (
-              <div className={style.containerC}>
-                <h1 className={style.nameC}>{e.name} </h1>
-                <img className={style.imageC} src={e.image} alt="*" />
-              </div>
-            ))}
+            <div className={style.containerC}>
+              
+                <h1 className={style.nameC}>MUSIC </h1>
+                <img className={style.imageC} src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxQuotC0Qaygjj_AM6yqhGmbRQ3Gqt_MHMGA&usqp=CAU' alt="*" />
+                <option
+                className={style.option}
+                value='music' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
+            <div className={style.containerC}>
+                <h1 className={style.nameC}>DOG </h1>
+                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
+                <option
+                className={style.option}
+                value='dog' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
+            <div className={style.containerC}>
+                <h1 className={style.nameC}>CAT </h1>
+                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
+                <option
+                className={style.option}
+                value='cat' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
+            <div className={style.containerC}>
+                <h1 className={style.nameC}>JIRAFA </h1>
+                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
+                <option
+                className={style.option}
+                value='monkey' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
+            <div className={style.containerC}>
+                <h1 className={style.nameC}>ELEFANTE </h1>
+                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
+                <option
+                className={style.option}
+                value='monkey' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
+            <div className={style.containerC}>
+                <h1 className={style.nameC}>LORO </h1>
+                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
+                <option
+                className={style.option}
+                value='monkey' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
+            <div className={style.containerC}>
+                <h1 className={style.nameC}>TORTUGA </h1>
+                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
+                <option
+                className={style.option}
+                value='monkey' 
+                onClick={(e)=>handleFilterByName(e)}
+               >VER</option>
+            </div>
           </Slider>
         </div>
       </div>
       <div className={style.orderSearch}>
-        <Order />
         <Searchbar />
+        <Order />
       </div>
 
-      <Link className={style.linkCard} to="/detail">
-        <div className="row gap-2 justify-center">
-          {currentNft?.map((e) => (
+      <div >
+        <InfiniteScroll
+          className={style.cardHome}
+          dataLength={currentNft.length} //This is important field to render the next data
+          next={() => setCurrentPage((prevPage) => prevPage + 1)}
+          hasMore={hasMore}
+          endMessage={
+            <p style={{ textAlign: 'center' }}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
+        >
+          {currentNft?.map((e, index) => (
             <Card
+              key={index}
+              id={e.token_id}
               price={e.price}
               name={e.name}
-              description={e.description}
               image={e.image}
               created={e.created}
             />
           ))}
-        </div>
-      </Link>
+       </InfiniteScroll>
+        
+      </div>
 
-      <Paginado
-        nftPerPage={nftPerPage}
-        allCard={allCard.length}
-        paginado={paginado}
-      />
+      {//<Paginado
+        //nftPerPage={nftPerPage}
+        //allCard={allCard.length}
+        //paginado={paginado}
+      ///>
+      }
+
       <div className={style.footer}>
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
