@@ -8,12 +8,16 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "GET_DETAILS":
-      const all = action.payload;
-      console.log(all);
+      const all = state.cards;
+      const filtered = all.filter((m) => action.payload == m.token_id)
+      console.log(all)
+      console.log(action.payload)
+      console.log(filtered)
       return {
         ...state,
-        detail: all,
+        detail: filtered,
       };
+
     case "GET_NAME_NFT":
       return {
         ...state,

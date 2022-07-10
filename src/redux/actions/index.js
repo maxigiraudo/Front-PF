@@ -21,10 +21,10 @@ export function getNft() {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      let json = await axios.get("http://localhost:4000/api/nfts/" + id);
+      //let json = await axios.get("http://localhost:4000/api/nfts/monkey");
       return dispatch({
         type: "GET_DETAILS",
-        payload: json.data,
+        payload: id,
       });
     } catch (error) {
       console.log(error);
