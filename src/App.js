@@ -7,6 +7,7 @@ import Home from "./components/Home/Home";
 import Detail from "./components/Detail/Detail";
 import Form from "./components/Form/Form";
 import About from "./components/About/About";
+import FormRegister from "./components/FormRegister/FormRegister";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
+        <Route path="/formRegister" element={<FormRegister />} />
       </Routes>
     </div>
   );
