@@ -4,7 +4,6 @@ import { BsFillStarFill } from "react-icons/bs";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-
 export default function Card({ id, price, name, image }) {
   return (
       <div className={style.container}>
@@ -24,8 +23,15 @@ export default function Card({ id, price, name, image }) {
             <h5 className={style.price}>{price} ETH</h5>
             <button className={style.car}>{BsFillCartCheckFill()} </button>
             <button className={style.star}>{BsFillStarFill()} </button>
+
           </div>
+        </Link>
+        <div className={style.abajo}>
+          <h5 className={style.price}>{price} ETH</h5>
+          <button className={style.car}>{BsFillCartCheckFill()} </button>
+          <button className={style.star}>{BsFillStarFill()} </button>
         </div>
       </div>
+    </div>
   );
 }

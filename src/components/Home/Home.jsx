@@ -21,11 +21,9 @@ export default function Home() {
   const allCategory = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
-    dispatch(getNft());
-  }, [dispatch]);
-
+    if (allCard.length === 0) dispatch(getNft());
+  }, [dispatch, allCard]);
 
   console.log(allCard);
 
@@ -65,17 +63,17 @@ export default function Home() {
       },
     ],
   };
-  function handleFilterByName(e){
+  function handleFilterByName(e) {
     e.preventDefault();
-    dispatch(getSliderNft(e.target.value))
-}
+    dispatch(getSliderNft(e.target.value));
+  }
 
-  const [currentPage, setCurrentPage] = useState(1); 
-  const [nftPerPage, setNftPerPage] = useState(6); 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [nftPerPage, setNftPerPage] = useState(6);
   const currentNft = allCard.slice(0, nftPerPage);
-  const [hasMore, setHasMore] = useState(true)
+  const [hasMore, setHasMore] = useState(true);
 
-  console.log(currentNft)
+  console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
     if (nftPerPage >= 70) {
@@ -84,7 +82,10 @@ export default function Home() {
   }, [currentPage]);
 
 
- 
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
 
   return (
     <div className={style.containergeneral}>
@@ -97,68 +98,109 @@ export default function Home() {
         <div className={style.carousel}>
           <Slider {...settings}>
             <div className={style.containerC}>
-              
-                <h1 className={style.nameC}>MUSIC </h1>
-                <img className={style.imageC} src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxQuotC0Qaygjj_AM6yqhGmbRQ3Gqt_MHMGA&usqp=CAU' alt="*" />
-                <option
+              <h1 className={style.nameC}>MUSIC </h1>
+              <img
+                className={style.imageC}
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxQuotC0Qaygjj_AM6yqhGmbRQ3Gqt_MHMGA&usqp=CAU"
+                alt="*"
+              />
+              <option
                 className={style.option}
-                value='music' 
-                onClick={(e)=>handleFilterByName(e)}
-               >VER</option>
+                value="music"
+                onClick={(e) => handleFilterByName(e)}
+              >
+                VER
+              </option>
             </div>
             <div className={style.containerC}>
-                <h1 className={style.nameC}>DOG </h1>
-                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
-                <option
+              <h1 className={style.nameC}>DOG </h1>
+              <img
+                className={style.imageC}
+                src="https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156"
+                alt="*"
+              />
+              <option
                 className={style.option}
-                value='dog' 
-                onClick={(e)=>handleFilterByName(e)}
-               >VER</option>
+                value="dog"
+                onClick={(e) => handleFilterByName(e)}
+              >
+                VER
+              </option>
             </div>
             <div className={style.containerC}>
-                <h1 className={style.nameC}>CAT </h1>
-                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
-                <option
+              <h1 className={style.nameC}>CAT </h1>
+              <img
+                className={style.imageC}
+                src="https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156"
+                alt="*"
+              />
+              <option
                 className={style.option}
-                value='cat' 
-                onClick={(e)=>handleFilterByName(e)}
-               >VER</option>
+                value="cat"
+                onClick={(e) => handleFilterByName(e)}
+              >
+                VER
+              </option>
             </div>
             <div className={style.containerC}>
-                <h1 className={style.nameC}>JIRAFA </h1>
-                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
-                <option
+              <h1 className={style.nameC}>JIRAFA </h1>
+              <img
+                className={style.imageC}
+                src="https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156"
+                alt="*"
+              />
+              <option
                 className={style.option}
-                value='monkey' 
-                onClick={(e)=>handleFilterByName(e)}
-               >VER</option>
+                value="monkey"
+                onClick={(e) => handleFilterByName(e)}
+              >
+                VER
+              </option>
             </div>
             <div className={style.containerC}>
-                <h1 className={style.nameC}>ELEFANTE </h1>
-                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
-                <option
+              <h1 className={style.nameC}>ELEFANTE </h1>
+              <img
+                className={style.imageC}
+                src="https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156"
+                alt="*"
+              />
+              <option
                 className={style.option}
-                value='monkey' 
-                onClick={(e)=>handleFilterByName(e)}
-               >VER</option>
+                value="monkey"
+                onClick={(e) => handleFilterByName(e)}
+              >
+                VER
+              </option>
             </div>
             <div className={style.containerC}>
-                <h1 className={style.nameC}>LORO </h1>
-                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
-                <option
+              <h1 className={style.nameC}>LORO </h1>
+              <img
+                className={style.imageC}
+                src="https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156"
+                alt="*"
+              />
+              <option
                 className={style.option}
-                value='monkey' 
-                onClick={(e)=>handleFilterByName(e)}
-               >VER</option>
+                value="monkey"
+                onClick={(e) => handleFilterByName(e)}
+              >
+                VER
+              </option>
             </div>
             <div className={style.containerC}>
-                <h1 className={style.nameC}>TORTUGA </h1>
-                <img className={style.imageC} src='https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156' alt="*" />
-                <option
+              <h1 className={style.nameC}>TORTUGA </h1>
+              <img
+                className={style.imageC}
+                src="https://tse1.mm.bing.net/th?id=OIP.rzoRwo8ic6Rh4Os7ikzitwHaHa&pid=Api&P=0&w=156&h=156"
+                alt="*"
+              />
+              <option
                 className={style.option}
-                value='monkey' 
-                onClick={(e)=>handleFilterByName(e)}
-               >VER</option>
+                value="monkey"
+                onClick={(e) => handleFilterByName(e)}
+              >
+                VER
+              </option>
             </div>
           </Slider>
         </div>
@@ -167,7 +209,6 @@ export default function Home() {
         <Searchbar />
         <Order />
       </div>
-
       {currentNft.length === 0 && currentNft ?  
         <Loading/>
         :  

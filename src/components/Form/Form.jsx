@@ -4,37 +4,51 @@ import Navbar from "../Navbar/Navbar";
 import styles from "./Form.module.css";
 import { useDispatch } from "react-redux";
 import { createNft } from "../../redux/actions";
-
 import { useMoralis, useMoralisFile } from "react-moralis";
-import { Moralis } from "moralis";
+import { useNavigate } from "react-router-dom";
 
 export default function Form() {
   const [card, setCard] = useState({ name: "", description: "" });
-  const [images, setimages] = useState("");
+  const [image, setimages] = useState("");
   const { saveFile, moralisFile } = useMoralisFile();
   const [file, setFile] = useState("");
-
-  const saveFileIPFS = async (f) => {
-    console.log(f);
-    console.log("FILE", f.name);
-    const fileIpfs = await saveFile(f.name, f, { saveIPFS: true });
-    console.log(fileIpfs);
-  };
+  const [files, setFiles] = useState([]);
+  const { authenticate, isAuthenticated, user } = useMoralis();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const login = async () => {
+      if (!isAuthenticated) {
+        await authenticate()
+          .then(function (user) {
+            console.log(user.get("ethAddress"));
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    };
+    login();
+  }, []);
 
   const dispatch = useDispatch();
   // let history = useHistory();
 
   const { name, description } = card;
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
-    if (name === "" || description === "") return;
-    saveFileIPFS(file);
-    dispatch(createNft({ name, description, images }));
+    // console.log("ESTO ES FILE", file);
+    // const respuesta = await uploadFile(file);
+    // setimages(respuesta);
+    if (name === "" || description === "" || file === "") return;
 
-    console.log("nft creado correctamente");
+    console.log(file);
+    dispatch(createNft({ name, description, file }));
+    navigate("/home");
   };
+
+  console.log(image);
 
   const onChange = (e) => {
     e.preventDefault();
@@ -45,28 +59,22 @@ export default function Form() {
     });
   };
 
-  useEffect(() => {
-    if (images !== "") {
-      saveFileIPFS(images);
-    }
-  }, [images]);
-
   const changeInput = (e) => {
     e.preventDefault();
-    setimages(e.target.files[0]);
-    console.log(images);
+    setFile(e.target.files[0]);
 
+    setFiles(file);
     let indexImg;
 
-    if (images.length > 0) {
-      indexImg = images[images.length - 1].index + 1;
+    if (file.length > 0) {
+      indexImg = file[file.length - 1].index + 1;
     } else {
       indexImg = 0;
     }
 
     let newImgsToState = readmultifiles(e, indexImg);
-    let newImgsState = [...images, ...newImgsToState];
-    setimages(newImgsState);
+    let newImgsState = [...file, ...newImgsToState];
+    setFiles(newImgsState);
   };
 
   function readmultifiles(e, indexInicial) {
@@ -93,11 +101,11 @@ export default function Form() {
   }
 
   function deleteImg(indice) {
-    const newImgs = images.filter(function (element) {
+    const newImgs = image.filter(function (element) {
       return element.index !== indice;
     });
     console.log(newImgs);
-    setimages(newImgs);
+    setFile(newImgs);
   }
   return (
     <div className={styles.containerPadre}>
@@ -113,10 +121,10 @@ export default function Form() {
                     <span className={styles.selectFile}>Select image</span>
 
                     <input
-                      name="images"
+                      name="image"
                       hidden
                       type="file"
-                      onChange={(e) => setFile(e.target.files[0])}
+                      onChange={(e) => changeInput(e)}
                     ></input>
                   </label>
                   <div className={styles.jpg}>
@@ -124,9 +132,10 @@ export default function Form() {
                     <p className={styles.colorp}>Max 100 mb</p>
                   </div>
                 </div>
-                {/* <div>
-                  {images.map((imagen) => (
+                <div>
+                  {files.map((imagen) => (
                     <div key={imagen.index}>
+                      {console.log(imagen)}
                       <div>
                         <button onClick={deleteImg.bind(this, imagen.index)}>
                           x
@@ -142,7 +151,7 @@ export default function Form() {
                       </div>
                     </div>
                   ))}
-                </div> */}
+                </div>
               </div>
               <div className={styles.nameEnviar}>
                 <label className={styles.label}>Name</label>
