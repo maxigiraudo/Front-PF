@@ -125,7 +125,11 @@ export default function FormRegister() {
                   type="text"
                   className={styles.input}
                   placeholder="Write your Username... "
+<<<<<<< HEAD
                 /> 
+=======
+                />
+>>>>>>> 2c9e5f21b5e4bc8da4fd946c5ea2a989a82a5697
 
                 <label className={styles.label}>Email</label>
                 <p htmlFor="Email"> </p>
@@ -147,9 +151,12 @@ export default function FormRegister() {
                   placeholder="Write a valid Password... "
                 />
 
+<<<<<<< HEAD
                 
 
 
+=======
+>>>>>>> 2c9e5f21b5e4bc8da4fd946c5ea2a989a82a5697
                 <label className={styles.label}>About you!</label>
                 <p htmlFor="Aboutyou"> </p>
                 <textarea

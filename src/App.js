@@ -8,6 +8,7 @@ import Detail from "./components/Detail/Detail";
 import Form from "./components/Form/Form";
 import FormRegister from "./components/FormRegister/FormRegister";
 import About from "./components/About/About";
+import FormRegister from "./components/FormRegister/FormRegister";
 
 
 function App() {
@@ -18,8 +19,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/form" element={<Form />} />
-        <Route path="/formRegister" element={<FormRegister />} />
         <Route path="/about" element={<About />} />
+        <Route path="/formRegister" element={<FormRegister />} />
 
       </Routes>
     </div>
