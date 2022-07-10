@@ -5,7 +5,8 @@
   background-color: #16161a;
 }
 .logo {
-  width: 150px;
+  margin: 10px;
+  object-fit: contain;
   height: 50px;
 }
 .footersocialmedia {
@@ -27,14 +28,14 @@
 }
 
 .footerinfoleft {
-  font-size: x-small;
+  font-size: 10px;
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
   width: 30%;
 }
 .footerinfocenter {
-  font-size: x-small;
+  font-size: 15px;
   display: flex;
   margin-bottom: 10px;
   width: 35%;
@@ -114,6 +115,6 @@
 .footerbottom__name {
   text-transform: uppercase;
   font-family: RobotoBold;
-  font-size: large;
+  font-size: 20px;
   margin: 0px 20px;
 }
