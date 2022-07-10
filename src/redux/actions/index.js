@@ -21,11 +21,6 @@ export function getNft() {
 export function getDetail(id) {
   return function (dispatch) {
     try {
-
-
-      //let json = await axios.get("http://localhost:4000/api/nfts/monkey");
-
-
       return dispatch({
         type: "GET_DETAILS",
         payload: id,
