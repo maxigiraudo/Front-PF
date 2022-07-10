@@ -25,7 +25,6 @@ export default function Card({ id, price, name, image }) {
             <button className={style.star}>{BsFillStarFill()} </button>
 
           </div>
-        </Link>
         <div className={style.abajo}>
           <h5 className={style.price}>{price} ETH</h5>
           <button className={style.car}>{BsFillCartCheckFill()} </button>

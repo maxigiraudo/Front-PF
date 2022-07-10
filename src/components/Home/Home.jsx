@@ -223,7 +223,7 @@ export default function Home() {
             {currentNft?.map((e, index) => (
               <Card
                 key={index}
-                id={e.token_id}
+                id={e.token_id || e.id}
                 price={e.price}
                 name={e.name}
                 image={e.image}
