@@ -6,16 +6,22 @@ import { BsFillCartCheckFill } from "react-icons/bs";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { useEffect } from "react";
-import { getDetail } from "../../redux/actions";
-import { useParams } from "react-router-dom";
+
+import { getDetail, resState, getNft } from "../../redux/actions";
+import { useParams, Link } from "react-router-dom";
 
 export default function Detail() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getNft());
     dispatch(getDetail(id));
   }, [dispatch, id]);
+
+  const handleClean = () => {
+    dispatch(resState());
+  };
 
   const card = useSelector((state) => state.detail);
 
@@ -23,6 +29,9 @@ export default function Detail() {
 
   return (
     <div>
+      <Link to="/home">
+        <button onClick={() => handleClean()}>ATRAS VIEJA</button>
+      </Link>
       {card.length ? (
         <div className={styles.containerPadre}>
           <div className={styles.navbar}>

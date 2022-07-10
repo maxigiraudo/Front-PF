@@ -3,27 +3,32 @@ const initialState = {
   allCards: [],
   detail: [],
   category: [],
+  loading: false,
+  error: false,
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "GET_DETAILS":
-      const all = action.payload;
-      console.log(all);
+
+      const all = state.allCards;
+      const filtered = all.filter((m) => action.payload == m.token_id)
+
       return {
         ...state,
-        detail: all,
+        detail: filtered,
       };
+
     case "GET_NAME_NFT":
       return {
         ...state,
         cards: action.payload,
       };
     case "GET_SLIDER_NFT":
-      return{
+      return {
         ...state,
-        cards: action.payload
-      }
+        cards: action.payload,
+      };
     case "ORDER_BY_NAME":
       if (action.payload === "desc") {
         return {
@@ -67,12 +72,32 @@ export default function reducer(state = initialState, action) {
         allCards: action.payload,
         cards: action.payload,
       };
+    case "CREATE_NFT_SUCCESS":
+      return {
+        ...state,
+        allCards: [action.payload, ...state.cards],
+        cards: [action.payload, ...state.cards],
+        loading: false,
+        error: false,
+      };
     case "CREATE_NFT":
       return {
         ...state,
-        allCards: [...state.allCards].push(action.payload),
-        cards: [...state.cards].push(action.payload),
+        loading: true,
+        error: false,
       };
+    case "CREATE_NFT_ERROR":
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    case "RES_STATE":
+      return {
+        ...state,
+        detail: [],
+      };
+
     default:
       return state;
   }
