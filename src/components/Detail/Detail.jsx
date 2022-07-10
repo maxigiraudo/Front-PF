@@ -6,7 +6,7 @@ import { BsFillCartCheckFill } from "react-icons/bs";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { useEffect } from "react";
-import { getDetail } from "../../redux/actions";
+import { getDetail, getNft } from "../../redux/actions";
 import { useParams } from "react-router-dom";
 
 export default function Detail() {
@@ -14,6 +14,7 @@ export default function Detail() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getNft());
     dispatch(getDetail(id));
   }, [dispatch, id]);
 
