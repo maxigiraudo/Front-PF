@@ -6,6 +6,7 @@ import { useMoralis } from "react-moralis";
 
 export default function Navbar() {
   const { authenticate, isAuthenticated, user } = useMoralis();
+
   const loginWallet = async () => {
     if (!isAuthenticated) {
       await authenticate()

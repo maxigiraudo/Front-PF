@@ -11,15 +11,14 @@ import { getDetail, resState, getNft } from "../../redux/actions";
 import { useParams, Link } from "react-router-dom";
 
 export default function Detail() {
-  const { id,name } = useParams();
+  const { id, name } = useParams();
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     dispatch(getNft());
     // setTimeout(function (){dispatch(getDetail(id))},2000) no cambiar
-    dispatch(getDetail(id))
-  }, [dispatch,id,name]);
+    dispatch(getDetail(id));
+  }, [dispatch, id, name]);
 
   const handleClean = () => {
     dispatch(resState());
@@ -36,7 +35,9 @@ export default function Detail() {
           <div className={styles.navbar}>
             <Navbar />
             <Link to="/home">
-                <button onClick={() => handleClean()} className={styles.botonR} >Return</button  >
+              <button onClick={() => handleClean()} className={styles.botonR}>
+                Return
+              </button>
             </Link>
           </div>
           <div className={styles.padre}>
@@ -60,7 +61,7 @@ export default function Detail() {
       ) : (
         <div>
           <h1 className={styles.cargando}>Loading...</h1>
-          <Loading/>
+          <Loading />
         </div>
       )}
     </div>
