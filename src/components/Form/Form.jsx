@@ -14,10 +14,11 @@ export default function Form() {
   const [file, setFile] = useState("");
   const [files, setFiles] = useState([]);
   const [error, setError] = useState({
-    error: "Debe ingresar un nombre",
+    error: "You must select a name",
   });
   const { authenticate, isAuthenticated, user } = useMoralis();
   const navigate = useNavigate();
+
   useEffect(() => {
     const login = async () => {
       if (!isAuthenticated) {
@@ -35,12 +36,12 @@ export default function Form() {
 
   function validationForm(value) {
     let errors = {};
-    if (!value.name) errors.name = "Debe ingresar un nombre";
+    if (!value.name) errors.name = "You must select a name";
     else if (!/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test(value.name)) {
-      errors.name = "Los nombres propios empiezan con mayúscula";
+      errors.name = "Names must begin with capital letters";
     }
     if (value.description.length < 20) {
-      errors.description = "Debe contener al menos 20 caracteres";
+      errors.description = "It must contain at least 20 characters";
     }
 
     console.log(value);
