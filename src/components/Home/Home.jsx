@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import Order from "../Order/Order";
+// import Order from "../Order/Order";
 import Card from "../Card/Card";
 import { getNft, getSliderNft } from "../../redux/actions";
 import style from "./Home.module.css";
@@ -115,7 +115,7 @@ export default function Home() {
                   value="animals"
                   onClick={(e) => handleFilterByName(e)}
                 >
-                  VER
+                  VIEW
                 </option>
               </div>
             </div>
@@ -128,7 +128,7 @@ export default function Home() {
                   value="art"
                   onClick={(e) => handleFilterByName(e)}
                 >
-                  VER
+                  VIEW
                 </option>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function Home() {
                   value="crypto"
                   onClick={(e) => handleFilterByName(e)}
                 >
-                  VER
+                  VIEW
                 </option>
               </div>
             </div>
@@ -154,7 +154,7 @@ export default function Home() {
                   value="games"
                   onClick={(e) => handleFilterByName(e)}
                 >
-                  VER
+                  VIEW
                 </option>
               </div>
             </div>
@@ -167,7 +167,7 @@ export default function Home() {
                   value="music"
                   onClick={(e) => handleFilterByName(e)}
                 >
-                  VER
+                  VIEW
                 </option>
               </div>
             </div>
@@ -180,7 +180,7 @@ export default function Home() {
                   value="photography"
                   onClick={(e) => handleFilterByName(e)}
                 >
-                  VER
+                  VIEW
                 </option>
               </div>
             </div>
@@ -193,7 +193,7 @@ export default function Home() {
                   value="sports"
                   onClick={(e) => handleFilterByName(e)}
                 >
-                  VER
+                  VIEW
                 </option>
               </div>
             </div>
@@ -206,7 +206,7 @@ export default function Home() {
                   value="video"
                   onClick={(e) => handleFilterByName(e)}
                 >
-                  VER
+                  VIEW
                 </option>
               </div>
             </div>
@@ -219,7 +219,7 @@ export default function Home() {
                   value="world"
                   onClick={(e) => handleFilterByName(e)}
                 >
-                  VER
+                  VIEW
                 </option>
               </div>
             </div>
@@ -228,7 +228,7 @@ export default function Home() {
       </div>
       <div className={style.orderSearch}>
         <Searchbar setCurrentPage={setCurrentPage} />
-        <Order />
+        {/* <Order /> */}
       </div>
       {currentNft.length === 0 && currentNft ? (
         <Loading />
