@@ -16,11 +16,14 @@ export function getNft() {
       payload: json.data,
     });
   };
-}
+} 
+
+
 
 export function getDetail(id) {
   return function (dispatch) {
     try {
+      console.log("soy id",id)
       return dispatch({
         type: "GET_DETAILS",
         payload: id,

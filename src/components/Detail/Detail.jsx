@@ -5,19 +5,21 @@ import { BsFillStarFill } from "react-icons/bs";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import Loading from "../Loading/Loading";
 import { useEffect } from "react";
-
 import { getDetail, resState, getNft } from "../../redux/actions";
 import { useParams, Link } from "react-router-dom";
 
 export default function Detail() {
-  const { id } = useParams();
+  const { id,name } = useParams();
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(getNft());
-    dispatch(getDetail(id));
-  }, [dispatch, id]);
+    // setTimeout(function (){dispatch(getDetail(id))},2000)
+    dispatch(getDetail(id))
+  }, [dispatch,id,name]);
 
   const handleClean = () => {
     dispatch(resState());
@@ -29,13 +31,13 @@ export default function Detail() {
 
   return (
     <div>
-      <Link to="/home">
-        <button onClick={() => handleClean()}>ATRAS VIEJA</button>
-      </Link>
       {card.length ? (
         <div className={styles.containerPadre}>
           <div className={styles.navbar}>
             <Navbar />
+            <Link to="/home">
+                <button onClick={() => handleClean()} className={styles.botonR} >Return</button  >
+            </Link>
           </div>
           <div className={styles.padre}>
             <div>
@@ -57,7 +59,8 @@ export default function Detail() {
         </div>
       ) : (
         <div>
-          <h1 className={styles.cargando}>cargando...</h1>
+          <h1 className={styles.cargando}>Loading...</h1>
+          <Loading/>
         </div>
       )}
     </div>

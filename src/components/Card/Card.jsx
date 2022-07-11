@@ -12,8 +12,6 @@ export default function Card({ id, price, name, image }) {
           <div className={style.containertext}>
             <h1 className={style.name}>{name}</h1>
           </div>
-<<<<<<< HEAD
-=======
           <figure className={style.containerImagen}>
             {image.includes("mp4") ? (
               <img
@@ -27,9 +25,8 @@ export default function Card({ id, price, name, image }) {
           </figure>
         </Link>
 
->>>>>>> 8b5fac7db8dfa181a1c30fdb29273ba3e843b9f3
+
         <div className={style.abajo}>
-          <h5 className={style.price}>{price} ETH</h5>
           <button className={style.car}>{BsFillCartCheckFill()} </button>
           <button className={style.star}>{BsFillStarFill()} </button>
         </div>
