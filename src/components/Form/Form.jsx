@@ -13,6 +13,9 @@ export default function Form() {
   const { saveFile, moralisFile } = useMoralisFile();
   const [file, setFile] = useState("");
   const [files, setFiles] = useState([]);
+  const [error, setError] = useState({
+    error: "Debe ingresar un nombre",
+  });
   const { authenticate, isAuthenticated, user } = useMoralis();
   const navigate = useNavigate();
   useEffect(() => {
@@ -30,17 +33,27 @@ export default function Form() {
     login();
   }, []);
 
+  function validationForm(value) {
+    let errors = {};
+    if (!value.name) errors.name = "Debe ingresar un nombre";
+    else if (!/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test(value.name)) {
+      errors.name = "Los nombres propios empiezan con mayúscula";
+    }
+    if (value.description.length < 20) {
+      errors.description = "Debe contener al menos 20 caracteres";
+    }
+
+    console.log(value);
+    return errors;
+  }
+
   const dispatch = useDispatch();
-  // let history = useHistory();
 
   const { name, description } = card;
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    // console.log("ESTO ES FILE", file);
-    // const respuesta = await uploadFile(file);
-    // setimages(respuesta);
     if (name === "" || description === "" || file === "") return;
 
     console.log(file);
@@ -57,6 +70,15 @@ export default function Form() {
 
       [e.target.name]: e.target.value,
     });
+
+    setError(
+      validationForm({
+        ...card,
+
+        [e.target.name]: e.target.value,
+      })
+    );
+    console.log(error);
   };
 
   const changeInput = (e) => {
@@ -66,15 +88,23 @@ export default function Form() {
     setFiles(file);
     let indexImg;
 
-    if (file.length > 0) {
+    if (files.length > 0) {
       indexImg = file[file.length - 1].index + 1;
     } else {
       indexImg = 0;
     }
 
     let newImgsToState = readmultifiles(e, indexImg);
-    let newImgsState = [...file, ...newImgsToState];
+    let newImgsState = [...files, ...newImgsToState];
     setFiles(newImgsState);
+
+    setError(
+      validationForm({
+        ...card,
+        ...file,
+        [e.target.name]: e.target.value,
+      })
+    );
   };
 
   function readmultifiles(e, indexInicial) {
@@ -101,11 +131,11 @@ export default function Form() {
   }
 
   function deleteImg(indice) {
-    const newImgs = image.filter(function (element) {
+    const newImgs = files.filter(function (element) {
       return element.index !== indice;
     });
     console.log(newImgs);
-    setFile(newImgs);
+    setFiles(newImgs);
   }
   return (
     <div className={styles.containerPadre}>
@@ -121,11 +151,15 @@ export default function Form() {
                     <span className={styles.selectFile}>Select image</span>
 
                     <input
+                      multiple
                       name="image"
                       hidden
                       type="file"
                       onChange={(e) => changeInput(e)}
                     ></input>
+                    {error.image ? (
+                      <p style={{ color: "red" }}> {error.image} </p>
+                    ) : null}
                   </label>
                   <div className={styles.jpg}>
                     <p className={styles.colorp}>JPG, PNG, GIF</p>
@@ -165,6 +199,9 @@ export default function Form() {
                   placeholder="Write the name of the NFT... "
                   value={card.name}
                 />
+                {error.name ? (
+                  <p style={{ color: "red" }}> {error.name} </p>
+                ) : null}
                 <label className={styles.label}>Description</label>
                 <p htmlFor="Description"> </p>
                 <textarea
@@ -176,14 +213,24 @@ export default function Form() {
                   placeholder="Write a description of the NFT..."
                   value={card.description}
                 />
+                {error.description ? (
+                  <p style={{ color: "red" }}> {error.description} </p>
+                ) : null}
 
                 <br />
 
                 <input
+                  disabled={Object.keys(error).length === 0 ? false : true}
                   value="CREATE"
                   type="submit"
                   className={styles.inputEnviar}
                 />
+                <br />
+                {Object.keys(error).length === 0 ? null : (
+                  <p style={{ color: "red", textAlign: "center" }}>
+                    Para crear debes completar todos los campos sin errores.
+                  </p>
+                )}
               </div>
             </div>
           </form>
