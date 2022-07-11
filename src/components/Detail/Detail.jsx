@@ -17,7 +17,7 @@ export default function Detail() {
 
   useEffect(() => {
     dispatch(getNft());
-    // setTimeout(function (){dispatch(getDetail(id))},2000)
+    // setTimeout(function (){dispatch(getDetail(id))},2000) no cambiar
     dispatch(getDetail(id))
   }, [dispatch,id,name]);
 
