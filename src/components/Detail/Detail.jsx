@@ -37,7 +37,7 @@ export default function Detail() {
             <Navbar />
             <Link to="/home">
               <button onClick={() => handleClean()} className={styles.botonR}>
-                Return
+                Go Back
               </button>
             </Link>
           </div>
