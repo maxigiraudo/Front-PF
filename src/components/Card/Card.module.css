@@ -42,7 +42,7 @@
   border: none;
   cursor: pointer;
 }
-.car:hover{
+.car:hover {
   color: rgba(0, 0, 0, 0.849);
 }
 
@@ -55,7 +55,7 @@
   border: none;
   cursor: pointer;
 }
-.star:hover{
+.star:hover {
   color: rgba(233, 233, 29, 0.938);
 }
 .card img {
@@ -66,7 +66,7 @@
   text-decoration: none;
 }
 
-.containerImagen{
+.containerImagen {
   height: 150px;
   overflow: hidden;
   display: flex;
@@ -75,11 +75,15 @@
   border-radius: 30px;
 }
 
-.containertext{
+.containertext {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 80px;
   font-size: 80%;
   padding: 0 1%;
+}
+.imagenRec {
+  border-radius: 20px;
+  object-fit: contain;
 }

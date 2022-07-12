@@ -11,14 +11,15 @@ import { getDetail, resState, getNft } from "../../redux/actions";
 import { useParams, Link } from "react-router-dom";
 
 export default function Detail() {
-  const { id, name } = useParams();
+
+  const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getNft());
-    // setTimeout(function (){dispatch(getDetail(id))},2000) no cambiar
-    dispatch(getDetail(id));
-  }, [dispatch, id, name]);
+    // setTimeout(function (){dispatch(getDetail(id))},2000)
+    dispatch(getDetail(id))
+  }, [dispatch,id]);
 
   const handleClean = () => {
     dispatch(resState());
@@ -36,7 +37,7 @@ export default function Detail() {
             <Navbar />
             <Link to="/home">
               <button onClick={() => handleClean()} className={styles.botonR}>
-                Return
+                Go Back
               </button>
             </Link>
           </div>
