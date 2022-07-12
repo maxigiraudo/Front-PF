@@ -9,7 +9,6 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-
     case "GET_NAME_NFT":
       return {
         ...state,
@@ -64,16 +63,16 @@ export default function reducer(state = initialState, action) {
         cards: action.payload,
       };
     case "GET_DETAILS":
-        const all = state.cards;
-        console.log("action",all)
-  
-        const filtered = all.filter(
-          (m) => action.payload == m.token_id || action.payload == m._id
-        );
-        return {
-          ...state,
-          detail: filtered,
-        };
+      const all = state.cards;
+      console.log("action", all);
+
+      const filtered = all.filter(
+        (m) => action.payload == m.token_id || action.payload == m._id
+      );
+      return {
+        ...state,
+        detail: filtered,
+      };
     case "CREATE_NFT_SUCCESS":
       return {
         ...state,

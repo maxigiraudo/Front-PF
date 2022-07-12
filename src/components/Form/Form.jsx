@@ -229,7 +229,8 @@ export default function Form() {
                 <br />
                 {Object.keys(error).length === 0 ? null : (
                   <p style={{ color: "red", textAlign: "center" }}>
-                    Para crear debes completar todos los campos sin errores.
+                    To create your NFT you must fill in all the fields without
+                    errors.
                   </p>
                 )}
               </div>
