@@ -136,3 +136,52 @@ export function resState() {
     type: "RES_STATE",
   };
 }
+
+
+export function addToCart(product) {
+  console.log(product);
+  return {
+    type: "ADD_TO_CART",
+    payload: product,
+  };
+}
+
+export function removeOneFromCart(product) {
+  console.log(product);
+  return {
+    type: "REMOVE_ONE_FROM_CART",
+    payload: product,
+  };
+}
+
+export function cleanCart(product) {
+  return {
+    type: "CLEAN_CART",
+    payload: product,
+  };
+}
+
+export function contador(contador) {
+  return {
+    type: "CONTADOR",
+    payload: contador,
+  };
+
+export function postLogin(payload) {
+  return async function (dispatch) {
+    await axios.post("http://localhost:4000/login", payload)
+    .then(response => {
+      if (response === 400) {
+        alert('Sorry, Error Login 🤦🏽‍♂️')
+        return 
+      } 
+      else {
+        dispatch({
+          type: 'LOGIN_SUCCESS',
+          payload: response,
+        })    
+      }
+    })
+  }
+
+}

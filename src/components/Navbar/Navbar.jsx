@@ -31,10 +31,14 @@ export default function Navbar() {
             <NavLink to="/form">
               <li>Create NFT</li>
             </NavLink>
-            <li>Login</li>
-            <li>Sing Up</li>
             <NavLink to="/about" >
               <li>About</li>
+            </NavLink>
+            <NavLink to="/login">
+              <li>Login</li>
+            </NavLink>
+            <NavLink to="/formRegister">
+              <li>Sing Up</li>
             </NavLink>
             <li onClick={() => loginWallet()}>Connect Wallet</li>
           </div>
