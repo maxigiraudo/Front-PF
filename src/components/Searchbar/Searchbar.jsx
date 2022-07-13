@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Searchbar.module.css";
 import { BiSearchAlt } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { getNameNft } from "../../redux/actions";
 
-export default function Searchbar(props) {
+export default function Searchbar() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
@@ -17,8 +17,9 @@ export default function Searchbar(props) {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(getNameNft(name));
-    props.setCurrentPage(1);
   }
+
+  
 
   return (
       <form className={styles.formSearch}>
