@@ -7,19 +7,18 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import Loading from "../Loading/Loading";
 import { useEffect } from "react";
-import { getDetail, resState, getNft } from "../../redux/actions";
+import { getDetail, resState } from "../../redux/actions";
 import { useParams, Link } from "react-router-dom";
 
 export default function Detail() {
 
-  const { id } = useParams();
+  let {id} = useParams();
+  let {token_address} = useParams()
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getNft());
-    // setTimeout(function (){dispatch(getDetail(id))},2000)
-    dispatch(getDetail(id))
-  }, [dispatch,id]);
+    dispatch(getDetail(id,token_address))
+  }, [dispatch,id,token_address]);
 
   const handleClean = () => {
     dispatch(resState());
@@ -31,7 +30,7 @@ export default function Detail() {
 
   return (
     <div>
-      {card.length ? (
+      {card.image? 
         <div className={styles.containerPadre}>
           <div className={styles.navbar}>
             <Navbar />
@@ -43,11 +42,11 @@ export default function Detail() {
           </div>
           <div className={styles.padre}>
             <div>
-              <img className={styles.imagen} src={card[0].image} alt="nft" />
+              <img className={styles.imagen} src={card.image} alt="nft" />
             </div>
             <div className={styles.description}>
-              <h3 className={styles.name}>{card[0].name}</h3>
-              <h5 className={styles.des}>{card[0].description}</h5>
+              <h3 className={styles.name}>{card.name}</h3>
+              <h5 className={styles.des}>Collection: {card.collection}</h5>
               <div className={styles.priceCF}>
                 {/* <h3 className={styles.price}>{card[0].price} ETH</h3> */}
                 <p className={styles.car}>{BsFillCartCheckFill()} </p>
@@ -59,12 +58,12 @@ export default function Detail() {
             <Footer />
           </div>
         </div>
-      ) : (
-        <div>
-          <h1 className={styles.cargando}>Loading...</h1>
-          <Loading />
-        </div>
-      )}
+     :(
+      <div>
+        <h1 className={styles.load} >Loading...</h1>
+        <Loading/>
+      </div>
+     )}
     </div>
   );
 }

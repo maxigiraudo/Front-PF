@@ -73,6 +73,12 @@
   text-align: center;
 }
 
+.load{
+  text-align: center;
+  color: #d04bff;
+  margin-top: 100px;
+}
+
 a {
   color: #d04bff;
   text-decoration: none;

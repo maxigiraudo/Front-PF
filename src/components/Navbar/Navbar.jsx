@@ -33,6 +33,9 @@ export default function Navbar() {
             </NavLink>
             <li>Login</li>
             <li>Sing Up</li>
+            <NavLink to="/about" >
+              <li>About</li>
+            </NavLink>
             <li onClick={() => loginWallet()}>Connect Wallet</li>
           </div>
         </ul>

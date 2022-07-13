@@ -9,7 +9,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
-import { getNft, getSliderNft } from "../../redux/actions";
+import { getNft, getNftAll, getSliderNft } from "../../redux/actions";
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import Loading from "../Loading/Loading";
@@ -25,12 +25,17 @@ import world from "./images/world (1).png";
 
 export default function Home() {
   const allCard = useSelector((state) => state.cards);
-  const allCategory = useSelector((state) => state.category);
+
+  const cursori = useSelector((state)=> state.cursor)
+
+  console.log("CURSOR DEL HOME", cursori)
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (allCard.length === 0) dispatch(getNft());
-  }, [dispatch, allCard]);
+    if (allCard.length === 0) dispatch(getNft()) ;
+    // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
+  }, [dispatch,cursori]);
 
   console.log(allCard);
 
@@ -83,18 +88,18 @@ export default function Home() {
   console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
-    if (nftPerPage >= 70) {
+    if (nftPerPage >= 1500 || allCard.length < 50) {
       setHasMore(false);
     }
+    dispatch(getNftAll(cursori))
   }, [currentPage]);
 
-  const paginado = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
 
   return (
     <div className={style.containergeneral}>
+    <div className={style.containerNav} >
       <Navbar />
+      </div>
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
@@ -241,14 +246,17 @@ export default function Home() {
             hasMore={hasMore}
           >
             {currentNft?.map((e, index) => (
+              
               <Card
+                id={e._id}
                 key={index}
-                id={e.token_id || e._id}
                 price={e.price}
                 name={e.name}
                 image={e.image}
                 created={e.created}
+                token_address={e.token_address}
               />
+              
             ))}
           </InfiniteScroll>
         </div>

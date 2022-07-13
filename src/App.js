@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/detail/:id/:token_address" element={<Detail />} />
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
         <Route path="/formRegister" element={<FormRegister />} />
