@@ -3,8 +3,11 @@ const initialState = {
   allCards: [],
   detail: [],
   category: [],
+  carrito: [],
+  cartProducts: [],
   loading: false,
   error: false,
+  contador: 0,
 };
 
 export default function reducer(state = initialState, action) {
@@ -97,6 +100,28 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         detail: [],
+      };
+    case "ADD_TO_CART":
+      console.log(action.payload);
+      return {
+        ...state,
+        cartProducts: [...state.cartProducts, action.payload],
+      };
+
+    case "REMOVE_ONE_FROM_CART":
+      return {
+        ...state,
+        cartProducts: state.cartProducts.filter((e) => e !== action.payload),
+      };
+    case "CLEAN_CART":
+      return {
+        ...state,
+        cartProducts: [],
+      };
+    case "CONTADOR":
+      return {
+        ...state,
+        contador: action.payload,
       };
 
       case 'LOGIN_SUCCESS':

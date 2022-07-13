@@ -22,6 +22,8 @@ import photography from "./images/photography (1).png";
 import sports from "./images/sports (1).png";
 import video from "./images/video png (1).png";
 import world from "./images/world (1).png";
+import { FaShoppingCart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const allCard = useSelector((state) => state.cards);
@@ -207,8 +209,17 @@ export default function Home() {
         </div>
       </div>
       <div className={style.orderSearch}>
-        <Searchbar setCurrentPage={setCurrentPage} />
-        {/* <Order /> */}
+        <div className={style.navDos}>
+          <div>
+            <Searchbar setCurrentPage={setCurrentPage} />
+          </div>
+          <Link to="/cart">
+            <div className={style.carrito}>
+              <h2>{FaShoppingCart()}</h2>
+            </div>
+          </Link>
+          {/* <Order /> */}
+        </div>
       </div>
       {currentNft.length === 0 && currentNft ? (
         <Loading />
