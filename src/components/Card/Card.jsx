@@ -13,7 +13,7 @@ export default function Card({ id, price, name, image }) {
             <h1 className={style.name}>{name}</h1>
           </div>
           <figure className={style.containerImagen}>
-            {image.includes("mp4") ? (
+            {image?.includes("mp4") ? (
               <img
                 className={style.imagenRec}
                 src="https://www.thedigitalspeaker.com/content/images/2022/03/Five-NFT-Challenges.jpeg"
