@@ -7,11 +7,7 @@ import { addToCart, contador } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
-
-export default function Card({ id, price, name, image,token_address }) {
-
-
-export default function Card({ id, price, name, image }) {
+export default function Card({ id, price, name, image, token_address }) {
   let dispatch = useDispatch();
   let [cont, setContador] = useState(1);
 
@@ -25,17 +21,13 @@ export default function Card({ id, price, name, image }) {
   return (
     <div className={style.container}>
       <div className={style.card}>
-      <Link to={'/detail/' + id + "/" + token_address}  className={style.link}>
+        <Link to={"/detail/" + id + "/" + token_address} className={style.link}>
           <div className={style.containertext}>
             <h1 className={style.name}>{name}</h1>
           </div>
           <figure className={style.containerImagen}>
-
-            {image? (
-  
-
+            {image ? (
               <img className={style.imagenRec} src={image} alt="nft" />
-          
             ) : (
               <h1>sin imagen</h1>
             )}
