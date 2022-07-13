@@ -427,4 +427,22 @@
     flex-grow: 0;
     width: 100%;
   }
+
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  
+  ::-webkit-scrollbar-track {
+    background:black;
+  }
+  
+  
+  ::-webkit-scrollbar-thumb {
+    border: black;
+    background: linear-gradient(90deg, #cf4bffc5 0%, #6c63ff 100%);
+    font-family: 'Poppins', sans-serif;
+  }
+  
 }
