@@ -28,16 +28,16 @@ import { Link } from "react-router-dom";
 export default function Home() {
   const allCard = useSelector((state) => state.cards);
 
-  const cursori = useSelector((state)=> state.cursor)
+  const cursori = useSelector((state) => state.cursor);
 
-  console.log("CURSOR DEL HOME", cursori)
-  
+  console.log("CURSOR DEL HOME", cursori);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (allCard.length === 0) dispatch(getNft()) ;
+    if (allCard.length === 0) dispatch(getNft());
     // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
-  }, [dispatch,cursori]);
+  }, [dispatch, cursori]);
 
   console.log(allCard);
 
@@ -89,16 +89,16 @@ export default function Home() {
   console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
-    if (nftPerPage >= 1500 || allCard.length < 50) {
+    if (nftPerPage >= 1500) {
       setHasMore(false);
     }
-    dispatch(getNftAll(cursori))
+    dispatch(getNftAll(cursori));
   }, [currentPage]);
 
   return (
     <div className={style.containergeneral}>
-    <div className={style.containerNav} >
-      <Navbar />
+      <div className={style.containerNav}>
+        <Navbar />
       </div>
       <div className={style.container2}>
         <h1 className={style.text}>
@@ -107,68 +107,72 @@ export default function Home() {
         </h1>
         <div className={style.carousel}>
           <Slider {...settings}>
-          <div className={style.containerC}>
+            <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Animals</h1>
-                 <img 
-                  className={style.imageC} 
-                  src={animals} alt="*"
+                <img
+                  className={style.imageC}
+                  src={animals}
+                  alt="*"
                   value="animals"
-                  onClick={(e) => handleFilterByName('animals')} 
+                  onClick={(e) => handleFilterByName("animals")}
                 />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Art</h1>
-                <img 
-                  className={style.imageC} 
-                  src={art} 
-                  alt="*" 
+                <img
+                  className={style.imageC}
+                  src={art}
+                  alt="*"
                   value="art"
-                  onClick={(e) => handleFilterByName("art")}/>
+                  onClick={(e) => handleFilterByName("art")}
+                />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Crypto</h1>
-                <img 
-                  className={style.imageC} 
-                  src={crypto} 
+                <img
+                  className={style.imageC}
+                  src={crypto}
                   alt="*"
                   value="crypto"
-                  onClick={(e) => handleFilterByName("crypto")} />
+                  onClick={(e) => handleFilterByName("crypto")}
+                />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Games</h1>
-                <img className={style.imageC} 
-                  src={games} 
+                <img
+                  className={style.imageC}
+                  src={games}
                   alt="*"
                   value="games"
-                  onClick={(e) => handleFilterByName("games")} 
+                  onClick={(e) => handleFilterByName("games")}
                 />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Music</h1>
-                <img 
-                  className={style.imageC} 
-                  src={music} 
+                <img
+                  className={style.imageC}
+                  src={music}
                   alt="*"
                   value="music"
-                  onClick={(e) => handleFilterByName("music")} 
+                  onClick={(e) => handleFilterByName("music")}
                 />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Photography</h1>
-                <img 
-                  className={style.imageC} 
-                  src={photography} 
+                <img
+                  className={style.imageC}
+                  src={photography}
                   alt="*"
                   value="photography"
                   onClick={(e) => handleFilterByName("photography")}
@@ -178,36 +182,36 @@ export default function Home() {
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Sports</h1>
-                <img 
-                  className={style.imageC} 
-                  src={sports} 
+                <img
+                  className={style.imageC}
+                  src={sports}
                   alt="*"
                   value="sports"
-                  onClick={(e) => handleFilterByName("sports")} 
+                  onClick={(e) => handleFilterByName("sports")}
                 />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Video</h1>
-                <img 
-                  className={style.imageC} 
-                  src={video} 
+                <img
+                  className={style.imageC}
+                  src={video}
                   alt="*"
                   value="video"
-                  onClick={(e) => handleFilterByName("video")} 
+                  onClick={(e) => handleFilterByName("video")}
                 />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>World</h1>
-                <img 
-                  className={style.imageC} 
-                  src={world} 
+                <img
+                  className={style.imageC}
+                  src={world}
                   alt="*"
                   value="world"
-                  onClick={(e) => handleFilterByName("world")} 
+                  onClick={(e) => handleFilterByName("world")}
                 />
               </div>
             </div>
@@ -238,7 +242,6 @@ export default function Home() {
             hasMore={hasMore}
           >
             {currentNft?.map((e, index) => (
-              
               <Card
                 id={e._id}
                 key={index}
@@ -248,7 +251,6 @@ export default function Home() {
                 created={e.created}
                 token_address={e.token_address}
               />
-              
             ))}
           </InfiniteScroll>
         </div>
