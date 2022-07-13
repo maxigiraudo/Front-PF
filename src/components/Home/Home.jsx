@@ -71,8 +71,7 @@ export default function Home() {
     ],
   };
   function handleFilterByName(e) {
-    e.preventDefault();
-    dispatch(getSliderNft(e.target.value));
+    dispatch(getSliderNft(e));
   }
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -88,9 +87,7 @@ export default function Home() {
     }
   }, [currentPage]);
 
-  const paginado = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+
 
   return (
     <div className={style.containergeneral}>
@@ -102,125 +99,108 @@ export default function Home() {
         </h1>
         <div className={style.carousel}>
           <Slider {...settings}>
-            <div className={style.containerC}>
+          <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Animals</h1>
-
-                <div>
-                  <img className={style.imageC} src={animals} alt="*" />
-                </div>
-
-                <option
-                  className={style.option}
+                 <img 
+                  className={style.imageC} 
+                  src={animals} alt="*"
                   value="animals"
-                  onClick={(e) => handleFilterByName(e)}
-                >
-                  VIEW
-                </option>
+                  onClick={(e) => handleFilterByName('animals')} 
+                />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Art</h1>
-                <img className={style.imageC} src={art} alt="*" />
-                <option
-                  className={style.option}
+                <img 
+                  className={style.imageC} 
+                  src={art} 
+                  alt="*" 
                   value="art"
-                  onClick={(e) => handleFilterByName(e)}
-                >
-                  VIEW
-                </option>
+                  onClick={(e) => handleFilterByName("art")}/>
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Crypto</h1>
-                <img className={style.imageC} src={crypto} alt="*" />
-                <option
-                  className={style.option}
+                <img 
+                  className={style.imageC} 
+                  src={crypto} 
+                  alt="*"
                   value="crypto"
-                  onClick={(e) => handleFilterByName(e)}
-                >
-                  VIEW
-                </option>
+                  onClick={(e) => handleFilterByName("crypto")} />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Games</h1>
-                <img className={style.imageC} src={games} alt="*" />
-                <option
-                  className={style.option}
+                <img className={style.imageC} 
+                  src={games} 
+                  alt="*"
                   value="games"
-                  onClick={(e) => handleFilterByName(e)}
-                >
-                  VIEW
-                </option>
+                  onClick={(e) => handleFilterByName("games")} 
+                />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Music</h1>
-                <img className={style.imageC} src={music} alt="*" />
-                <option
-                  className={style.option}
+                <img 
+                  className={style.imageC} 
+                  src={music} 
+                  alt="*"
                   value="music"
-                  onClick={(e) => handleFilterByName(e)}
-                >
-                  VIEW
-                </option>
+                  onClick={(e) => handleFilterByName("music")} 
+                />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Photography</h1>
-                <img className={style.imageC} src={photography} alt="*" />
-                <option
-                  className={style.option}
+                <img 
+                  className={style.imageC} 
+                  src={photography} 
+                  alt="*"
                   value="photography"
-                  onClick={(e) => handleFilterByName(e)}
-                >
-                  VIEW
-                </option>
+                  onClick={(e) => handleFilterByName("photography")}
+                />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Sports</h1>
-                <img className={style.imageC} src={sports} alt="*" />
-                <option
-                  className={style.option}
+                <img 
+                  className={style.imageC} 
+                  src={sports} 
+                  alt="*"
                   value="sports"
-                  onClick={(e) => handleFilterByName(e)}
-                >
-                  VIEW
-                </option>
+                  onClick={(e) => handleFilterByName("sports")} 
+                />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Video</h1>
-                <img className={style.imageC} src={video} alt="*" />
-                <option
-                  className={style.option}
+                <img 
+                  className={style.imageC} 
+                  src={video} 
+                  alt="*"
                   value="video"
-                  onClick={(e) => handleFilterByName(e)}
-                >
-                  VIEW
-                </option>
+                  onClick={(e) => handleFilterByName("video")} 
+                />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>World</h1>
-                <img className={style.imageC} src={world} alt="*" />
-                <option
-                  className={style.option}
+                <img 
+                  className={style.imageC} 
+                  src={world} 
+                  alt="*"
                   value="world"
-                  onClick={(e) => handleFilterByName(e)}
-                >
-                  VIEW
-                </option>
+                  onClick={(e) => handleFilterByName("world")} 
+                />
               </div>
             </div>
           </Slider>
