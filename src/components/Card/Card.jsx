@@ -9,12 +9,13 @@ import { useState } from "react";
 
 export default function Card({ id, price, name, image }) {
   let dispatch = useDispatch();
-  let [cont, setContador] = useState(0);
+  let [cont, setContador] = useState(1);
 
   let onClick = (e) => {
     dispatch(addToCart(e));
-    let count = setContador(cont + 1);
-    dispatch(contador(count));
+    setContador((e) => e + 1);
+    dispatch(contador(cont));
+    console.log(cont);
   };
   return (
     <div className={style.container}>

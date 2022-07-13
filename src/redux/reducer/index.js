@@ -119,7 +119,6 @@ export default function reducer(state = initialState, action) {
         cartProducts: [],
       };
     case "CONTADOR":
-      console.log(action.payload);
       return {
         ...state,
         contador: action.payload,
