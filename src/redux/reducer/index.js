@@ -124,6 +124,12 @@ export default function reducer(state = initialState, action) {
         contador: action.payload,
       };
 
+      case 'LOGIN_SUCCESS':
+        return {
+          ...state,
+          userIsAuthenticated: action.payload,
+        }
+
     default:
       return state;
   }
