@@ -89,7 +89,7 @@ export default function Home() {
   console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
-    if (nftPerPage >= 1500 || allCard.length < 50) {
+    if (nftPerPage >= 1500) {
       setHasMore(false);
     }
     dispatch(getNftAll(cursori))

@@ -9,12 +9,8 @@ import { useState } from "react";
 
 
 export default function Card({ id, price, name, image,token_address }) {
-
-
-export default function Card({ id, price, name, image }) {
   let dispatch = useDispatch();
   let [cont, setContador] = useState(1);
-
   let onClick = (e) => {
     dispatch(addToCart(e));
     setContador((e) => e + 1);

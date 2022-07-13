@@ -7,7 +7,7 @@ const initialState = {
   cartProducts: [],
   loading: false,
   error: false,
-  cursor:""
+  cursor:"",
   contador: 0,
 
 };

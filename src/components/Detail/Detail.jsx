@@ -12,8 +12,7 @@ import { useParams, Link } from "react-router-dom";
 
 export default function Detail() {
 
-  let {id} = useParams();
-  let {token_address} = useParams()
+  let {id,token_address} = useParams()
   const dispatch = useDispatch();
 
   useEffect(() => {

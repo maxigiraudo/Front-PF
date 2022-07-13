@@ -166,7 +166,7 @@ export function contador(contador) {
     type: "CONTADOR",
     payload: contador,
   };
-
+}
 export function postLogin(payload) {
   return async function (dispatch) {
     await axios.post("http://localhost:4000/login", payload)
@@ -183,5 +183,5 @@ export function postLogin(payload) {
       }
     })
   }
-
 }
+
