@@ -71,6 +71,7 @@ export function getDetail(_id, token_adress) {
 }
 
 export function getNameNft(name) {
+  console.log(name);
   return async function (dispatch) {
     try {
       var json = await axios.get("http://localhost:4000/api/nfts?name=" + name);
