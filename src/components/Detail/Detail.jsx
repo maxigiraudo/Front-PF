@@ -50,6 +50,7 @@ export default function Detail() {
                 <p className={styles.car}>{BsFillCartCheckFill()} </p>
                 <p className={styles.star}>{BsFillStarFill()} </p>
               </div>
+              <button className={styles.buttonBuy}> BUY </button>
             </div>
           </div>
           <div className={styles.footer}>
