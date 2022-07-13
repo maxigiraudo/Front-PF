@@ -8,6 +8,7 @@ import Detail from "./components/Detail/Detail";
 import Form from "./components/Form/Form";
 import About from "./components/About/About";
 import FormRegister from "./components/FormRegister/FormRegister";
+import Login from "./components/Login/Login.jsx";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
         <Route path="/formRegister" element={<FormRegister />} />
+        <Route path="/login" element={<Login />} />
+
       </Routes>
     </div>
   );

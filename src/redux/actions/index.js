@@ -101,3 +101,21 @@ export function resState() {
     type: "RES_STATE",
   };
 }
+
+export function postLogin(payload) {
+  return async function (dispatch) {
+    await axios.post("http://localhost:4000/login", payload)
+    .then(response => {
+      if (response === 400) {
+        alert('Sorry, Error Login 🤦🏽‍♂️')
+        return 
+      } 
+      else {
+        dispatch({
+          type: 'LOGIN_SUCCESS',
+          payload: response,
+        })    
+      }
+    })
+  }
+}

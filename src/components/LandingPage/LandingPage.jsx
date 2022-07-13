@@ -25,7 +25,7 @@ export default function LandingPage() {
                 EXPLORE THE MARKETPLACE
               </button>
             </Link>
-            <Link to="/">
+            <Link to="/login">
               <button className={styles.botonLanding}>LOGIN</button>
             </Link>
           </div>

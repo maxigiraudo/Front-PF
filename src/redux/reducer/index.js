@@ -99,6 +99,12 @@ export default function reducer(state = initialState, action) {
         detail: [],
       };
 
+      case 'LOGIN_SUCCESS':
+        return {
+          ...state,
+          userIsAuthenticated: action.payload,
+        }
+
     default:
       return state;
   }
