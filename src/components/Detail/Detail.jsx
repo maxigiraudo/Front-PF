@@ -11,14 +11,12 @@ import { getDetail, resState } from "../../redux/actions";
 import { useParams, Link } from "react-router-dom";
 
 export default function Detail() {
-
-  let {id} = useParams();
-  let {token_address} = useParams()
+  let { id, token_address } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDetail(id,token_address))
-  }, [dispatch,id,token_address]);
+    dispatch(getDetail(id, token_address));
+  }, [dispatch, id, token_address]);
 
   const handleClean = () => {
     dispatch(resState());
@@ -30,7 +28,7 @@ export default function Detail() {
 
   return (
     <div>
-      {card.image? 
+      {card.image ? (
         <div className={styles.containerPadre}>
           <div className={styles.navbar}>
             <Navbar />
@@ -58,12 +56,12 @@ export default function Detail() {
             <Footer />
           </div>
         </div>
-     :(
-      <div>
-        <h1 className={styles.load} >Loading...</h1>
-        <Loading/>
-      </div>
-     )}
+      ) : (
+        <div>
+          <h1 className={styles.load}>Loading...</h1>
+          <Loading />
+        </div>
+      )}
     </div>
   );
 }
