@@ -11,7 +11,6 @@ import FormRegister from "./components/FormRegister/FormRegister";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Login from "./components/Login/Login.jsx";
 
-
 function App() {
   return (
     <div className="generalApp">
