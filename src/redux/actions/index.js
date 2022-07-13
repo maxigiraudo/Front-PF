@@ -20,12 +20,14 @@ export function getNft() {
 }
 export function getNftAll(cursor) {
   return async function (dispatch) {
-    let json = await axios.get(`http://localhost:4000/api/tests?cursor=${cursor}`);
-    console.log("QUE ME TRAE CON EL CURSOR",json)
+    let json = await axios.get(
+      `http://localhost:4000/api/tests?cursor=${cursor}`
+    );
+    console.log("QUE ME TRAE CON EL CURSOR", json);
     return dispatch({
       type: "GET_NFT_ALL20",
-      payload: json.data
-    })
+      payload: json.data,
+    });
   };
 }
 // export function getNftAll2() {
@@ -51,15 +53,17 @@ export function getNftAll(cursor) {
 //   };
 // }
 
-export function getDetail(_id,token_adress){
+export function getDetail(_id, token_adress) {
   return async function (dispatch) {
     try {
-    let json= await axios.get(`http://localhost:4000/api/tests/nftid?id=${_id}&token_address=${token_adress}`)
-      console.log("ES EL DETALLE",json)
+      let json = await axios.get(
+        `http://localhost:4000/api/tests/nftid?id=${_id}&token_address=${token_adress}`
+      );
+      console.log("ES EL DETALLE", json);
       return dispatch({
-        type:"GET_DETAILS",
-        payload: json.data
-      })
+        type: "GET_DETAILS",
+        payload: json.data,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -137,7 +141,6 @@ export function resState() {
   };
 }
 
-
 export function addToCart(product) {
   console.log(product);
   return {
@@ -166,22 +169,22 @@ export function contador(contador) {
     type: "CONTADOR",
     payload: contador,
   };
+}
 
 export function postLogin(payload) {
   return async function (dispatch) {
-    await axios.post("http://localhost:4000/login", payload)
-    .then(response => {
-      if (response === 400) {
-        alert('Sorry, Error Login 🤦🏽‍♂️')
-        return 
-      } 
-      else {
-        dispatch({
-          type: 'LOGIN_SUCCESS',
-          payload: response,
-        })    
-      }
-    })
-  }
-
+    await axios
+      .post("http://localhost:4000/login", payload)
+      .then((response) => {
+        if (response === 400) {
+          alert("Sorry, Error Login 🤦🏽‍♂️");
+          return;
+        } else {
+          dispatch({
+            type: "LOGIN_SUCCESS",
+            payload: response,
+          });
+        }
+      });
+  };
 }

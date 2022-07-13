@@ -7,24 +7,23 @@ const initialState = {
   cartProducts: [],
   loading: false,
   error: false,
-  cursor:""
+  cursor: "",
   contador: 0,
-
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case "GET_NAME_NFT":  
-    const sinC=action.payload
-    const sinCurs= sinC.filter((e)=> e.name)   
+    case "GET_NAME_NFT":
+      const sinC = action.payload;
+      const sinCurs = sinC.filter((e) => e.name);
       return {
         ...state,
-        cards: sinCurs
+        cards: sinCurs,
       };
 
     case "GET_SLIDER_NFT":
-      const sinCu=action.payload
-    const sinCurso= sinCu.filter((e)=> e.name)   
+      const sinCu = action.payload;
+      const sinCurso = sinCu.filter((e) => e.name);
       return {
         ...state,
         cards: sinCurso,
@@ -72,41 +71,41 @@ export default function reducer(state = initialState, action) {
       // const getInfoRenderizar = getInfo.filter((e)=> e.name)
       // const getFinal = getInfoRenderizar.filter((e)=> e.name != "Brave CAT" && e.name != "Farmer Cat" && !e.image.includes("catsworld"))
       // console.log("soy", getFinal)
-      const getInfo = action.payload
-      const cursor = getInfo[0].cursor
-      const getInfoF = getInfo.filter((e)=> e.name)
-      console.log("ESTE ES EL CURSOR 1:",cursor)
+      const getInfo = action.payload;
+      const cursor = getInfo[0].cursor;
+      const getInfoF = getInfo.filter((e) => e.name);
+      console.log("ESTE ES EL CURSOR 1:", cursor);
       return {
         ...state,
-        cursor:cursor ,
+        cursor: cursor,
         allCards: getInfoF,
-        cards: getInfoF
+        cards: getInfoF,
       };
     case "GET_NFT_ALL20":
-      const getInfo2 = action.payload
-      const cursor2 = getInfo2[0].cursor
-      const getInfoFinal = getInfo2.filter((e)=> !e.cursor)
-      console.log("ESTE ES EL CURSOR 2:",cursor2)
-      return{
+      const getInfo2 = action.payload;
+      const cursor2 = getInfo2[0].cursor;
+      const getInfoFinal = getInfo2.filter((e) => !e.cursor);
+      console.log("ESTE ES EL CURSOR 2:", cursor2);
+      return {
         ...state,
-        cursor:cursor2,
-        allCards:[...state.allCards,...getInfoFinal],
-        cards:[...state.cards,...getInfoFinal]
+        cursor: cursor2,
+        allCards: [...state.allCards, ...getInfoFinal],
+        cards: [...state.cards, ...getInfoFinal],
       };
-      // case "GET_NFT_ALL2":
-      //   console.log("ESTA EN EL REDUCER 2", action.payload)
-      //   return{
-      //     ...state,
-      //     allCards:[...state.allCards,...action.payload],
-      //     cards:[...state.cards,...action.payload]
-      //   };
-      //   case "GET_NFT_ALL3":
-      //     console.log("ESTA EN EL REDUCER 2", action.payload)
-      //     return{
-      //       ...state,
-      //       allCards:[...state.allCards,...action.payload],
-      //       cards:[...state.cards,...action.payload]
-      //     };
+    // case "GET_NFT_ALL2":
+    //   console.log("ESTA EN EL REDUCER 2", action.payload)
+    //   return{
+    //     ...state,
+    //     allCards:[...state.allCards,...action.payload],
+    //     cards:[...state.cards,...action.payload]
+    //   };
+    //   case "GET_NFT_ALL3":
+    //     console.log("ESTA EN EL REDUCER 2", action.payload)
+    //     return{
+    //       ...state,
+    //       allCards:[...state.allCards,...action.payload],
+    //       cards:[...state.cards,...action.payload]
+    //     };
     case "GET_DETAILS":
       return {
         ...state,
@@ -160,11 +159,11 @@ export default function reducer(state = initialState, action) {
         contador: action.payload,
       };
 
-      case 'LOGIN_SUCCESS':
-        return {
-          ...state,
-          userIsAuthenticated: action.payload,
-        }
+    case "LOGIN_SUCCESS":
+      return {
+        ...state,
+        userIsAuthenticated: action.payload,
+      };
 
     default:
       return state;
