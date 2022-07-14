@@ -10,6 +10,7 @@ import About from "./components/About/About";
 import FormRegister from "./components/FormRegister/FormRegister";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Login from "./components/Login/Login.jsx";
+import Favorite from "./components/Favorite/Favorite.jsx"
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/formRegister" element={<FormRegister />} />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/favorite" element={<Favorite/>} />
       </Routes>
     </div>
   );

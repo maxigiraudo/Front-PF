@@ -3,12 +3,12 @@ import style from "./Card.module.css";
 import { BsFillStarFill } from "react-icons/bs";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { addToCart, contador } from "../../redux/actions";
+import { addToCart, contador, addFavorite } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
 
-export default function Card({ id, price, name, image,token_address }) {
+export default function Card({ id, price, name, image,token_address,collection }) {
   let dispatch = useDispatch();
   let [cont, setContador] = useState(1);
   let onClick = (e) => {
@@ -16,6 +16,9 @@ export default function Card({ id, price, name, image,token_address }) {
     setContador((e) => e + 1);
     dispatch(contador(cont));
     console.log(cont);
+  };
+  let onClickF = (e) => {
+    dispatch(addFavorite(e));
   };
 
   return (
@@ -45,7 +48,9 @@ export default function Card({ id, price, name, image,token_address }) {
           >
             {BsFillCartCheckFill()}{" "}
           </button>
-          <button className={style.star}>{BsFillStarFill()} </button>
+          <button 
+          onClick={()=> onClickF({id,name,image,collection})}
+          className={style.star}>{BsFillStarFill()} </button>
         </div>
       </div>
     </div>

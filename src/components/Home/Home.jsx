@@ -247,6 +247,7 @@ export default function Home() {
                 image={e.image}
                 created={e.created}
                 token_address={e.token_address}
+                collection={e.collection}
               />
               
             ))}

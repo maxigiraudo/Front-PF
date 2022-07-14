@@ -185,3 +185,16 @@ export function postLogin(payload) {
   }
 }
 
+export const removeFavorite = (id)=>{
+  return{
+    type: "REMOVE_FAVORITE",
+    payload: id
+  }
+}
+export const addFavorite = (info)=> {
+  console.log(info)
+  return { 
+    type: "ADD_FAVORITE",
+     payload : info
+  };
+}
