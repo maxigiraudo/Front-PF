@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import { IoMdCloseCircle } from "react-icons/io";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function ShoppingCart({
   limpiarCarrito,
@@ -29,6 +30,9 @@ export default function ShoppingCart({
   return (
     <div>
       <Navbar />
+      <Link to="/home">
+        <button className={styles.botonR}>Go Back</button>
+      </Link>
       <div className={styles.container}>
         <h1 className={styles.titulo}>{FaShoppingCart()} Shopping Cart</h1>
 
