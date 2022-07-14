@@ -9,7 +9,12 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
-import { getNft, getSliderNft } from "../../redux/actions";
+import {
+  addToCart,
+  getNft,
+  getNftAll,
+  getSliderNft,
+} from "../../redux/actions";
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import Loading from "../Loading/Loading";
@@ -22,15 +27,19 @@ import photography from "./images/photography (1).png";
 import sports from "./images/sports (1).png";
 import video from "./images/video png (1).png";
 import world from "./images/world (1).png";
+import { FaShoppingCart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-export default function Home() {
+export default function Home({ agregarCarrito }) {
   const allCard = useSelector((state) => state.cards);
-  const allCategory = useSelector((state) => state.category);
-  const dispatch = useDispatch();
+  const cursori = useSelector((state) => state.cursor);
 
+  console.log("CURSOR DEL HOME", cursori);
+  const dispatch = useDispatch();
   useEffect(() => {
     if (allCard.length === 0) dispatch(getNft());
-  }, [dispatch, allCard]);
+    // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
+  }, [dispatch, cursori]);
 
   console.log(allCard);
 
@@ -82,16 +91,17 @@ export default function Home() {
   console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
-    if (nftPerPage >= 70) {
+    if (nftPerPage >= 1500) {
       setHasMore(false);
     }
+    dispatch(getNftAll(cursori));
   }, [currentPage]);
-
-
 
   return (
     <div className={style.containergeneral}>
-      <Navbar />
+      <div className={style.containerNav}>
+        <Navbar />
+      </div>
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
@@ -99,68 +109,72 @@ export default function Home() {
         </h1>
         <div className={style.carousel}>
           <Slider {...settings}>
-          <div className={style.containerC}>
+            <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Animals</h1>
-                 <img 
-                  className={style.imageC} 
-                  src={animals} alt="*"
+                <img
+                  className={style.imageC}
+                  src={animals}
+                  alt="*"
                   value="animals"
-                  onClick={(e) => handleFilterByName('animals')} 
+                  onClick={(e) => handleFilterByName("animals")}
                 />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Art</h1>
-                <img 
-                  className={style.imageC} 
-                  src={art} 
-                  alt="*" 
+                <img
+                  className={style.imageC}
+                  src={art}
+                  alt="*"
                   value="art"
-                  onClick={(e) => handleFilterByName("art")}/>
+                  onClick={(e) => handleFilterByName("art")}
+                />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Crypto</h1>
-                <img 
-                  className={style.imageC} 
-                  src={crypto} 
+                <img
+                  className={style.imageC}
+                  src={crypto}
                   alt="*"
                   value="crypto"
-                  onClick={(e) => handleFilterByName("crypto")} />
+                  onClick={(e) => handleFilterByName("crypto")}
+                />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Games</h1>
-                <img className={style.imageC} 
-                  src={games} 
+                <img
+                  className={style.imageC}
+                  src={games}
                   alt="*"
                   value="games"
-                  onClick={(e) => handleFilterByName("games")} 
+                  onClick={(e) => handleFilterByName("games")}
                 />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Music</h1>
-                <img 
-                  className={style.imageC} 
-                  src={music} 
+                <img
+                  className={style.imageC}
+                  src={music}
                   alt="*"
                   value="music"
-                  onClick={(e) => handleFilterByName("music")} 
+                  onClick={(e) => handleFilterByName("music")}
                 />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Photography</h1>
-                <img 
-                  className={style.imageC} 
-                  src={photography} 
+                <img
+                  className={style.imageC}
+                  src={photography}
                   alt="*"
                   value="photography"
                   onClick={(e) => handleFilterByName("photography")}
@@ -170,36 +184,36 @@ export default function Home() {
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Sports</h1>
-                <img 
-                  className={style.imageC} 
-                  src={sports} 
+                <img
+                  className={style.imageC}
+                  src={sports}
                   alt="*"
                   value="sports"
-                  onClick={(e) => handleFilterByName("sports")} 
+                  onClick={(e) => handleFilterByName("sports")}
                 />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Video</h1>
-                <img 
-                  className={style.imageC} 
-                  src={video} 
+                <img
+                  className={style.imageC}
+                  src={video}
                   alt="*"
                   value="video"
-                  onClick={(e) => handleFilterByName("video")} 
+                  onClick={(e) => handleFilterByName("video")}
                 />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>World</h1>
-                <img 
-                  className={style.imageC} 
-                  src={world} 
+                <img
+                  className={style.imageC}
+                  src={world}
                   alt="*"
                   value="world"
-                  onClick={(e) => handleFilterByName("world")} 
+                  onClick={(e) => handleFilterByName("world")}
                 />
               </div>
             </div>
@@ -207,8 +221,17 @@ export default function Home() {
         </div>
       </div>
       <div className={style.orderSearch}>
-        <Searchbar setCurrentPage={setCurrentPage} />
-        {/* <Order /> */}
+        <div className={style.navDos}>
+          <div>
+            <Searchbar setCurrentPage={setCurrentPage} />
+          </div>
+          <Link to="/cart">
+            <div className={style.carrito}>
+              <h2>{FaShoppingCart()} View Cart</h2>
+            </div>
+          </Link>
+          {/* <Order /> */}
+        </div>
       </div>
       {currentNft.length === 0 && currentNft ? (
         <Loading />
@@ -222,12 +245,15 @@ export default function Home() {
           >
             {currentNft?.map((e, index) => (
               <Card
+                agregarCarrito={agregarCarrito}
+                id={e._id}
                 key={index}
-                id={e.token_id || e._id}
                 price={e.price}
                 name={e.name}
                 image={e.image}
                 created={e.created}
+                token_address={e.token_address}
+                collection={e.collection}
               />
             ))}
           </InfiniteScroll>
