@@ -7,15 +7,21 @@ import { addToCart, contador } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
-export default function Card({ id, price, name, image, token_address }) {
+export default function Card({
+  id,
+  price,
+  name,
+  image,
+  token_address,
+  agregarCarrito,
+}) {
   let dispatch = useDispatch();
-  let [cont, setContador] = useState(1);
+  // let [cont, setContador] = useState(1);
 
   let onClick = (e) => {
-    dispatch(addToCart(e));
-    setContador((e) => e + 1);
-    dispatch(contador(cont));
-    console.log(cont);
+    console.log(e);
+    agregarCarrito(e);
+    alert("Añadido al carrito correctamente");
   };
 
   return (

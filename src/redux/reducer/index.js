@@ -140,7 +140,7 @@ export default function reducer(state = initialState, action) {
       console.log(action.payload);
       return {
         ...state,
-        cartProducts: [...state.cartProducts, action.payload],
+        cartProducts: action.payload,
       };
 
     case "REMOVE_ONE_FROM_CART":
