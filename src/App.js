@@ -10,7 +10,9 @@ import About from "./components/About/About";
 import FormRegister from "./components/FormRegister/FormRegister";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Login from "./components/Login/Login.jsx";
+import Favorite from "./components/Favorite/Favorite.jsx"
 import { useEffect, useState } from "react";
+
 
 function App() {
   let carritoInicial = JSON.parse(localStorage.getItem("carrito"));
@@ -64,6 +66,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/favorite" element={<Favorite/>} />
       </Routes>
     </div>
   );

@@ -11,7 +11,9 @@ import { getDetail, resState } from "../../redux/actions";
 import { useParams, Link } from "react-router-dom";
 
 export default function Detail() {
+
   let { id, token_address } = useParams();
+
   const dispatch = useDispatch();
 
   useEffect(() => {

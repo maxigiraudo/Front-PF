@@ -7,8 +7,9 @@ const initialState = {
   cartProducts: [],
   loading: false,
   error: false,
-  cursor: "",
+  cursor:"",
   contador: 0,
+  favorite:[]
 };
 
 export default function reducer(state = initialState, action) {
@@ -158,12 +159,22 @@ export default function reducer(state = initialState, action) {
         ...state,
         contador: action.payload,
       };
+      case "LOGIN_SUCCESS":
+        return {
+          ...state,
+          userIsAuthenticated: action.payload,
+        };
 
-    case "LOGIN_SUCCESS":
-      return {
-        ...state,
-        userIsAuthenticated: action.payload,
-      };
+      case "ADD_FAVORITE":
+          return{
+               ...state,
+               favorite: [...state.favorite, action.payload]
+          }
+      case "REMOVE_FAVORITE":
+        return{
+              ...state,
+              favorite: state.favorite.filter((e)=> e !== action.payload) 
+        }
 
     default:
       return state;

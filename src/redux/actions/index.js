@@ -182,18 +182,30 @@ export function contador(contador) {
 }
 export function postLogin(payload) {
   return async function (dispatch) {
-    await axios
-      .post("https://henry-proyecto-nft.herokuapp.com/login", payload)
-      .then((response) => {
-        if (response === 400) {
+    await axios.post("https://henry-proyecto-nft.herokuapp.com/login", payload)
+    .then((response) => {
+      if (response === 400) {
           alert("Sorry, Error Login 🤦🏽‍♂️");
           return;
-        } else {
-          dispatch({
-            type: "LOGIN_SUCCESS",
-            payload: response,
-          });
-        }
+      } else {
+         dispatch({
+          type: "LOGIN_SUCCESS",
+          payload: response,
+              });
+      }
       });
+    }}
+
+export const removeFavorite = (id)=>{
+  return{
+    type: "REMOVE_FAVORITE",
+    payload: id
+  }
+}
+export const addFavorite = (info)=> {
+  console.log(info)
+  return { 
+    type: "ADD_FAVORITE",
+     payload : info
   };
 }

@@ -37,6 +37,9 @@ export default function Navbar() {
             <NavLink to="/login">
               <li>Login</li>
             </NavLink>
+            <NavLink to="/favorite">
+              <li>Favorite</li>
+            </NavLink>
             <NavLink to="/formRegister">
               <li>Sing Up</li>
             </NavLink>
