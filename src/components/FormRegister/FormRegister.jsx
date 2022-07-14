@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import styles from "./FormRegister.module.css";
+import { Link } from "react-router-dom";
 
 export default function FormRegister() {
   const [images, setimages] = useState([]);
@@ -55,6 +56,11 @@ export default function FormRegister() {
   return (
     <div className={styles.containerPadre}>
       <Navbar />
+      <Link to="/home">
+              <button  className={styles.botonR}>
+                Go Back
+              </button>
+            </Link>
       <div className={styles.padre}>
         <div className={styles.container}>
           <h1 className={styles.colorh1}>Create your account</h1>

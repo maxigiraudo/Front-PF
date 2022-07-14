@@ -52,6 +52,9 @@ export default function Login() {
     return(
         <div>
             <Navbar />
+            <Link to="/home">
+                <button className={styles.botonR}>Go Back</button>
+            </Link>
             <div className={styles.containerLogin}>
                 <div className={styles.login}>
                     <h1 className={styles.title}> WELCOME! </h1>

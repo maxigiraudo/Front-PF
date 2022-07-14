@@ -26,6 +26,7 @@ export default function Card({
   };
   let onClickF = (e) => {
     dispatch(addFavorite(e));
+    Swal.fire("", "Item added to favorite succefully", "success")
   };
 
   return (
@@ -37,7 +38,7 @@ export default function Card({
           </div>
           <figure className={style.containerImagen}>
             {image ? (
-              <img className={style.imagenRec} src={image} alt="nft" />
+              <img className={style.imagenRec} src={image} onError={(e)=>{e.target.onerror = null; e.target.src="https://cryptodozer.io/static/images/dozer/meta/dolls/300.png"}} alt="nft" />
             ) : (
               <h1>sin imagen</h1>
             )}
