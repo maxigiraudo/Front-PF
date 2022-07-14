@@ -9,7 +9,12 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
-import { getNft, getNftAll, getSliderNft } from "../../redux/actions";
+import {
+  addToCart,
+  getNft,
+  getNftAll,
+  getSliderNft,
+} from "../../redux/actions";
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import Loading from "../Loading/Loading";
@@ -25,15 +30,12 @@ import world from "./images/world (1).png";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-export default function Home() {
+export default function Home({ agregarCarrito }) {
   const allCard = useSelector((state) => state.cards);
-
   const cursori = useSelector((state) => state.cursor);
 
   console.log("CURSOR DEL HOME", cursori);
-
   const dispatch = useDispatch();
-
   useEffect(() => {
     if (allCard.length === 0) dispatch(getNft());
     // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
@@ -225,7 +227,7 @@ export default function Home() {
           </div>
           <Link to="/cart">
             <div className={style.carrito}>
-              <h2>{FaShoppingCart()}</h2>
+              <h2>{FaShoppingCart()} View Cart</h2>
             </div>
           </Link>
           {/* <Order /> */}
@@ -243,7 +245,8 @@ export default function Home() {
           >
             {currentNft?.map((e, index) => (
               <Card
-                id={e._id || e.id}
+                agregarCarrito={agregarCarrito}
+                id={e._id}
                 key={index}
                 price={e.price}
                 name={e.name}
