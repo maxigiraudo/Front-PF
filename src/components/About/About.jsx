@@ -11,11 +11,17 @@ import flor from "./imagenes/florPerfil.jpg";
 import linkedin from "./imagenes/linkedin.png";
 import github from "./imagenes/github.png";
 import Footer from "../Footer/Footer";
+import { Link } from "react-router-dom";
 
 export default function About() {
   return (
     <div>
       <Navbar />
+      <Link to="/home">
+              <button  className={styles.botonR}>
+                Go Back
+              </button>
+      </Link>
       <div className={styles.padre}>
         <div className={styles.container}>
           <div>
