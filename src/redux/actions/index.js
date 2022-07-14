@@ -10,7 +10,10 @@ export function orderByPrice(payload) {
 
 export function getNft() {
   return async function (dispatch) {
-    let json = await axios.get("http://localhost:4000/api/tests");
+    let json = await axios.get(
+      "https://henry-proyecto-nft.herokuapp.com/api/tests"
+    );
+    console.log(json);
     // let jsonB = await axios.get ("http://localhost:4000/api/tests/" + json.data.cursor)
     return dispatch({
       type: "GET_NFT",
@@ -21,7 +24,7 @@ export function getNft() {
 export function getNftAll(cursor) {
   return async function (dispatch) {
     let json = await axios.get(
-      `http://localhost:4000/api/tests?cursor=${cursor}`
+      `https://henry-proyecto-nft.herokuapp.com/api/tests?cursor=${cursor}`
     );
     console.log("QUE ME TRAE CON EL CURSOR", json);
     return dispatch({
@@ -57,7 +60,7 @@ export function getDetail(_id, token_adress) {
   return async function (dispatch) {
     try {
       let json = await axios.get(
-        `http://localhost:4000/api/tests/nftid?id=${_id}&token_address=${token_adress}`
+        `https://henry-proyecto-nft.herokuapp.com/api/tests/nftid?id=${_id}&token_address=${token_adress}`
       );
       console.log("ES EL DETALLE", json);
       return dispatch({
@@ -73,7 +76,9 @@ export function getDetail(_id, token_adress) {
 export function getNameNft(name) {
   return async function (dispatch) {
     try {
-      var json = await axios.get("http://localhost:4000/api/nfts?name=" + name);
+      var json = await axios.get(
+        "https://henry-proyecto-nft.herokuapp.com/api/nfts?name=" + name
+      );
       return dispatch({
         type: "GET_NAME_NFT",
         payload: json.data,
@@ -98,7 +103,10 @@ export function createNft({ name, description, file }) {
         name,
         description,
       };
-      const json = await axios.post("http://localhost:4000/api/nft", body);
+      const json = await axios.post(
+        "https://henry-proyecto-nft.herokuapp.com/api/nft",
+        body
+      );
       console.log(json.data);
       dispatch({
         type: "CREATE_NFT_SUCCESS",
@@ -123,7 +131,9 @@ const uploadFile = async (file) => {
 export function getSliderNft(name) {
   return async function (dispatch) {
     try {
-      var json = await axios.get("http://localhost:4000/api/nfts/" + name);
+      var json = await axios.get(
+        "https://henry-proyecto-nft.herokuapp.com/api/nfts/" + name
+      );
       console.log(json);
       return dispatch({
         type: "GET_SLIDER_NFT",
@@ -173,7 +183,7 @@ export function contador(contador) {
 export function postLogin(payload) {
   return async function (dispatch) {
     await axios
-      .post("http://localhost:4000/login", payload)
+      .post("https://henry-proyecto-nft.herokuapp.com/login", payload)
       .then((response) => {
         if (response === 400) {
           alert("Sorry, Error Login 🤦🏽‍♂️");
