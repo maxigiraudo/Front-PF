@@ -10,6 +10,7 @@ import About from "./components/About/About";
 import FormRegister from "./components/FormRegister/FormRegister";
 
 
+
 function App() {
   return (
     <div className="generalApp">
@@ -20,6 +21,7 @@ function App() {
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
         <Route path="/formRegister" element={<FormRegister />} />
+      
 
       </Routes>
     </div>

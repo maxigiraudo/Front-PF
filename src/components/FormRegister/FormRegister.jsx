@@ -145,7 +145,7 @@ export default function FormRegister() {
                 <input
                   name="Password"
                   id="Password"
-                  type="text"
+                  type="password"
                   className={styles.input}
                   placeholder="Write a valid Password... "
                 />
