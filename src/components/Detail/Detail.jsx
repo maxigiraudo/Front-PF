@@ -50,7 +50,9 @@ export default function Detail() {
                 <p className={styles.car}>{BsFillCartCheckFill()} </p>
                 <p className={styles.star}>{BsFillStarFill()} </p>
               </div>
+              <a href={"https://widget.onramper.com?color=1d2d50&apiKey=pk_test_x5M_5fdXzn1fxK04seu0JgFjGsu7CH8lOvS9xZWzuSM0"}>
               <button className={styles.buttonBuy}> BUY </button>
+              </a>
             </div>
           </div>
           <div className={styles.footer}>
