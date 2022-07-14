@@ -17,6 +17,11 @@
   align-items: center;
   margin: 20px;
   justify-content: space-between;
+  border: 3px solid #d04bff;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 5px 5px 20px 5px #cf4bff65;
 }
 
 .nft {
@@ -126,4 +131,38 @@
 .botonAbajo:hover {
   transform: scale(1.1);
   letter-spacing: 1.5px;
+}
+.total {
+  display: flex;
+  background: -webkit-linear-gradient(#d04bff, #6c63ff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: tomato;
+}
+
+.totalobich {
+  margin-right: 580px;
+  padding: 40px;
+}
+.cero {
+  padding: 40px;
+}
+
+.botonR {
+  color: #d04bff;
+  background-color: black;
+  padding: 5px 10px 5px 10px;
+  list-style: none;
+  display: inline-block;
+  margin: 30px 30px;
+  border-radius: 8px;
+  border: 3px solid #d04bff;
+  border-style: groove;
+  box-shadow: inset 5px 5px 10px #6c63ff, inset -5px -5px 10px #d04bff;
+}
+
+.botonR:hover {
+  background-color: #d04bff;
+  color: black;
+  cursor: pointer;
 }
