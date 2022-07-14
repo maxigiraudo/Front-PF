@@ -3,10 +3,9 @@ import style from "./Card.module.css";
 import { BsFillStarFill } from "react-icons/bs";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { addToCart, contador, addFavorite } from "../../redux/actions";
+import { addFavorite } from "../../redux/actions";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
-
+import Swal from "sweetalert2";
 
 export default function Card({
   id,
@@ -22,7 +21,8 @@ export default function Card({
   let onClick = (e) => {
     console.log(e);
     agregarCarrito(e);
-    alert("Añadido al carrito correctamente");
+
+    Swal.fire("", "Item added to cart succefully", "success");
   };
   let onClickF = (e) => {
     dispatch(addFavorite(e));
@@ -51,9 +51,12 @@ export default function Card({
           >
             {BsFillCartCheckFill()}{" "}
           </button>
-          <button 
-          onClick={()=> onClickF({id,name,image})}
-          className={style.star}>{BsFillStarFill()} </button>
+          <button
+            onClick={() => onClickF({ id, name, image })}
+            className={style.star}
+          >
+            {BsFillStarFill()}{" "}
+          </button>
         </div>
       </div>
     </div>
