@@ -42,7 +42,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
     dots: true,
     infinite: true,
     speed: 300,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     initialSlide: 0,
     rows: 1,
@@ -217,7 +217,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
       </div>
       <div className={style.orderSearch}>
         <div className={style.navDos}>
-          <div>
+          <div className={style.searchBar}>
             <Searchbar setCurrentPage={setCurrentPage} />
           </div>
           <Link to="/cart">

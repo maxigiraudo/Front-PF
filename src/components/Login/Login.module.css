@@ -1,9 +1,11 @@
-.containerLogin {
-  min-height: 32rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
+
+.containerLogin{
+    min-height: 32rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
 }
 .botonR {
   color: #d04bff;
