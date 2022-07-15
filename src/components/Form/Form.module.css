@@ -13,24 +13,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #16161a;
+  background: black;
   border: 3px solid #d04bff;
   border-style: groove;
   border-radius: 10px;
   box-shadow: 5px 5px 20px 5px #cf4bff65;
+  padding: 2% 8%;
+  margin: 5%;
 }
 .two {
   display: flex;
   margin: 10px;
   align-items: center;
-  background-color: #16161a;
+  background-color: black;
   padding: 30px;
 }
 .colorh1 {
-  background: -webkit-linear-gradient(#d04bff, #6c63ff);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: tomato;
+  color: white;
 }
 
 .label {
@@ -43,25 +42,18 @@
   padding-top: 10px;
 }
 .colorp {
-  background: -webkit-linear-gradient(#d04bff, #6c63ff);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: tomato;
+  color: white;
 }
 .selectFile {
-  border-radius: 10px;
-  color: black;
-  margin-left: 10px;
-  font-weight: bolder;
   background: linear-gradient(90deg, #cf4bffc5 0%, #6c63ff 100%);
-  padding: 8px;
-  width: 17.5rem;
+  border-radius: 5px;
+  color: white;
+  width: 270px;
+  padding: 10px;
   cursor: pointer;
-  box-shadow: 5px 5px 20px 5px #cf4bff65;
-  border: none;
-  font-family: "Bebas Neue", cursive;
-  font-size: 22px;
-  letter-spacing: 1px;
+  font-size: 1rem;
+  margin: 15px;
+  font-family: inherit;
 }
 .selectFile:hover {
   background: #16161a;
@@ -78,7 +70,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
+  padding: 10px;
   margin: 30px;
   border: 3px solid #d04bff;
   border-style: dashed;
@@ -90,44 +82,61 @@
   align-items: center;
 }
 .imagen {
-  width: 200px;
-  height: 300px;
+  width: 500px;
+
   object-fit: contain;
 }
 
 .input {
-  font-family: "Oswald", sans-serif;
-  border: 3px solid #d04bff;
-  border-style: groove;
-  border-radius: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #d04bff;
+  background-color: #cf4bff34;
+  border-radius: 5px;
+  width: 250px;
   padding: 10px;
-  margin: 10px;
-  background-color: #16161a;
-  color: #d04bff;
-  box-shadow: 5px 5px 20px 5px #cf4bff65;
-  width: 150px;
+  font-size: 1rem;
+  margin: 15px;
+  font-family: inherit;
+  color: white;
 }
 .inputEnviar {
-  border-radius: 10px;
-  color: black;
-  margin-left: 10px;
-  font-weight: bolder;
   background: linear-gradient(90deg, #cf4bffc5 0%, #6c63ff 100%);
-  padding: 8px;
-  width: 17.5rem;
+  border-radius: 5px;
+  color: white;
+  width: 270px;
+  padding: 10px;
   cursor: pointer;
-  box-shadow: 5px 5px 20px 5px #cf4bff65;
-  border: none;
-  font-family: "Bebas Neue", cursive;
-  font-size: 22px;
-  letter-spacing: 1px;
+  font-size: 1rem;
+  margin: 15px;
+  font-family: inherit;
 }
+
 .inputEnviar:hover {
   background: #16161a;
   border-color: #d04bff;
   color: #d04bff;
 }
 .nameEnviar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.x {
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+  padding-right: 6px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.divBI {
   display: flex;
   flex-direction: column;
   align-items: center;
