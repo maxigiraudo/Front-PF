@@ -21,7 +21,6 @@ export default function FormRegister() {
   const onSubmit = async (e) => {
     e.preventDefault();
     dispatch(createAcount({ nombre, email, password }));
-    navigate("/login");
   };
 
   const onChange = (e) => {

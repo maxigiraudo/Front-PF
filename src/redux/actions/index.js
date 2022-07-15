@@ -142,17 +142,13 @@ export function createAcount({ nombre, email, password }) {
         type: "CREATE_ACOUNT_SUCCESS",
         payload: json.data,
       });
+      window.location.href = "http://localhost:3000/login"
     } catch (error) {
       Swal.fire({
         icon: "error",
-
         text: "Email existent",
+        showConfirmButton: true
       });
-      dispatch({
-        type: "CREATE_ACOUNT_ERROR",
-        payload: true,
-      });
-
       console.log("ESTE ES EL ERROR", error);
     }
   };
