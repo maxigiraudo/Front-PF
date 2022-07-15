@@ -11,6 +11,7 @@ const initialState = {
   contador: 0,
   favorite: [],
   user: [],
+  userIsAuthenticated: false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -125,7 +126,6 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user: [action.payload, ...state.user],
-
         loading: false,
         error: false,
       };
@@ -183,7 +183,7 @@ export default function reducer(state = initialState, action) {
     case "LOGIN_SUCCESS":
       return {
         ...state,
-        userIsAuthenticated: action.payload,
+        userIsAuthenticated: true,
       };
 
     case "ADD_FAVORITE":

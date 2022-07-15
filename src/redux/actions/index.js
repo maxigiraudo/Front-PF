@@ -213,18 +213,16 @@ export function contador(contador) {
 }
 export function postLogin(payload) {
   return async function (dispatch) {
-    await axios
-      .post("https://henry-proyecto-nft.herokuapp.com/login", payload)
+      axios.post("https://henry-proyecto-nft.herokuapp.com/api/login", payload)
       .then((response) => {
-        if (response === 400) {
-          alert("Sorry, Error Login 🤦🏽‍♂️");
-          return;
-        } else {
           dispatch({
             type: "LOGIN_SUCCESS",
             payload: response,
           });
-        }
+          console.log("logueado")
+      })
+      .catch(err => {
+        console.log(err)
       });
   };
 }
