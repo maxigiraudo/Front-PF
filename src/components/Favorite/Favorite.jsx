@@ -28,7 +28,7 @@ return(
         <div>
             <h1 className={styles.titulo}>{BsFillStarFill()}Your favorite NFT collection</h1>
         </div>
-        {favorites.length === 0 ? 
+        {favorito.length === 0 ? 
           <div className={styles.box}>
             <p className={styles.noFav}> You dont have any favorites NFT yet </p>
           </div>

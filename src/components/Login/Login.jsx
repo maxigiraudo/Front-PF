@@ -50,6 +50,7 @@ export default function Login() {
             email: "",
             password: ""
         })
+        navigate("/home")
     }
 
     return(
