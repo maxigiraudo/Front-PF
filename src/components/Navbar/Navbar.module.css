@@ -56,14 +56,18 @@
   cursor: pointer;
 }
 
-.wallet{
+.wallet {
   font-size: 2rem;
   font-weight: bolder;
   margin: 0 30px;
   cursor: pointer;
 }
-
-.wallet:hover{
+.padreDrop {
+  display: flex;
+}
+.dropdown {
+  margin-top: 15px;
+}
+.wallet:hover {
   color: #6c63ff;
 }
-

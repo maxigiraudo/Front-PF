@@ -1,9 +1,9 @@
 import React from "react";
 import style from "./Card.module.css";
-import { BsFillStarFill } from "react-icons/bs";
-import { BsFillCartCheckFill } from "react-icons/bs";
+import { BsFillCartCheckFill, BsFillHeartFill } from "react-icons/bs";
+import { AiFillHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { addFavorite } from "../../redux/actions";
+
 import { useDispatch } from "react-redux";
 
 export default function Card({
@@ -22,9 +22,7 @@ export default function Card({
     agregarCarrito(e);
   };
   let onClickF = (e) => {
-
     agregarFavorito(e);
-
   };
 
   return (
@@ -36,7 +34,16 @@ export default function Card({
           </div>
           <figure className={style.containerImagen}>
             {image ? (
-              <img className={style.imagenRec} src={image} onError={(e)=>{e.target.onerror = null; e.target.src="https://cryptodozer.io/static/images/dozer/meta/dolls/300.png"}} alt="nft" />
+              <img
+                className={style.imagenRec}
+                src={image}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src =
+                    "https://cryptodozer.io/static/images/dozer/meta/dolls/300.png";
+                }}
+                alt="nft"
+              />
             ) : (
               <h1>sin imagen</h1>
             )}
@@ -52,9 +59,9 @@ export default function Card({
           </button>
           <button
             onClick={() => onClickF({ id, name, image })}
-            className={style.star}
+            className={style.heart}
           >
-            {BsFillStarFill()}{" "}
+            {AiFillHeart()}{" "}
           </button>
         </div>
       </div>

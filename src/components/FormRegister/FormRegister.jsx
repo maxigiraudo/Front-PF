@@ -42,8 +42,8 @@ export default function FormRegister() {
   function validationForm(value) {
     let errors = {};
     if (!value.nombre) errors.nombre = "You must select a name";
-    else if (value.nombre.length < 4) {
-      errors.nombre = "*It must contain at least 4 characters";
+    else if (value.nombre.length < 3) {
+      errors.nombre = "*It must contain at least 3 characters";
     }
     if (
       !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(
@@ -107,7 +107,7 @@ export default function FormRegister() {
                 <input
                   name="password"
                   id="password"
-                  type="text"
+                  type="password"
                   className={styles.input}
                   placeholder="Write a valid Password... "
                   value={user.password}
