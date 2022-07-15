@@ -8,6 +8,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function ShoppingCart({
   limpiarCarrito,
@@ -20,11 +21,36 @@ export default function ShoppingCart({
   //   let dispatch = useDispatch();
 
   let onClickRemove = (e) => {
-    eliminarCarrito(e);
+    Swal.fire({
+      title: "Are you sure you want to remove from cart?",
+
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted", "Your nft has been deleted.", "success");
+        eliminarCarrito(e);
+      }
+    });
   };
 
   let onClickClean = () => {
-    limpiarCarrito();
+    Swal.fire({
+      title: "Are you sure you want to clean the cart?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, clean all",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("", "Your cart has been cleaned.", "success");
+        limpiarCarrito();
+      }
+    });
   };
 
   return (
