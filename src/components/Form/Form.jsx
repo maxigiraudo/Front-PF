@@ -37,8 +37,8 @@ export default function Form() {
   function validationForm(value) {
     let errors = {};
     if (!value.name) errors.name = "You must select a name";
-    else if (!/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test(value.name)) {
-      errors.name = "Names must begin with capital letters";
+    else if (value.name.length < 4) {
+      errors.name = "It must contain at least 4 characters";
     }
     if (value.description.length < 20) {
       errors.description = "It must contain at least 20 characters";

@@ -1,169 +1,128 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { createAcount } from "../../redux/actions";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import styles from "./FormRegister.module.css";
 
 export default function FormRegister() {
-  const [images, setimages] = useState([]);
+  const [user, setUser] = useState({ nombre: "", email: "", password: "" });
+  const [error, setError] = useState({
+    error: "You must select a name",
+  });
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { nombre, email, password } = user;
 
-  const changeInput = (e) => {
-    let indexImg;
+  const onSubmit = async (e) => {
+    e.preventDefault();
 
-    if (images.length > 0) {
-      indexImg = images[images.length - 1].index + 1;
-    } else {
-      indexImg = 0;
-    }
-
-    let newImgsToState = readmultifiles(e, indexImg);
-    let newImgsState = [...images, ...newImgsToState];
-    setimages(newImgsState);
-
-    console.log(newImgsState);
+    dispatch(createAcount({ nombre, email, password }));
+    navigate("/home");
   };
 
-  function readmultifiles(e, indexInicial) {
-    const files = e.currentTarget.files;
+  const onChange = (e) => {
+    e.preventDefault();
+    setUser({
+      ...user,
 
-    const arrayImages = [];
-
-    Object.keys(files).forEach((i) => {
-      const file = files[i];
-
-      let url = URL.createObjectURL(file);
-
-      arrayImages.push({
-        index: indexInicial,
-        name: file.name,
-        url,
-        file,
-      });
-
-      indexInicial++;
+      [e.target.name]: e.target.value,
     });
+    setError(
+      validationForm({
+        ...user,
 
-    return arrayImages;
+        [e.target.name]: e.target.value,
+      })
+    );
+  };
+
+  function validationForm(value) {
+    let errors = {};
+    if (!value.nombre) errors.nombre = "You must select a name";
+    else if (value.nombre.length < 4) {
+      errors.nombre = "It must contain at least 4 characters";
+    }
+    if (value.password.length < 4) {
+      errors.password = "It must contain at least 4 characters";
+    }
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value.email)) {
+      errors.email = "You must enter an email";
+    }
+    console.log(value);
+    return errors;
   }
 
-  function deleteImg(indice) {
-    const newImgs = images.filter(function (element) {
-      return element.index !== indice;
-    });
-    console.log(newImgs);
-    setimages(newImgs);
-  }
   return (
     <div className={styles.containerPadre}>
       <Navbar />
       <div className={styles.padre}>
         <div className={styles.container}>
           <h1 className={styles.colorh1}>Create your account</h1>
-          <form>
+          <form onSubmit={(e) => onSubmit(e)}>
             <div className={styles.two}>
-              <div className={styles.selectJpg}>
-                <div className={styles.selectJPGMAX}>
-                  <label>
-                    <span className={styles.selectFile}>Select image</span>
-
-                    <input
-                      hidden
-                      type="file"
-                      multiple
-                      onChange={changeInput}
-                    ></input>
-                  </label>
-                  <div className={styles.jpg}>
-                    <p className={styles.colorp}>JPG, PNG, GIF</p>
-                    <p className={styles.colorp}>Max 100 mb</p>
-                  </div>
-                </div>
-                <div>
-                  {images.map((imagen) => (
-                    <div key={imagen.index}>
-                      <div>
-                        <button onClick={deleteImg.bind(this, imagen.index)}>
-                          x
-                        </button>
-                        <img
-                          className={styles.imagen}
-                          alt="algo"
-                          src={imagen.url}
-                          data-toggle="modal"
-                          data-target="#ModalPreViewImg"
-                        ></img>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
               <div className={styles.nameEnviar}>
                 <label className={styles.label}>Name</label>
                 <p htmlFor="name"> </p>
                 <input
-                  name="name"
-                  id="name"
+                  name="nombre"
+                  id="nombre"
                   type="text"
                   className={styles.input}
                   placeholder="Write your name... "
+                  value={user.nombre}
+                  onChange={(e) => onChange(e)}
                 />
-
-                <label className={styles.label}>Lastname</label>
-                <p htmlFor="Lastname"> </p>
-                <input
-                  name="Lastname"
-                  id="Lastname"
-                  type="text"
-                  className={styles.input}
-                  placeholder="Write your Lastname... "
-                />
-
-                <label className={styles.label}>Username</label>
-                <p htmlFor="Username"> </p>
-                <input
-                  name="Username"
-                  id="Username"
-                  type="text"
-                  className={styles.input}
-                  placeholder="Write your Username... "
-                />
+                {error.nombre ? (
+                  <p style={{ color: "red" }}> {error.nombre} </p>
+                ) : null}
 
                 <label className={styles.label}>Email</label>
                 <p htmlFor="Email"> </p>
                 <input
-                  name="Email"
-                  id="Email"
+                  name="email"
+                  id="email"
                   type="text"
                   className={styles.input}
                   placeholder="Write a valid email address... "
+                  value={user.email}
+                  onChange={(e) => onChange(e)}
                 />
+                {error.email ? (
+                  <p style={{ color: "red" }}> {error.email} </p>
+                ) : null}
 
                 <label className={styles.label}>Password</label>
                 <p htmlFor="Password"> </p>
                 <input
-                  name="Password"
-                  id="Password"
+                  name="password"
+                  id="password"
                   type="text"
                   className={styles.input}
                   placeholder="Write a valid Password... "
+                  value={user.password}
+                  onChange={(e) => onChange(e)}
                 />
-
-                <label className={styles.label}>About you!</label>
-                <p htmlFor="Aboutyou"> </p>
-                <textarea
-                  name="Aboutyou"
-                  id="Aboutyou"
-                  type="text"
-                  className={styles.input}
-                  placeholder="Write a little description about you..."
-                />
+                {error.password ? (
+                  <p style={{ color: "red" }}> {error.password} </p>
+                ) : null}
 
                 <br />
 
                 <input
+                  disabled={Object.keys(error).length === 0 ? false : true}
                   value="CREATE YOUR ACCOUNT"
                   type="submit"
                   className={styles.inputEnviar}
                 />
+                <br />
+                {Object.keys(error).length === 0 ? null : (
+                  <p style={{ color: "red", textAlign: "center" }}>
+                    To create your acount you must fill in all the fields
+                    without errors.
+                  </p>
+                )}
               </div>
             </div>
           </form>

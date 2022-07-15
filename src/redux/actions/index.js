@@ -121,6 +121,37 @@ export function createNft({ name, description, file }) {
     }
   };
 }
+
+export function createAcount({ nombre, email, password }) {
+  return async function (dispatch) {
+    dispatch({
+      type: "CREATE_ACOUNT",
+      payload: true,
+    });
+    try {
+      const body = {
+        nombre,
+        email,
+        password,
+      };
+      const json = await axios.post(
+        "https://henry-proyecto-nft.herokuapp.com/api/registro",
+        body
+      );
+      dispatch({
+        type: "CREATE_ACOUNT_SUCCESS",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: "CREATE_ACOUNT_ERROR",
+        payload: true,
+      });
+    }
+  };
+}
+
 const uploadFile = async (file) => {
   const imageFile = new Moralis.File(file.name, file);
   await imageFile.saveIPFS();
@@ -182,30 +213,32 @@ export function contador(contador) {
 }
 export function postLogin(payload) {
   return async function (dispatch) {
-    await axios.post("https://henry-proyecto-nft.herokuapp.com/login", payload)
-    .then((response) => {
-      if (response === 400) {
+    await axios
+      .post("https://henry-proyecto-nft.herokuapp.com/login", payload)
+      .then((response) => {
+        if (response === 400) {
           alert("Sorry, Error Login 🤦🏽‍♂️");
           return;
-      } else {
-         dispatch({
-          type: "LOGIN_SUCCESS",
-          payload: response,
-              });
-      }
+        } else {
+          dispatch({
+            type: "LOGIN_SUCCESS",
+            payload: response,
+          });
+        }
       });
-    }}
-
-export const removeFavorite = (id)=>{
-  return{
-    type: "REMOVE_FAVORITE",
-    payload: id
-  }
-}
-export const addFavorite = (info)=> {
-  console.log(info)
-  return { 
-    type: "ADD_FAVORITE",
-     payload : info
   };
 }
+
+export const removeFavorite = (id) => {
+  return {
+    type: "REMOVE_FAVORITE",
+    payload: id,
+  };
+};
+export const addFavorite = (info) => {
+  console.log(info);
+  return {
+    type: "ADD_FAVORITE",
+    payload: info,
+  };
+};
