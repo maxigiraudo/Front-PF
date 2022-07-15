@@ -1,3 +1,7 @@
+*{
+    background-color: white;
+}
+
 .containerLogin{
     min-height: 32rem;
     display: flex;
