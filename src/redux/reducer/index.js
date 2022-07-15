@@ -10,6 +10,7 @@ const initialState = {
   cursor:"",
   contador: 0,
   favorite:[]
+  
 };
 
 export default function reducer(state = initialState, action) {
@@ -176,6 +177,7 @@ export default function reducer(state = initialState, action) {
               favorite: state.favorite.filter((e)=> e !== action.payload) 
         }
 
+      
     default:
       return state;
   }

@@ -3,6 +3,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import styles from "./FormRegister.module.css";
 
+
 export default function FormRegister() {
   const [images, setimages] = useState([]);
 
@@ -150,10 +151,17 @@ export default function FormRegister() {
                   placeholder="Write a valid Password... "
                 />
 
+                <label className={styles.label}>Repeat your Password</label>
+                <p htmlFor="Password"> </p>
+                <input
+                  name="Password"
+                  id="Password"
+                  type="password"
+                  className={styles.input}
+                  placeholder="Write a valid Password... "
+                />
 
-            
-
-
+                        
 
                 <label className={styles.label}>About you!</label>
                 <p htmlFor="Aboutyou"> </p>

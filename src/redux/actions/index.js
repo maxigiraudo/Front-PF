@@ -209,3 +209,4 @@ export const addFavorite = (info)=> {
      payload : info
   };
 }
+

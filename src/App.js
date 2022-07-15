@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 
 
 
+
 function App() {
   let carritoInicial = JSON.parse(localStorage.getItem("carrito"));
   if (!carritoInicial) {
@@ -69,6 +70,7 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/favorite" element={<Favorite/>} />
+        
       </Routes>
     </div>
   );
