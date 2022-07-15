@@ -9,6 +9,8 @@ import validateForm from '../Login/validation.js';
 import { Link } from "react-router-dom";
 import imgLogin from "./imgLogin.png"
 import {postLogin} from "../../redux/actions/index.js";
+import GoogleLogin from 'react-google-login';
+
 
 export default function Login() {
     const dispatch = useDispatch()
@@ -50,6 +52,9 @@ export default function Login() {
         })
         navigate("/home")
     }
+    const responseGoogle = (response) => {
+        console.log(response);
+      }
 
     return(
         <div>
@@ -86,7 +91,14 @@ export default function Login() {
 
                     <div className={styles.section}>
                         <h4> Or sign in with</h4>
-                        <img src={imgLogin} className={styles.imgLogin} alt="imagen login" width="60" />
+                        <br/>
+                        <GoogleLogin
+                            clientId="524192489225-qlmpj64c3cg1kaqa847lb5hr71894jbv.apps.googleusercontent.com"
+                            buttonText="Login"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                         />
                     </div>
 
                     <div className={styles.register}>
