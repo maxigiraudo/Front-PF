@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import imgLogin from "./imgLogin.png"
 import {postLogin} from "../../redux/actions/index.js";
 
-
 export default function Login() {
     const dispatch = useDispatch()
 
@@ -100,5 +99,4 @@ export default function Login() {
         </div>
     )
 }
-
 
