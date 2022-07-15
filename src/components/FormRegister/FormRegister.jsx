@@ -8,6 +8,8 @@ import styles from "./FormRegister.module.css";
 import { Link } from "react-router-dom";
 import logG from "../Login/imgLogin.png";
 
+
+
 export default function FormRegister() {
   const [user, setUser] = useState({ nombre: "", email: "", password: "" });
   const [error, setError] = useState({
@@ -19,9 +21,9 @@ export default function FormRegister() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
     dispatch(createAcount({ nombre, email, password }));
-    navigate("/home");
+    
+    navigate("/login");
   };
 
   const onChange = (e) => {
@@ -46,8 +48,8 @@ export default function FormRegister() {
     else if (value.nombre.length < 4) {
       errors.nombre = "It must contain at least 4 characters";
     }
-    if (value.password.length < 4) {
-      errors.password = "It must contain at least 4 characters";
+    if (value.password.length < 8) {
+      errors.password = "It must contain at least 8 characters";
     }
     if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value.email)) {
       errors.email = "You must enter an email";

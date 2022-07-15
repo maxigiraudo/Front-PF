@@ -29,7 +29,9 @@ export default function Favorite({ eliminarFavorito, favorito }) {
             {BsFillStarFill()}Your favorite NFT collection
           </h1>
         </div>
+
         {favorito.length === 0 ? (
+
           <div className={styles.box}>
             <p className={styles.noFav}>
               {" "}
