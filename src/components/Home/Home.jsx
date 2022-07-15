@@ -9,12 +9,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
-import {
-  addToCart,
-  getNft,
-  getNftAll,
-  getSliderNft,
-} from "../../redux/actions";
+import { getNft, getNftAll, getSliderNft } from "../../redux/actions";
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import Loading from "../Loading/Loading";
@@ -30,7 +25,7 @@ import world from "./images/world (1).png";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-export default function Home({ agregarCarrito }) {
+export default function Home({ agregarCarrito, agregarFavorito }) {
   const allCard = useSelector((state) => state.cards);
   const cursori = useSelector((state) => state.cursor);
 
@@ -245,6 +240,7 @@ export default function Home({ agregarCarrito }) {
           >
             {currentNft?.map((e, index) => (
               <Card
+                agregarFavorito={agregarFavorito}
                 agregarCarrito={agregarCarrito}
                 id={e._id}
                 key={index}

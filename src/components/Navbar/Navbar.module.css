@@ -55,3 +55,14 @@
   color: black;
   cursor: pointer;
 }
+
+.wallet{
+  font-size: 2rem;
+  font-weight: bolder;
+  margin: 0 30px;
+  cursor: pointer;
+}
+
+.wallet:hover{
+  color: #6c63ff;
+}

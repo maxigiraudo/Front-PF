@@ -10,14 +10,46 @@ import About from "./components/About/About";
 import FormRegister from "./components/FormRegister/FormRegister";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Login from "./components/Login/Login.jsx";
-import Favorite from "./components/Favorite/Favorite.jsx"
+import Favorite from "./components/Favorite/Favorite";
 import { useEffect, useState } from "react";
-
+import Swal from "sweetalert2";
 
 
 
 
 function App() {
+  let favoritoInicial = JSON.parse(localStorage.getItem("favorito"));
+  if (!favoritoInicial) {
+    favoritoInicial = [];
+  }
+  const [favorito, setFavorito] = useState(favoritoInicial);
+
+  useEffect(() => {
+    let favoritoInicial = JSON.parse(localStorage.getItem("favorito"));
+    if (favoritoInicial) {
+      localStorage.setItem("favorito", JSON.stringify(favorito));
+    } else {
+      localStorage.setItem("favorito", JSON.stringify([]));
+    }
+  }, [favorito]);
+
+  const agregarFavorito = (e) => {
+    const copiaFavorito = favorito;
+    const nuevoFavorito = favorito.filter((item) => item.id !== e.id);
+    setFavorito([...nuevoFavorito, e]);
+
+    if (copiaFavorito.length !== nuevoFavorito.length) {
+      Swal.fire("", "Item already exist in the favorite", "error");
+    } else {
+      Swal.fire("", "Item added to favorite succefully", "success");
+    }
+  };
+
+  const eliminarFavorito = (id) => {
+    const nuevoFavorito = favorito.filter((e) => e.id !== id);
+    setFavorito(nuevoFavorito);
+  };
+  console.log(favorito);
   let carritoInicial = JSON.parse(localStorage.getItem("carrito"));
   if (!carritoInicial) {
     carritoInicial = [];
@@ -34,7 +66,15 @@ function App() {
   }, [carrito]);
 
   const agregarCarrito = (e) => {
-    setCarrito([...carrito, e]);
+    const copiaCarrito = carrito;
+    const nuevoCarrito = carrito.filter((item) => item.id !== e.id);
+    setCarrito([...nuevoCarrito, e]);
+
+    if (copiaCarrito.length !== nuevoCarrito.length) {
+      Swal.fire("", "Item already exist in the cart", "error");
+    } else {
+      Swal.fire("", "Item added to cart succefully", "success");
+    }
   };
 
   const eliminarCarrito = (id) => {
@@ -52,7 +92,14 @@ function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route
           path="/home"
-          element={<Home carrito={carrito} agregarCarrito={agregarCarrito} />}
+          element={
+            <Home
+              carrito={carrito}
+              agregarCarrito={agregarCarrito}
+              agregarFavorito={agregarFavorito}
+              favorito={favorito}
+            />
+          }
         />
         <Route path="/detail/:id/:token_address" element={<Detail />} />
         <Route path="/form" element={<Form />} />
@@ -69,8 +116,12 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/favorite" element={<Favorite/>} />
-        
+        <Route
+          path="/favorite"
+          element={
+            <Favorite eliminarFavorito={eliminarFavorito} favorito={favorito} />
+          }
+        />
       </Routes>
     </div>
   );
