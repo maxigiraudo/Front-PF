@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { createNft } from "../../redux/actions";
 import { useMoralis, useMoralisFile } from "react-moralis";
 import { useNavigate } from "react-router-dom";
+import { BsTrash } from "react-icons/bs";
 
 export default function Form() {
   const [card, setCard] = useState({ name: "", description: "" });
@@ -37,8 +38,8 @@ export default function Form() {
   function validationForm(value) {
     let errors = {};
     if (!value.name) errors.name = "You must select a name";
-    else if (!/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test(value.name)) {
-      errors.name = "Names must begin with capital letters";
+    else if (value.name.length < 4) {
+      errors.name = "It must contain at least 4 characters";
     }
     if (value.description.length < 20) {
       errors.description = "It must contain at least 20 characters";
@@ -143,7 +144,7 @@ export default function Form() {
       <Navbar />
       <div className={styles.padre}>
         <div className={styles.container}>
-          <h1 className={styles.colorh1}>Create your NFT</h1>
+          <h1 className={styles.colorh1}>CREATE YOUR NFT.</h1>
           <form onSubmit={(e) => onSubmit(e)}>
             <div className={styles.two}>
               <div className={styles.selectJpg}>
@@ -163,18 +164,15 @@ export default function Form() {
                     ) : null}
                   </label>
                   <div className={styles.jpg}>
-                    <p className={styles.colorp}>JPG, PNG, GIF</p>
-                    <p className={styles.colorp}>Max 100 mb</p>
+                    <p className={styles.colorp}>JPG</p>
+                    {/* <p className={styles.colorp}>Max 100 mb</p> */}
                   </div>
                 </div>
                 <div>
                   {files.map((imagen) => (
                     <div key={imagen.index}>
                       {console.log(imagen)}
-                      <div>
-                        <button onClick={deleteImg.bind(this, imagen.index)}>
-                          x
-                        </button>
+                      <div className={styles.divBI}>
                         <img
                           className={styles.imagen}
                           alt="algo"
@@ -183,13 +181,19 @@ export default function Form() {
                           data-target="#ModalPreViewImg"
                           value={card.image}
                         ></img>
+                        <button
+                          className={styles.x}
+                          onClick={deleteImg.bind(this, imagen.index)}
+                        >
+                          {BsTrash()}
+                        </button>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
               <div className={styles.nameEnviar}>
-                <label className={styles.label}>Name</label>
+                {/* <label className={styles.label}>Name</label> */}
                 <p htmlFor="name"> </p>
                 <input
                   onChange={(e) => onChange(e)}
@@ -203,7 +207,7 @@ export default function Form() {
                 {error.name ? (
                   <p style={{ color: "red" }}> {error.name} </p>
                 ) : null}
-                <label className={styles.label}>Description</label>
+                {/* <label className={styles.label}>Description</label> */}
                 <p htmlFor="Description"> </p>
                 <textarea
                   onChange={(e) => onChange(e)}

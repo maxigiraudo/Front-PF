@@ -2,8 +2,9 @@ import React from "react";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import styles from "../Login/Login.module.css";
+import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import validateForm from '../Login/validation.js';
 import { Link } from "react-router-dom";
 import imgLogin from "./imgLogin.png"
@@ -11,6 +12,8 @@ import {postLogin} from "../../redux/actions/index.js";
 
 export default function Login() {
     const dispatch = useDispatch()
+    const navigate = useNavigate();
+  
 
     const [formData, setFormData] = useState({
         email: "",
@@ -45,7 +48,7 @@ export default function Login() {
             email: "",
             password: ""
         })
-        document.getElementById("form").reset()
+        navigate("/home")
     }
 
     return(

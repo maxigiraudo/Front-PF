@@ -7,9 +7,11 @@ const initialState = {
   cartProducts: [],
   loading: false,
   error: false,
-  cursor:"",
+  cursor: "",
   contador: 0,
-  favorite:[]
+  favorite: [],
+  user: [],
+  userIsAuthenticated: false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -120,13 +122,32 @@ export default function reducer(state = initialState, action) {
         loading: false,
         error: false,
       };
+    case "CREATE_ACOUNT_SUCCESS":
+      return {
+        ...state,
+        user: [action.payload, ...state.user],
+        loading: false,
+        error: false,
+      };
     case "CREATE_NFT":
       return {
         ...state,
         loading: true,
         error: false,
       };
+    case "CREATE_ACOUNT":
+      return {
+        ...state,
+        loading: true,
+        error: false,
+      };
     case "CREATE_NFT_ERROR":
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    case "CREATE_ACOUNT_ERROR":
       return {
         ...state,
         loading: false,
@@ -159,22 +180,22 @@ export default function reducer(state = initialState, action) {
         ...state,
         contador: action.payload,
       };
-      case "LOGIN_SUCCESS":
-        return {
-          ...state,
-          userIsAuthenticated: action.payload,
-        };
+    case "LOGIN_SUCCESS":
+      return {
+        ...state,
+        userIsAuthenticated: true,
+      };
 
-      case "ADD_FAVORITE":
-          return{
-               ...state,
-               favorite: [...state.favorite, action.payload]
-          }
-      case "REMOVE_FAVORITE":
-        return{
-              ...state,
-              favorite: state.favorite.filter((e)=> e !== action.payload) 
-        }
+    case "ADD_FAVORITE":
+      return {
+        ...state,
+        favorite: [...state.favorite, action.payload],
+      };
+    case "REMOVE_FAVORITE":
+      return {
+        ...state,
+        favorite: state.favorite.filter((e) => e !== action.payload),
+      };
 
     default:
       return state;
