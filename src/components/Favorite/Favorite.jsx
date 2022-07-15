@@ -12,46 +12,55 @@ export default function Favorite({ eliminarFavorito, favorito }) {
   // const favorites = useSelector((state) => state.favorite);
   console.log(favorito);
 
-  const dispatch = useDispatch();
 
-  let handleClick = (e) => {
+    const dispatch= useDispatch()
+  
+    let handleClick = (e) => {
     eliminarFavorito(e);
-  };
-  return (
-    <div>
-      <Navbar />
-      <Link to="/home">
-        <button className={styles.botonR}>Go Back</button>
-      </Link>
-      <div>
-        <h1 className={styles.titulo}>
-          {BsFillStarFill()}Your favorite NFT collection
-        </h1>
-      </div>
-      <div className={styles.box}>
-        <div className={styles.nftA}>
-          <h2 className={styles.imgA}>Image</h2>
-          <h2 className={styles.nameA}>Name</h2>
-          <h2 className={styles.botonA}>Dellete</h2>
+    }
+return(
+    <div >
+        <Navbar/>
+        <div className={styles.general}>
+        <Link to="/home">
+                <button className={styles.botonR} >Go Back</button>
+        </Link>
+        <div>
+            <h1 className={styles.titulo}>{BsFillStarFill()}Your favorite NFT collection</h1>
         </div>
-        {favorito?.map((e) => {
-          return (
-            <div>
-              <div className={styles.nft}>
-                <img className={styles.img} src={e.image} alt="image" />
-                <div className={styles.name}>{e.name}</div>
-                <button
-                  className={styles.boton}
-                  onClick={() => handleClick(e.id)}
-                >
-                  {IoMdCloseCircle()}
-                </button>
+        {favorites.length === 0 ? 
+          <div className={styles.box}>
+            <p className={styles.noFav}> You dont have any favorites NFT yet </p>
+          </div>
+        :
+          <div className={styles.box}>
+          <div className={styles.nftA}>
+            <h2 className={styles.imgA}>Image</h2>
+            <h2 className={styles.nameA}>Name</h2>
+            <h2 className={styles.botonA}>Delete</h2>
+          </div>
+          {favorito?.map((e)=>{
+            return(
+                <div>
+                <div  className={styles.nft}>
+                  <img className={styles.img} src={e.image} alt="image"/>
+                  <div className={styles.name}>{e.name}</div>
+                  <button
+                    className={styles.boton}
+                    onClick={() => handleClick(e)}
+                  >
+                    {IoMdCloseCircle()}
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-      <Footer />
+            )
+          })}
+          </div>
+        }
+
+        </div>
+          <Footer />
+
     </div>
   );
 }
