@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import styles from "./FormRegister.module.css";
 import { Link } from "react-router-dom";
+import logG from "../Login/imgLogin.png";
 
 export default function FormRegister() {
   const [user, setUser] = useState({ nombre: "", email: "", password: "" });
@@ -59,17 +60,15 @@ export default function FormRegister() {
     <div className={styles.containerPadre}>
       <Navbar />
       <Link to="/home">
-              <button  className={styles.botonR}>
-                Go Back
-              </button>
-            </Link>
+        <button className={styles.botonR}>Go Back</button>
+      </Link>
       <div className={styles.padre}>
         <div className={styles.container}>
-          <h1 className={styles.colorh1}>Create your account</h1>
+          <h1 className={styles.colorh1}>CREATE YOUR ACOUNT.</h1>
           <form onSubmit={(e) => onSubmit(e)}>
             <div className={styles.two}>
               <div className={styles.nameEnviar}>
-                <label className={styles.label}>Name</label>
+                {/* <label className={styles.label}>Name</label> */}
                 <p htmlFor="name"> </p>
                 <input
                   name="nombre"
@@ -84,7 +83,7 @@ export default function FormRegister() {
                   <p style={{ color: "red" }}> {error.nombre} </p>
                 ) : null}
 
-                <label className={styles.label}>Email</label>
+                {/* <label className={styles.label}>Email</label> */}
                 <p htmlFor="Email"> </p>
                 <input
                   name="email"
@@ -99,7 +98,7 @@ export default function FormRegister() {
                   <p style={{ color: "red" }}> {error.email} </p>
                 ) : null}
 
-                <label className={styles.label}>Password</label>
+                {/* <label className={styles.label}>Password</label> */}
                 <p htmlFor="Password"> </p>
                 <input
                   name="password"
@@ -122,13 +121,18 @@ export default function FormRegister() {
                   type="submit"
                   className={styles.inputEnviar}
                 />
-                <br />
+
                 {Object.keys(error).length === 0 ? null : (
                   <p style={{ color: "red", textAlign: "center" }}>
                     To create your acount you must fill in all the fields
                     without errors.
                   </p>
                 )}
+                <br />
+                <div className={styles.divGoogle}>
+                  <p>Or Login whith </p>
+                  <img className={styles.google} src={logG} alt="google" />
+                </div>
               </div>
             </div>
           </form>
