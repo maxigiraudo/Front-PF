@@ -1,5 +1,6 @@
 import axios from "axios";
 import Moralis from "moralis";
+import Swal from "sweetalert2";
 
 export function orderByPrice(payload) {
   return {
@@ -113,7 +114,6 @@ export function createNft({ name, description, file }) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
       dispatch({
         type: "CREATE_NFT_ERROR",
         payload: true,
@@ -142,12 +142,14 @@ export function createAcount({ nombre, email, password }) {
         type: "CREATE_ACOUNT_SUCCESS",
         payload: json.data,
       });
+      window.location.href = "http://localhost:3000/login"
     } catch (error) {
-      console.log(error);
-      dispatch({
-        type: "CREATE_ACOUNT_ERROR",
-        payload: true,
+      Swal.fire({
+        icon: "error",
+        text: "Email existent",
+        showConfirmButton: true
       });
+      console.log("ESTE ES EL ERROR", error);
     }
   };
 }
@@ -213,16 +215,24 @@ export function contador(contador) {
 }
 export function postLogin(payload) {
   return async function (dispatch) {
-      axios.post("https://henry-proyecto-nft.herokuapp.com/api/login", payload)
+    axios
+      .post("https://henry-proyecto-nft.herokuapp.com/api/login", payload)
       .then((response) => {
-          dispatch({
-            type: "LOGIN_SUCCESS",
-            payload: response,
-          });
-          console.log("logueado")
+        dispatch({
+          type: "LOGIN_SUCCESS",
+          payload: response,
+        });
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login Success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        console.log("logueado");
       })
-      .catch(err => {
-        console.log(err)
+      .catch((err) => {
+        console.log(err);
       });
   };
 }
