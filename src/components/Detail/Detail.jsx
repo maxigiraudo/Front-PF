@@ -42,7 +42,7 @@ export default function Detail() {
           </div>
           <div className={styles.padre}>
             <div>
-              <img className={styles.imagen} src={card.image} alt="nft" />
+              <img className={styles.imagen} src={card.image}  onError={(e)=>{e.target.onerror = null; e.target.src="https://cryptodozer.io/static/images/dozer/meta/dolls/300.png"}} alt="nft" />
             </div>
             <div className={styles.description}>
               <h3 className={styles.name}>{card.name}</h3>
