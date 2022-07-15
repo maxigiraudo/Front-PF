@@ -5,7 +5,6 @@ import { BsFillCartCheckFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { addFavorite } from "../../redux/actions";
 import { useDispatch } from "react-redux";
-import Swal from "sweetalert2";
 
 export default function Card({
   id,
@@ -14,19 +13,18 @@ export default function Card({
   image,
   token_address,
   agregarCarrito,
+  agregarFavorito,
 }) {
   let dispatch = useDispatch();
   // let [cont, setContador] = useState(1);
 
   let onClick = (e) => {
-    console.log(e);
     agregarCarrito(e);
-
-    Swal.fire("", "Item added to cart succefully", "success");
   };
   let onClickF = (e) => {
-    dispatch(addFavorite(e));
-    Swal.fire("", "Item added to favorite succefully", "success")
+
+    agregarFavorito(e);
+
   };
 
   return (
