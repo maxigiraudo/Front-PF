@@ -159,13 +159,11 @@ const uploadFile = async (file) => {
   return imageURI;
 };
 
-export function getSliderNft(name) {
+export function getSliderNftArt() {
   return async function (dispatch) {
     try {
-      var json = await axios.get(
-        "https://henry-proyecto-nft.herokuapp.com/api/nfts/" + name
-      );
-      console.log(json);
+      let json = await axios.get("http://localhost:4000/api/nftcollection");
+      console.log("ESTA ES LA COLECCION",json);
       return dispatch({
         type: "GET_SLIDER_NFT",
 

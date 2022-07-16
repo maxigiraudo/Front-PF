@@ -93,7 +93,7 @@ export default function Login() {
                         <h4> Or sign in with</h4>
                         <br/>
                         <GoogleLogin
-                            clientId="524192489225-qlmpj64c3cg1kaqa847lb5hr71894jbv.apps.googleusercontent.com"
+                            clientId="316483334585-mtc1sb8li7atn1ktu80si56gqf5bupc0.apps.googleusercontent.com"
                             buttonText="Login"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
