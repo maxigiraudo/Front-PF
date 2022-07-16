@@ -226,12 +226,13 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
           </Slider>
         </div>
       </div>
-      {catArt.length>0&&
+      {catArt.length>0?
       <div className={style.sli}>
 
       <SliderArt/>
       </div>
-      }
+      :(
+        <div>
       <div className={style.orderSearch}>
         <div className={style.navDos}>
           <div className={style.searchBar}>
@@ -271,6 +272,8 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
             ))}
           </InfiniteScroll>
         </div>
+      )}
+      </div>
       )}
 
       <div className={style.footer}>
