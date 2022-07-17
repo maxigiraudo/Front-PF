@@ -1,5 +1,6 @@
 import axios from "axios";
 import Moralis from "moralis";
+import Swal from "sweetalert2";
 
 export function orderByPrice(payload) {
   return {
@@ -212,20 +213,27 @@ export function contador(contador) {
   };
 }
 export function postLogin(payload) {
+  console.log('normla loguin f' + payload)
   return async function (dispatch) {
-      axios.post("https://henry-proyecto-nft.herokuapp.com/api/login", payload)
+    axios
+      .post("https://henry-proyecto-nft.herokuapp.com/api/login", payload)
       .then((response) => {
-          dispatch({
-            type: "LOGIN_SUCCESS",
-            payload: response,
-          });
-          console.log("logueado")
+        dispatch({
+          type: "LOGIN_SUCCESS",
+          payload: response,
+        });
+        console.log("logueado");
       })
-      .catch(err => {
-        console.log(err)
+      .catch((err) => {
+        console.log(err);
       });
   };
 }
+
+
+
+
+
 
 export const removeFavorite = (id) => {
   return {
@@ -239,4 +247,38 @@ export const addFavorite = (info) => {
     type: "ADD_FAVORITE",
     payload: info,
   };
+};
+
+
+export const register = (body) => async (dispatch) => {
+  try {
+    dispatch({
+      type: 'REGISTER_USER_REQUEST',
+    });
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+    const { data } = await axios.post(
+      "https://localhost:4000/api/signup",
+      // `${REACT_APP_API}/auth/api/signup`,
+      body,
+      config
+    );
+    dispatch({
+      type: 'REGISTER_USER_SUCCESS',
+      payload: data,
+    });
+    dispatch({
+      type: 'USER_LOGIN_SUCCESS',
+      payload: data,
+    });
+    Swal("Registro Exitoso",{icon:"success"});
+    window.location.href = "/home";
+  } catch (error) {
+    Swal("Credenciales Incorrectas", { icon: "warning" });
+    dispatch({
+      type: 'REGISTER_USER_ERROR',
+      payload: error,
+    });
+  }
 };

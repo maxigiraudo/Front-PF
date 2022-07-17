@@ -196,8 +196,62 @@ export default function reducer(state = initialState, action) {
         ...state,
         favorite: state.favorite.filter((e) => e !== action.payload),
       };
+      case 'REGISTER_USER_REQUEST': {
+        return {
+          ...state,
+          user: {},
+          userInfo: {},
+          error: false,
+          isLoading: true,
+        };
+      }
+      case 'REGISTER_USER_SUCCESS': {
+        return {
+          ...state,
+          user: action.payload,
+          userInfo: action.payload,
+          isLoading: false,
+          error: false,
+        };
+      }
+      case 'REGISTER_USER_ERROR': {
+        return {
+          ...state,
+          user: {},
+          isLoading: false,
+          error: true,
+        };
+      }
+      case 'USER_LOGIN_SUCCESS': {
+        return {
+          ...state,
+          user: {},
+          userInfo: action.payload,
+          isLoading: false,
+          error: false,
+          isAuth: true,
+        };
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     default:
       return state;
   }
+
+
+
 }
+

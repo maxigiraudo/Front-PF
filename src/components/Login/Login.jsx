@@ -9,7 +9,11 @@ import validateForm from '../Login/validation.js';
 import { Link } from "react-router-dom";
 import imgLogin from "./imgLogin.png"
 import {postLogin} from "../../redux/actions/index.js";
-import GoogleLogin from 'react-google-login';
+
+// import { useEffect } from "react";
+// import GoogleLogin from 'react-google-login';
+// import {gapi} from 'gapi-script';
+import GoogleBtn from "../Google";
 
 
 export default function Login() {
@@ -52,9 +56,22 @@ export default function Login() {
         })
         navigate("/home")
     }
-    const responseGoogle = (response) => {
-        console.log(response);
-      }
+    // const responseGoogle = (response) => {
+    //     dispatch(postLoginGoogle(response))
+    //   }
+
+    //   useEffect(()=> {
+    //     function start() {
+    //         gapi.client.init({
+    //             clientId: clientId,
+    //             scope: ""
+    //         }) 
+    //     }
+    //     gapi.load('client:auth2', start);
+    //   })
+
+
+
 
     return(
         <div>
@@ -92,13 +109,7 @@ export default function Login() {
                     <div className={styles.section}>
                         <h4> Or sign in with</h4>
                         <br/>
-                        <GoogleLogin
-                            clientId="524192489225-qlmpj64c3cg1kaqa847lb5hr71894jbv.apps.googleusercontent.com"
-                            buttonText="Login"
-                            onSuccess={responseGoogle}
-                            onFailure={responseGoogle}
-                            cookiePolicy={'single_host_origin'}
-                         />
+                        <GoogleBtn/>
                     </div>
 
                     <div className={styles.register}>
