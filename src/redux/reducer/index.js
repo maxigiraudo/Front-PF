@@ -11,9 +11,16 @@ const initialState = {
   contador: 0,
   favorite: [],
   user: [],
+  useGoogle:{},
   userIsAuthenticated: false,
-  categoryArt: [],
+
+ 
   nftCreados: [],
+
+  categoryArt:[],
+  userInfo: {},
+  isAuth: false,
+
 };
 
 export default function reducer(state = initialState, action) {
@@ -199,8 +206,63 @@ export default function reducer(state = initialState, action) {
         ...state,
         favorite: state.favorite.filter((e) => e !== action.payload),
       };
+      case 'REGISTER_USER_REQUEST': {
+        return {
+          ...state,
+          useGoogle: {},
+          userInfo: {},
+          error: false,
+          loading: true,
+        };
+      }
+      case 'REGISTER_USER_SUCCESS': {
+        return {
+          ...state,
+          useGoogle: action.payload,
+          userInfo: action.payload,
+          loading: false,
+          error: false,
+        };
+      }
+      case 'REGISTER_USER_ERROR': {
+        return {
+          ...state,
+          useGoogle: {},
+          loading: false,
+          error: true,
+        };
+      }
+      case 'USER_LOGIN_SUCCESS': {
+        return {
+          ...state,
+          useGoogle: {},
+          userInfo: action.payload,
+          loading: false,
+          error: false,
+          // userIsAuthenticated: true,
+          isAuth: true,
+        };
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     default:
       return state;
   }
+
+
+
 }
+

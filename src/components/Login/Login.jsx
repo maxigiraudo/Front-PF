@@ -7,9 +7,16 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import validateForm from "../Login/validation.js";
 import { Link } from "react-router-dom";
-import imgLogin from "./imgLogin.png";
-import { postLogin } from "../../redux/actions/index.js";
-import GoogleLogin from "react-google-login";
+
+import imgLogin from "./imgLogin.png"
+import {postLogin} from "../../redux/actions/index.js";
+
+// import { useEffect } from "react";
+// import GoogleLogin from 'react-google-login';
+// import {gapi} from 'gapi-script';
+import GoogleBtn from "../Google";
+
+
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -40,57 +47,72 @@ export default function Login() {
     });
   };
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    dispatch(postLogin(formData));
-    setFormData({
-      email: "",
-      password: "",
-    });
-  };
-  const responseGoogle = (response) => {
-    console.log(response);
-  };
 
-  return (
-    <div>
-      <Navbar />
-      <Link to="/home">
-        <button className={styles.botonR}>Go Back</button>
-      </Link>
-      <div className={styles.containerLogin}>
-        <div className={styles.login}>
-          <h1 className={styles.title}> WELCOME! </h1>
-          <div className={styles.input} id="form">
-            <input
-              className={styles.loginInput}
-              type="text"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleInputChange}
-              onBlur={handleInputOnBlur}
-            />
-            {formErrors.email && (
-              <p className={styles.formErrors}>{formErrors.email}</p>
-            )}
-            <input
-              className={styles.loginInput}
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleInputChange}
-              onBlur={handleInputOnBlur}
-            />
-            {formErrors.password && (
-              <p className={styles.formErrors}>{formErrors.password}</p>
-            )}
-            <button className={styles.button} onClick={(e) => handleLogin(e)}>
-              {" "}
-              LOGIN{" "}
-            </button>
-          </div>
+    const handleLogin = (e) => {
+        e.preventDefault();
+        dispatch(postLogin(formData))
+        setFormData({
+            email: "",
+            password: ""
+        })
+        navigate("/home")
+    }
+    // const responseGoogle = (response) => {
+    //     dispatch(postLoginGoogle(response))
+    //   }
+
+    //   useEffect(()=> {
+    //     function start() {
+    //         gapi.client.init({
+    //             clientId: clientId,
+    //             scope: ""
+    //         }) 
+    //     }
+    //     gapi.load('client:auth2', start);
+    //   })
+
+
+
+
+    return(
+        <div>
+            <Navbar />
+            <Link to="/home">
+                <button className={styles.botonR}>Go Back</button>
+            </Link>
+            <div className={styles.containerLogin}>
+                <div className={styles.login}>
+                    <h1 className={styles.title}> WELCOME! </h1>
+                    <div className={styles.input} id="form">
+                        <input
+                            className={styles.loginInput}
+                            type='text'
+                            name='email'
+                            placeholder='Email'
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            onBlur={handleInputOnBlur}
+                        />
+                        {formErrors.email && <p className={styles.formErrors}>{formErrors.email}</p>}
+                        <input
+                            className={styles.loginInput}
+                            type='password'
+                            name='password'
+                            placeholder='Password'
+                            value={formData.password}
+                            onChange={handleInputChange}
+                            onBlur={handleInputOnBlur}
+                        />
+                        {formErrors.password && <p className={styles.formErrors}>{formErrors.password}</p>}
+                        <button className={styles.button} onClick={(e) => handleLogin(e)}> LOGIN </button>
+                    </div>
+
+                    <div className={styles.section}>
+                        <h4> Or sign in with</h4>
+                        <br/>
+                        <GoogleBtn/>
+                    </div>
+
 
           <div className={styles.section}>
             <h4> Or sign in with</h4>
