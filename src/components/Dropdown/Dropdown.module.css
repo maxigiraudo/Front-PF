@@ -39,3 +39,15 @@
 .dropdownItem:hover {
   letter-spacing: 1px;
 }
+
+.botonSingOut {
+  border: none;
+  background-color: #16161a;
+  color: #cf4bff;
+  font-size: large;
+  cursor: pointer;
+  font-family: inherit;
+}
+.botonSingOut:hover {
+  letter-spacing: 1px;
+}
