@@ -62,7 +62,7 @@ export function getDetail(_id, token_adress) {
   return async function (dispatch) {
     try {
       let json = await axios.get(
-        `https://henry-proyecto-nft.herokuapp.com/api/tests/nftid?id=${_id}&token_address=${token_adress}`
+        `https://henry-proyecto-nft.herokuapp.com/api/nftid?id=${_id}&token_address=${token_adress}`
       );
       console.log("ES EL DETALLE", json);
       return dispatch({
