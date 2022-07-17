@@ -43,7 +43,7 @@ const GoogleBtn = () => {
     useEffect(()=> {
         function start() {
             gapi.client.init({
-                clientId: "316483334585-bejk0nmralds06iunsv9cougqgkt22qr.apps.googleusercontent.com",
+                clientId: "316483334585-pute8sjjkgj3mkom5ohlkijkdugiecoo.apps.googleusercontent.com",
                 scope: 'email',
             })
         }
@@ -89,7 +89,7 @@ const GoogleBtn = () => {
             {!logined ? <GoogleLogin
                 // className={styles.google}
                 
-                clientId='316483334585-bejk0nmralds06iunsv9cougqgkt22qr.apps.googleusercontent.com'
+                clientId='316483334585-pute8sjjkgj3mkom5ohlkijkdugiecoo.apps.googleusercontent.com'
                 buttonText='Acceder con Google'
                 // onclick={()=> onclick()}
                 onSuccess={(data)=>{respuestaGoogle(data);setLogined(true)}}
@@ -98,7 +98,7 @@ const GoogleBtn = () => {
             />:
             <GoogleLogout
                 // className={styles.google}
-                clientId='316483334585-bejk0nmralds06iunsv9cougqgkt22qr.apps.googleusercontent.com'
+                clientId='316483334585-pute8sjjkgj3mkom5ohlkijkdugiecoo.apps.googleusercontent.com'
                 buttonText='Logout'
                 onLogoutSuccess={()=>{logoutExistoso();setLogined(false)}}
                 onFailure={logoutRechazado}
