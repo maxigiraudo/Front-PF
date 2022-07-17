@@ -56,13 +56,45 @@
   cursor: pointer;
 }
 
-.wallet{
+.wallet {
   font-size: 2rem;
   font-weight: bolder;
   margin: 0 30px;
   cursor: pointer;
 }
+.padreDrop {
+  display: flex;
+}
+.dropdown {
+  margin-top: 15px;
+}
+.wallet:hover {
+  color: #9f9bf3;
+}
 
-.wallet:hover{
-  color: #6c63ff;
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  align-items: center;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  width: 100px;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

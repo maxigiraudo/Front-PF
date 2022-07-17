@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFavorite } from "../../redux/actions";
 import styles from "./Favorite.module.css";
+import Swal from "sweetalert2";
 
 export default function Favorite({ eliminarFavorito, favorito }) {
   // const favorites = useSelector((state) => state.favorite);
@@ -15,7 +16,20 @@ export default function Favorite({ eliminarFavorito, favorito }) {
   const dispatch = useDispatch();
 
   let handleClick = (e) => {
-    eliminarFavorito(e);
+    Swal.fire({
+      title: "Are you sure you want to remove from favorites?",
+
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted", "Your nft has been deleted.", "success");
+        eliminarFavorito(e);
+      }
+    });
   };
   return (
     <div>
@@ -29,6 +43,7 @@ export default function Favorite({ eliminarFavorito, favorito }) {
             {BsFillStarFill()}Your favorite NFT collection
           </h1>
         </div>
+
         {favorito.length === 0 ? (
           <div className={styles.box}>
             <p className={styles.noFav}>

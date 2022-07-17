@@ -17,7 +17,7 @@ export default function LandingPage() {
           <img src={logo} className={styles.logoLanding} alt="logo" />
           <span className={styles.textLanding}>
             {" "}
-            Welcome to your favorite NFT platform!{" "}
+            Welcome to Wallaby, a NFT platform!{" "}
           </span>
           <div className={styles.botonesLanding}>
             <Link to="/home">

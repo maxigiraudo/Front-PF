@@ -1,7 +1,5 @@
 import "./App.css";
-
 import { Route, Routes } from "react-router-dom";
-
 import LandingPage from "./components/LandingPage/LandingPage";
 import Home from "./components/Home/Home";
 import Detail from "./components/Detail/Detail";
@@ -15,8 +13,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Profile from "./components/Profile/Profile";
 import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
-
-
+import MyCollections from "./components/MyCollections/MyCollections";
 
 
 function App() {
@@ -24,6 +21,7 @@ function App() {
   if (!favoritoInicial) {
     favoritoInicial = [];
   }
+
   const [favorito, setFavorito] = useState(favoritoInicial);
 
   useEffect(() => {
@@ -43,7 +41,13 @@ function App() {
     if (copiaFavorito.length !== nuevoFavorito.length) {
       Swal.fire("", "Item already exist in the favorite", "error");
     } else {
-      Swal.fire("", "Item added to favorite succefully", "success");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Item added to favorite succefully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 
@@ -75,7 +79,13 @@ function App() {
     if (copiaCarrito.length !== nuevoCarrito.length) {
       Swal.fire("", "Item already exist in the cart", "error");
     } else {
-      Swal.fire("", "Item added to cart succefully", "success");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Item added to cart succefully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 
@@ -126,6 +136,7 @@ function App() {
             <Favorite eliminarFavorito={eliminarFavorito} favorito={favorito} />
           }
         />
+        <Route path="/mycollections" element={<MyCollections />} />
       </Routes>
     </div>
   );

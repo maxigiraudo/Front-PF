@@ -9,7 +9,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
-import { getNft, getNftAll, getSliderNft } from "../../redux/actions";
+import { getNft, getNftAll, getSliderNftArt } from "../../redux/actions";
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import Loading from "../Loading/Loading";
@@ -24,6 +24,7 @@ import video from "./images/video png (1).png";
 import world from "./images/world (1).png";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import SliderArt from "../SliderCat/SliderCat";
 
 export default function Home({ agregarCarrito, agregarFavorito }) {
   const allCard = useSelector((state) => state.cards);
@@ -33,8 +34,14 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   const dispatch = useDispatch();
   useEffect(() => {
     if (allCard.length === 0) dispatch(getNft());
+    
     // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
   }, [dispatch, cursori]);
+  
+
+  const catArt= useSelector((state)=> state.categoryArt)
+
+  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART",catArt)
 
   console.log(allCard);
 
@@ -42,7 +49,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
     dots: true,
     infinite: true,
     speed: 300,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     initialSlide: 0,
     rows: 1,
@@ -74,8 +81,8 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
       },
     ],
   };
-  function handleFilterByName(e) {
-    dispatch(getSliderNft(e));
+  function handleFilterByCategoryArt(e) {
+    dispatch(getSliderNftArt(e));
   }
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -86,21 +93,25 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
-    if (nftPerPage >= 1500) {
+    if (nftPerPage >= 1500  ) {
       setHasMore(false);
     }
     dispatch(getNftAll(cursori));
-  }, [currentPage]);
+  }, [currentPage,dispatch]);
+
+
+
+  
 
   return (
     <div className={style.containergeneral}>
       <div className={style.containerNav}>
         <Navbar />
-      </div>
+      </div>      
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
-          are looking for...
+          are loo
         </h1>
         <div className={style.carousel}>
           <Slider {...settings}>
@@ -112,7 +123,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={animals}
                   alt="*"
                   value="animals"
-                  onClick={(e) => handleFilterByName("animals")}
+                  //onClick={(e) => handleFilterByName("animals")}
                 />
               </div>
             </div>
@@ -124,7 +135,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={art}
                   alt="*"
                   value="art"
-                  onClick={(e) => handleFilterByName("art")}
+                  onClick={(e) => handleFilterByCategoryArt("art")}
                 />
               </div>
             </div>
@@ -136,7 +147,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={crypto}
                   alt="*"
                   value="crypto"
-                  onClick={(e) => handleFilterByName("crypto")}
+                  //onClick={(e) => handleFilterByName("crypto")}
                 />
               </div>
             </div>
@@ -148,7 +159,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={games}
                   alt="*"
                   value="games"
-                  onClick={(e) => handleFilterByName("games")}
+                  //onClick={(e) => handleFilterByName("games")}
                 />
               </div>
             </div>
@@ -160,7 +171,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={music}
                   alt="*"
                   value="music"
-                  onClick={(e) => handleFilterByName("music")}
+                  //onClick={(e) => handleFilterByName("music")}
                 />
               </div>
             </div>
@@ -172,7 +183,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={photography}
                   alt="*"
                   value="photography"
-                  onClick={(e) => handleFilterByName("photography")}
+                  //onClick={(e) => handleFilterByName("photography")}
                 />
               </div>
             </div>
@@ -184,7 +195,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={sports}
                   alt="*"
                   value="sports"
-                  onClick={(e) => handleFilterByName("sports")}
+                  //onClick={(e) => handleFilterByName("sports")}
                 />
               </div>
             </div>
@@ -196,7 +207,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={video}
                   alt="*"
                   value="video"
-                  onClick={(e) => handleFilterByName("video")}
+                  //onClick={(e) => handleFilterByName("video")}
                 />
               </div>
             </div>
@@ -208,16 +219,23 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={world}
                   alt="*"
                   value="world"
-                  onClick={(e) => handleFilterByName("world")}
+                  //onClick={(e) => handleFilterByName("world")}
                 />
               </div>
             </div>
           </Slider>
         </div>
       </div>
+      {catArt.length>0?
+      <div className={style.sli}>
+
+      <SliderArt/>
+      </div>
+      :(
+        <div>
       <div className={style.orderSearch}>
         <div className={style.navDos}>
-          <div>
+          <div className={style.searchBar}>
             <Searchbar setCurrentPage={setCurrentPage} />
           </div>
           <Link to="/cart">
@@ -254,6 +272,8 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
             ))}
           </InfiniteScroll>
         </div>
+      )}
+      </div>
       )}
 
       <div className={style.footer}>

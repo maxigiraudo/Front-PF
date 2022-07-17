@@ -11,7 +11,18 @@ const initialState = {
   contador: 0,
   favorite: [],
   user: [],
-  profile : []
+
+  profile : [],
+
+  useGoogle: {},
+  userIsAuthenticated: false,
+
+  nftCreados: [],
+
+  categoryArt: [],
+  userInfo: {},
+  isAuth: false,
+
 };
 
 export default function reducer(state = initialState, action) {
@@ -27,9 +38,11 @@ export default function reducer(state = initialState, action) {
     case "GET_SLIDER_NFT":
       const sinCu = action.payload;
       const sinCurso = sinCu.filter((e) => e.name);
+      const art = sinCurso.filter((e) => e.category === "art");
+      console.log("ESTA ES MI ACTION DE ART", art);
       return {
         ...state,
-        cards: sinCurso,
+        categoryArt: art,
       };
 
     // case "ORDER_BY_NAME":
@@ -117,8 +130,7 @@ export default function reducer(state = initialState, action) {
     case "CREATE_NFT_SUCCESS":
       return {
         ...state,
-        allCards: [action.payload, ...state.cards],
-        cards: [action.payload, ...state.cards],
+        nftCreados: [...state.nftCreados, action.payload],
         loading: false,
         error: false,
       };
@@ -126,7 +138,6 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user: [action.payload, ...state.user],
-
         loading: false,
         error: false,
       };
@@ -184,7 +195,7 @@ export default function reducer(state = initialState, action) {
     case "LOGIN_SUCCESS":
       return {
         ...state,
-        userIsAuthenticated: action.payload,
+        userIsAuthenticated: true,
       };
 
     case "ADD_FAVORITE":
@@ -197,6 +208,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         favorite: state.favorite.filter((e) => e !== action.payload),
       };
+
 
       case "GET_PROFILE":
         return {
@@ -212,6 +224,52 @@ export default function reducer(state = initialState, action) {
         }
 
       
+
+    case "REGISTER_USER_REQUEST": {
+      return {
+        ...state,
+        useGoogle: {},
+        userInfo: {},
+        error: false,
+        loading: true,
+        userIsAuthenticated: true,
+      };
+    }
+    case "REGISTER_USER_SUCCESS": {
+      return {
+        ...state,
+        useGoogle: action.payload,
+        userInfo: action.payload,
+        loading: false,
+        error: false,
+      };
+    }
+    case "REGISTER_USER_ERROR": {
+      return {
+        ...state,
+        useGoogle: {},
+        loading: false,
+        error: true,
+      };
+    }
+    case "USER_LOGIN_SUCCESS": {
+      return {
+        ...state,
+        useGoogle: {},
+        userInfo: action.payload,
+        loading: false,
+        error: false,
+        // userIsAuthenticated: true,
+        isAuth: true,
+      };
+    }
+    case "SINGOUT_OK": {
+      return {
+        ...state,
+        userIsAuthenticated: false,
+      };
+    }
+
     default:
       return state;
   }

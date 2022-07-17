@@ -21,6 +21,8 @@ body {
   margin-left: 55px;
 }
 
+
+
 .nameC {
   background: -webkit-linear-gradient(#d04bff, #6c63ff);
   background-clip: text;
@@ -74,6 +76,9 @@ body {
   width: 100%;
   z-index: 100
 }
+.searchBar{
+  margin-left: 430px;
+}
 .text {
   background: -webkit-linear-gradient(#d04bff, #6c63ff);
   background-clip: text;
@@ -85,13 +90,7 @@ body {
 .linkCard {
   text-decoration: none;
 }
-.orderSearch {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 2%;
-  justify-content: center;
-}
+
 
 .cardHome {
   display: flex;
@@ -116,6 +115,8 @@ body {
 
 .navDos {
   display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .carrito {
   background: linear-gradient(90deg, #cf4bffc5 0%, #6c63ff 100%);
@@ -125,7 +126,7 @@ body {
   padding: 2px;
   cursor: pointer;
   font-size: 15px;
-  margin-left: 600px;
+  margin-left: 200px;
   font-family: inherit;
   text-align: center;
   border: 3px solid #d04bff;
