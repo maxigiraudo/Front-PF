@@ -114,7 +114,6 @@ export function createNft({ name, description, file }) {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
       dispatch({
         type: "CREATE_NFT_ERROR",
         payload: true,
@@ -143,12 +142,14 @@ export function createAcount({ nombre, email, password }) {
         type: "CREATE_ACOUNT_SUCCESS",
         payload: json.data,
       });
+      window.location.href = "http://localhost:3000/login"
     } catch (error) {
-      console.log(error);
-      dispatch({
-        type: "CREATE_ACOUNT_ERROR",
-        payload: true,
+      Swal.fire({
+        icon: "error",
+        text: "Email existent",
+        showConfirmButton: true
       });
+      console.log("ESTE ES EL ERROR", error);
     }
   };
 }
@@ -160,13 +161,11 @@ const uploadFile = async (file) => {
   return imageURI;
 };
 
-export function getSliderNft(name) {
+export function getSliderNftArt() {
   return async function (dispatch) {
     try {
-      var json = await axios.get(
-        "https://henry-proyecto-nft.herokuapp.com/api/nfts/" + name
-      );
-      console.log(json);
+      let json = await axios.get("http://localhost:4000/api/nftcollection");
+      console.log("ESTA ES LA COLECCION",json);
       return dispatch({
         type: "GET_SLIDER_NFT",
 
@@ -222,6 +221,13 @@ export function postLogin(payload) {
           type: "LOGIN_SUCCESS",
           payload: response,
         });
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login Success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log("logueado");
       })
       .catch((err) => {
@@ -259,21 +265,33 @@ export const register = (body) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
     };
     const { data } = await axios.post(
-      "https://localhost:4000/api/signup",
-      // `${REACT_APP_API}/auth/api/signup`,
+      "http://localhost:4000/auth/api/signin",
       body,
       config
     );
-    dispatch({
-      type: 'REGISTER_USER_SUCCESS',
-      payload: data,
-    });
-    dispatch({
-      type: 'USER_LOGIN_SUCCESS',
-      payload: data,
-    });
-    Swal("Registro Exitoso",{icon:"success"});
-    window.location.href = "/home";
+    console.log("esta es la dataaa",data)
+    if(data.user.email) {
+      dispatch({
+        type: 'USER_LOGIN_SUCCESS',
+        payload: data,
+      });
+    } else{ 
+      const {data} = await axios.post("http://localhost:4000/auth/api/signup",
+      body,
+      config
+      );
+
+
+      dispatch({
+        type: 'REGISTER_USER_SUCCESS',
+        payload: data,
+      });
+      Swal("Registro Exitoso",{icon:"success"});
+      window.location.href = "/home";
+    }
+    
+    
+   
   } catch (error) {
     Swal("Credenciales Incorrectas", { icon: "warning" });
     dispatch({
@@ -282,3 +300,53 @@ export const register = (body) => async (dispatch) => {
     });
   }
 };
+
+
+export const login =
+  ({ email }) =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: 'USER_LOGIN_REQUEST',
+      });
+
+      const data = await axios.post(`http://localhost:4000/auth/api/signin`, {
+        email,
+        // password,
+      });
+      console.log("choclochoclo",data.request);
+      switch (data.request.status) {
+        case 200:
+          dispatch({
+            type: 'USER_LOGIN_SUCCESS',
+            payload: data.data,
+          });
+          localStorage.setItem("userInfo", JSON.stringify(data));
+          window.location.href = "/home";
+          break;
+        case 401:
+          
+          dispatch({
+            type: 'USER_LOGIN_ERROR',
+            payload: data.error,
+          });
+          Swal("Not allow", { icon: "warning" });
+          break;
+        case 500:
+          dispatch({
+            type: 'USER_LOGIN_ERROR',
+            payload: data.error,
+          });
+          Swal("Internal server error", { icon: "warning" });
+          break;
+        default:
+          break;
+      }
+    } catch (error) {
+      Swal("Credenciales Incorrectas", { icon: "warning" });
+      dispatch({
+        type: 'USER_LOGIN_ERROR',
+        payload: error,
+      });
+    }
+  };

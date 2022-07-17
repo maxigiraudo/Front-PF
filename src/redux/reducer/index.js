@@ -12,6 +12,7 @@ const initialState = {
   favorite: [],
   user: [],
   userIsAuthenticated: false,
+  categoryArt:[]
 };
 
 export default function reducer(state = initialState, action) {
@@ -27,9 +28,11 @@ export default function reducer(state = initialState, action) {
     case "GET_SLIDER_NFT":
       const sinCu = action.payload;
       const sinCurso = sinCu.filter((e) => e.name);
+      const art= sinCurso.filter((e)=> e.category === "art")
+      console.log("ESTA ES MI ACTION DE ART",art)
       return {
         ...state,
-        cards: sinCurso,
+        categoryArt: art,
       };
 
     // case "ORDER_BY_NAME":

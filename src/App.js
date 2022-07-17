@@ -38,7 +38,13 @@ function App() {
     if (copiaFavorito.length !== nuevoFavorito.length) {
       Swal.fire("", "Item already exist in the favorite", "error");
     } else {
-      Swal.fire("", "Item added to favorite succefully", "success");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Item added to favorite succefully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 
@@ -70,7 +76,13 @@ function App() {
     if (copiaCarrito.length !== nuevoCarrito.length) {
       Swal.fire("", "Item already exist in the cart", "error");
     } else {
-      Swal.fire("", "Item added to cart succefully", "success");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Item added to cart succefully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 

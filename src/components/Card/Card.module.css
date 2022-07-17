@@ -35,7 +35,7 @@
   margin-top: 5px;
 }
 .car {
-  font-size: 20px;
+  font-size: 23px;
   margin-left: 0px;
   color: #130ab8;
   background-color: #6c63ff;
@@ -43,11 +43,11 @@
   cursor: pointer;
 }
 .car:hover {
-  color: rgba(0, 0, 0, 0.849);
+  color: rgba(233, 233, 29, 0.938);
 }
 
-.star {
-  font-size: 20px;
+.heart {
+  font-size: 23px;
   width: 25px;
   margin-left: 70px;
   color: #130ab8;
@@ -55,8 +55,8 @@
   border: none;
   cursor: pointer;
 }
-.star:hover {
-  color: rgba(233, 233, 29, 0.938);
+.heart:hover {
+  color: red;
 }
 .card img {
   width: 80%;

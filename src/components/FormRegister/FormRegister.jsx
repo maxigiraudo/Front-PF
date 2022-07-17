@@ -8,8 +8,6 @@ import styles from "./FormRegister.module.css";
 import { Link } from "react-router-dom";
 import logG from "../Login/imgLogin.png";
 
-
-
 export default function FormRegister() {
   const [user, setUser] = useState({ nombre: "", email: "", password: "" });
   const [error, setError] = useState({
@@ -18,12 +16,11 @@ export default function FormRegister() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { nombre, email, password } = user;
+  console.log(user);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     dispatch(createAcount({ nombre, email, password }));
-    
-    navigate("/login");
   };
 
   const onChange = (e) => {
@@ -45,14 +42,19 @@ export default function FormRegister() {
   function validationForm(value) {
     let errors = {};
     if (!value.nombre) errors.nombre = "You must select a name";
-    else if (value.nombre.length < 4) {
-      errors.nombre = "It must contain at least 4 characters";
+    else if (value.nombre.length < 3) {
+      errors.nombre = "*It must contain at least 3 characters";
     }
-    if (value.password.length < 8) {
-      errors.password = "It must contain at least 8 characters";
+    if (
+      !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(
+        value.password
+      )
+    ) {
+      errors.password =
+        "*It should have 8 characters, 1 capital letter, and a number";
     }
     if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value.email)) {
-      errors.email = "You must enter an email";
+      errors.email = "*You must enter an email";
     }
     console.log(value);
     return errors;
@@ -105,7 +107,7 @@ export default function FormRegister() {
                 <input
                   name="password"
                   id="password"
-                  type="text"
+                  type="password"
                   className={styles.input}
                   placeholder="Write a valid Password... "
                   value={user.password}
