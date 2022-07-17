@@ -11,6 +11,7 @@ const initialState = {
   contador: 0,
   favorite: [],
   user: [],
+  profile : []
 };
 
 export default function reducer(state = initialState, action) {
@@ -197,8 +198,22 @@ export default function reducer(state = initialState, action) {
         favorite: state.favorite.filter((e) => e !== action.payload),
       };
 
+      case "GET_PROFILE":
+        return {
+          ...state,
+          profile: action.payload,
+  
+        };
+
+      case 'UPDATED_PROFILE_BY_ID' :
+        return {
+          ...state,
+          profile : action.payload
+        }
+
       
     default:
       return state;
   }
 }
+ 

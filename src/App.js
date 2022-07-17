@@ -13,6 +13,8 @@ import Login from "./components/Login/Login.jsx";
 import Favorite from "./components/Favorite/Favorite";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import Profile from "./components/Profile/Profile";
+import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 
 
 
@@ -116,6 +118,8 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="/FormEditProfile" element={<FormEditProfile />} />
         <Route
           path="/favorite"
           element={

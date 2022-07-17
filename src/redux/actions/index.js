@@ -242,3 +242,45 @@ export const addFavorite = (info) => {
     payload: info,
   };
 };
+
+export function getProfile(token){
+  return async function(dispatch){
+      try{
+          var json= await axios.get(`https://henry-proyecto-nft.herokuapp.com/profile/${token}`);
+         
+
+                    
+          return dispatch({
+              type : 'GET_PROFILE',
+              payload : json.data
+          })
+      }
+      catch(error){console.log(error)}
+
+  }
+
+}
+
+
+
+
+export function  updatedProfileById(token){
+  return async function(dispatch){
+      try{
+          var json= await axios.put(`https://henry-proyecto-nft.herokuapp.com/profile/${token}`);
+         
+
+                    
+          return dispatch({
+              type : 'UPDATED_PROFILE_BY_ID',
+              payload : json.data
+          })
+      }
+      catch(error){console.log(error)}
+
+  }
+
+}
+
+
+
