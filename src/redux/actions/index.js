@@ -259,7 +259,7 @@ export const addFavorite = (info) => {
     payload: info,
   };
 };
-
+////////////////////////////
 export const register = (body) => async (dispatch) => {
   // try {
   const newbody = { email: body.email, password: body.password };
@@ -287,7 +287,7 @@ export const register = (body) => async (dispatch) => {
       body = newbody;
       console.log("nuevo bodyyy", body);
       const { data } = await axios.post(
-        "https://henry-proyecto-nft.herokuapp.com/api/signin",
+        "https://henry-proyecto-nft.herokuapp.com/auth/api/signin",
         body,
         config
       );
