@@ -4,13 +4,13 @@ import styles from "./Navbar.module.css";
 import Logo from "./logo.png";
 import { useMoralis } from "react-moralis";
 import { BiWalletAlt } from "react-icons/bi";
-import { FaPowerOff } from "react-icons/fa";
 import Dropdown from "../Dropdown/Dropdown.jsx";
 import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const { authenticate, isAuthenticated, user } = useMoralis();
   const logged = useSelector((state) => state.userIsAuthenticated);
+
   const loginWallet = async () => {
     if (!isAuthenticated) {
       await authenticate()
@@ -38,7 +38,7 @@ export default function Navbar() {
                   <NavLink to="/form">
                     <li>Create NFT</li>
                   </NavLink>
-                  <NavLink to="/collection">
+                  <NavLink to="/mycollections">
                     <li>My Collection</li>
                   </NavLink>
                   <NavLink to="/about">
@@ -58,7 +58,7 @@ export default function Navbar() {
               <NavLink to="/form">
                 <li>Create NFT</li>
               </NavLink>
-              <NavLink to="/collection">
+              <NavLink to="/mycollections">
                 <li>My Collection</li>
               </NavLink>
               <NavLink to="/about">

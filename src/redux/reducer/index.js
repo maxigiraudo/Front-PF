@@ -12,7 +12,8 @@ const initialState = {
   favorite: [],
   user: [],
   userIsAuthenticated: false,
-  categoryArt:[]
+  categoryArt: [],
+  nftCreados: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -28,8 +29,8 @@ export default function reducer(state = initialState, action) {
     case "GET_SLIDER_NFT":
       const sinCu = action.payload;
       const sinCurso = sinCu.filter((e) => e.name);
-      const art= sinCurso.filter((e)=> e.category === "art")
-      console.log("ESTA ES MI ACTION DE ART",art)
+      const art = sinCurso.filter((e) => e.category === "art");
+      console.log("ESTA ES MI ACTION DE ART", art);
       return {
         ...state,
         categoryArt: art,
@@ -120,8 +121,7 @@ export default function reducer(state = initialState, action) {
     case "CREATE_NFT_SUCCESS":
       return {
         ...state,
-        allCards: [action.payload, ...state.cards],
-        cards: [action.payload, ...state.cards],
+        nftCreados: [...state.nftCreados, action.payload],
         loading: false,
         error: false,
       };
