@@ -2,9 +2,9 @@ import React from "react";
 import style from "./Card.module.css";
 import { BsFillCartCheckFill, BsFillHeartFill } from "react-icons/bs";
 import { AiFillHeart } from "react-icons/ai";
-import { Link } from "react-router-dom";
-
-import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Card({
   id,
@@ -18,12 +18,23 @@ export default function Card({
   let dispatch = useDispatch();
   // let [cont, setContador] = useState(1);
 
+  const navigate = useNavigate();
+
   let onClick = (e) => {
     agregarCarrito(e);
   };
   let onClickF = (e) => {
     agregarFavorito(e);
   };
+  let favorito = () => {
+    Swal.fire({
+      icon: "error",
+      text: "To add NFT to favorites you must be logged in.",
+    });
+    navigate("/login");
+  };
+
+  const logged = useSelector((state) => state.userIsAuthenticated);
 
   return (
     <div className={style.container}>
@@ -57,12 +68,18 @@ export default function Card({
           >
             {BsFillCartCheckFill()}{" "}
           </button>
-          <button
-            onClick={() => onClickF({ id, name, image })}
-            className={style.heart}
-          >
-            {AiFillHeart()}{" "}
-          </button>
+          {logged ? (
+            <button
+              onClick={() => onClickF({ id, name, image })}
+              className={style.heart}
+            >
+              {AiFillHeart()}{" "}
+            </button>
+          ) : (
+            <button onClick={() => favorito()} className={style.heartFeo}>
+              {AiFillHeart()}{" "}
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -87,3 +87,13 @@
   border-radius: 20px;
   object-fit: contain;
 }
+
+.heartFeo {
+  font-size: 23px;
+  width: 25px;
+  margin-left: 70px;
+  background-color: #6c63ff;
+  border: none;
+  cursor: pointer;
+  color: grey;
+}

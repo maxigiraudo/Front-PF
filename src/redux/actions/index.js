@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import Moralis from "moralis";
+import { MdCallToAction } from "react-icons/md";
 import Swal from "sweetalert2";
 
 export function orderByPrice(payload) {
@@ -212,7 +213,7 @@ export function contador(contador) {
   };
 }
 export function postLogin(payload) {
-  console.log('normla loguin f' + payload)
+  console.log("normla loguin f" + payload);
   return async function (dispatch) {
     axios
       .post("https://henry-proyecto-nft.herokuapp.com/api/login", payload)
@@ -245,11 +246,6 @@ export function postLogin(payload) {
   };
 }
 
-
-
-
-
-
 export const removeFavorite = (id) => {
   return {
     type: "REMOVE_FAVORITE",
@@ -264,73 +260,56 @@ export const addFavorite = (info) => {
   };
 };
 
-
 export const register = (body) => async (dispatch) => {
   // try {
-    const newbody = {email: body.email, password: body.password}
-    console.log("este es el bodyyyyy",body)
-    dispatch({
-      type: 'REGISTER_USER_REQUEST',
-    });
-    const config = {
-      headers: { "Content-Type": "application/json" },
-    };
-    try{
-      const { data } = await axios.post("http://localhost:4000/auth/api/signup",
+  const newbody = { email: body.email, password: body.password };
+  console.log("este es el bodyyyyy", body);
+  dispatch({
+    type: "REGISTER_USER_REQUEST",
+  });
+  const config = {
+    headers: { "Content-Type": "application/json" },
+  };
+  try {
+    const { data } = await axios.post(
+      "https://henry-proyecto-nft.herokuapp.com/auth/api/signup",
       body,
       config
+    );
+    dispatch({
+      type: "USER_LOGIN_SUCCESS",
+      payload: data,
+    });
+  } catch (err) {
+    const errorString = String(err).slice(0, 10);
+    if (errorString === "AxiosError") {
+      console.log("VAMOOOOOOOOOOOOO");
+      body = newbody;
+      console.log("nuevo bodyyy", body);
+      const { data } = await axios.post(
+        "https://henry-proyecto-nft.herokuapp.com/api/signin",
+        body,
+        config
       );
-
-
-
-      
       dispatch({
-        type: 'USER_LOGIN_SUCCESS',
+        type: "REGISTER_USER_SUCCESS",
         payload: data,
       });
-
-
-    }catch(err){
-      const errorString = String(err).slice(0,10);
-      
-
-
-      if(errorString === "AxiosError") {
-        console.log("VAMOOOOOOOOOOOOO")
-        body = newbody
-        console.log("nuevo bodyyy",body)
-        const { data } = await axios.post(
-          "http://localhost:4000/auth/api/signin",
-          body,
-          config
-        );
-        dispatch({
-          type: 'REGISTER_USER_SUCCESS',
-          payload: data,
-        });
-        console.log("LOGUEADO TITANN", data)
-        // Swal("Registro Exitoso",{icon:"success"});
-        // window.location.href = "/home";
-
-
-      } else {
-        return console.log(err)
-      }
-      
+      console.log("LOGUEADO TITANN", data);
+      // Swal("Registro Exitoso",{icon:"success"});
+      // window.location.href = "/home";
+    } else {
+      return console.log(err);
     }
-    
-    // console.log("esta es la dataaa",data)
-    // if(data.user.email) {
-      
-    // } else{
-      
+  }
 
+  // console.log("esta es la dataaa",data)
+  // if(data.user.email) {
 
-      
-    // }
-    
-    
-   
+  // } else{
+
+  // }
+
   // } catch (error) {
   //   Swal("Credenciales Incorrectas", { icon: "warning" });
   //   dispatch({
@@ -340,40 +319,38 @@ export const register = (body) => async (dispatch) => {
   // }
 };
 
-
 export const login =
   ({ email }) =>
   async (dispatch) => {
     try {
       dispatch({
-        type: 'USER_LOGIN_REQUEST',
+        type: "USER_LOGIN_REQUEST",
       });
 
       const data = await axios.post(`http://localhost:4000/auth/api/signin`, {
         email,
         // password,
       });
-      console.log("choclochoclo",data.request);
+      console.log("choclochoclo", data.request);
       switch (data.request.status) {
         case 200:
           dispatch({
-            type: 'USER_LOGIN_SUCCESS',
+            type: "USER_LOGIN_SUCCESS",
             payload: data.data,
           });
           localStorage.setItem("userInfo", JSON.stringify(data));
           window.location.href = "/home";
           break;
         case 401:
-          
           dispatch({
-            type: 'USER_LOGIN_ERROR',
+            type: "USER_LOGIN_ERROR",
             payload: data.error,
           });
           Swal("Not allow", { icon: "warning" });
           break;
         case 500:
           dispatch({
-            type: 'USER_LOGIN_ERROR',
+            type: "USER_LOGIN_ERROR",
             payload: data.error,
           });
           Swal("Internal server error", { icon: "warning" });
@@ -384,8 +361,14 @@ export const login =
     } catch (error) {
       Swal("Credenciales Incorrectas", { icon: "warning" });
       dispatch({
-        type: 'USER_LOGIN_ERROR',
+        type: "USER_LOGIN_ERROR",
         payload: error,
       });
     }
   };
+
+export function singoutOk() {
+  return {
+    type: "SINGOUT_OK",
+  };
+}
