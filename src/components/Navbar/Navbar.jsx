@@ -73,8 +73,11 @@ export default function Navbar() {
             </div>
           )}
         </ul>
-
-        <BiWalletAlt className={styles.wallet} onClick={() => loginWallet()} />
+        <div className={styles.tooltip}>
+          <BiWalletAlt className={styles.wallet} onClick={() => loginWallet()} />
+          <span className={styles.tooltiptext}>Wallet</span>
+        </div>
+        
       </nav>
     </header>
   );
