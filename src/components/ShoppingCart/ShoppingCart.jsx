@@ -93,7 +93,7 @@ export default function ShoppingCart({
             </div>
             <div>
               <button className={styles.botonAbajo} onClick={onClickClean}>
-                Celan Cart
+                Clean Cart
               </button>
               <button className={styles.botonAbajo}>Buy</button>
             </div>

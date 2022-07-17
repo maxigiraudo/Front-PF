@@ -113,7 +113,6 @@ export default function Login() {
           </div>
 
           <div className={styles.section}>
-            <h4> Or sign in with</h4>
             <br />
             {/* <GoogleLogin
               clientId="316483334585-mtc1sb8li7atn1ktu80si56gqf5bupc0.apps.googleusercontent.com"
