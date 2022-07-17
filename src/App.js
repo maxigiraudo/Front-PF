@@ -1,7 +1,5 @@
 import "./App.css";
-
 import { Route, Routes } from "react-router-dom";
-
 import LandingPage from "./components/LandingPage/LandingPage";
 import Home from "./components/Home/Home";
 import Detail from "./components/Detail/Detail";
@@ -13,12 +11,14 @@ import Login from "./components/Login/Login.jsx";
 import Favorite from "./components/Favorite/Favorite";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import MyCollections from "./components/MyCollections/MyCollections";
 
 function App() {
   let favoritoInicial = JSON.parse(localStorage.getItem("favorito"));
   if (!favoritoInicial) {
     favoritoInicial = [];
   }
+
   const [favorito, setFavorito] = useState(favoritoInicial);
 
   useEffect(() => {
@@ -131,6 +131,7 @@ function App() {
             <Favorite eliminarFavorito={eliminarFavorito} favorito={favorito} />
           }
         />
+        <Route path="/mycollections" element={<MyCollections />} />
       </Routes>
     </div>
   );

@@ -3,10 +3,11 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import styles from "../Login/Login.module.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import validateForm from '../Login/validation.js';
+import validateForm from "../Login/validation.js";
 import { Link } from "react-router-dom";
+
 import imgLogin from "./imgLogin.png"
 import {postLogin} from "../../redux/actions/index.js";
 
@@ -16,36 +17,36 @@ import {postLogin} from "../../redux/actions/index.js";
 import GoogleBtn from "../Google";
 
 
+
 export default function Login() {
-    const dispatch = useDispatch()
-    const navigate = useNavigate();
-  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
-        email: "",
-        password: ""
-    })
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-    const [formErrors, setFormErrors] = useState({ 
-        error: "" ,
-        email: "",
-        password: "",
-    })
+  const [formErrors, setFormErrors] = useState({
+    error: "",
+    email: "",
+    password: "",
+  });
 
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    const handleInputChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    }
+  const handleInputOnBlur = (e) => {
+    setFormErrors({
+      ...formErrors,
+      [e.target.name]: validateForm(formData)[e.target.name],
+    });
+  };
 
-    const handleInputOnBlur = (e) => {
-        setFormErrors({
-            ...formErrors,
-            [e.target.name]: validateForm(formData)[e.target.name],
-        });
-    }
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -112,17 +113,29 @@ export default function Login() {
                         <GoogleBtn/>
                     </div>
 
-                    <div className={styles.register}>
-                        <p className="login-text">Not a member yet? </p>
-                        <Link className="login-link" to='/formRegister'>
-                            <p className='login-text'> Register! </p>
-                        </Link>
-                    </div>
-                </div>
-            </div>
 
-            <Footer />
+          <div className={styles.section}>
+            <h4> Or sign in with</h4>
+            <br />
+            <GoogleLogin
+              clientId="316483334585-mtc1sb8li7atn1ktu80si56gqf5bupc0.apps.googleusercontent.com"
+              buttonText="Login"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+            />
+          </div>
+
+          <div className={styles.register}>
+            <p className="login-text">Not a member yet? </p>
+            <Link className="login-link" to="/formRegister">
+              <p className="login-text"> Register! </p>
+            </Link>
+          </div>
         </div>
-    )
-}
+      </div>
 
+      <Footer />
+    </div>
+  );
+}

@@ -142,12 +142,12 @@ export function createAcount({ nombre, email, password }) {
         type: "CREATE_ACOUNT_SUCCESS",
         payload: json.data,
       });
-      window.location.href = "http://localhost:3000/login"
+      window.location.href = "https://wallaby-neon.vercel.app/login";
     } catch (error) {
       Swal.fire({
         icon: "error",
         text: "Email existent",
-        showConfirmButton: true
+        showConfirmButton: true,
       });
       console.log("ESTE ES EL ERROR", error);
     }
@@ -165,7 +165,7 @@ export function getSliderNftArt() {
   return async function (dispatch) {
     try {
       let json = await axios.get("http://localhost:4000/api/nftcollection");
-      console.log("ESTA ES LA COLECCION",json);
+      console.log("ESTA ES LA COLECCION", json);
       return dispatch({
         type: "GET_SLIDER_NFT",
 
@@ -228,9 +228,18 @@ export function postLogin(payload) {
           showConfirmButton: false,
           timer: 1500,
         });
+        // window.location.href = "http://localhost:3000/home";
         console.log("logueado");
       })
       .catch((err) => {
+        if (err.response.status === 400) {
+          Swal.fire({
+            icon: "error",
+            text: "Email or password incorrect or inexistent",
+            showConfirmButton: true,
+          });
+        }
+
         console.log(err);
       });
   };
