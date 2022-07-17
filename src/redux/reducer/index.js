@@ -11,8 +11,11 @@ const initialState = {
   contador: 0,
   favorite: [],
   user: [],
+  useGoogle:{},
   userIsAuthenticated: false,
-  categoryArt:[]
+  categoryArt:[],
+  userInfo: {},
+  isAuth: false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -202,36 +205,37 @@ export default function reducer(state = initialState, action) {
       case 'REGISTER_USER_REQUEST': {
         return {
           ...state,
-          user: {},
+          useGoogle: {},
           userInfo: {},
           error: false,
-          isLoading: true,
+          loading: true,
         };
       }
       case 'REGISTER_USER_SUCCESS': {
         return {
           ...state,
-          user: action.payload,
+          useGoogle: action.payload,
           userInfo: action.payload,
-          isLoading: false,
+          loading: false,
           error: false,
         };
       }
       case 'REGISTER_USER_ERROR': {
         return {
           ...state,
-          user: {},
-          isLoading: false,
+          useGoogle: {},
+          loading: false,
           error: true,
         };
       }
       case 'USER_LOGIN_SUCCESS': {
         return {
           ...state,
-          user: {},
+          useGoogle: {},
           userInfo: action.payload,
-          isLoading: false,
+          loading: false,
           error: false,
+          // userIsAuthenticated: true,
           isAuth: true,
         };
       }

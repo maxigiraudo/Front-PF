@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Moralis from "moralis";
 import Swal from "sweetalert2";
 
@@ -257,48 +257,78 @@ export const addFavorite = (info) => {
 
 
 export const register = (body) => async (dispatch) => {
-  try {
+  // try {
+    const newbody = {email: body.email, password: body.password}
+    console.log("este es el bodyyyyy",body)
     dispatch({
       type: 'REGISTER_USER_REQUEST',
     });
     const config = {
       headers: { "Content-Type": "application/json" },
     };
-    const { data } = await axios.post(
-      "http://localhost:4000/auth/api/signin",
-      body,
-      config
-    );
-    console.log("esta es la dataaa",data)
-    if(data.user.email) {
-      dispatch({
-        type: 'USER_LOGIN_SUCCESS',
-        payload: data,
-      });
-    } else{ 
-      const {data} = await axios.post("http://localhost:4000/auth/api/signup",
+    try{
+      const { data } = await axios.post("http://localhost:4000/auth/api/signup",
       body,
       config
       );
 
 
+
+      
       dispatch({
-        type: 'REGISTER_USER_SUCCESS',
+        type: 'USER_LOGIN_SUCCESS',
         payload: data,
       });
-      Swal("Registro Exitoso",{icon:"success"});
-      window.location.href = "/home";
+
+
+    }catch(err){
+      const errorString = String(err).slice(0,10);
+      
+
+
+      if(errorString === "AxiosError") {
+        console.log("VAMOOOOOOOOOOOOO")
+        body = newbody
+        console.log("nuevo bodyyy",body)
+        const { data } = await axios.post(
+          "http://localhost:4000/auth/api/signin",
+          body,
+          config
+        );
+        dispatch({
+          type: 'REGISTER_USER_SUCCESS',
+          payload: data,
+        });
+        console.log("LOGUEADO TITANN", data)
+        // Swal("Registro Exitoso",{icon:"success"});
+        // window.location.href = "/home";
+
+
+      } else {
+        return console.log(err)
+      }
+      
     }
+    
+    // console.log("esta es la dataaa",data)
+    // if(data.user.email) {
+      
+    // } else{
+      
+
+
+      
+    // }
     
     
    
-  } catch (error) {
-    Swal("Credenciales Incorrectas", { icon: "warning" });
-    dispatch({
-      type: 'REGISTER_USER_ERROR',
-      payload: error,
-    });
-  }
+  // } catch (error) {
+  //   Swal("Credenciales Incorrectas", { icon: "warning" });
+  //   dispatch({
+  //     type: 'REGISTER_USER_ERROR',
+  //     payload: error,
+  //   });
+  // }
 };
 
 

@@ -3,7 +3,7 @@ import { GoogleLogin , GoogleLogout} from 'react-google-login';
 import { gapi } from "gapi-script";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { createAcount, postLogin } from '../../redux/actions';
+import { createAcount, login, postLogin } from '../../redux/actions';
 import { useEffect } from 'react';
 import { register } from '../../redux/actions';
 
@@ -68,8 +68,10 @@ const GoogleBtn = () => {
             const {email, familyName , googleId, imageUrl, name} = data.profileObj;//profileObj contiene la info del usuario
             dispatch(register({
                 email:email,
+                // password:"henrynfT@",
                 password: familyName + name.length +'A@',
-                fullName:name,
+
+                fullName: name,
                 profile_pic: imageUrl,
                 googleId: googleId
                 
