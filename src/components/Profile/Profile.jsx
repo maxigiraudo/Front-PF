@@ -13,7 +13,7 @@ export default function Profile(){
     //console.log(props)
     const dispatch = useDispatch()
     const token = useSelector((state)=>state.userData.email)
-    const emailGoogle= useSelector((state)=> state.userInfo)
+    const emailGoogle= useSelector((state)=> state.userInfo.user.email)
     console.log(emailGoogle)
 
     useEffect(()=>{
