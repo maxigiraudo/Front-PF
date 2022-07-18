@@ -1,6 +1,7 @@
 const initialState = {
   cards: [],
   allCards: [],
+  searchCards: [],
   detail: [],
   category: [],
   carrito: [],
@@ -12,17 +13,16 @@ const initialState = {
   favorite: [],
   user: [],
 
-  profile : [],
+  profile: [],
 
   useGoogle: {},
   userIsAuthenticated: false,
   userData: {},
   nftCreados: [],
-  userRegister:false,
+  userRegister: false,
   categoryArt: [],
   userInfo: {},
   isAuth: false,
-
 };
 
 export default function reducer(state = initialState, action) {
@@ -138,7 +138,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user: [action.payload, ...state.user],
-        userRegister:true,
+        userRegister: true,
         loading: false,
         error: false,
       };
@@ -223,21 +223,17 @@ export default function reducer(state = initialState, action) {
         favorite: state.favorite.filter((e) => e !== action.payload),
       };
 
+    case "GET_PROFILE":
+      return {
+        ...state,
+        profile: action.payload,
+      };
 
-      case "GET_PROFILE":
-        return {
-          ...state,
-          profile: action.payload,
-  
-        };
-
-      case 'UPDATED_PROFILE_BY_ID' :
-        return {
-          ...state,
-          profile : action.payload
-        }
-
-      
+    case "UPDATED_PROFILE_BY_ID":
+      return {
+        ...state,
+        profile: action.payload,
+      };
 
     case "REGISTER_USER_REQUEST": {
       return {
@@ -288,4 +284,3 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
- 

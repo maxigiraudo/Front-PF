@@ -21,8 +21,6 @@ body {
   margin-left: 55px;
 }
 
-
-
 .nameC {
   background: -webkit-linear-gradient(#d04bff, #6c63ff);
   background-clip: text;
@@ -74,9 +72,9 @@ body {
   top: 0;
   right: 0;
   width: 100%;
-  z-index: 100
+  z-index: 100;
 }
-.searchBar{
+.searchBar {
   margin-left: 430px;
 }
 .text {
@@ -90,7 +88,6 @@ body {
 .linkCard {
   text-decoration: none;
 }
-
 
 .cardHome {
   display: flex;
@@ -134,4 +131,15 @@ body {
 .carrito:hover {
   background: #16161a;
   color: #cf4bffc5;
+}
+
+.noResult {
+  margin: 200px;
+  color: white;
+  text-align: center;
+  font-size: 25px;
+  background: -webkit-linear-gradient(#d04bff, #6c63ff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: tomato;
 }
