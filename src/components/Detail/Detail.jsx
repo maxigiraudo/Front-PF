@@ -10,8 +10,10 @@ import { useEffect } from "react";
 import { getDetail, resState } from "../../redux/actions";
 import { useParams, Link } from "react-router-dom";
 
+export default function Detail({ agregarCarrito, agregarFavorito }) {
+  const logged = useSelector((state) => state.userIsAuthenticated);
+  const nft = useSelector((state) => state.detail);
 
-export default function Detail() {
 
   let { id, token_address } = useParams();
 
@@ -52,6 +54,55 @@ export default function Detail() {
                 <p className={styles.car}>{BsFillCartCheckFill()} </p>
                 <p className={styles.star}>{BsFillStarFill()} </p>
               </div>
+            <div className={styles.todos}>
+              <div>
+                <img
+                  className={styles.imagen}
+                  src={card.image}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://cryptodozer.io/static/images/dozer/meta/dolls/300.png";
+                  }}
+                  alt="nft"
+                />
+              </div>
+
+            
+              
+
+              <div className={styles.description}>
+                <h3 className={styles.name}>{card.name}</h3>
+                <h5 className={styles.des}>Collection: {card.collection}</h5>
+                <div className={styles.abajo}>
+                  <button
+                    onClick={() =>
+                      onClick({ name: nft.name, image: nft.image })
+                    }
+                    className={styles.car}
+                  >
+                    {BsFillCartCheckFill()}{" "}
+                  </button>
+                  {logged ? (
+                    <button
+                      onClick={() =>
+                        onClickF({ name: nft.name, image: nft.image })
+                      }
+                      className={styles.heart}
+                    >
+                      {AiFillHeart()}{" "}
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => favorito()}
+                      className={styles.heartFeo}
+                    >
+                      {AiFillHeart()}{" "}
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
             </div>
           </div>
           <div className={styles.footer}>
