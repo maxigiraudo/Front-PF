@@ -26,6 +26,7 @@ export default function Profile(){
     const profile = useSelector((state)=>state.profile)
     const profileGoogle = useSelector((state)=> state.profileGoogle)
     console.log(profile)
+    console.log(profileGoogle)
 
 
   return (
