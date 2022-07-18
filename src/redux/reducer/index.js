@@ -15,7 +15,7 @@ const initialState = {
   userIsAuthenticated: false,
   userData: {},
   nftCreados: [],
-
+  userRegister:false,
   categoryArt: [],
   userInfo: {},
   isAuth: false,
@@ -134,6 +134,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user: [action.payload, ...state.user],
+        userRegister:true,
         loading: false,
         error: false,
       };

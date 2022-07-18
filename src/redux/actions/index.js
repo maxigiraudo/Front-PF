@@ -143,7 +143,13 @@ export function createAcount({ nombre, email, password }) {
         type: "CREATE_ACOUNT_SUCCESS",
         payload: json.data,
       });
-      window.location.href = "https://wallaby-neon.vercel.app/login";
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Account created",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (error) {
       Swal.fire({
         icon: "error",
