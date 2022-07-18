@@ -6,7 +6,7 @@ import styles from "../Login/Login.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import validateForm from "../Login/validation.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import imgLogin from "./imgLogin.png";
 import { postLogin } from "../../redux/actions/index.js";
@@ -18,6 +18,10 @@ import GoogleBtn from "../Google";
 
 export default function Login() {
   const dispatch = useDispatch();
+
+  const navigate = useNavigate()
+
+  const logginAut = useSelector((state)=> state.userIsAuthenticated)
 
   const [formData, setFormData] = useState({
     email: "",
@@ -54,6 +58,13 @@ export default function Login() {
     });
   };
 
+  console.log("este es login", logginAut)
+
+  function alHome(){
+    return navigate("/home")
+  }
+
+
   // const responseGoogle = (response) => {
   //     dispatch(postLoginGoogle(response))
   //   }
@@ -69,6 +80,9 @@ export default function Login() {
   //   })
 
   return (
+    <div>
+    {logginAut === true? alHome() :
+    (
     <div>
       <Navbar />
       <Link to="/home">
@@ -126,6 +140,7 @@ export default function Login() {
       </div>
 
       <Footer />
+    </div>)}
     </div>
   );
 }

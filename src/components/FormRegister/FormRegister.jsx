@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createAcount } from "../../redux/actions";
 import Footer from "../Footer/Footer";
@@ -18,6 +18,8 @@ export default function FormRegister() {
   const dispatch = useDispatch();
   const { nombre, email, password } = user;
   console.log(user);
+
+  const userAuth = useSelector((state)=> state.userRegister)
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -61,7 +63,15 @@ export default function FormRegister() {
     return errors;
   }
 
+  function alHome(){
+    return navigate("/login")
+  }
+
   return (
+    <div>
+      {userAuth === true? alHome(): (
+       
+    
     <div className={styles.containerPadre}>
       <Navbar />
       <Link to="/home">
@@ -147,6 +157,7 @@ export default function FormRegister() {
         </div>
       </div>
       <Footer />
+    </div>)}
     </div>
   );
 }
