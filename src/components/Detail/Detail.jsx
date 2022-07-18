@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { getDetail, resState } from "../../redux/actions";
 import { useParams, Link } from "react-router-dom";
 
+
 export default function Detail() {
 
   let { id, token_address } = useParams();
@@ -56,9 +57,10 @@ export default function Detail() {
               <p className={styles.charge}>If you don't have enough money in your metamask wallet to make 
               an offer or buy a nft, you can charge it with your credit card in a few simple steps.</p>
                  <br></br>
-                <a href={"https://widget.onramper.com?color=1d2d50&apiKey=pk_test_x5M_5fdXzn1fxK04seu0JgFjGsu7CH8lOvS9xZWzuSM0"}>
+              <Link to='/payment'>
               <button className={styles.buttonBuy}>CHARGE</button>
-              </a>
+              </Link>
+              
             </div>
           </div>
           <div className={styles.footer}>
