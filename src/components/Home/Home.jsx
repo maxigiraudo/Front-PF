@@ -45,6 +45,10 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
     // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
   }, [dispatch, cursori]);
 
+  
+  
+
+
   const catArt = useSelector((state) => state.categoryArt);
 
   console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catArt);
@@ -236,6 +240,14 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
         <div className={style.sli}>
           <SliderArt />
         </div>
+
+      </div>
+      {currentNft.length === 0 && currentNft ? (
+        <div>         
+        <Loading />
+        <h1 className={style.h1deload}>NO RESULTS FOUND</h1>
+        </div>
+
       ) : (
         <div>
           <div className={style.orderSearch}>

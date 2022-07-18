@@ -5,7 +5,8 @@ import Logo from "./logo.png";
 import { useMoralis } from "react-moralis";
 import { BiWalletAlt } from "react-icons/bi";
 import Dropdown from "../Dropdown/Dropdown.jsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getNft } from "../../redux/actions";
 
 export default function Navbar() {
   const { authenticate, isAuthenticated, user } = useMoralis();
@@ -22,12 +23,18 @@ export default function Navbar() {
         });
     }
   };
+
+  const dispatch=useDispatch()
+
+  function cargarHome(){
+    dispatch(getNft())
+  }
   return (
     <header className={styles.container}>
       <NavLink to="/home" className={styles.home}>
-        <li>
+        <button onClick={()=> cargarHome()} className={styles.buttonW} >
           <img className={styles.logo} src={Logo} alt="" />
-        </li>
+        </button>
       </NavLink>
       <nav className={styles.navBar}>
         <ul>

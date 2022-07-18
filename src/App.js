@@ -8,6 +8,7 @@ import About from "./components/About/About";
 import FormRegister from "./components/FormRegister/FormRegister";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Login from "./components/Login/Login.jsx";
+import Payment from "./components/Payment/Payment";
 import Favorite from "./components/Favorite/Favorite";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -124,6 +125,7 @@ function App() {
         />
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
+        <Route path="/payment" element={<Payment/>} />
         <Route path="/formRegister" element={<FormRegister />} />
         <Route
           path="/cart"
@@ -136,7 +138,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/Profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/FormEditProfile" element={<FormEditProfile />} />
         <Route
           path="/favorite"
