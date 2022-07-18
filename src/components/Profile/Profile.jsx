@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,6 +29,10 @@ export default function Profile(){
     console.log(profile)
 
 
+  const profiles = useSelector((state) => state.profile);
+  //console.log(profile)
+
+  console.log(profiles);
   return (
     <div className={styles.containerPadre}>
       <Navbar />
@@ -37,6 +42,7 @@ export default function Profile(){
 
       <div className={styles.padre}>
         <div className={styles.container}>
+
           <h1 className={styles.colorh1}>Hi .</h1>
 
             <div className={styles.two}>
@@ -66,20 +72,12 @@ export default function Profile(){
                 </Link>
                 <Link to="/mycollections" >
                 <button className={styles.inputEnviar}>Go to my collection!</button>
-                </Link>
-                
-
-              </div>
+                </Link>          
             </div>
-
-
-
-
+          </div>
         </div>
       </div>
       <Footer />
     </div>
   );
 }
-
-
