@@ -46,7 +46,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   }, [dispatch, cursori]);
 
   
-  
+  console.log(cursori,"Hola")
 
 
   const catArt = useSelector((state) => state.categoryArt);
