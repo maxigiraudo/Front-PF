@@ -20,6 +20,7 @@ const initialState = {
   categoryArt: [],
   userInfo: {},
   isAuth: false,
+  profileGoogle:[]
 
 };
 
@@ -229,6 +230,12 @@ export default function reducer(state = initialState, action) {
           profile: action.payload,
   
         };
+        case "GET_PROFILE_GOOGLE":
+        return {
+          ...state,
+          profileGoogle: action.payload,
+  
+        };
 
       case 'UPDATED_PROFILE_BY_ID' :
         return {
@@ -249,15 +256,12 @@ export default function reducer(state = initialState, action) {
       };
     }
     case "REGISTER_USER_SUCCESS": {
-      const usser= action.payload
-      const estoAUser= usser.user
       return {
         ...state,
         useGoogle: action.payload,
         userInfo: action.payload,
         loading: false,
         error: false,
-        userData: estoAUser
       };
     }
     case "REGISTER_USER_ERROR": {
