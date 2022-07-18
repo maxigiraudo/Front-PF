@@ -1,6 +1,7 @@
 const initialState = {
   cards: [],
   allCards: [],
+  searchCards: [],
   detail: [],
   category: [],
   carrito: [],
@@ -18,10 +19,13 @@ const initialState = {
   userIsAuthenticated: false,
   userData: {},
   nftCreados: [],
-  userRegister:false,
+  userRegister: false,
   categoryArt: [],
   userInfo: {},
   isAuth: false,
+
+  profileGoogle:[]
+
 
 };
 
@@ -135,10 +139,11 @@ export default function reducer(state = initialState, action) {
         error: false,
       };
     case "CREATE_ACOUNT_SUCCESS":
+      console.log("ESTO ES LO QUE ME LLEGA DE PAYLOAD DE LA CREACION DEL USUARIO",action.payload)
       return {
         ...state,
         user: [action.payload, ...state.user],
-        userRegister:true,
+        userRegister: true,
         loading: false,
         error: false,
       };
@@ -223,11 +228,23 @@ export default function reducer(state = initialState, action) {
         favorite: state.favorite.filter((e) => e !== action.payload),
       };
 
+    case "GET_PROFILE":
+      return {
+        ...state,
+        profile: action.payload,
+      };
+
 
       case "GET_PROFILE":
         return {
           ...state,
           profile: action.payload,
+  
+        };
+        case "GET_PROFILE_GOOGLE":
+        return {
+          ...state,
+          profileGoogle: action.payload,
   
         };
 
@@ -236,8 +253,6 @@ export default function reducer(state = initialState, action) {
           ...state,
           profile : action.payload
         }
-
-      
 
     case "REGISTER_USER_REQUEST": {
       return {
@@ -288,4 +303,3 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
- 

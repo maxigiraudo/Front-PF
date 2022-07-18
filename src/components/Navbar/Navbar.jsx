@@ -4,18 +4,27 @@ import styles from "./Navbar.module.css";
 import Logo from "./logo.png";
 import { BiWalletAlt } from "react-icons/bi";
 import Dropdown from "../Dropdown/Dropdown.jsx";
-import { useSelector } from "react-redux";
-import DropDownWallet from "../DropwdownWallet/DropDownWallet.jsx"
+
+import DropDownWallet from "../DropwdownWallet/DropDownWallet.jsx";
+
+import { useDispatch, useSelector } from "react-redux";
+import { getNft } from "../../redux/actions";
 
 export default function Navbar() {
   const logged = useSelector((state) => state.userIsAuthenticated);
 
+  const dispatch = useDispatch();
+
+  function cargarHome() {
+    dispatch(getNft());
+  }
+
   return (
     <header className={styles.container}>
       <NavLink to="/home" className={styles.home}>
-        <li>
+        <button onClick={() => cargarHome()} className={styles.buttonW}>
           <img className={styles.logo} src={Logo} alt="" />
-        </li>
+        </button>
       </NavLink>
       <nav className={styles.navBar}>
         <ul>
@@ -59,7 +68,7 @@ export default function Navbar() {
           )}
         </ul>
         <div className={styles.dropdown}>
-                <DropDownWallet className={styles.wallet}></DropDownWallet>
+          <DropDownWallet className={styles.wallet}></DropDownWallet>
         </div>
         {/* <div className={styles.tooltip}>
           <BiWalletAlt

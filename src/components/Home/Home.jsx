@@ -38,6 +38,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
     // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
   }, [dispatch, cursori]);
   
+  
 
   const catArt= useSelector((state)=> state.categoryArt)
 
@@ -249,7 +250,10 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
         </div>
       </div>
       {currentNft.length === 0 && currentNft ? (
+        <div>         
         <Loading />
+        <h1 className={style.h1deload}>NO RESULTS FOUND</h1>
+        </div>
       ) : (
         <div>
           <InfiniteScroll
