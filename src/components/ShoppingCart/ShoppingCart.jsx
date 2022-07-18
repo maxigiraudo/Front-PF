@@ -106,13 +106,11 @@ export default function ShoppingCart({
                 in a few simple steps.
               </p>
               <br></br>
-              <a
-                href={
-                  "https://widget.onramper.com?color=1d2d50&apiKey=pk_test_x5M_5fdXzn1fxK04seu0JgFjGsu7CH8lOvS9xZWzuSM0"
-                }
-              >
+              <Link to="/payment" >
                 <button className={styles.buttonBuy}>CHARGE</button>
-              </a>
+
+              </Link>
+             
             </div>
           </div>
         ) : (
