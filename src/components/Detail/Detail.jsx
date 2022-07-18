@@ -8,7 +8,9 @@ import Footer from "../Footer/Footer";
 import Loading from "../Loading/Loading";
 import { useEffect } from "react";
 import { getDetail, resState } from "../../redux/actions";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { AiFillHeart } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 export default function Detail({ agregarCarrito, agregarFavorito }) {
   const logged = useSelector((state) => state.userIsAuthenticated);
@@ -31,6 +33,22 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
 
   console.log(card);
 
+  const navigate = useNavigate();
+
+  let onClick = (e) => {
+    agregarCarrito(e);
+  };
+  let onClickF = (e) => {
+    agregarFavorito(e);
+  };
+  let favorito = () => {
+    Swal.fire({
+      icon: "error",
+      text: "To add NFT to favorites you must be logged in.",
+    });
+    navigate("/login");
+  };
+
   return (
     <div>
       {card.image ? (
@@ -44,16 +62,6 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
             </Link>
           </div>
           <div className={styles.padre}>
-            <div>
-              <img className={styles.imagen} src={card.image}  onError={(e)=>{e.target.onerror = null; e.target.src="https://cryptodozer.io/static/images/dozer/meta/dolls/300.png"}} alt="nft" />
-            </div>
-            <div className={styles.description}>
-              <h3 className={styles.name}>{card.name}</h3>
-              <h5 className={styles.des}>Collection: {card.collection}</h5>
-              <div className={styles.priceCF}>
-                <p className={styles.car}>{BsFillCartCheckFill()} </p>
-                <p className={styles.star}>{BsFillStarFill()} </p>
-              </div>
             <div className={styles.todos}>
               <div>
                 <img
@@ -103,6 +111,13 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
                 </div>
               </div>
             </div>
+            <br></br>
+              <p className={styles.charge}>If you don't have enough money in your metamask wallet to make 
+              an offer or buy a nft, you can charge it with your credit card in a few simple steps.</p>
+                 <br></br>
+              <Link to='/payment'>
+              <button className={styles.buttonBuy}>CHARGE</button>
+              </Link>
             </div>
           <div className={styles.footer}>
             <Footer />
