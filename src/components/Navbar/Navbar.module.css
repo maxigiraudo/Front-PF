@@ -13,6 +13,13 @@
 .container a {
   text-decoration: none;
 }
+.buttonW{
+  background-color: #16161a;
+  border: none;
+}
+.buttonW:hover{
+  cursor: pointer;
+}
 
 .home li {
   background: -webkit-linear-gradient(#d04bff, #6c63ff);

@@ -138,7 +138,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/Profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/FormEditProfile" element={<FormEditProfile />} />
         <Route
           path="/favorite"

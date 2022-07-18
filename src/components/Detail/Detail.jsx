@@ -104,7 +104,6 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
               </div>
             </div>
             </div>
-          </div>
           <div className={styles.footer}>
             <Footer />
           </div>
