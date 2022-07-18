@@ -6,7 +6,7 @@ import styles from "../Login/Login.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import validateForm from "../Login/validation.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import imgLogin from "./imgLogin.png";
 import { postLogin } from "../../redux/actions/index.js";
@@ -18,6 +18,10 @@ import GoogleBtn from "../Google";
 
 export default function Login() {
   const dispatch = useDispatch();
+
+  const navigate = useNavigate()
+
+  const logginAut = useSelector((state)=> state.userIsAuthenticated)
 
   const [formData, setFormData] = useState({
     email: "",
@@ -54,6 +58,13 @@ export default function Login() {
     });
   };
 
+  console.log("este es login", logginAut)
+
+  function alHome(){
+    return navigate("/home")
+  }
+
+
   // const responseGoogle = (response) => {
   //     dispatch(postLoginGoogle(response))
   //   }
@@ -69,6 +80,9 @@ export default function Login() {
   //   })
 
   return (
+    <div>
+    {logginAut === true? alHome() :
+    (
     <div>
       <Navbar />
       <Link to="/home">
@@ -108,33 +122,25 @@ export default function Login() {
             </button>
           </div>
 
+          <div className={styles.register}>
+            <p className={styles.loginText}>Not a member yet? {"  "}</p>
+            <Link className="login-link" to="/formRegister">
+              <p className="login-text">{"  "} Register! </p>
+            </Link>
+          </div>
+          <br />
           <div className={styles.section}>
             <h4> Or sign in with</h4>
             <br />
             <GoogleBtn />
           </div>
 
-          <div className={styles.section}>
-            <br />
-            {/* <GoogleLogin
-              clientId="316483334585-mtc1sb8li7atn1ktu80si56gqf5bupc0.apps.googleusercontent.com"
-              buttonText="Login"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={"single_host_origin"}
-            /> */}
-          </div>
-
-          <div className={styles.register}>
-            <p className="login-text">Not a member yet? </p>
-            <Link className="login-link" to="/formRegister">
-              <p className="login-text"> Register! </p>
-            </Link>
-          </div>
+          <div className={styles.section}></div>
         </div>
       </div>
 
       <Footer />
+    </div>)}
     </div>
   );
 }

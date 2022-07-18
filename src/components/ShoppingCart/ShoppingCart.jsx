@@ -97,6 +97,19 @@ export default function ShoppingCart({
               </button>
               <button className={styles.botonAbajo}>Buy</button>
             </div>
+            <br />
+
+            <div className={styles.charges}>
+              <p className={styles.charge}>
+                If you don't have enough money in your metamask wallet to make
+                an offer or buy a nft, you can charge it with your credit card
+                in a few simple steps.
+              </p>
+              <br></br>
+              <Link to='/payment'>
+                <button className={styles.buttonBuy}>CHARGE</button>
+              </Link>
+            </div>
           </div>
         ) : (
           <p className={styles.viewe}>You dont have any NFT in the cart.</p>

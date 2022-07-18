@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createAcount } from "../../redux/actions";
 import Footer from "../Footer/Footer";
@@ -7,6 +7,8 @@ import Navbar from "../Navbar/Navbar";
 import styles from "./FormRegister.module.css";
 import { Link } from "react-router-dom";
 import logG from "../Login/imgLogin.png";
+import GoogleBtn from "../Google";
+
 
 export default function FormRegister() {
   const [user, setUser] = useState({ nombre: "", email: "", password: "" });
@@ -17,6 +19,8 @@ export default function FormRegister() {
   const dispatch = useDispatch();
   const { nombre, email, password } = user;
   console.log(user);
+
+  const userAuth = useSelector((state)=> state.userRegister)
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -60,7 +64,15 @@ export default function FormRegister() {
     return errors;
   }
 
+  function alHome(){
+    return navigate("/login")
+  }
+
   return (
+    <div>
+      {userAuth === true? alHome(): (
+       
+    
     <div className={styles.containerPadre}>
       <Navbar />
       <Link to="/home">
@@ -134,8 +146,11 @@ export default function FormRegister() {
                 )}
                 <br />
                 <div className={styles.divGoogle}>
-                  <p>Or Login whith </p>
-                  <img className={styles.google} src={logG} alt="google" />
+                  <div className={styles.signIn}>
+                    <p>Or sign in whith </p>
+                    <br />
+                    <GoogleBtn />
+                  </div>
                 </div>
               </div>
             </div>
@@ -143,6 +158,7 @@ export default function FormRegister() {
         </div>
       </div>
       <Footer />
+    </div>)}
     </div>
   );
 }

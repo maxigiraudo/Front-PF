@@ -8,11 +8,15 @@ import About from "./components/About/About";
 import FormRegister from "./components/FormRegister/FormRegister";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Login from "./components/Login/Login.jsx";
+import Payment from "./components/Payment/Payment";
 import Favorite from "./components/Favorite/Favorite";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import Profile from "./components/Profile/Profile";
+import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 import MyCollections from "./components/MyCollections/MyCollections";
 import Wallet from "./components/Wallet/Wallet";
+
 
 function App() {
   let favoritoInicial = JSON.parse(localStorage.getItem("favorito"));
@@ -111,9 +115,18 @@ function App() {
             />
           }
         />
-        <Route path="/detail/:id/:token_address" element={<Detail />} />
+        <Route
+          path="/detail/:id/:token_address"
+          element={
+            <Detail
+              agregarFavorito={agregarFavorito}
+              agregarCarrito={agregarCarrito}
+            />
+          }
+        />
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
+        <Route path="/payment" element={<Payment/>} />
         <Route path="/formRegister" element={<FormRegister />} />
         <Route
           path="/cart"
@@ -126,6 +139,8 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/FormEditProfile" element={<FormEditProfile />} />
         <Route
           path="/favorite"
           element={

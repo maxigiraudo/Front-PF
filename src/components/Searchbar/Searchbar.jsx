@@ -19,25 +19,23 @@ export default function Searchbar() {
     dispatch(getNameNft(name));
   }
 
-  
-
   return (
-      <form className={styles.formSearch}>
-        <div className={styles.inputDiv}>
-          <p className={styles.lupa}>{BiSearchAlt()}</p>
-          <input
-            onChange={(e) => handleInputChange(e)}
-            placeholder="Search items, collections and accounts..."
-            className={styles.input}
-            type="text"
-          />
-          <input
-            onClick={(e) => handleSubmit(e)}
-            className={styles.boton}
-            type="submit"
-            value={"Search"}
-          />
-        </div>
-      </form>
+    <form className={styles.formSearch}>
+      <div className={styles.inputDiv}>
+        <p className={styles.lupa}>{BiSearchAlt()}</p>
+        <input
+          onChange={(e) => handleInputChange(e)}
+          placeholder="Search items, collections and accounts..."
+          className={styles.input}
+          type="text"
+        />
+        <input
+          onClick={(e) => handleSubmit(e)}
+          className={styles.boton}
+          type="submit"
+          value={"Search"}
+        />
+      </div>
+    </form>
   );
 }

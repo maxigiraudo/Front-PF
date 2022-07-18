@@ -139,11 +139,18 @@ export function createAcount({ nombre, email, password }) {
         "https://henry-proyecto-nft.herokuapp.com/api/registro",
         body
       );
+      console.log("ESTA ES LA ACCION DE LA CRACION DEL USUARIO",json.data)
       dispatch({
         type: "CREATE_ACOUNT_SUCCESS",
         payload: json.data,
       });
-      window.location.href = "https://wallaby-neon.vercel.app/login";
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Account created",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -269,7 +276,61 @@ export const addFavorite = (info) => {
     payload: info,
   };
 };
-////////////////////////////
+
+
+//-------------------------------------USER PROFILE------------------
+export function getProfile(email){
+  return async function(dispatch){
+      try{
+        console.log("ESTE ES EL TOKEN QUE ME LLEGO",email)
+          const json= await axios.get(`https://henry-proyecto-nft.herokuapp.com/profile/`+ email);       
+          console.log("ESTA ES LA ACCION DEL ", json)      
+          return dispatch({
+              type : 'GET_PROFILE',
+              payload : json.data
+          })
+      }
+      catch(error){console.log(error)}
+  }
+
+}
+export function getProfileGoogle(email){
+  return async function(dispatch){
+      try{
+        console.log("ESTE ES EL TOKEN QUE ME LLEGO",email)
+          const json= await axios.get(`https://henry-proyecto-nft.herokuapp.com/profile/`+ email);       
+          console.log("ESTA ES LA ACCION DEL ", json)      
+          return dispatch({
+              type : 'GET_PROFILE_GOOGLE',
+              payload : json.data
+          })
+      }
+      catch(error){console.log(error)}
+  }
+
+}
+
+
+
+
+export function  updatedProfileById(){
+  return async function(dispatch){
+      try{
+          const json= await axios.put(`https://henry-proyecto-nft.herokuapp.com/profile/:token`);      
+           console.log("ESTE ES EL ACTION DEL PUT", json)             
+          return dispatch({
+              type : 'UPDATED_PROFILE_BY_ID',
+              payload : json.data
+          })
+      }
+      catch(error){console.log(error)}
+
+  }
+
+}
+//------------------------------------------------------
+
+
 export const register = (body) => async (dispatch) => {
   // try {
   const newbody = { email: body.email, password: body.password };
@@ -305,8 +366,9 @@ export const register = (body) => async (dispatch) => {
         type: "REGISTER_USER_SUCCESS",
         payload: data,
       });
+
       console.log("LOGUEADO TITANN", data);
-      // Swal("Registro Exitoso",{icon:"success"});
+      Swal("Registro Exitoso", { icon: "success" });
       // window.location.href = "/home";
     } else {
       return console.log(err);
@@ -349,7 +411,7 @@ export const login =
             payload: data.data,
           });
           localStorage.setItem("userInfo", JSON.stringify(data));
-          window.location.href = "/home";
+          // window.location.href = "/home";
           break;
         case 401:
           dispatch({
@@ -382,3 +444,4 @@ export function singoutOk() {
     type: "SINGOUT_OK",
   };
 }
+
