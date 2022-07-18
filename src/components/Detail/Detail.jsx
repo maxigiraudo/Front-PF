@@ -119,7 +119,6 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
               <button className={styles.buttonBuy}>CHARGE</button>
               </Link>
             </div>
-          </div>
           <div className={styles.footer}>
             <Footer />
           </div>

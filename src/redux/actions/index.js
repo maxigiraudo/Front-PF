@@ -294,6 +294,21 @@ export function getProfile(email){
   }
 
 }
+export function getProfileGoogle(email){
+  return async function(dispatch){
+      try{
+        console.log("ESTE ES EL TOKEN QUE ME LLEGO",email)
+          const json= await axios.get(`https://henry-proyecto-nft.herokuapp.com/profile/`+ email);       
+          console.log("ESTA ES LA ACCION DEL ", json)      
+          return dispatch({
+              type : 'GET_PROFILE_GOOGLE',
+              payload : json.data
+          })
+      }
+      catch(error){console.log(error)}
+  }
+
+}
 
 
 
