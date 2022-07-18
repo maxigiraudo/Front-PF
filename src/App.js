@@ -12,6 +12,7 @@ import Favorite from "./components/Favorite/Favorite";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import MyCollections from "./components/MyCollections/MyCollections";
+import Wallet from "./components/Wallet/Wallet";
 
 function App() {
   let favoritoInicial = JSON.parse(localStorage.getItem("favorito"));

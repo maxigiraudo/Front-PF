@@ -6,6 +6,7 @@ import { useMoralis } from "react-moralis";
 import { BiWalletAlt } from "react-icons/bi";
 import Dropdown from "../Dropdown/Dropdown.jsx";
 import { useSelector } from "react-redux";
+import Wallet from '../Wallet/Wallet'
 
 export default function Navbar() {
   const { authenticate, isAuthenticated, user } = useMoralis();
@@ -75,6 +76,7 @@ export default function Navbar() {
         </ul>
         <div className={styles.tooltip}>
           <BiWalletAlt className={styles.wallet} onClick={() => loginWallet()} />
+          
           <span className={styles.tooltiptext}>Wallet</span>
         </div>
         
