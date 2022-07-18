@@ -1,7 +1,3 @@
-
-
-//----------------------------------------------------------------------
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,12 +12,12 @@ import Navbar from "../Navbar/Navbar";
 export default function Profile(){
     //console.log(props)
     const dispatch = useDispatch()
-    const {name, username, lastname, aboutyou } = useParams();
+    const token = useSelector((state)=>state.userData.email)
 
     useEffect(()=>{
-        dispatch(getProfile(name, username, lastname, aboutyou));
+        dispatch(getProfile(token));
 
-    },[name, username, lastname, aboutyou,dispatch])
+    },[dispatch,token])
 
 
     const profile = useSelector((state)=>state.profile)
@@ -37,38 +33,24 @@ export default function Profile(){
 
       <div className={styles.padre}>
         <div className={styles.container}>
-          <h1 className={styles.colorh1}>Hi {profile.username}.</h1>
+          <h1 className={styles.colorh1}>Hi .</h1>
 
             <div className={styles.two}>
               <div className={styles.nameEnviar}>
             
-                <p > My name is {profile.name}</p>
-               
+                <h1 className={styles.name} > User name: {profile.nombre} </h1>
                 <br/>
-
-                <p > My lastname is {profile.lastname}</p>
-               
+                <h1 className={styles.name} > Email: {profile.email}</h1>
                 <br/>
-                
-                <p > My username is {profile.username}</p>
-               
-                <br/>
-                <p > Anout me {profile.aboutyou}</p>
-               
-                
-                <br />
-
-                <Link to="/FormEditProfile">
-                <button className={styles.inputEnviar}>Edit my data!</button>
-                </Link>
-
-
                 <Link to="/favorite">
                 <button className={styles.inputEnviar}>Go to my favorite NFTs!</button>
                 </Link>
 
                 <Link to="/cart">
                 <button className={styles.inputEnviar}>Go to my cart!</button>
+                </Link>
+                <Link to="/mycollections" >
+                <button className={styles.inputEnviar}>Go to my collection!</button>
                 </Link>
                 
 
