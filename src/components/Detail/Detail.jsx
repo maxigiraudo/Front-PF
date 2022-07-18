@@ -49,18 +49,9 @@ export default function Detail() {
               <h3 className={styles.name}>{card.name}</h3>
               <h5 className={styles.des}>Collection: {card.collection}</h5>
               <div className={styles.priceCF}>
-                {/* <h3 className={styles.price}>{card[0].price} ETH</h3> */}
                 <p className={styles.car}>{BsFillCartCheckFill()} </p>
                 <p className={styles.star}>{BsFillStarFill()} </p>
               </div>
-                <br></br>
-              <p className={styles.charge}>If you don't have enough money in your metamask wallet to make 
-              an offer or buy a nft, you can charge it with your credit card in a few simple steps.</p>
-                 <br></br>
-              <Link to='/payment'>
-              <button className={styles.buttonBuy}>CHARGE</button>
-              </Link>
-              
             </div>
           </div>
           <div className={styles.footer}>

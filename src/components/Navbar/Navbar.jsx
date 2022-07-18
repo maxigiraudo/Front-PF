@@ -2,26 +2,14 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import Logo from "./logo.png";
-import { useMoralis } from "react-moralis";
 import { BiWalletAlt } from "react-icons/bi";
 import Dropdown from "../Dropdown/Dropdown.jsx";
 import { useSelector } from "react-redux";
+import DropDownWallet from "../DropwdownWallet/DropDownWallet.jsx"
 
 export default function Navbar() {
-  const { authenticate, isAuthenticated, user } = useMoralis();
   const logged = useSelector((state) => state.userIsAuthenticated);
 
-  const loginWallet = async () => {
-    if (!isAuthenticated) {
-      await authenticate()
-        .then(function (user) {
-          console.log(user.get("ethAddress"));
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-  };
   return (
     <header className={styles.container}>
       <NavLink to="/home" className={styles.home}>
@@ -44,9 +32,6 @@ export default function Navbar() {
                   <NavLink to="/about">
                     <li>About</li>
                   </NavLink>
-                  {/* <li>
-                    <FaPowerOff />
-                  </li> */}
                 </div>
               </div>
               <div className={styles.dropdown}>
@@ -68,16 +53,20 @@ export default function Navbar() {
                 <li>Login</li>
               </NavLink>
               <NavLink to="/formRegister">
-                <li>Sing Up</li>
+                <li>Sign Up</li>
               </NavLink>
             </div>
           )}
         </ul>
-        <div className={styles.tooltip}>
-          <BiWalletAlt className={styles.wallet} onClick={() => loginWallet()} />
-          <span className={styles.tooltiptext}>Wallet</span>
+        <div className={styles.dropdown}>
+                <DropDownWallet className={styles.wallet}></DropDownWallet>
         </div>
-        
+        {/* <div className={styles.tooltip}>
+          <BiWalletAlt
+            className={styles.wallet}
+          />
+          <span className={styles.tooltiptext}>Wallet</span>
+        </div> */}
       </nav>
     </header>
   );
