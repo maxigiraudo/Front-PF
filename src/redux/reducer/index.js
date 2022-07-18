@@ -11,9 +11,7 @@ const initialState = {
   contador: 0,
   favorite: [],
   user: [],
-
   profile : [],
-
   useGoogle: {},
   userIsAuthenticated: false,
   userData: {},
@@ -135,6 +133,7 @@ export default function reducer(state = initialState, action) {
         error: false,
       };
     case "CREATE_ACOUNT_SUCCESS":
+      console.log("ESTO ES LO QUE ME LLEGA DE PAYLOAD DE LA CREACION DEL USUARIO",action.payload)
       return {
         ...state,
         user: [action.payload, ...state.user],
@@ -250,12 +249,15 @@ export default function reducer(state = initialState, action) {
       };
     }
     case "REGISTER_USER_SUCCESS": {
+      const usser= action.payload
+      const estoAUser= usser.user
       return {
         ...state,
         useGoogle: action.payload,
         userInfo: action.payload,
         loading: false,
         error: false,
+        userData: estoAUser
       };
     }
     case "REGISTER_USER_ERROR": {
