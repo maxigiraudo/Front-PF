@@ -108,29 +108,20 @@ export default function Login() {
             </button>
           </div>
 
+          <div className={styles.register}>
+            <p className={styles.loginText}>Not a member yet? {"  "}</p>
+            <Link className="login-link" to="/formRegister">
+              <p className="login-text">{"  "} Register! </p>
+            </Link>
+          </div>
+          <br />
           <div className={styles.section}>
             <h4> Or sign in with</h4>
             <br />
             <GoogleBtn />
           </div>
 
-          <div className={styles.section}>
-            <br />
-            {/* <GoogleLogin
-              clientId="316483334585-mtc1sb8li7atn1ktu80si56gqf5bupc0.apps.googleusercontent.com"
-              buttonText="Login"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={"single_host_origin"}
-            /> */}
-          </div>
-
-          <div className={styles.register}>
-            <p className="login-text">Not a member yet? </p>
-            <Link className="login-link" to="/formRegister">
-              <p className="login-text"> Register! </p>
-            </Link>
-          </div>
+          <div className={styles.section}></div>
         </div>
       </div>
 
