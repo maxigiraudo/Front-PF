@@ -7,6 +7,7 @@ import Navbar from "../Navbar/Navbar";
 import styles from "./FormRegister.module.css";
 import { Link } from "react-router-dom";
 import logG from "../Login/imgLogin.png";
+import GoogleBtn from "../Google";
 
 export default function FormRegister() {
   const [user, setUser] = useState({ nombre: "", email: "", password: "" });
@@ -134,8 +135,11 @@ export default function FormRegister() {
                 )}
                 <br />
                 <div className={styles.divGoogle}>
-                  <p>Or Login whith </p>
-                  <img className={styles.google} src={logG} alt="google" />
+                  <div className={styles.signIn}>
+                    <p>Or sign in whith </p>
+                    <br />
+                    <GoogleBtn />
+                  </div>
                 </div>
               </div>
             </div>

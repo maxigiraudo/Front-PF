@@ -305,8 +305,9 @@ export const register = (body) => async (dispatch) => {
         type: "REGISTER_USER_SUCCESS",
         payload: data,
       });
+
       console.log("LOGUEADO TITANN", data);
-      // Swal("Registro Exitoso",{icon:"success"});
+      Swal("Registro Exitoso", { icon: "success" });
       // window.location.href = "/home";
     } else {
       return console.log(err);
@@ -349,7 +350,7 @@ export const login =
             payload: data.data,
           });
           localStorage.setItem("userInfo", JSON.stringify(data));
-          window.location.href = "/home";
+          // window.location.href = "/home";
           break;
         case 401:
           dispatch({

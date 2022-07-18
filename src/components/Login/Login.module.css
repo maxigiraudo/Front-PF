@@ -109,3 +109,7 @@
 .formErrors {
   color: red;
 }
+
+.loginText {
+  margin-right: 5px;
+}

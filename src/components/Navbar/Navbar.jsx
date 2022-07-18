@@ -44,9 +44,6 @@ export default function Navbar() {
                   <NavLink to="/about">
                     <li>About</li>
                   </NavLink>
-                  {/* <li>
-                    <FaPowerOff />
-                  </li> */}
                 </div>
               </div>
               <div className={styles.dropdown}>
@@ -68,16 +65,18 @@ export default function Navbar() {
                 <li>Login</li>
               </NavLink>
               <NavLink to="/formRegister">
-                <li>Sing Up</li>
+                <li>Sign Up</li>
               </NavLink>
             </div>
           )}
         </ul>
         <div className={styles.tooltip}>
-          <BiWalletAlt className={styles.wallet} onClick={() => loginWallet()} />
+          <BiWalletAlt
+            className={styles.wallet}
+            onClick={() => loginWallet()}
+          />
           <span className={styles.tooltiptext}>Wallet</span>
         </div>
-        
       </nav>
     </header>
   );
