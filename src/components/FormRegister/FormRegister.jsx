@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import logG from "../Login/imgLogin.png";
 import GoogleBtn from "../Google";
 
+
 export default function FormRegister() {
   const [user, setUser] = useState({ nombre: "", email: "", password: "" });
   const [error, setError] = useState({

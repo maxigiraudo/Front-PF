@@ -11,6 +11,9 @@ const initialState = {
   contador: 0,
   favorite: [],
   user: [],
+
+  profile : [],
+
   useGoogle: {},
   userIsAuthenticated: false,
   userData: {},
@@ -19,6 +22,7 @@ const initialState = {
   categoryArt: [],
   userInfo: {},
   isAuth: false,
+
 };
 
 export default function reducer(state = initialState, action) {
@@ -218,6 +222,23 @@ export default function reducer(state = initialState, action) {
         ...state,
         favorite: state.favorite.filter((e) => e !== action.payload),
       };
+
+
+      case "GET_PROFILE":
+        return {
+          ...state,
+          profile: action.payload,
+  
+        };
+
+      case 'UPDATED_PROFILE_BY_ID' :
+        return {
+          ...state,
+          profile : action.payload
+        }
+
+      
+
     case "REGISTER_USER_REQUEST": {
       return {
         ...state,
@@ -262,7 +283,9 @@ export default function reducer(state = initialState, action) {
         userIsAuthenticated: false,
       };
     }
+
     default:
       return state;
   }
 }
+ 
