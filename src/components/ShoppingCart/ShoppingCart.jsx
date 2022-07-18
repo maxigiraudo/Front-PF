@@ -106,11 +106,13 @@ export default function ShoppingCart({
                 in a few simple steps.
               </p>
               <br></br>
+
               <Link to="/payment" >
                 <button className={styles.buttonBuy}>CHARGE</button>
 
               </Link>
              
+
             </div>
           </div>
         ) : (

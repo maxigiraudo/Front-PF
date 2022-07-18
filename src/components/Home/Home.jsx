@@ -7,9 +7,15 @@ import "slick-carousel/slick/slick-theme.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import { BiSearchAlt } from "react-icons/bi";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
-import { getNft, getNftAll, getSliderNftArt,getNameNft } from "../../redux/actions";
+import {
+  getNft,
+  getNftAll,
+  getSliderNftArt,
+  getNameNft,
+} from "../../redux/actions";
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import Loading from "../Loading/Loading";
@@ -28,21 +34,24 @@ import SliderArt from "../SliderCat/SliderCat";
 
 export default function Home({ agregarCarrito, agregarFavorito }) {
   const allCard = useSelector((state) => state.cards);
+
   const cursori = useSelector((state) => state.cursor);
 
   console.log("CURSOR DEL HOME", cursori);
   const dispatch = useDispatch();
   useEffect(() => {
     if (allCard.length === 0) dispatch(getNft());
-    
+
     // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
   }, [dispatch, cursori]);
+
   
   
 
-  const catArt= useSelector((state)=> state.categoryArt)
 
-  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART",catArt)
+  const catArt = useSelector((state) => state.categoryArt);
+
+  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catArt);
 
   console.log(allCard);
 
@@ -94,23 +103,21 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
-    if (nftPerPage >= 1500  ) {
+    if (nftPerPage >= 1500) {
       setHasMore(false);
     }
     dispatch(getNftAll(cursori));
-  }, [currentPage,dispatch]);
+  }, [currentPage, dispatch]);
 
-
-  function handleFilterByName(e){
-    dispatch(getNameNft(e))
+  function handleFilterByName(e) {
+    dispatch(getNameNft(e));
   }
-  
 
   return (
     <div className={style.containergeneral}>
       <div className={style.containerNav}>
         <Navbar />
-      </div>      
+      </div>
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
@@ -229,57 +236,64 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
           </Slider>
         </div>
       </div>
-      {catArt.length>0?
-      <div className={style.sli}>
-
-      <SliderArt/>
-      </div>
-      :(
-        <div>
-      <div className={style.orderSearch}>
-        <div className={style.navDos}>
-          <div className={style.searchBar}>
-            <Searchbar setCurrentPage={setCurrentPage} />
-          </div>
-          <Link to="/cart">
-            <div className={style.carrito}>
-              <h2>{FaShoppingCart()} View Cart</h2>
-            </div>
-          </Link>
-          {/* <Order /> */}
+      {catArt.length > 0 ? (
+        <div className={style.sli}>
+          <SliderArt />
         </div>
+
       </div>
       {currentNft.length === 0 && currentNft ? (
         <div>         
         <Loading />
         <h1 className={style.h1deload}>NO RESULTS FOUND</h1>
         </div>
+
       ) : (
         <div>
-          <InfiniteScroll
-            className={style.cardHome}
-            dataLength={currentNft.length} //This is important field to render the next data
-            next={() => setCurrentPage((prevPage) => prevPage + 1)}
-            hasMore={hasMore}
-          >
-            {currentNft?.map((e, index) => (
-              <Card
-                agregarFavorito={agregarFavorito}
-                agregarCarrito={agregarCarrito}
-                id={e._id}
-                key={index}
-                price={e.price}
-                name={e.name}
-                image={e.image}
-                created={e.created}
-                token_address={e.token_address}
-                collection={e.collection}
-              />
-            ))}
-          </InfiniteScroll>
+          <div className={style.orderSearch}>
+            <div className={style.navDos}>
+              <div className={style.searchBar}>
+                <Searchbar setCurrentPage={setCurrentPage} />
+              </div>
+              <Link to="/cart">
+                <div className={style.carrito}>
+                  <h2>{FaShoppingCart()} View Cart</h2>
+                </div>
+              </Link>
+              {/* <Order /> */}
+            </div>
+          </div>
+          {currentNft.length === 0 && currentNft ? (
+            <Loading />
+          ) : (
+            // <div className={style.noResult}>
+            //   <span>{BiSearchAlt()} No results found for your search.</span>
+            // </div>
+            <div>
+              <InfiniteScroll
+                className={style.cardHome}
+                dataLength={currentNft.length} //This is important field to render the next data
+                next={() => setCurrentPage((prevPage) => prevPage + 1)}
+                hasMore={hasMore}
+              >
+                {currentNft?.map((e, index) => (
+                  <Card
+                    agregarFavorito={agregarFavorito}
+                    agregarCarrito={agregarCarrito}
+                    id={e._id}
+                    key={index}
+                    price={e.price}
+                    name={e.name}
+                    image={e.image}
+                    created={e.created}
+                    token_address={e.token_address}
+                    collection={e.collection}
+                  />
+                ))}
+              </InfiniteScroll>
+            </div>
+          )}
         </div>
-      )}
-      </div>
       )}
 
       <div className={style.footer}>
