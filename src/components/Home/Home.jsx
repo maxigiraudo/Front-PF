@@ -9,7 +9,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
-import { getNft, getNftAll, getSliderNftArt } from "../../redux/actions";
+import { getNft, getNftAll, getSliderNftArt,getNameNft } from "../../redux/actions";
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import Loading from "../Loading/Loading";
@@ -81,9 +81,9 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
       },
     ],
   };
-  function handleFilterByCategoryArt(e) {
-    dispatch(getSliderNftArt(e));
-  }
+  // function handleFilterByCategoryArt(e) {
+  //   dispatch(getSliderNftArt(e));
+  // }
 
   const [currentPage, setCurrentPage] = useState(1);
   const [nftPerPage, setNftPerPage] = useState(6);
@@ -100,7 +100,9 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   }, [currentPage,dispatch]);
 
 
-
+  function handleFilterByName(e){
+    dispatch(getNameNft(e))
+  }
   
 
   return (
@@ -123,7 +125,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={animals}
                   alt="*"
                   value="animals"
-                  //onClick={(e) => handleFilterByName("animals")}
+                  onClick={(e) => handleFilterByName("animals")}
                 />
               </div>
             </div>
@@ -135,7 +137,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={art}
                   alt="*"
                   value="art"
-                  onClick={(e) => handleFilterByCategoryArt("art")}
+                  onClick={(e) => handleFilterByName("art")}
                 />
               </div>
             </div>
@@ -147,7 +149,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={crypto}
                   alt="*"
                   value="crypto"
-                  //onClick={(e) => handleFilterByName("crypto")}
+                  onClick={(e) => handleFilterByName("crypto")}
                 />
               </div>
             </div>
@@ -159,7 +161,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={games}
                   alt="*"
                   value="games"
-                  //onClick={(e) => handleFilterByName("games")}
+                  onClick={(e) => handleFilterByName("games")}
                 />
               </div>
             </div>
@@ -171,7 +173,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={music}
                   alt="*"
                   value="music"
-                  //onClick={(e) => handleFilterByName("music")}
+                  onClick={(e) => handleFilterByName("music")}
                 />
               </div>
             </div>
@@ -183,7 +185,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={photography}
                   alt="*"
                   value="photography"
-                  //onClick={(e) => handleFilterByName("photography")}
+                  onClick={(e) => handleFilterByName("photography")}
                 />
               </div>
             </div>
@@ -195,7 +197,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={sports}
                   alt="*"
                   value="sports"
-                  //onClick={(e) => handleFilterByName("sports")}
+                  onClick={(e) => handleFilterByName("sports")}
                 />
               </div>
             </div>
@@ -207,7 +209,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={video}
                   alt="*"
                   value="video"
-                  //onClick={(e) => handleFilterByName("video")}
+                  onClick={(e) => handleFilterByName("video")}
                 />
               </div>
             </div>
@@ -219,7 +221,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={world}
                   alt="*"
                   value="world"
-                  //onClick={(e) => handleFilterByName("world")}
+                  onClick={(e) => handleFilterByName("world")}
                 />
               </div>
             </div>

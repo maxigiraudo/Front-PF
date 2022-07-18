@@ -11,14 +11,18 @@ const initialState = {
   contador: 0,
   favorite: [],
   user: [],
+
+  profile : [],
+
   useGoogle: {},
   userIsAuthenticated: false,
-
+  userData: {},
   nftCreados: [],
-
+  userRegister:false,
   categoryArt: [],
   userInfo: {},
   isAuth: false,
+
 };
 
 export default function reducer(state = initialState, action) {
@@ -134,6 +138,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user: [action.payload, ...state.user],
+        userRegister:true,
         loading: false,
         error: false,
       };
@@ -192,6 +197,19 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         userIsAuthenticated: true,
+        error: false,
+      };
+    case "LOGIN_DATA":
+      console.log("ESTE ES EL ACTION.PAYLOAD", action.payload);
+      return {
+        ...state,
+        userData: action.payload,
+      };
+
+    case "LOGIN_ERROR":
+      return {
+        ...state,
+        error: true,
       };
 
     case "ADD_FAVORITE":
@@ -204,6 +222,23 @@ export default function reducer(state = initialState, action) {
         ...state,
         favorite: state.favorite.filter((e) => e !== action.payload),
       };
+
+
+      case "GET_PROFILE":
+        return {
+          ...state,
+          profile: action.payload,
+  
+        };
+
+      case 'UPDATED_PROFILE_BY_ID' :
+        return {
+          ...state,
+          profile : action.payload
+        }
+
+      
+
     case "REGISTER_USER_REQUEST": {
       return {
         ...state,
@@ -248,7 +283,9 @@ export default function reducer(state = initialState, action) {
         userIsAuthenticated: false,
       };
     }
+
     default:
       return state;
   }
 }
+ 
