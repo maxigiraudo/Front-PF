@@ -30,7 +30,9 @@
   
   .dropdown:hover .dropdownContent {
     display: block;
-  } 
+
+  }
+
   
   .dropdownItem {
     font-size: larger;
@@ -38,8 +40,10 @@
   }
   
   /* .dropdownItem:hover {
-    letter-spacing: 1px;
-  } */
+
+      letter-spacing: 1px;
+    } */
+
   
   .botonSingOut {
     border: none;
@@ -50,5 +54,6 @@
     font-family: inherit;
   }
   /* .botonSingOut:hover {
-    letter-spacing: 1px;
-  } */
+      letter-spacing: 1px;
+    } */
+

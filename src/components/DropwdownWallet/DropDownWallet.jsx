@@ -34,7 +34,11 @@ export default function Dropdown() {
           <Link to="/payment">Charge Wallet</Link>
         </p>
         <p className={styles.dropdownItem}>
-          <button onClick={() => loginWallet()} className={styles.botonSingOut}>Connect Wallet </button>
+
+          <button onClick={() => loginWallet()} className={styles.botonSingOut}>
+            Connect Wallet{" "}
+          </button>
+
         </p>
       </div>
     </div>
