@@ -213,8 +213,12 @@ export function contador(contador) {
   };
 }
 export function postLogin(payload) {
-  console.log("normla loguin f" + payload);
+  console.log(payload);
   return async function (dispatch) {
+    dispatch({
+      type: "LOGIN_DATA",
+      payload: payload,
+    });
     axios
       .post("https://henry-proyecto-nft.herokuapp.com/api/login", payload)
       .then((response) => {
@@ -222,6 +226,7 @@ export function postLogin(payload) {
           type: "LOGIN_SUCCESS",
           payload: response,
         });
+        console.log("ESTE ES EL PAYLOAD", response);
         Swal.fire({
           position: "center",
           icon: "success",
@@ -229,11 +234,16 @@ export function postLogin(payload) {
           showConfirmButton: false,
           timer: 1500,
         });
+
         // window.location.href = "http://localhost:3000/home";
         console.log("logueado");
       })
       .catch((err) => {
         if (err.response.status === 400) {
+          dispatch({
+            type: "LOGIN_ERROR",
+            payload: true,
+          });
           Swal.fire({
             icon: "error",
             text: "Email or password incorrect or inexistent",

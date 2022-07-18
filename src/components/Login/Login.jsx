@@ -47,11 +47,13 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(postLogin(formData));
+    console.log(formData);
     setFormData({
       email: "",
       password: "",
     });
   };
+
   // const responseGoogle = (response) => {
   //     dispatch(postLoginGoogle(response))
   //   }
