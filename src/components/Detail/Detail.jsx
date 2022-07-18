@@ -8,9 +8,13 @@ import Footer from "../Footer/Footer";
 import Loading from "../Loading/Loading";
 import { useEffect } from "react";
 import { getDetail, resState } from "../../redux/actions";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { AiFillHeart } from "react-icons/ai";
+import Swal from "sweetalert2";
 
-export default function Detail() {
+export default function Detail({ agregarCarrito, agregarFavorito }) {
+  const logged = useSelector((state) => state.userIsAuthenticated);
+  const nft = useSelector((state) => state.detail);
 
   let { id, token_address } = useParams();
 
@@ -28,6 +32,22 @@ export default function Detail() {
 
   console.log(card);
 
+  const navigate = useNavigate();
+
+  let onClick = (e) => {
+    agregarCarrito(e);
+  };
+  let onClickF = (e) => {
+    agregarFavorito(e);
+  };
+  let favorito = () => {
+    Swal.fire({
+      icon: "error",
+      text: "To add NFT to favorites you must be logged in.",
+    });
+    navigate("/login");
+  };
+
   return (
     <div>
       {card.image ? (
@@ -41,23 +61,64 @@ export default function Detail() {
             </Link>
           </div>
           <div className={styles.padre}>
-            <div>
-              <img className={styles.imagen} src={card.image}  onError={(e)=>{e.target.onerror = null; e.target.src="https://cryptodozer.io/static/images/dozer/meta/dolls/300.png"}} alt="nft" />
-            </div>
-            <div className={styles.description}>
-              <h3 className={styles.name}>{card.name}</h3>
-              <h5 className={styles.des}>Collection: {card.collection}</h5>
-              <div className={styles.priceCF}>
-                {/* <h3 className={styles.price}>{card[0].price} ETH</h3> */}
-                <p className={styles.car}>{BsFillCartCheckFill()} </p>
-                <p className={styles.star}>{BsFillStarFill()} </p>
+            <div className={styles.todos}>
+              <div>
+                <img
+                  className={styles.imagen}
+                  src={card.image}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://cryptodozer.io/static/images/dozer/meta/dolls/300.png";
+                  }}
+                  alt="nft"
+                />
               </div>
-                <br></br>
-              <p className={styles.charge}>If you don't have enough money in your metamask wallet to make 
-              an offer or buy a nft, you can charge it with your credit card in a few simple steps.</p>
-                 <br></br>
-                <a href={"https://widget.onramper.com?color=1d2d50&apiKey=pk_test_x5M_5fdXzn1fxK04seu0JgFjGsu7CH8lOvS9xZWzuSM0"}>
-              <button className={styles.buttonBuy}>CHARGE</button>
+              <div className={styles.description}>
+                <h3 className={styles.name}>{card.name}</h3>
+                <h5 className={styles.des}>Collection: {card.collection}</h5>
+                <div className={styles.abajo}>
+                  <button
+                    onClick={() =>
+                      onClick({ name: nft.name, image: nft.image })
+                    }
+                    className={styles.car}
+                  >
+                    {BsFillCartCheckFill()}{" "}
+                  </button>
+                  {logged ? (
+                    <button
+                      onClick={() =>
+                        onClickF({ name: nft.name, image: nft.image })
+                      }
+                      className={styles.heart}
+                    >
+                      {AiFillHeart()}{" "}
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => favorito()}
+                      className={styles.heartFeo}
+                    >
+                      {AiFillHeart()}{" "}
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className={styles.charges}>
+              <p className={styles.charge}>
+                If you don't have enough money in your metamask wallet to make
+                an offer or buy a nft, you can charge it with your credit card
+                in a few simple steps.
+              </p>
+              <br></br>
+              <a
+                href={
+                  "https://widget.onramper.com?color=1d2d50&apiKey=pk_test_x5M_5fdXzn1fxK04seu0JgFjGsu7CH8lOvS9xZWzuSM0"
+                }
+              >
+                <button className={styles.buttonBuy}>CHARGE</button>
               </a>
             </div>
           </div>

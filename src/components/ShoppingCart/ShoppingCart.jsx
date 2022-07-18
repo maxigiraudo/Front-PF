@@ -97,6 +97,23 @@ export default function ShoppingCart({
               </button>
               <button className={styles.botonAbajo}>Buy</button>
             </div>
+            <br />
+
+            <div className={styles.charges}>
+              <p className={styles.charge}>
+                If you don't have enough money in your metamask wallet to make
+                an offer or buy a nft, you can charge it with your credit card
+                in a few simple steps.
+              </p>
+              <br></br>
+              <a
+                href={
+                  "https://widget.onramper.com?color=1d2d50&apiKey=pk_test_x5M_5fdXzn1fxK04seu0JgFjGsu7CH8lOvS9xZWzuSM0"
+                }
+              >
+                <button className={styles.buttonBuy}>CHARGE</button>
+              </a>
+            </div>
           </div>
         ) : (
           <p className={styles.viewe}>You dont have any NFT in the cart.</p>
