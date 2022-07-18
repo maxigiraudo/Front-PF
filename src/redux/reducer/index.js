@@ -16,9 +16,9 @@ const initialState = {
 
   useGoogle: {},
   userIsAuthenticated: false,
-
+  userData: {},
   nftCreados: [],
-
+  userRegister:false,
   categoryArt: [],
   userInfo: {},
   isAuth: false,
@@ -138,6 +138,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user: [action.payload, ...state.user],
+        userRegister:true,
         loading: false,
         error: false,
       };
@@ -196,6 +197,19 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         userIsAuthenticated: true,
+        error: false,
+      };
+    case "LOGIN_DATA":
+      console.log("ESTE ES EL ACTION.PAYLOAD", action.payload);
+      return {
+        ...state,
+        userData: action.payload,
+      };
+
+    case "LOGIN_ERROR":
+      return {
+        ...state,
+        error: true,
       };
 
     case "ADD_FAVORITE":

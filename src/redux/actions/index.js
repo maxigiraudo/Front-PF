@@ -143,7 +143,13 @@ export function createAcount({ nombre, email, password }) {
         type: "CREATE_ACOUNT_SUCCESS",
         payload: json.data,
       });
-      window.location.href = "https://wallaby-neon.vercel.app/login";
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Account created",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -213,8 +219,12 @@ export function contador(contador) {
   };
 }
 export function postLogin(payload) {
-  console.log("normla loguin f" + payload);
+  console.log(payload);
   return async function (dispatch) {
+    dispatch({
+      type: "LOGIN_DATA",
+      payload: payload,
+    });
     axios
       .post("https://henry-proyecto-nft.herokuapp.com/api/login", payload)
       .then((response) => {
@@ -222,6 +232,7 @@ export function postLogin(payload) {
           type: "LOGIN_SUCCESS",
           payload: response,
         });
+        console.log("ESTE ES EL PAYLOAD", response);
         Swal.fire({
           position: "center",
           icon: "success",
@@ -229,11 +240,16 @@ export function postLogin(payload) {
           showConfirmButton: false,
           timer: 1500,
         });
+
         // window.location.href = "http://localhost:3000/home";
         console.log("logueado");
       })
       .catch((err) => {
         if (err.response.status === 400) {
+          dispatch({
+            type: "LOGIN_ERROR",
+            payload: true,
+          });
           Swal.fire({
             icon: "error",
             text: "Email or password incorrect or inexistent",
@@ -259,6 +275,7 @@ export const addFavorite = (info) => {
     payload: info,
   };
 };
+
 
 //-------------------------------------USER PROFILE------------------
 export function getProfile(token){
@@ -301,6 +318,7 @@ export function  updatedProfileById(token){
 }
 //------------------------------------------------------
 
+
 export const register = (body) => async (dispatch) => {
   // try {
   const newbody = { email: body.email, password: body.password };
@@ -328,7 +346,7 @@ export const register = (body) => async (dispatch) => {
       body = newbody;
       console.log("nuevo bodyyy", body);
       const { data } = await axios.post(
-        "https://henry-proyecto-nft.herokuapp.com/api/signin",
+        "https://henry-proyecto-nft.herokuapp.com/auth/api/signin",
         body,
         config
       );
@@ -336,8 +354,9 @@ export const register = (body) => async (dispatch) => {
         type: "REGISTER_USER_SUCCESS",
         payload: data,
       });
+
       console.log("LOGUEADO TITANN", data);
-      // Swal("Registro Exitoso",{icon:"success"});
+      Swal("Registro Exitoso", { icon: "success" });
       // window.location.href = "/home";
     } else {
       return console.log(err);
@@ -380,7 +399,7 @@ export const login =
             payload: data.data,
           });
           localStorage.setItem("userInfo", JSON.stringify(data));
-          window.location.href = "/home";
+          // window.location.href = "/home";
           break;
         case 401:
           dispatch({

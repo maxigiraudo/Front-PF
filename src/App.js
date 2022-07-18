@@ -113,7 +113,15 @@ function App() {
             />
           }
         />
-        <Route path="/detail/:id/:token_address" element={<Detail />} />
+        <Route
+          path="/detail/:id/:token_address"
+          element={
+            <Detail
+              agregarFavorito={agregarFavorito}
+              agregarCarrito={agregarCarrito}
+            />
+          }
+        />
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
         <Route path="/formRegister" element={<FormRegister />} />
