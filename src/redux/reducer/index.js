@@ -12,9 +12,7 @@ const initialState = {
   contador: 0,
   favorite: [],
   user: [],
-
   profile: [],
-
   useGoogle: {},
   userIsAuthenticated: false,
   userData: {},
@@ -23,7 +21,6 @@ const initialState = {
   categoryArt: [],
   userInfo: {},
   isAuth: false,
-
   profileGoogle: [],
 };
 
@@ -231,12 +228,6 @@ export default function reducer(state = initialState, action) {
 
     case "GET_PROFILE":
       console.log(action.payload);
-      return {
-        ...state,
-        profile: action.payload,
-      };
-
-    case "GET_PROFILE":
       return {
         ...state,
         profile: action.payload,

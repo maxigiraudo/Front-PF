@@ -1,6 +1,5 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import Moralis from "moralis";
-import { MdCallToAction } from "react-icons/md";
 import Swal from "sweetalert2";
 
 export function orderByPrice(payload) {
@@ -299,8 +298,9 @@ export function getProfileGoogle(email) {
   return async function (dispatch) {
     try {
       console.log("ESTE ES EL TOKEN QUE ME LLEGO", email);
+      const email1= email.user.email
       const json = await axios.get(
-        `https://henry-proyecto-nft.herokuapp.com/profile/` + email
+        `https://henry-proyecto-nft.herokuapp.com/profile/` + email1
       );
       console.log("ESTA ES LA ACCION DEL ", json);
       return dispatch({
