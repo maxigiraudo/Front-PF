@@ -16,7 +16,6 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
   const logged = useSelector((state) => state.userIsAuthenticated);
   const nft = useSelector((state) => state.detail);
 
-
   let { id, token_address } = useParams();
 
   const dispatch = useDispatch();
@@ -76,9 +75,6 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
                 />
               </div>
 
-            
-              
-
               <div className={styles.description}>
                 <h3 className={styles.name}>{card.name}</h3>
                 <h5 className={styles.des}>Collection: {card.collection}</h5>
@@ -111,8 +107,10 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
                 </div>
               </div>
             </div>
+
              
             </div>
+
           <div className={styles.footer}>
             <Footer />
           </div>

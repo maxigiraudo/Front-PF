@@ -35,9 +35,11 @@ export default function Dropdown() {
         </p>
         <p className={styles.dropdownItem}>
 
+
           <button onClick={() => loginWallet()} className={styles.botonSingOut}>
             Connect Wallet{" "}
           </button>
+
 
         </p>
       </div>

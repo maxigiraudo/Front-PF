@@ -37,12 +37,14 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
     
     // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
   }, [dispatch, cursori]);
+
   
   
 
   const catArt= useSelector((state)=> state.categoryArt)
 
   console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART",catArt)
+
 
   console.log(allCard);
 
@@ -114,7 +116,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
-          are loo
+          are looking.
         </h1>
         <div className={style.carousel}>
           <Slider {...settings}>
@@ -229,54 +231,57 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
           </Slider>
         </div>
       </div>
-      {catArt.length>0?
-      <div className={style.sli}>
 
-      <SliderArt/>
-      </div>
-      :(
-        <div>
-      <div className={style.orderSearch}>
-        <div className={style.navDos}>
-          <div className={style.searchBar}>
-            <Searchbar setCurrentPage={setCurrentPage} />
-          </div>
-          <Link to="/cart">
-            <div className={style.carrito}>
-              <h2>{FaShoppingCart()} View Cart</h2>
-            </div>
-          </Link>
-          {/* <Order /> */}
-        </div>
-      </div>
-      {currentNft.length === 0 && currentNft ? (
-        <div>         
-        <Loading />
-        <h1 className={style.h1deload}>NO RESULTS FOUND</h1>
+      {catArt.length > 0 ? (
+        <div className={style.sli}>
+          <SliderArt />
         </div>
       ) : (
         <div>
-          <InfiniteScroll
-            className={style.cardHome}
-            dataLength={currentNft.length} //This is important field to render the next data
-            next={() => setCurrentPage((prevPage) => prevPage + 1)}
-            hasMore={hasMore}
-          >
-            {currentNft?.map((e, index) => (
-              <Card
-                agregarFavorito={agregarFavorito}
-                agregarCarrito={agregarCarrito}
-                id={e._id}
-                key={index}
-                price={e.price}
-                name={e.name}
-                image={e.image}
-                created={e.created}
-                token_address={e.token_address}
-                collection={e.collection}
-              />
-            ))}
-          </InfiniteScroll>
+          <div className={style.orderSearch}>
+            <div className={style.navDos}>
+              <div className={style.searchBar}>
+                <Searchbar setCurrentPage={setCurrentPage} />
+              </div>
+              <Link to="/cart">
+                <div className={style.carrito}>
+                  <h2>{FaShoppingCart()} View Cart</h2>
+                </div>
+              </Link>
+              {/* <Order /> */}
+            </div>
+          </div>
+          {currentNft.length === 0 && currentNft ? (
+            <div>
+              <Loading />
+              <h1 className={style.h1deload}>NO RESULTS FOUND</h1>
+            </div>
+          ) : (
+            <div>
+              <InfiniteScroll
+                className={style.cardHome}
+                dataLength={currentNft.length} //This is important field to render the next data
+                next={() => setCurrentPage((prevPage) => prevPage + 1)}
+                hasMore={hasMore}
+              >
+                {currentNft?.map((e, index) => (
+                  <Card
+                    agregarFavorito={agregarFavorito}
+                    agregarCarrito={agregarCarrito}
+                    id={e._id}
+                    key={index}
+                    price={e.price}
+                    name={e.name}
+                    image={e.image}
+                    created={e.created}
+                    token_address={e.token_address}
+                    collection={e.collection}
+                  />
+                ))}
+              </InfiniteScroll>
+            </div>
+          )}
+
         </div>
       )}
       </div>
