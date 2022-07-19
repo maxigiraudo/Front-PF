@@ -18,15 +18,14 @@ import {
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import Loading from "../Loading/Loading";
-import animals from "./images/animals (1).png";
+
 import art from "./images/art (1).png";
-import crypto from "./images/crypto (1).png";
+import collectibles from "./images/collectibles (1).png";
 import games from "./images/games (1).png";
 import music from "./images/music (1).png";
 import photography from "./images/photography (1).png";
 import sports from "./images/sports (1).png";
-import video from "./images/video png (1).png";
-import world from "./images/world (1).png";
+
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import SliderArt from "../SliderCat/SliderCat";
@@ -121,18 +120,6 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
           <Slider {...settings}>
             <div className={style.containerC}>
               <div className={style.tres}>
-                <h1 className={style.nameC}>Animals</h1>
-                <img
-                  className={style.imageC}
-                  src={animals}
-                  alt="*"
-                  value="animals"
-                  onClick={(e) => handleFilterByName("animals")}
-                />
-              </div>
-            </div>
-            <div className={style.containerC}>
-              <div className={style.tres}>
                 <h1 className={style.nameC}>Art</h1>
                 <img
                   className={style.imageC}
@@ -145,13 +132,13 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
-                <h1 className={style.nameC}>Crypto</h1>
+                <h1 className={style.nameC}>Collectibles</h1>
                 <img
                   className={style.imageC}
-                  src={crypto}
+                  src={collectibles}
                   alt="*"
                   value="crypto"
-                  onClick={(e) => handleFilterByName("crypto")}
+                  onClick={(e) => handleFilterByName("collectibles")}
                 />
               </div>
             </div>
@@ -200,30 +187,6 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   alt="*"
                   value="sports"
                   onClick={(e) => handleFilterByName("sports")}
-                />
-              </div>
-            </div>
-            <div className={style.containerC}>
-              <div className={style.tres}>
-                <h1 className={style.nameC}>Video</h1>
-                <img
-                  className={style.imageC}
-                  src={video}
-                  alt="*"
-                  value="video"
-                  onClick={(e) => handleFilterByName("video")}
-                />
-              </div>
-            </div>
-            <div className={style.containerC}>
-              <div className={style.tres}>
-                <h1 className={style.nameC}>World</h1>
-                <img
-                  className={style.imageC}
-                  src={world}
-                  alt="*"
-                  value="world"
-                  onClick={(e) => handleFilterByName("world")}
                 />
               </div>
             </div>

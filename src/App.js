@@ -25,6 +25,10 @@ function App() {
   const [favorito, setFavorito] = useState(favoritoInicial);
 
   useEffect(() => {
+    JSON.parse(localStorage.getItem("profiles"));
+  }, []);
+
+  useEffect(() => {
     let favoritoInicial = JSON.parse(localStorage.getItem("favorito"));
     if (favoritoInicial) {
       localStorage.setItem("favorito", JSON.stringify(favorito));

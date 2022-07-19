@@ -206,10 +206,14 @@ export default function reducer(state = initialState, action) {
         error: false,
       };
     case "LOGIN_DATA":
+      const profile = action.payload;
+      if (profile) {
+        localStorage.setItem("profiles", JSON.stringify(profile));
+      }
       console.log("ESTE ES EL ACTION.PAYLOAD", action.payload);
       return {
         ...state,
-        userData: action.payload,
+        userData: profile,
       };
 
     case "LOGIN_ERROR":
@@ -230,7 +234,6 @@ export default function reducer(state = initialState, action) {
       };
 
     case "GET_PROFILE":
-      console.log(action.payload);
       return {
         ...state,
         profile: action.payload,
@@ -264,10 +267,14 @@ export default function reducer(state = initialState, action) {
       };
     }
     case "REGISTER_USER_SUCCESS": {
+      const profileGoogle = action.payload;
+      if (profileGoogle) {
+        localStorage.setItem("profileGoogle", JSON.stringify(profileGoogle));
+      }
       return {
         ...state,
-        useGoogle: action.payload,
-        userInfo: action.payload,
+        useGoogle: profileGoogle,
+        userInfo: profileGoogle,
         loading: false,
         error: false,
       };
