@@ -18,7 +18,6 @@
     display: none;
     position: absolute;
     margin-right: 40px;
-    margin-top: 40px;
     right: -50px;
     background-color: #16161a;
     color: #cf4bff;
@@ -30,7 +29,9 @@
   
   .dropdown:hover .dropdownContent {
     display: block;
-  } 
+
+  }
+
   
   .dropdownItem {
     font-size: larger;
@@ -38,8 +39,10 @@
   }
   
   /* .dropdownItem:hover {
-    letter-spacing: 1px;
-  } */
+
+      letter-spacing: 1px;
+    } */
+
   
   .botonSingOut {
     border: none;
@@ -50,5 +53,6 @@
     font-family: inherit;
   }
   /* .botonSingOut:hover {
-    letter-spacing: 1px;
-  } */
+      letter-spacing: 1px;
+    } */
+
