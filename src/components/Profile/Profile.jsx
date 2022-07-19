@@ -12,10 +12,12 @@ export default function Profile() {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.userData.email);
 
+
   useEffect(() => {
     dispatch(getProfile(token));
     console.log(token);
   }, [dispatch, token]);
+
 
   const profile = useSelector((state) => state.profile);
   const profileGoogle = useSelector((state) => state.profileGoogle);
@@ -37,6 +39,7 @@ export default function Profile() {
         <div className={styles.container}>
           <h1 className={styles.colorh1}>Hi .</h1>
 
+
           <div className={styles.two}>
             <div className={styles.nameEnviar}>
               <div>
@@ -51,6 +54,7 @@ export default function Profile() {
                   Go to my favorite NFTs!
                 </button>
               </Link>
+
 
               <Link to="/cart">
                 <button className={styles.inputEnviar}>Go to my cart!</button>

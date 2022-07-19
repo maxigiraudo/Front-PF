@@ -9,12 +9,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
-import {
-  getNft,
-  getNftAll,
-  getSliderNftArt,
-  getNameNft,
-} from "../../redux/actions";
+import { getNft, getNftAll, getSliderNftArt,getNameNft } from "../../redux/actions";
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import Loading from "../Loading/Loading";
@@ -39,13 +34,17 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   const dispatch = useDispatch();
   useEffect(() => {
     if (allCard.length === 0) dispatch(getNft());
-
+    
     // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
   }, [dispatch, cursori]);
 
-  const catArt = useSelector((state) => state.categoryArt);
+  
+  
 
-  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catArt);
+  const catArt= useSelector((state)=> state.categoryArt)
+
+  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART",catArt)
+
 
   console.log(allCard);
 
@@ -97,21 +96,23 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
-    if (nftPerPage >= 1500) {
+    if (nftPerPage >= 1500  ) {
       setHasMore(false);
     }
     dispatch(getNftAll(cursori));
-  }, [currentPage, dispatch]);
+  }, [currentPage,dispatch]);
 
-  function handleFilterByName(e) {
-    dispatch(getNameNft(e));
+
+  function handleFilterByName(e){
+    dispatch(getNameNft(e))
   }
+  
 
   return (
     <div className={style.containergeneral}>
       <div className={style.containerNav}>
         <Navbar />
-      </div>
+      </div>      
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
@@ -230,6 +231,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
           </Slider>
         </div>
       </div>
+
       {catArt.length > 0 ? (
         <div className={style.sli}>
           <SliderArt />
@@ -279,7 +281,10 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
               </InfiniteScroll>
             </div>
           )}
+
         </div>
+      )}
+      </div>
       )}
 
       <div className={style.footer}>
