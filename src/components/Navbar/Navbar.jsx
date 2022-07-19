@@ -2,16 +2,24 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import Logo from "./logo.png";
-import { BiWalletAlt } from "react-icons/bi";
+
 import Dropdown from "../Dropdown/Dropdown.jsx";
 
 import DropDownWallet from "../DropwdownWallet/DropDownWallet.jsx";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getNft } from "../../redux/actions";
+import { useEffect } from "react";
 
 export default function Navbar() {
-  const logged = useSelector((state) => state.userIsAuthenticated);
+  // const logged = useSelector((state) => state.userIsAuthenticated);
+
+  const userrr = JSON.parse(localStorage.getItem("profiles"));
+  const userrrGoogle = JSON.parse(localStorage.getItem("profileGoogle"));
+
+  // useEffect(() => {
+
+  // }, [])
 
   const dispatch = useDispatch();
 
@@ -28,7 +36,7 @@ export default function Navbar() {
       </NavLink>
       <nav className={styles.navBar}>
         <ul>
-          {logged ? (
+          {userrr || userrrGoogle ? (
             <div className={styles.padreDrop}>
               <div>
                 <div>
