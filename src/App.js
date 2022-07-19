@@ -17,7 +17,6 @@ import Profile from "./components/Profile/Profile";
 import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 import MyCollections from "./components/MyCollections/MyCollections";
 
-
 function App() {
 
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
@@ -136,7 +135,7 @@ function App() {
         />
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
-        <Route path="/payment" element={<Payment/>} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="/formRegister" element={<FormRegister />} />
         <Route
           path="/cart"

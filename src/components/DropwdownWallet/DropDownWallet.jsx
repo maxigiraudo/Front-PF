@@ -43,8 +43,10 @@ export default function Dropdown() {
           <Link to="/payment">Charge Wallet</Link>
         </p>
         <p className={styles.dropdownItem}>
+
           {!isAuthenticated? (
             <button onClick={() => loginWallet()} className={styles.botonSingOut}>
+
             Connect Wallet{" "}
           </button>
           ) : (
@@ -52,6 +54,7 @@ export default function Dropdown() {
           )}
           
           
+
 
         </p>
       </div>

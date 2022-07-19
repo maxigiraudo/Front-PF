@@ -16,7 +16,6 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
   const logged = useSelector((state) => state.userIsAuthenticated);
   const nft = useSelector((state) => state.detail);
 
-
   let { id, token_address } = useParams();
 
   const dispatch = useDispatch();
@@ -76,9 +75,6 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
                 />
               </div>
 
-            
-              
-
               <div className={styles.description}>
                 <h3 className={styles.name}>{card.name}</h3>
                 <h5 className={styles.des}>Collection: {card.collection}</h5>
@@ -111,14 +107,10 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
                 </div>
               </div>
             </div>
-            <br></br>
-              <p className={styles.charge}>If you don't have enough money in your metamask wallet to make 
-              an offer or buy a nft, you can charge it with your credit card in a few simple steps.</p>
-                 <br></br>
-              <Link to='/payment'>
-              <button className={styles.buttonBuy}>CHARGE</button>
-              </Link>
+
+             
             </div>
+
           <div className={styles.footer}>
             <Footer />
           </div>
