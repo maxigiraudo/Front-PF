@@ -15,7 +15,7 @@
     "gapi-script": "^1.2.0",
     "install": "^0.13.0",
     "magic-sdk": "^8.1.1",
-    "moralis": "^1.8.1",
+    "moralis": "^1.9.0",
     "npm": "^8.13.2",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
