@@ -298,7 +298,7 @@ export function getProfileGoogle(email) {
   return async function (dispatch) {
     try {
       console.log("ESTE ES EL TOKEN QUE ME LLEGO", email);
-      const email1= email.user.email
+      const email1 = email.user.email;
       const json = await axios.get(
         `https://henry-proyecto-nft.herokuapp.com/profile/` + email1
       );
@@ -351,6 +351,13 @@ export const register = (body) => async (dispatch) => {
       type: "USER_LOGIN_SUCCESS",
       payload: data,
     });
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Login Success",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   } catch (err) {
     const errorString = String(err).slice(0, 10);
     if (errorString === "AxiosError") {
@@ -365,6 +372,13 @@ export const register = (body) => async (dispatch) => {
       dispatch({
         type: "REGISTER_USER_SUCCESS",
         payload: data,
+      });
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Login Success",
+        showConfirmButton: false,
+        timer: 1500,
       });
 
       const profileGoogle = data;
