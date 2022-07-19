@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+.home {
+  margin-left: 20px;
+}
 
 .container {
   display: flex;
@@ -13,11 +16,11 @@
 .container a {
   text-decoration: none;
 }
-.buttonW{
+.buttonW {
   background-color: #16161a;
   border: none;
 }
-.buttonW:hover{
+.buttonW:hover {
   cursor: pointer;
 }
 

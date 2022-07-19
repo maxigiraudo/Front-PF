@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick-theme.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import { BiSearchAlt } from "react-icons/bi";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
 import {
@@ -34,7 +33,6 @@ import SliderArt from "../SliderCat/SliderCat";
 
 export default function Home({ agregarCarrito, agregarFavorito }) {
   const allCard = useSelector((state) => state.cards);
-
   const cursori = useSelector((state) => state.cursor);
 
   console.log("CURSOR DEL HOME", cursori);
@@ -44,10 +42,6 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
 
     // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
   }, [dispatch, cursori]);
-
-  
-  
-
 
   const catArt = useSelector((state) => state.categoryArt);
 
@@ -121,7 +115,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
-          are loo
+          are looking.
         </h1>
         <div className={style.carousel}>
           <Slider {...settings}>
@@ -240,14 +234,6 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
         <div className={style.sli}>
           <SliderArt />
         </div>
-
-      </div>
-      {currentNft.length === 0 && currentNft ? (
-        <div>         
-        <Loading />
-        <h1 className={style.h1deload}>NO RESULTS FOUND</h1>
-        </div>
-
       ) : (
         <div>
           <div className={style.orderSearch}>
@@ -264,11 +250,11 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
             </div>
           </div>
           {currentNft.length === 0 && currentNft ? (
-            <Loading />
+            <div>
+              <Loading />
+              <h1 className={style.h1deload}>NO RESULTS FOUND</h1>
+            </div>
           ) : (
-            // <div className={style.noResult}>
-            //   <span>{BiSearchAlt()} No results found for your search.</span>
-            // </div>
             <div>
               <InfiniteScroll
                 className={style.cardHome}

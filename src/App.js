@@ -16,7 +16,6 @@ import Profile from "./components/Profile/Profile";
 import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 import MyCollections from "./components/MyCollections/MyCollections";
 
-
 function App() {
   let favoritoInicial = JSON.parse(localStorage.getItem("favorito"));
   if (!favoritoInicial) {
@@ -125,7 +124,7 @@ function App() {
         />
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
-        <Route path="/payment" element={<Payment/>} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="/formRegister" element={<FormRegister />} />
         <Route
           path="/cart"

@@ -13,7 +13,7 @@ const initialState = {
   favorite: [],
   user: [],
 
-  profile : [],
+  profile: [],
 
   useGoogle: {},
   userIsAuthenticated: false,
@@ -24,9 +24,7 @@ const initialState = {
   userInfo: {},
   isAuth: false,
 
-  profileGoogle:[]
-
-
+  profileGoogle: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -139,7 +137,10 @@ export default function reducer(state = initialState, action) {
         error: false,
       };
     case "CREATE_ACOUNT_SUCCESS":
-      console.log("ESTO ES LO QUE ME LLEGA DE PAYLOAD DE LA CREACION DEL USUARIO",action.payload)
+      console.log(
+        "ESTO ES LO QUE ME LLEGA DE PAYLOAD DE LA CREACION DEL USUARIO",
+        action.payload
+      );
       return {
         ...state,
         user: [action.payload, ...state.user],
@@ -229,30 +230,28 @@ export default function reducer(state = initialState, action) {
       };
 
     case "GET_PROFILE":
+      console.log(action.payload);
       return {
         ...state,
         profile: action.payload,
       };
 
+    case "GET_PROFILE":
+      return {
+        ...state,
+        profile: action.payload,
+      };
+    case "GET_PROFILE_GOOGLE":
+      return {
+        ...state,
+        profileGoogle: action.payload,
+      };
 
-      case "GET_PROFILE":
-        return {
-          ...state,
-          profile: action.payload,
-  
-        };
-        case "GET_PROFILE_GOOGLE":
-        return {
-          ...state,
-          profileGoogle: action.payload,
-  
-        };
-
-      case 'UPDATED_PROFILE_BY_ID' :
-        return {
-          ...state,
-          profile : action.payload
-        }
+    case "UPDATED_PROFILE_BY_ID":
+      return {
+        ...state,
+        profile: action.payload,
+      };
 
     case "REGISTER_USER_REQUEST": {
       return {

@@ -139,7 +139,7 @@ export function createAcount({ nombre, email, password }) {
         "https://henry-proyecto-nft.herokuapp.com/api/registro",
         body
       );
-      console.log("ESTA ES LA ACCION DE LA CRACION DEL USUARIO",json.data)
+      console.log("ESTA ES LA ACCION DE LA CRACION DEL USUARIO", json.data);
       dispatch({
         type: "CREATE_ACOUNT_SUCCESS",
         payload: json.data,
@@ -277,59 +277,59 @@ export const addFavorite = (info) => {
   };
 };
 
-
 //-------------------------------------USER PROFILE------------------
-export function getProfile(email){
-  return async function(dispatch){
-      try{
-        console.log("ESTE ES EL TOKEN QUE ME LLEGO",email)
-          const json= await axios.get(`https://henry-proyecto-nft.herokuapp.com/profile/`+ email);       
-          console.log("ESTA ES LA ACCION DEL ", json)      
-          return dispatch({
-              type : 'GET_PROFILE',
-              payload : json.data
-          })
-      }
-      catch(error){console.log(error)}
-  }
-
+export function getProfile(email) {
+  return async function (dispatch) {
+    try {
+      console.log("ESTE ES EL TOKEN QUE ME LLEGO", email);
+      const json = await axios.get(
+        `https://henry-proyecto-nft.herokuapp.com/profile/` + email
+      );
+      console.log("ESTA ES LA ACCION DEL ", json);
+      return dispatch({
+        type: "GET_PROFILE",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
-export function getProfileGoogle(email){
-  return async function(dispatch){
-      try{
-        console.log("ESTE ES EL TOKEN QUE ME LLEGO",email)
-          const json= await axios.get(`https://henry-proyecto-nft.herokuapp.com/profile/`+ email);       
-          console.log("ESTA ES LA ACCION DEL ", json)      
-          return dispatch({
-              type : 'GET_PROFILE_GOOGLE',
-              payload : json.data
-          })
-      }
-      catch(error){console.log(error)}
-  }
-
+export function getProfileGoogle(email) {
+  return async function (dispatch) {
+    try {
+      console.log("ESTE ES EL TOKEN QUE ME LLEGO", email);
+      const json = await axios.get(
+        `https://henry-proyecto-nft.herokuapp.com/profile/` + email
+      );
+      console.log("ESTA ES LA ACCION DEL ", json);
+      return dispatch({
+        type: "GET_PROFILE_GOOGLE",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
-
-
-
-export function  updatedProfileById(){
-  return async function(dispatch){
-      try{
-          const json= await axios.put(`https://henry-proyecto-nft.herokuapp.com/profile/:token`);      
-           console.log("ESTE ES EL ACTION DEL PUT", json)             
-          return dispatch({
-              type : 'UPDATED_PROFILE_BY_ID',
-              payload : json.data
-          })
-      }
-      catch(error){console.log(error)}
-
-  }
-
+export function updatedProfileById() {
+  return async function (dispatch) {
+    try {
+      const json = await axios.put(
+        `https://henry-proyecto-nft.herokuapp.com/profile/:token`
+      );
+      console.log("ESTE ES EL ACTION DEL PUT", json);
+      return dispatch({
+        type: "UPDATED_PROFILE_BY_ID",
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 //------------------------------------------------------
-
 
 export const register = (body) => async (dispatch) => {
   // try {
@@ -444,4 +444,3 @@ export function singoutOk() {
     type: "SINGOUT_OK",
   };
 }
-
