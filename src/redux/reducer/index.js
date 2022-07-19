@@ -259,6 +259,7 @@ export default function reducer(state = initialState, action) {
     }
     case "REGISTER_USER_SUCCESS": {
       const profileGoogle = action.payload;
+      console.log("ESTE ES EL REGISTER_USER_SUCCES", profileGoogle);
       if (profileGoogle) {
         localStorage.setItem("profileGoogle", JSON.stringify(profileGoogle));
       }

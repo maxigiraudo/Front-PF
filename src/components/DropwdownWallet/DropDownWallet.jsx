@@ -9,9 +9,14 @@ import { BiWalletAlt } from "react-icons/bi";
 
 export default function Dropdown() {
   const dispatch = useDispatch();
-  const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
-
- 
+  const {
+    authenticate,
+    isAuthenticated,
+    isAuthenticating,
+    user,
+    account,
+    logout,
+  } = useMoralis();
 
   const loginWallet = async () => {
     if (!isAuthenticated) {
@@ -20,17 +25,15 @@ export default function Dropdown() {
         await authenticate({ provider: connectorId });
         window.localStorage.setItem("connectorId", connectorId);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-      
     }
   };
 
   const logOut = async () => {
     await logout();
     window.localStorage.removeItem("connectorId");
-  }
-  
+  };
 
   return (
     <div className={styles.dropdown}>
@@ -43,19 +46,18 @@ export default function Dropdown() {
           <Link to="/payment">Charge Wallet</Link>
         </p>
         <p className={styles.dropdownItem}>
-
-          {!isAuthenticated? (
-            <button onClick={() => loginWallet()} className={styles.botonSingOut}>
-
-            Connect Wallet{" "}
-          </button>
+          {!isAuthenticated ? (
+            <button
+              onClick={() => loginWallet()}
+              className={styles.botonSingOut}
+            >
+              Connect Wallet{" "}
+            </button>
           ) : (
-            <button onClick={() => logOut()} className={styles.botonSingOut}>Disconnect Wallet</button>
+            <button onClick={() => logOut()} className={styles.botonSingOut}>
+              Disconnect Wallet
+            </button>
           )}
-          
-          
-
-
         </p>
       </div>
     </div>

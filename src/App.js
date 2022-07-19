@@ -18,16 +18,20 @@ import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 import MyCollections from "./components/MyCollections/MyCollections";
 
 function App() {
-
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
 
   useEffect(() => {
+    window.localStorage.getItem("profiles");
+    window.localStorage.getItem("googleProfile");
+  }, []);
+
+  useEffect(() => {
     const connectorId = window.localStorage.getItem("connectorId");
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading)
-      enableWeb3({ provider: connectorId })
+      enableWeb3({ provider: connectorId });
   }, [isAuthenticated, isWeb3Enabled]);
-  
+
   let favoritoInicial = JSON.parse(localStorage.getItem("favorito"));
   if (!favoritoInicial) {
     favoritoInicial = [];
