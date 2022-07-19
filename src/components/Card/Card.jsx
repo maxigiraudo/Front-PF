@@ -34,7 +34,9 @@ export default function Card({
     navigate("/login");
   };
 
-  const logged = useSelector((state) => state.userIsAuthenticated);
+  // const logged = useSelector((state) => state.userIsAuthenticated);
+  const userrr = JSON.parse(localStorage.getItem("profiles"));
+  const userrrGoogle = JSON.parse(localStorage.getItem("profileGoogle"));
 
   return (
     <div className={style.container}>
@@ -68,7 +70,7 @@ export default function Card({
           >
             {BsFillCartCheckFill()}{" "}
           </button>
-          {logged ? (
+          {userrr || userrrGoogle ? (
             <button
               onClick={() => onClickF({ id, name, image })}
               className={style.heart}

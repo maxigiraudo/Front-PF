@@ -367,6 +367,10 @@ export const register = (body) => async (dispatch) => {
         payload: data,
       });
 
+      const profileGoogle = data;
+      if (profileGoogle) {
+        localStorage.setItem("profileGoogle", JSON.stringify(profileGoogle));
+      }
       console.log("LOGUEADO TITANN", data);
       Swal("Registro Exitoso", { icon: "success" });
       // window.location.href = "/home";
