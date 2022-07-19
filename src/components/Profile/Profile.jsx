@@ -11,6 +11,8 @@ export default function Profile() {
   //console.log(props)
   const dispatch = useDispatch();
   const token = useSelector((state) => state.userData.email);
+  const emailGoogle = useSelector((state)=> state.useGoogle)
+  console.log(emailGoogle)
 
 
   useEffect(() => {
@@ -18,16 +20,20 @@ export default function Profile() {
     console.log(token);
   }, [dispatch, token]);
 
+  useEffect(() => {
+    dispatch(getProfileGoogle(emailGoogle));    
+  }, [dispatch, emailGoogle]);
+
 
   const profile = useSelector((state) => state.profile);
   const profileGoogle = useSelector((state) => state.profileGoogle);
   console.log(profile);
   console.log(profileGoogle);
 
-  const profiles = useSelector((state) => state.profile);
+  // const profiles = useSelector((state) => state.profile);
   //console.log(profile)
 
-  console.log(profiles);
+  console.log(profile);
   return (
     <div className={styles.containerPadre}>
       <Navbar />
@@ -42,20 +48,26 @@ export default function Profile() {
 
           <div className={styles.two}>
             <div className={styles.nameEnviar}>
+            {profile !== null?
               <div>
                 <h1 className={styles.name}> User name: {profile.nombre} </h1>
                 <br />
                 <h1 className={styles.name}> Email: {profile.email}</h1>
                 <br />
-              </div>
+              </div> :
+             
+                (<div>
+                <h1 className={styles.name}> User from Google </h1>
+                <br />
+                <h1 className={styles.name}> Email: {profileGoogle.email}</h1>
+                <br />
+              </div>) }
 
               <Link to="/favorite">
                 <button className={styles.inputEnviar}>
                   Go to my favorite NFTs!
                 </button>
               </Link>
-
-
               <Link to="/cart">
                 <button className={styles.inputEnviar}>Go to my cart!</button>
               </Link>
