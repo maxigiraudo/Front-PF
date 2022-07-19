@@ -2,11 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import Logo from "./logo.png";
-
+import { BiWalletAlt } from "react-icons/bi";
 import Dropdown from "../Dropdown/Dropdown.jsx";
 
 import DropDownWallet from "../DropwdownWallet/DropDownWallet.jsx";
-
 
 import { useDispatch, useSelector } from "react-redux";
 import { getNft } from "../../redux/actions";
@@ -15,10 +14,6 @@ export default function Navbar() {
   const logged = useSelector((state) => state.userIsAuthenticated);
 
   const dispatch = useDispatch();
-
-
-  const dispatch = useDispatch();
-
 
   function cargarHome() {
     dispatch(getNft());
