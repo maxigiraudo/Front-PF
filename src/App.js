@@ -1,5 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import { useMoralis } from "react-moralis";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Home from "./components/Home/Home";
 import Detail from "./components/Detail/Detail";
@@ -15,10 +16,19 @@ import Swal from "sweetalert2";
 import Profile from "./components/Profile/Profile";
 import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 import MyCollections from "./components/MyCollections/MyCollections";
-import Wallet from "./components/Wallet/Wallet";
 
 
 function App() {
+
+  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
+    useMoralis();
+
+  useEffect(() => {
+    const connectorId = window.localStorage.getItem("connectorId");
+    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading)
+      enableWeb3({ provider: connectorId })
+  }, [isAuthenticated, isWeb3Enabled]);
+  
   let favoritoInicial = JSON.parse(localStorage.getItem("favorito"));
   if (!favoritoInicial) {
     favoritoInicial = [];
