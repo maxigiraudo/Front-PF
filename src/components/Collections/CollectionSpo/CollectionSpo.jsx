@@ -1,14 +1,12 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import style from './SliderCat.module.css'
+import style from './CollectionSpo.module.css'
 import {MdVerified} from 'react-icons/md'
 
 
-export default function SliderArt(){
+export default function CollectionSpo(){
 
-    const catArt = useSelector((state) =>state.categoryArt)
-
-    
+    const catArt = useSelector((state) =>state.collectionSpo)   
 
       return(
         <div className={style.carousel}>
@@ -141,13 +139,13 @@ export default function SliderArt(){
 
                 <img
                   className={style.imageC}
-                  src={catArt[7].image}
+                  src={catArt[0].image}
                   alt="*"
                   value="art"
                 />
               </div>
             <div className={style.divH}></div>
-                <h1 className={style.nameC}>{catArt[7].name}</h1>
+                <h1 className={style.nameC}>{catArt[0].name}</h1>
                 <p className={style.veri}>{MdVerified()}</p>
               </div>
               </div>

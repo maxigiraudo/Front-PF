@@ -8,7 +8,7 @@ import Dropdown from "../Dropdown/Dropdown.jsx";
 import DropDownWallet from "../DropwdownWallet/DropDownWallet.jsx";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getNft } from "../../redux/actions";
+import { getNftDelHome } from "../../redux/actions";
 import { useEffect } from "react";
 
 export default function Navbar() {
@@ -24,7 +24,7 @@ export default function Navbar() {
   const dispatch = useDispatch();
 
   function cargarHome() {
-    dispatch(getNft());
+    dispatch(getNftDelHome());
   }
 
   return (
