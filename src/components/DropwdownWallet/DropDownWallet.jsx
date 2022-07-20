@@ -24,13 +24,16 @@ export default function Dropdown() {
       try {
         await authenticate({ provider: connectorId });
         window.localStorage.setItem("connectorId", connectorId);
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Connect Wallet",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        console.log(account);
+        if (account) {
+          await Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Connected Wallet",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       } catch (error) {
         console.log(error);
       }
@@ -43,7 +46,7 @@ export default function Dropdown() {
     Swal.fire({
       position: "center",
       icon: "warning",
-      title: "Disconect Wallet",
+      title: "Disconected Wallet",
       showConfirmButton: false,
       timer: 1500,
     });

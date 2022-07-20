@@ -59,7 +59,7 @@ export default function Card({
             )}
           </figure>
           <div className={style.containertext}>
-            {name.length > 20 ? (
+            {name && name.length > 20 ? (
               <h1 className={style.name}>{name.slice(0, 20) + "..."}</h1>
             ) : (
               <h1 className={style.name}>{name}</h1>
