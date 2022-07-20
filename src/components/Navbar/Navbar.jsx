@@ -75,7 +75,7 @@ export default function Navbar() {
             </div>
           )}
         </ul>
-        <div className={styles.dropdown}>
+        <div>
           <DropDownWallet className={styles.wallet}></DropDownWallet>
         </div>
         {/* <div className={styles.tooltip}>

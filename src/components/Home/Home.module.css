@@ -107,6 +107,12 @@ body {
   justify-content: center;
 }
 
+/* .cardHome {
+  columns: 4 320px;
+  column-gap: 0.5em;
+  margin: 10px;
+} */
+
 .option {
   margin-top: 10px;
   border: 1px solid white;
