@@ -55,11 +55,11 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
         <div className={styles.containerPadre}>
           <div className={styles.navbar}>
             <Navbar />
-            {/* <Link to="/home"> */}
+           
             <button onClick={() => handleClean()} className={styles.botonR}>
               Go Back
             </button>
-            {/* </Link> */}
+            
           </div>
           <div className={styles.padre}>
             <div className={styles.todos}>

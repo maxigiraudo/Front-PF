@@ -3,9 +3,24 @@ import styles from "./LandingPage.module.css";
 import { Link } from "react-router-dom";
 import logo from "./Imagenes/logowallaby.png";
 import cubos from "./Imagenes/cubos.png";
-import { IoWalletOutline, IoImageOutline, IoPricetagsOutline } from "react-icons/io5";
+import { IoWalletOutline, IoImageOutline, IoPricetagsOutline} from "react-icons/io5";
+import { BsChatDots } from "react-icons/bs"
+import Chatbot from "./ChatBot/ChatBot.js";
+import { useState } from "react";
+
+
 
 export default function LandingPage() {
+
+  const [botState, setBotState] = useState(false)
+
+  const cambiarState = () => {
+      if (botState === true) {
+          setBotState(false)
+      }
+      else { setBotState(true) }
+  }
+
   return (
     <div className={styles.contenedorLanding}>
       <div className={styles.Landingtop}>
@@ -60,9 +75,16 @@ export default function LandingPage() {
             <h3>List them for sale</h3>
             <p>You choose how you want to sell your NFTs, and we help you sell them!</p>
           </div>
-
         </div>
 
+        {botState ?
+                <div>
+                    <div className={styles.cajaActivada} onClick={e => cambiarState()}> CLOSE </div>
+                    <div className={styles.chatbotLanding} >
+                        <Chatbot/>
+                    </div> 
+                </div>
+                : <div className={styles.cajaBoton} onClick={e => cambiarState()}> Need Help? <BsChatDots className={styles.icon}/> </div> }
       </div>
     </div>
   );
