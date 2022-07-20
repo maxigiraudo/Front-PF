@@ -52,13 +52,17 @@ export default function ShoppingCart({
       }
     });
   };
-
+  const back = () => {
+    window.history.back();
+  };
   return (
     <div>
       <Navbar />
-      <Link to="/home">
-        <button className={styles.botonR}>Go Back</button>
-      </Link>
+
+      <button onClick={back} className={styles.botonR}>
+        Go Back
+      </button>
+
       <div className={styles.container}>
         <h1 className={styles.titulo}>{FaShoppingCart()} Shopping Cart</h1>
 
@@ -107,12 +111,9 @@ export default function ShoppingCart({
               </p>
               <br></br>
 
-              <Link to="/payment" >
+              <Link to="/payment">
                 <button className={styles.buttonBuy}>CHARGE</button>
-
               </Link>
-             
-
             </div>
           </div>
         ) : (
