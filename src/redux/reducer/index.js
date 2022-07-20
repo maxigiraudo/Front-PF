@@ -20,10 +20,10 @@ const initialState = {
   userRegister: false,
   collectionArt: [],
   collectionCol: [],
-  collectionPho:[],
-  collectionGam:[],
-  collectionMus:[],
-  collectionSpo:[],
+  collectionPho: [],
+  collectionGam: [],
+  collectionMus: [],
+  collectionSpo: [],
   userInfo: {},
   isAuth: false,
   profileGoogle: [],
@@ -48,75 +48,73 @@ export default function reducer(state = initialState, action) {
         ...state,
         collectionArt: art,
       };
-      case "GET_COLLECTION_COL":
-        const sinCur = action.payload;
-        const sinCurso1 = sinCur.filter((e) => e.name);
-        const col = sinCurso1.filter((e) => e.category === "collectibles");
-        console.log("ESTA ES MI ACTION DE COL", col);
-        return {
-          ...state,
-          collectionCol: col,
-          collectionArt:[]
-        };
-        case "GET_COLLECTION_PHO":
-          const sinCur1 = action.payload;
-          const sinCurso2 = sinCur1.filter((e) => e.name);
-          const pho = sinCurso2.filter((e) => e.category === "photography");
-          console.log("ESTA ES MI ACTION DE COL", pho);
-          return {
-            ...state,
-            collectionPho: pho,
-            collectionArt:[],
-            collectionCol:[],
-            collectionGam:[],
-            collectionMus:[],
-            collectionSpo:[]
-          };
-          case "GET_COLLECTION_GAM":
-          const sinCur2 = action.payload;
-          const sinCurso3 = sinCur2.filter((e) => e.name);
-          const gam = sinCurso3.filter((e) => e.category === "games");
-          console.log("ESTA ES MI ACTION DE COL", gam);
-          return {
-            ...state,
-            collectionPho: [],
-            collectionArt:[],
-            collectionCol:[],
-            collectionGam:gam,
-            collectionMus:[],
-            collectionSpo:[]
-          };
-          case "GET_COLLECTION_MUS":
-            const sinCur3 = action.payload;
-            const sinCurso4 = sinCur3.filter((e) => e.name);
-            const mus = sinCurso4.filter((e) => e.category === "music");
-            console.log("ESTA ES MI ACTION DE COL", mus);
-            return {
-              ...state,
-              collectionPho: [],
-              collectionArt:[],
-              collectionCol:[],
-              collectionGam:[],
-              collectionSpo:[],
-              collectionMus:mus
-            };
-            case "GET_COLLECTION_SPO":
-              const sinCur4 = action.payload;
-              const sinCurso5 = sinCur4.filter((e) => e.name);
-              const spo = sinCurso5.filter((e) => e.category === "sports");
-              console.log("ESTA ES MI ACTION DE COL", spo);
-              return {
-                ...state,
-                collectionPho: [],
-                collectionArt:[],
-                collectionCol:[],
-                collectionGam:[],
-                collectionMus:[],
-                collectionSpo:spo
-              };
-    
-  
-      
+    case "GET_COLLECTION_COL":
+      const sinCur = action.payload;
+      const sinCurso1 = sinCur.filter((e) => e.name);
+      const col = sinCurso1.filter((e) => e.category === "collectibles");
+      console.log("ESTA ES MI ACTION DE COL", col);
+      return {
+        ...state,
+        collectionCol: col,
+        collectionArt: [],
+      };
+    case "GET_COLLECTION_PHO":
+      const sinCur1 = action.payload;
+      const sinCurso2 = sinCur1.filter((e) => e.name);
+      const pho = sinCurso2.filter((e) => e.category === "photography");
+      console.log("ESTA ES MI ACTION DE COL", pho);
+      return {
+        ...state,
+        collectionPho: pho,
+        collectionArt: [],
+        collectionCol: [],
+        collectionGam: [],
+        collectionMus: [],
+        collectionSpo: [],
+      };
+    case "GET_COLLECTION_GAM":
+      const sinCur2 = action.payload;
+      const sinCurso3 = sinCur2.filter((e) => e.name);
+      const gam = sinCurso3.filter((e) => e.category === "games");
+      console.log("ESTA ES MI ACTION DE COL", gam);
+      return {
+        ...state,
+        collectionPho: [],
+        collectionArt: [],
+        collectionCol: [],
+        collectionGam: gam,
+        collectionMus: [],
+        collectionSpo: [],
+      };
+    case "GET_COLLECTION_MUS":
+      const sinCur3 = action.payload;
+      const sinCurso4 = sinCur3.filter((e) => e.name);
+      const mus = sinCurso4.filter((e) => e.category === "music");
+      console.log("ESTA ES MI ACTION DE COL", mus);
+      return {
+        ...state,
+        collectionPho: [],
+        collectionArt: [],
+        collectionCol: [],
+        collectionGam: [],
+        collectionSpo: [],
+        collectionMus: mus,
+      };
+    case "GET_COLLECTION_SPO":
+      const sinCur4 = action.payload;
+      const sinCurso5 = sinCur4.filter((e) => e.name);
+      const spo = sinCurso5.filter((e) => e.category === "sports");
+      console.log("ESTA ES MI ACTION DE COL", spo);
+      return {
+        ...state,
+        collectionPho: [],
+        collectionArt: [],
+        collectionCol: [],
+        collectionGam: [],
+        collectionMus: [],
+        collectionSpo: spo,
+      };
+
     // case "ORDER_BY_NAME":
     //   if (action.payload === "desc") {
     //     return {
@@ -169,7 +167,7 @@ export default function reducer(state = initialState, action) {
         allCards: getInfoF,
         cards: getInfoF,
       };
-      case "GET_NFT_HOME":
+    case "GET_NFT_HOME":
       // const getInfo = action.payload
       // const getInfoRenderizar = getInfo.filter((e)=> e.name)
       // const getFinal = getInfoRenderizar.filter((e)=> e.name != "Brave CAT" && e.name != "Farmer Cat" && !e.image.includes("catsworld"))
@@ -185,10 +183,10 @@ export default function reducer(state = initialState, action) {
         cards: getInfoF1,
         collectionArt: [],
         collectionCol: [],
-        collectionPho:[],
-        collectionGam:[],
-        collectionMus:[],
-        collectionSpo:[],
+        collectionPho: [],
+        collectionGam: [],
+        collectionMus: [],
+        collectionSpo: [],
       };
     case "GET_NFT_ALL20":
       const getInfo2 = action.payload;

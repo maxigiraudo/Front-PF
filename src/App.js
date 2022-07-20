@@ -16,6 +16,7 @@ import Swal from "sweetalert2";
 import Profile from "./components/Profile/Profile";
 import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 import MyCollections from "./components/MyCollections/MyCollections";
+import MyOrders from "./components/MyOrders/MyOrders";
 
 function App() {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
@@ -165,6 +166,7 @@ function App() {
           }
         />
         <Route path="/mycollections" element={<MyCollections />} />
+        <Route path="/myorders" element={<MyOrders />} />
       </Routes>
     </div>
   );

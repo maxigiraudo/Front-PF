@@ -33,7 +33,7 @@ export default function Profile() {
       <Navbar />
 
       <button onClick={back} className={styles.botonR}>
-        Go Home
+        Go Back
       </button>
 
       <div className={styles.padre}>
