@@ -9,22 +9,35 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
-import { getNft, getNftAll, getSliderNftArt,getNameNft } from "../../redux/actions";
+import {
+  getNft,
+  getNftAll,
+  getSliderNftArt,
+  getNameNft,
+  getCollectionArt,
+  getCollectionCol,
+  getCollectionPho,
+  getCollectionGam,
+  getCollectionMus,
+  getCollectionSpo,
+} from "../../redux/actions";
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import Loading from "../Loading/Loading";
-import animals from "./images/animals (1).png";
+import CollectionCol from "../Collections/CollectionCol/CollectionCol";
 import art from "./images/art (1).png";
-import crypto from "./images/crypto (1).png";
+import collectibles from "./images/collectibles (1).png";
 import games from "./images/games (1).png";
 import music from "./images/music (1).png";
 import photography from "./images/photography (1).png";
 import sports from "./images/sports (1).png";
-import video from "./images/video png (1).png";
-import world from "./images/world (1).png";
+import CollectionArt from "../Collections/CollectionArt/CollectionArt";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import SliderArt from "../SliderCat/SliderCat";
+import CollectionPho from "../Collections/CollectionPho/CollectionPho";
+import CollectionGam from "../Collections/CollectionGam/CollectionGam";
+import CollectionMus from "../Collections/CollectionMus/CollectionMus";
+import CollectionSpo from "../Collections/CollectionSpo/CollectionSpo";
 
 export default function Home({ agregarCarrito, agregarFavorito }) {
   const allCard = useSelector((state) => state.cards);
@@ -34,15 +47,19 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   const dispatch = useDispatch();
   useEffect(() => {
     if (allCard.length === 0) dispatch(getNft());
-    
+
     // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
   }, [dispatch, cursori]);
-  
-  
 
-  const catArt= useSelector((state)=> state.categoryArt)
+  const catArt = useSelector((state) => state.collectionArt);
+  const catCol = useSelector((state) => state.collectionCol);
+  const catPho = useSelector((state) => state.collectionPho);
+  const catGam = useSelector((state) => state.collectionGam);
+  const catMus = useSelector((state) => state.collectionMus);
+  const catSpo = useSelector((state) => state.collectionSpo);
 
-  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART",catArt)
+  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catArt);
+  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catCol);
 
   console.log(allCard);
 
@@ -82,9 +99,24 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
       },
     ],
   };
-  // function handleFilterByCategoryArt(e) {
-  //   dispatch(getSliderNftArt(e));
-  // }
+  function handleFilterByCategoryArt(e) {
+    dispatch(getCollectionArt(e));
+  }
+  function handleFilterByCategoryCol(e) {
+    dispatch(getCollectionCol(e));
+  }
+  function handleFilterByCategoryPho(e) {
+    dispatch(getCollectionPho(e));
+  }
+  function handleFilterByCategoryGam(e) {
+    dispatch(getCollectionGam(e));
+  }
+  function handleFilterByCategoryMus(e) {
+    dispatch(getCollectionMus(e));
+  }
+  function handleFilterByCategorySpo(e) {
+    dispatch(getCollectionSpo(e));
+  }
 
   const [currentPage, setCurrentPage] = useState(1);
   const [nftPerPage, setNftPerPage] = useState(6);
@@ -94,42 +126,28 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
-    if (nftPerPage >= 1500  ) {
+    if (nftPerPage >= 1500) {
       setHasMore(false);
     }
     dispatch(getNftAll(cursori));
-  }, [currentPage,dispatch]);
+  }, [currentPage, dispatch]);
 
-
-  function handleFilterByName(e){
-    dispatch(getNameNft(e))
-  }
-  
+  // function handleFilterByName(e) {
+  //   dispatch(getNameNft(e));
+  // }
 
   return (
     <div className={style.containergeneral}>
       <div className={style.containerNav}>
         <Navbar />
-      </div>      
+      </div>
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
-          are loo
+          are looking.
         </h1>
         <div className={style.carousel}>
           <Slider {...settings}>
-            <div className={style.containerC}>
-              <div className={style.tres}>
-                <h1 className={style.nameC}>Animals</h1>
-                <img
-                  className={style.imageC}
-                  src={animals}
-                  alt="*"
-                  value="animals"
-                  onClick={(e) => handleFilterByName("animals")}
-                />
-              </div>
-            </div>
             <div className={style.containerC}>
               <div className={style.tres}>
                 <h1 className={style.nameC}>Art</h1>
@@ -138,19 +156,19 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={art}
                   alt="*"
                   value="art"
-                  onClick={(e) => handleFilterByName("art")}
+                  onClick={(e) => handleFilterByCategoryArt("art")}
                 />
               </div>
             </div>
             <div className={style.containerC}>
               <div className={style.tres}>
-                <h1 className={style.nameC}>Crypto</h1>
+                <h1 className={style.nameC}>Collectibles</h1>
                 <img
                   className={style.imageC}
-                  src={crypto}
+                  src={collectibles}
                   alt="*"
                   value="crypto"
-                  onClick={(e) => handleFilterByName("crypto")}
+                  onClick={(e) => handleFilterByCategoryCol("collectibles")}
                 />
               </div>
             </div>
@@ -162,7 +180,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={games}
                   alt="*"
                   value="games"
-                  onClick={(e) => handleFilterByName("games")}
+                  onClick={(e) => handleFilterByCategoryGam("games")}
                 />
               </div>
             </div>
@@ -174,7 +192,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={music}
                   alt="*"
                   value="music"
-                  onClick={(e) => handleFilterByName("music")}
+                  onClick={(e) => handleFilterByCategoryMus("music")}
                 />
               </div>
             </div>
@@ -186,7 +204,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={photography}
                   alt="*"
                   value="photography"
-                  onClick={(e) => handleFilterByName("photography")}
+                  onClick={(e) => handleFilterByCategoryPho("photography")}
                 />
               </div>
             </div>
@@ -198,90 +216,85 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={sports}
                   alt="*"
                   value="sports"
-                  onClick={(e) => handleFilterByName("sports")}
-                />
-              </div>
-            </div>
-            <div className={style.containerC}>
-              <div className={style.tres}>
-                <h1 className={style.nameC}>Video</h1>
-                <img
-                  className={style.imageC}
-                  src={video}
-                  alt="*"
-                  value="video"
-                  onClick={(e) => handleFilterByName("video")}
-                />
-              </div>
-            </div>
-            <div className={style.containerC}>
-              <div className={style.tres}>
-                <h1 className={style.nameC}>World</h1>
-                <img
-                  className={style.imageC}
-                  src={world}
-                  alt="*"
-                  value="world"
-                  onClick={(e) => handleFilterByName("world")}
+                  onClick={(e) => handleFilterByCategorySpo("sports")}
                 />
               </div>
             </div>
           </Slider>
         </div>
       </div>
-      {catArt.length>0?
-      <div className={style.sli}>
 
-      <SliderArt/>
-      </div>
-      :(
-        <div>
-      <div className={style.orderSearch}>
-        <div className={style.navDos}>
-          <div className={style.searchBar}>
-            <Searchbar setCurrentPage={setCurrentPage} />
-          </div>
-          <Link to="/cart">
-            <div className={style.carrito}>
-              <h2>{FaShoppingCart()} View Cart</h2>
-            </div>
-          </Link>
-          {/* <Order /> */}
+      {catArt.length > 0 ? (
+        <div className={style.sli}>
+          <CollectionArt />
         </div>
-      </div>
-      {currentNft.length === 0 && currentNft ? (
-        <div>         
-        <Loading />
-        <h1 className={style.h1deload}>NO RESULTS FOUND</h1>
+      ) : catCol.length > 0 ? (
+        <div className={style.sli}>
+          <CollectionCol />
+        </div>
+      ) : catPho.length > 0 ? (
+        <div className={style.sli}>
+          <CollectionPho />
+        </div>
+      ) : catGam.length > 0 ? (
+        <div className={style.sli}>
+          <CollectionGam />
+        </div>
+      ) : catMus.length > 0 ? (
+        <div className={style.sli}>
+          <CollectionMus />
+        </div>
+      ) : catSpo.length > 0 ? (
+        <div className={style.sli}>
+          <CollectionSpo />
         </div>
       ) : (
         <div>
-          <InfiniteScroll
-            className={style.cardHome}
-            dataLength={currentNft.length} //This is important field to render the next data
-            next={() => setCurrentPage((prevPage) => prevPage + 1)}
-            hasMore={hasMore}
-          >
-            {currentNft?.map((e, index) => (
-              <Card
-                agregarFavorito={agregarFavorito}
-                agregarCarrito={agregarCarrito}
-                id={e._id}
-                key={index}
-                price={e.price}
-                name={e.name}
-                image={e.image}
-                created={e.created}
-                token_address={e.token_address}
-                collection={e.collection}
-              />
-            ))}
-          </InfiniteScroll>
+          <div className={style.orderSearch}>
+            <div className={style.navDos}>
+              <div className={style.searchBar}>
+                <Searchbar setCurrentPage={setCurrentPage} />
+              </div>
+              <Link to="/cart">
+                <div className={style.carrito}>
+                  <h2>{FaShoppingCart()} View Cart</h2>
+                </div>
+              </Link>
+              {/* <Order /> */}
+            </div>
+          </div>
+          {currentNft.length === 0 && currentNft ? (
+            <div>
+              <Loading />
+              <h1 className={style.h1deload}>NO RESULTS FOUND</h1>
+            </div>
+          ) : (
+            <div>
+              <InfiniteScroll
+                className={style.cardHome}
+                dataLength={currentNft.length} //This is important field to render the next data
+                next={() => setCurrentPage((prevPage) => prevPage + 1)}
+                hasMore={hasMore}
+              >
+                {currentNft?.map((e, index) => (
+                  <Card
+                    agregarFavorito={agregarFavorito}
+                    agregarCarrito={agregarCarrito}
+                    id={e._id}
+                    key={index}
+                    price={e.price}
+                    name={e.name}
+                    image={e.image}
+                    created={e.created}
+                    token_address={e.token_address}
+                    collection={e.collection}
+                  />
+                ))}
+              </InfiniteScroll>
+            </div>
+          )}
         </div>
       )}
-      </div>
-      )}
-
       <div className={style.footer}>
         <Footer />
       </div>

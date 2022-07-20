@@ -52,13 +52,17 @@ export default function ShoppingCart({
       }
     });
   };
-
+  const back = () => {
+    window.history.back();
+  };
   return (
     <div>
       <Navbar />
-      <Link to="/home">
-        <button className={styles.botonR}>Go Back</button>
-      </Link>
+
+      <button onClick={back} className={styles.botonR}>
+        Go Back
+      </button>
+
       <div className={styles.container}>
         <h1 className={styles.titulo}>{FaShoppingCart()} Shopping Cart</h1>
 
@@ -106,13 +110,10 @@ export default function ShoppingCart({
                 in a few simple steps.
               </p>
               <br></br>
-              <a
-                href={
-                  "https://widget.onramper.com?color=1d2d50&apiKey=pk_test_x5M_5fdXzn1fxK04seu0JgFjGsu7CH8lOvS9xZWzuSM0"
-                }
-              >
+
+              <Link to="/payment">
                 <button className={styles.buttonBuy}>CHARGE</button>
-              </a>
+              </Link>
             </div>
           </div>
         ) : (

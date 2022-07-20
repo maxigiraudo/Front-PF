@@ -1,6 +1,7 @@
 const initialState = {
   cards: [],
   allCards: [],
+  searchCards: [],
   detail: [],
   category: [],
   carrito: [],
@@ -11,16 +12,21 @@ const initialState = {
   contador: 0,
   favorite: [],
   user: [],
-  profile : [],
+  profile: [],
   useGoogle: {},
   userIsAuthenticated: false,
   userData: {},
   nftCreados: [],
-  userRegister:false,
-  categoryArt: [],
+  userRegister: false,
+  collectionArt: [],
+  collectionCol: [],
+  collectionPho:[],
+  collectionGam:[],
+  collectionMus:[],
+  collectionSpo:[],
   userInfo: {},
   isAuth: false,
-
+  profileGoogle: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -33,16 +39,84 @@ export default function reducer(state = initialState, action) {
         cards: sinCurs,
       };
 
-    case "GET_SLIDER_NFT":
+    case "GET_COLLECTION_ART":
       const sinCu = action.payload;
       const sinCurso = sinCu.filter((e) => e.name);
       const art = sinCurso.filter((e) => e.category === "art");
       console.log("ESTA ES MI ACTION DE ART", art);
       return {
         ...state,
-        categoryArt: art,
+        collectionArt: art,
       };
-
+      case "GET_COLLECTION_COL":
+        const sinCur = action.payload;
+        const sinCurso1 = sinCur.filter((e) => e.name);
+        const col = sinCurso1.filter((e) => e.category === "collectibles");
+        console.log("ESTA ES MI ACTION DE COL", col);
+        return {
+          ...state,
+          collectionCol: col,
+          collectionArt:[]
+        };
+        case "GET_COLLECTION_PHO":
+          const sinCur1 = action.payload;
+          const sinCurso2 = sinCur1.filter((e) => e.name);
+          const pho = sinCurso2.filter((e) => e.category === "photography");
+          console.log("ESTA ES MI ACTION DE COL", pho);
+          return {
+            ...state,
+            collectionPho: pho,
+            collectionArt:[],
+            collectionCol:[],
+            collectionGam:[],
+            collectionMus:[],
+            collectionSpo:[]
+          };
+          case "GET_COLLECTION_GAM":
+          const sinCur2 = action.payload;
+          const sinCurso3 = sinCur2.filter((e) => e.name);
+          const gam = sinCurso3.filter((e) => e.category === "games");
+          console.log("ESTA ES MI ACTION DE COL", gam);
+          return {
+            ...state,
+            collectionPho: [],
+            collectionArt:[],
+            collectionCol:[],
+            collectionGam:gam,
+            collectionMus:[],
+            collectionSpo:[]
+          };
+          case "GET_COLLECTION_MUS":
+            const sinCur3 = action.payload;
+            const sinCurso4 = sinCur3.filter((e) => e.name);
+            const mus = sinCurso4.filter((e) => e.category === "music");
+            console.log("ESTA ES MI ACTION DE COL", mus);
+            return {
+              ...state,
+              collectionPho: [],
+              collectionArt:[],
+              collectionCol:[],
+              collectionGam:[],
+              collectionSpo:[],
+              collectionMus:mus
+            };
+            case "GET_COLLECTION_SPO":
+              const sinCur4 = action.payload;
+              const sinCurso5 = sinCur4.filter((e) => e.name);
+              const spo = sinCurso5.filter((e) => e.category === "sports");
+              console.log("ESTA ES MI ACTION DE COL", spo);
+              return {
+                ...state,
+                collectionPho: [],
+                collectionArt:[],
+                collectionCol:[],
+                collectionGam:[],
+                collectionMus:[],
+                collectionSpo:spo
+              };
+    
+  
+      
     // case "ORDER_BY_NAME":
     //   if (action.payload === "desc") {
     //     return {
@@ -95,6 +169,27 @@ export default function reducer(state = initialState, action) {
         allCards: getInfoF,
         cards: getInfoF,
       };
+      case "GET_NFT_HOME":
+      // const getInfo = action.payload
+      // const getInfoRenderizar = getInfo.filter((e)=> e.name)
+      // const getFinal = getInfoRenderizar.filter((e)=> e.name != "Brave CAT" && e.name != "Farmer Cat" && !e.image.includes("catsworld"))
+      // console.log("soy", getFinal)
+      const getInfo1 = action.payload;
+      const cursor1 = getInfo1[0].cursor;
+      const getInfoF1 = getInfo1.filter((e) => e.name);
+      console.log("ESTE ES EL CURSOR 1:", cursor1);
+      return {
+        ...state,
+        cursor: cursor1,
+        allCards: getInfoF1,
+        cards: getInfoF1,
+        collectionArt: [],
+        collectionCol: [],
+        collectionPho:[],
+        collectionGam:[],
+        collectionMus:[],
+        collectionSpo:[],
+      };
     case "GET_NFT_ALL20":
       const getInfo2 = action.payload;
       const cursor2 = getInfo2[0].cursor;
@@ -133,11 +228,14 @@ export default function reducer(state = initialState, action) {
         error: false,
       };
     case "CREATE_ACOUNT_SUCCESS":
-      console.log("ESTO ES LO QUE ME LLEGA DE PAYLOAD DE LA CREACION DEL USUARIO",action.payload)
+      console.log(
+        "ESTO ES LO QUE ME LLEGA DE PAYLOAD DE LA CREACION DEL USUARIO",
+        action.payload
+      );
       return {
         ...state,
         user: [action.payload, ...state.user],
-        userRegister:true,
+        userRegister: true,
         loading: false,
         error: false,
       };
@@ -199,10 +297,14 @@ export default function reducer(state = initialState, action) {
         error: false,
       };
     case "LOGIN_DATA":
+      const profile = action.payload;
+      if (profile) {
+        localStorage.setItem("profiles", JSON.stringify(profile));
+      }
       console.log("ESTE ES EL ACTION.PAYLOAD", action.payload);
       return {
         ...state,
-        userData: action.payload,
+        userData: profile,
       };
 
     case "LOGIN_ERROR":
@@ -222,21 +324,22 @@ export default function reducer(state = initialState, action) {
         favorite: state.favorite.filter((e) => e !== action.payload),
       };
 
+    case "GET_PROFILE":
+      return {
+        ...state,
+        profile: action.payload,
+      };
+    case "GET_PROFILE_GOOGLE":
+      return {
+        ...state,
+        profileGoogle: action.payload,
+      };
 
-      case "GET_PROFILE":
-        return {
-          ...state,
-          profile: action.payload,
-  
-        };
-
-      case 'UPDATED_PROFILE_BY_ID' :
-        return {
-          ...state,
-          profile : action.payload
-        }
-
-      
+    case "UPDATED_PROFILE_BY_ID":
+      return {
+        ...state,
+        profile: action.payload,
+      };
 
     case "REGISTER_USER_REQUEST": {
       return {
@@ -249,15 +352,17 @@ export default function reducer(state = initialState, action) {
       };
     }
     case "REGISTER_USER_SUCCESS": {
-      const usser= action.payload
-      const estoAUser= usser.user
+      const profileGoogle = action.payload;
+      console.log("ESTE ES EL REGISTER_USER_SUCCES", profileGoogle);
+      if (profileGoogle) {
+        localStorage.setItem("profileGoogle", JSON.stringify(profileGoogle));
+      }
       return {
         ...state,
-        useGoogle: action.payload,
-        userInfo: action.payload,
+        useGoogle: profileGoogle,
+        userInfo: profileGoogle,
         loading: false,
         error: false,
-        userData: estoAUser
       };
     }
     case "REGISTER_USER_ERROR": {
@@ -290,4 +395,3 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
- 

@@ -17,11 +17,11 @@
 .dropdownContent {
   display: none;
   position: absolute;
-  top: 40px;
+  margin-right: 40px;
   right: -50px;
   background-color: #16161a;
   color: #cf4bff;
-  min-width: 100px;
+  min-width: 140px;
   box-shadow: 0px 5px 10px 5px #cf4bffa8;
   border-radius: 6px;
   padding: 13px 16px;

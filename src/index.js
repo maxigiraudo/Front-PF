@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -9,7 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { MoralisProvider } from "react-moralis";
 
-axios.defaults.baseURL = process.env.REACT_APP || "http://localhost:4000"
+axios.defaults.baseURL = process.env.REACT_APP || "http://localhost:4000";
 
 axios.defaults.baseURL = process.env.REACT_APP;
 

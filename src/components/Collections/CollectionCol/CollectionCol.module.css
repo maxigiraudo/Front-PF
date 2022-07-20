@@ -25,6 +25,10 @@
   object-fit: contain;
   cursor: pointer;
   margin-bottom: 0px;
+  transition: 0.5s;
+}
+.imageC:hover {
+  transform: scale(1.2);
 }
 .divIm {
   border: 5px solid rgb(68, 68, 68);
@@ -55,7 +59,7 @@
   height: 400px;
   width: 400px;
   border-radius: 10px;
-  background-image: url("https://lh3.googleusercontent.com/wagZQjBQU0NZnTjlHHdBjDCgE0AvP1K4WGNYsCSTTj2Gib2N0LbE4uWC76w510bbyXFtqWTqj_1rlK_ZZ0KfZvGYuEBA5NivGuBnIw=h400");
+  background-image: url("https://lh3.googleusercontent.com/vF8johTucYy6yycIOJTM94LH-wcDQIPTn9-eKLMbxajrm7GZfJJWqxdX6uX59pA4n4n0QNEn3bh1RXcAFLeLzJmq79aZmIXVoazmVw=h400");
   background-size: cover;
 }
 .cuatro {
@@ -67,7 +71,7 @@
   height: 400px;
   width: 400px;
   border-radius: 10px;
-  background-image: url("https://lh3.googleusercontent.com/94UUt89IKyW9isVCNsoQKmTsm5TSkUB-99-aTPY-NhN8tXwR3qbUXdsd00hyErRwBDHmzJn48Jh1JSnInmaF0DTomhU0O7-SVXXe=h400");
+  background-image: url("https://lh3.googleusercontent.com/cDyVq8y6l5hqd37ahZ_k4awkXZQMiaKCaD7DntxJEJyClkSD44KVK_gYi_r3TmpjI6SxE3XdjY59LfHeBgMkN6qHWfGRSzHsx8loGg=h400");
   background-size: cover;
 }
 .cinco {
@@ -79,7 +83,7 @@
   height: 400px;
   width: 400px;
   border-radius: 10px;
-  background-image: url("https://lh3.googleusercontent.com/lf5sBQC-bf6iLjhQV3yyOwpowClpNa6oGJyMNst9gW4poLuuhQNz3UdBdTSOxVdhEN0NYrFxB952JAbAotTRkm-4bS_e50zVC3fA=h400");
+  background-image: url("https://lh3.googleusercontent.com/SH_itazaX0a0muJDUWbR2ogADL79c-CzRXoN0TT1ePdUv5KDOXHnHi_2n7_II0LX_3Fy6hVFXjz-tnEs-bJ93O4iI7gufKSHrpk6s34=h400");
   background-size: 120%;
 }
 .seis {
@@ -91,7 +95,7 @@
   height: 400px;
   width: 400px;
   border-radius: 10px;
-  background-image: url("https://lh3.googleusercontent.com/99UsZFvQOiA82zlfc3QhQzYgbHjiMXiuByaMBHHzc9QGPow0rfiafbnetqBUUSLW_5k1s10CdT6MR0qrvnx-Ylg-iJ3mS2p0jeQ_jQ0=h600");
+  background-image: url("https://lh3.googleusercontent.com/X4Q2rHfwRSUHRw9HLkKfG3J-8NjjhUTXV3sJ1CVvCtg-ycL-hHroQMiEUP9pqRNJvV7mjH2euA1jDxKvS1mhgQI-ZUljlhI-owP2GA=h400");
   background-size: cover;
 }
 .siete {
@@ -103,7 +107,7 @@
   height: 400px;
   width: 400px;
   border-radius: 10px;
-  background-image: url("https://lh3.googleusercontent.com/kR2vaTkmu8XQaLke3GPt6SSB-1wlNI5nK4l4GDAIFEXe1m-98PWmDu5Oh0LuRKC88tNoEB_zI2gMddG8vhD9cjNZGO8fGwkeW9Mu=h400");
+  background-image: url("https://lh3.googleusercontent.com/BC4yvlQw8js3h7kyRl-bru-0ig7tmJK9kEkklTcXHU52TdIKR04ZVanoBCPjxrYe2oLuaR5i71FlZOSKisFRU_PW5se71OHDIa0asLc=h128-w128");
   background-size: cover;
 }
 .ocho {
@@ -115,7 +119,7 @@
   height: 400px;
   width: 400px;
   border-radius: 10px;
-  background-image: url("https://lh3.googleusercontent.com/CypyKknm6gD9Wcz3y9KaxwpEvEWXEC-tHnPbFO0n-obVc12mVOItr6upZAoYi5HkRugrHU7xTeiHVw0d2HuaYDQDZ4bqrV9JXEVdXg=h400");
+  background-image: url("https://lh3.googleusercontent.com/6PSdAp9ON7HKStiogFT87q44GhIyMGiGPSHDvZxY0gtJwWNXH-WKDgcUEg_16udVZl1GJvIF0eu7aq1Xir6Q1i2DMz0fIYoJlQz26A=h400");
   background-size: cover;
 }
 .nueve {
@@ -127,7 +131,7 @@
   height: 400px;
   width: 400px;
   border-radius: 10px;
-  background-image: url("https://openseauserdata.com/files/a7c921e6aff303f2580aec9b57854e71.jpg");
+  background-image: url("https://lh3.googleusercontent.com/syMpZ0m9kyhQJno5x89SjDiFLQPUmB-gK0HlCaSdnAP9VvHmdndfZ00J4Qs2oXWgvjFh9C2M40ZFYsFcO1TnsnGzhkSRzODJ94ZP2A=h400");
   background-size: cover;
 }
 .diez {
@@ -139,7 +143,7 @@
   height: 400px;
   width: 400px;
   border-radius: 10px;
-  background-image: url("https://openseauserdata.com/files/16987a8f469f1802bdc3dfa901e96416.gif");
+  background-image: url("https://lh3.googleusercontent.com/13g3FRwKuCmawyeH_rN5VwYbQZ8KrWdN8IZf4_uKJ3IeLjligIY7ZZ_HR7b48RKUJuUfevFTMzxFJcBWdn51TyZVoAXNPqh1TCIprw=h400");
   background-size: cover;
 }
 .once {
@@ -151,7 +155,7 @@
   height: 400px;
   width: 400px;
   border-radius: 10px;
-  background-image: url("https://lh3.googleusercontent.com/1t2WviM6OhEjxB6gKqx8GeiCBIIMOES8Nh42Vem2MIH23W4p7bjrP7HECgYHM0EJ9A-vBDHWSuwCBnnCfzwFnobX3HnLki53qPSs=h400");
+  background-image: url("https://openseauserdata.com/files/84ed587d7f083bd349a87b2e742e4f5b.png");
   background-size: cover;
 }
 .container23 {
@@ -170,11 +174,11 @@
 }
 
 /* .modal{
-    position: fixed,
-    z-index: 999,
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 100vh;
-    background-color: black
-  } */
+      position: fixed,
+      z-index: 999,
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 100vh;
+      background-color: black
+    } */

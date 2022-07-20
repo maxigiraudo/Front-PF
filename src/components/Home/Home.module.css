@@ -1,6 +1,11 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,600;0,900;1,200;1,600&family=Merriweather+Sans:wght@300;700&family=Oswald:wght@300&family=Rubik:wght@400;500;700&display=swap");
 
+.containergeneral {
+  background-color: rgb(10, 10, 10);
+  font-family: "Oswald", sans-serif;
+}
 .cartoneta {
   border-radius: 20px;
   flex-direction: row;
@@ -20,10 +25,12 @@ body {
   width: 50%;
   margin-left: 55px;
 }
-.h1deload{
-  color:#d04bff ;
+
+.h1deload {
+  color: #d04bff;
   text-align: center;
 }
+
 .nameC {
   background: -webkit-linear-gradient(#d04bff, #6c63ff);
   background-clip: text;
@@ -75,9 +82,9 @@ body {
   top: 0;
   right: 0;
   width: 100%;
-  z-index: 100
+  z-index: 100;
 }
-.searchBar{
+.searchBar {
   margin-left: 430px;
 }
 .text {
@@ -92,7 +99,6 @@ body {
   text-decoration: none;
 }
 
-
 .cardHome {
   display: flex;
   flex-direction: row;
@@ -100,6 +106,12 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+/* .cardHome {
+  columns: 4 320px;
+  column-gap: 0.5em;
+  margin: 10px;
+} */
 
 .option {
   margin-top: 10px;
@@ -135,4 +147,15 @@ body {
 .carrito:hover {
   background: #16161a;
   color: #cf4bffc5;
+}
+
+.noResult {
+  margin: 200px;
+  color: white;
+  text-align: center;
+  font-size: 25px;
+  background: -webkit-linear-gradient(#d04bff, #6c63ff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: tomato;
 }

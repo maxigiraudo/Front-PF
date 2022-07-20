@@ -34,15 +34,14 @@ export default function Card({
     navigate("/login");
   };
 
-  const logged = useSelector((state) => state.userIsAuthenticated);
+  // const logged = useSelector((state) => state.userIsAuthenticated);
+  const userrr = JSON.parse(localStorage.getItem("profiles"));
+  const userrrGoogle = JSON.parse(localStorage.getItem("profileGoogle"));
 
   return (
     <div className={style.container}>
       <div className={style.card}>
         <Link to={"/detail/" + id + "/" + token_address} className={style.link}>
-          <div className={style.containertext}>
-            <h1 className={style.name}>{name}</h1>
-          </div>
           <figure className={style.containerImagen}>
             {image ? (
               <img
@@ -59,6 +58,13 @@ export default function Card({
               <h1>sin imagen</h1>
             )}
           </figure>
+          <div className={style.containertext}>
+            {name && name.length > 20 ? (
+              <h1 className={style.name}>{name.slice(0, 20) + "..."}</h1>
+            ) : (
+              <h1 className={style.name}>{name}</h1>
+            )}
+          </div>
         </Link>
 
         <div className={style.abajo}>
@@ -68,7 +74,7 @@ export default function Card({
           >
             {BsFillCartCheckFill()}{" "}
           </button>
-          {logged ? (
+          {userrr || userrrGoogle ? (
             <button
               onClick={() => onClickF({ id, name, image })}
               className={style.heart}
