@@ -39,9 +39,6 @@ import CollectionGam from "../Collections/CollectionGam/CollectionGam";
 import CollectionMus from "../Collections/CollectionMus/CollectionMus";
 import CollectionSpo from "../Collections/CollectionSpo/CollectionSpo";
 
-
-
-
 export default function Home({ agregarCarrito, agregarFavorito }) {
   const allCard = useSelector((state) => state.cards);
   const cursori = useSelector((state) => state.cursor);
@@ -55,13 +52,11 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   }, [dispatch, cursori]);
 
   const catArt = useSelector((state) => state.collectionArt);
-  const catCol = useSelector((state)=>state.collectionCol);
-  const catPho = useSelector((state)=>state.collectionPho);
-  const catGam = useSelector((state)=>state.collectionGam);
-  const catMus = useSelector((state)=>state.collectionMus);
-  const catSpo = useSelector((state)=>state.collectionSpo);
- 
-  
+  const catCol = useSelector((state) => state.collectionCol);
+  const catPho = useSelector((state) => state.collectionPho);
+  const catGam = useSelector((state) => state.collectionGam);
+  const catMus = useSelector((state) => state.collectionMus);
+  const catSpo = useSelector((state) => state.collectionSpo);
 
   console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catArt);
   console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catCol);
@@ -228,27 +223,32 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
           </Slider>
         </div>
       </div>
+
       {catArt.length > 0 ? (
         <div className={style.sli}>
           <CollectionArt />
         </div>
-      ) :catCol.length > 0?(
+      ) : catCol.length > 0 ? (
         <div className={style.sli}>
-          <CollectionCol/>
+          <CollectionCol />
         </div>
-      ) :catPho.length > 0?(
+      ) : catPho.length > 0 ? (
         <div className={style.sli}>
-          <CollectionPho/>
-        </div>): catGam.length > 0?(
+          <CollectionPho />
+        </div>
+      ) : catGam.length > 0 ? (
         <div className={style.sli}>
-          <CollectionGam/>
-        </div>):catMus.length > 0?(
+          <CollectionGam />
+        </div>
+      ) : catMus.length > 0 ? (
         <div className={style.sli}>
-          <CollectionMus/>
-        </div>):catSpo.length > 0?(
+          <CollectionMus />
+        </div>
+      ) : catSpo.length > 0 ? (
         <div className={style.sli}>
-          <CollectionSpo/>
-        </div>):(
+          <CollectionSpo />
+        </div>
+      ) : (
         <div>
           <div className={style.orderSearch}>
             <div className={style.navDos}>
