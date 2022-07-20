@@ -24,6 +24,13 @@ export default function Dropdown() {
       try {
         await authenticate({ provider: connectorId });
         window.localStorage.setItem("connectorId", connectorId);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Connect Wallet",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       } catch (error) {
         console.log(error);
       }
@@ -33,6 +40,13 @@ export default function Dropdown() {
   const logOut = async () => {
     await logout();
     window.localStorage.removeItem("connectorId");
+    Swal.fire({
+      position: "center",
+      icon: "warning",
+      title: "Disconect Wallet",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   return (

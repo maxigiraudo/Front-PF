@@ -42,9 +42,6 @@ export default function Card({
     <div className={style.container}>
       <div className={style.card}>
         <Link to={"/detail/" + id + "/" + token_address} className={style.link}>
-          <div className={style.containertext}>
-            <h1 className={style.name}>{name}</h1>
-          </div>
           <figure className={style.containerImagen}>
             {image ? (
               <img
@@ -61,6 +58,9 @@ export default function Card({
               <h1>sin imagen</h1>
             )}
           </figure>
+          <div className={style.containertext}>
+            <h1 className={style.name}>{name}</h1>
+          </div>
         </Link>
 
         <div className={style.abajo}>
