@@ -103,6 +103,7 @@ export function getNameNft(name) {
   };
 }
 
+
 export function createNft({ name, description, file }) {
   return async function (dispatch) {
     dispatch({

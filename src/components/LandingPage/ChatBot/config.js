@@ -33,7 +33,7 @@ const config = {
                 options: [
                     {
                         text: "Register",
-                        url: `http://localhost:3000/FormRegister`, 
+                        url: `https://wallaby-neon.vercel.app/FormRegister`, 
                         id: 1,
                     },
                 ],
@@ -46,7 +46,7 @@ const config = {
                 options: [
                     {
                     text: "Wallet",
-                    url: `http://localhost:3000/payment`, 
+                    url: `https://wallaby-neon.vercel.app/payment`, 
                     id: 1,
                     },
                 ],
@@ -59,17 +59,17 @@ const config = {
                 options: [
                     {
                         text: "Login",
-                        url: `http://localhost:3000/login`, 
+                        url: `https://wallaby-neon.vercel.app/login`, 
                         id: 1,
                     },
                     {
                         text: "Create NFT",
-                        url: `http://localhost:3000/form`, 
+                        url: `https://wallaby-neon.vercel.app/form`, 
                         id: 1,
                     },
                     {
                         text: "Add favorites",
-                        url: `http://localhost:3000/home`, 
+                        url:`https://wallaby-neon.vercel.app/home`, 
                         id: 2,
                     },
                 ],
@@ -82,17 +82,17 @@ const config = {
                 options: [
                     {
                         text: "Buy NFT",
-                        url: `http://localhost:3000/home`, 
+                        url: `https://wallaby-neon.vercel.app/home`, 
                         id: 1,
                     },
                     {
                         text: "See collections",
-                        url: `http://localhost:3000/home`, 
+                        url: `https://wallaby-neon.vercel.app/home`, 
                         id: 2,
                     },
                     {
                         text: "Register",
-                        url: `http://localhost:3000/FormRegister`, 
+                        url: `https://wallaby-neon.vercel.app/FormRegister`, 
                         id: 1,
                     },
                 ],
@@ -105,7 +105,7 @@ const config = {
                 options: [
                     {
                         text: "About us",
-                        url: `http://localhost:3000/about`, 
+                        url: `https://wallaby-neon.vercel.app/about`, 
                         id: 1,
                     },
                 ],

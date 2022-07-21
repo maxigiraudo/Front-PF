@@ -4,9 +4,11 @@ import style from './CollectionArt.module.css'
 import {MdVerified} from 'react-icons/md'
 
 
+
 export default function CollectionArt(){
 
-    const catArt = useSelector((state) =>state.collectionArt)   
+    const catArt = useSelector((state) =>state.collectionArt) 
+  
 
       return(
         <div className={style.carousel}>
@@ -19,6 +21,7 @@ export default function CollectionArt(){
                   src={catArt[9].image}
                   alt="*"
                   value="art"
+                  
                 />
               </div>
             <div className={style.divH}></div>
@@ -35,7 +38,8 @@ export default function CollectionArt(){
                   className={style.imageC}
                   src={catArt[1].image}
                   alt="*"
-                  value="art"
+                  value="Brotchain"
+                  
                 />
               </div>
             <div className={style.divH}></div>
@@ -54,6 +58,7 @@ export default function CollectionArt(){
                   src={catArt[2].image}
                   alt="*"
                   value="art"
+                  
                 />
               </div>
             <div className={style.divH}></div>
@@ -72,6 +77,7 @@ export default function CollectionArt(){
                   src={catArt[3].image}
                   alt="*"
                   value="art"
+                  
                 />
               </div>
             <div className={style.divH}></div>
@@ -89,6 +95,7 @@ export default function CollectionArt(){
                   src={catArt[4].image}
                   alt="*"
                   value="art"
+                
                 />
               </div>
             <div className={style.divH}></div>
@@ -107,6 +114,7 @@ export default function CollectionArt(){
                   src={catArt[5].image}
                   alt="*"
                   value="art"
+                
                 />
               </div>
             <div className={style.divH}></div>
@@ -125,6 +133,7 @@ export default function CollectionArt(){
                   src={catArt[6].image}
                   alt="*"
                   value="art"
+                  
                 />
               </div>
             <div className={style.divH}></div>
@@ -142,6 +151,7 @@ export default function CollectionArt(){
                   src={catArt[7].image}
                   alt="*"
                   value="art"
+                 
                 />
               </div>
             <div className={style.divH}></div>
@@ -160,6 +170,7 @@ export default function CollectionArt(){
                   src={catArt[8].image}
                   alt="*"
                   value="art"
+                  
                 />
               </div>
             <div className={style.divH}></div>
