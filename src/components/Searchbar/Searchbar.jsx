@@ -4,6 +4,8 @@ import { BiSearchAlt } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { getNameNft } from "../../redux/actions";
+import Loading from "../Loading/Loading";
+
 
 export default function Searchbar() {
   const dispatch = useDispatch();
@@ -16,10 +18,11 @@ export default function Searchbar() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(getNameNft(name));
+    dispatch(getNameNft(name))
   }
 
   return (
+    <div>
     <form className={styles.formSearch}>
       <div className={styles.inputDiv}>
         <p className={styles.lupa}>{BiSearchAlt()}</p>
@@ -37,5 +40,8 @@ export default function Searchbar() {
         />
       </div>
     </form>
+    </div>
+
   );
+ 
 }

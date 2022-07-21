@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import NotFound from "../NotFound/NotFound";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
 import {
@@ -33,14 +34,16 @@ import SliderArt from "../SliderCat/SliderCat";
 export default function Home({ agregarCarrito, agregarFavorito }) {
   const allCard = useSelector((state) => state.cards);
   const cursori = useSelector((state) => state.cursor);
+  const [loading, setLoading] = useState(true)
 
   console.log("CURSOR DEL HOME", cursori);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (allCard.length === 0) dispatch(getNft());
-
-    // if (allCard.length === 0) dispatch(getNft()).then(()=> dispatch(getNftAll())).then(()=> dispatch(getNftAll2())).then(()=>dispatch(getNftAll3()));
+    if (allCard.length === 0) dispatch(getNft()).then(() => setLoading(false))
+   return () => setLoading(false)
   }, [dispatch, cursori]);
+
+
 
   const catArt = useSelector((state) => state.categoryArt);
 
@@ -105,6 +108,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   function handleFilterByName(e) {
     dispatch(getNameNft(e));
   }
+
 
   return (
     <div className={style.containergeneral}>
@@ -212,13 +216,9 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
               {/* <Order /> */}
             </div>
           </div>
-          {currentNft.length === 0 && currentNft ? (
-            <div>
-              <Loading />
-              <h1 className={style.h1deload}>NO RESULTS FOUND</h1>
-            </div>
-          ) : (
-            <div>
+          {
+            loading ? <Loading/> :
+          currentNft.length === 0 ? <NotFound/> :
               <InfiniteScroll
                 className={style.cardHome}
                 dataLength={currentNft.length} //This is important field to render the next data
@@ -239,15 +239,15 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                     collection={e.collection}
                   />
                 ))}
-              </InfiniteScroll>
-            </div>
-          )}
+              </InfiniteScroll> 
+          }
         </div>
       )}
-
       <div className={style.footer}>
         <Footer />
       </div>
     </div>
   );
+ 
 }
+

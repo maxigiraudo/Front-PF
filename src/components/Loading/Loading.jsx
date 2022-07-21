@@ -1,5 +1,6 @@
 import React from "react"
 import style from "../Loading/Loading.module.css"
+import NotFound from "../NotFound/NotFound"
 
 
 
