@@ -1,6 +1,7 @@
 import axios from "axios";
-import Moralis from "moralis";
+import Moralis from 'moralis'
 import Swal from "sweetalert2";
+
 
 export function orderByPrice(payload) {
   return {

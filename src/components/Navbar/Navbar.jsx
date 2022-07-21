@@ -76,6 +76,7 @@ export default function Navbar() {
           />
           <span className={styles.tooltiptext}>Wallet</span>
         </div> */}
+
       </nav>
     </header>
   );
