@@ -129,6 +129,12 @@ export default function reducer(state = initialState, action) {
                   cursor: cursor,
                   allCards: getInfoF,
                   cards: getInfoF,
+                  collectionArt: [],
+                  collectionCol: [],
+                  collectionPho: [],
+                  collectionGam: [],
+                  collectionMus: [],
+                  collectionSpo: []
                 };
                 case "GET_NFT_HOME":
                 // const getInfo = action.payload
@@ -342,115 +348,57 @@ export default function reducer(state = initialState, action) {
               default:
                 return state;
             }
-          }
+          }          
 
 
-        // case "ORDER_BY_NAME":
-        //   if (action.payload === "desc") {
+      // case "ORDER_BY_NAME":
+      //   if (action.payload === "desc") {
+      //     return {
+      //       ...state,
+      //       cards: [...state.cards].sort((a, b) =>
+      //         a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
+      //       ),
+      //     };
+      //   } else {
         //     return {
-        //       ...state,
-        //       cards: [...state.cards].sort((a, b) =>
-        //         a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
-        //       ),
-        //     };
-        //   } else {
-          //     return {
-        //       ...state,
-        //       cards: [...state.cards].sort((a, b) =>
-        //         a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
-        //       ),
-        //     };
-        //   };
-    
-        // case "ORDER_BY_PRICE":
-        //   if (action.payload === "low") {
-        //     return {
-        //       ...state,
-        //       cards: [...state.cards].sort((a, b) => {
-          //         if (a.price > b.price) return 1;
-        //         if (a.price < b.price) return -1;
-        //         else return 0;
-        //       }),
-        //     };
-        //   } else {
-        //     return {
-        //       ...state,
-        //       cards: [...state.cards].sort((a, b) => {
-          //         if (a.price < b.price) return 1;
-        //         if (a.price > b.price) return -1;
-        //         else return 0;
-        //       }),
-        //     };
-        //   };
-          // case "GET_NFT_ALL2":
-          //   console.log("ESTA EN EL REDUCER 2", action.payload)
-          //   return{
-          //     ...state,
-          //     allCards:[...state.allCards,...action.payload],
-          //     cards:[...state.cards,...action.payload]
-          //   };
-          //   case "GET_NFT_ALL3":
-          //     console.log("ESTA EN EL REDUCER 2", action.payload)
-          //     return{
-          //       ...state,
-          //       allCards:[...state.allCards,...action.payload],
-          //       cards:[...state.cards,...action.payload]
-          //     };
-
-    case "REGISTER_USER_REQUEST": {
-      return {
-        ...state,
-        useGoogle: {},
-        userInfo: {},
-        error: false,
-        loading: true,
-        userIsAuthenticated: true,
-      };
-    }
-    case "REGISTER_USER_SUCCESS": {
-      const profileGoogle = action.payload;
-      console.log("ESTE ES EL REGISTER_USER_SUCCES", profileGoogle);
-      if (profileGoogle) {
-        localStorage.setItem("profileGoogle", JSON.stringify(profileGoogle));
-      }
-      return {
-        ...state,
-        useGoogle: profileGoogle,
-        userInfo: profileGoogle,
-        loading: false,
-        error: false,
-      };
-    }
-    case "REGISTER_USER_ERROR": {
-      return {
-        ...state,
-        useGoogle: {},
-        loading: false,
-        error: true,
-      };
-    }
-    case "USER_LOGIN_SUCCESS": {
-      return {
-        ...state,
-        useGoogle: {},
-        userInfo: action.payload,
-        loading: false,
-        error: false,
-        // userIsAuthenticated: true,
-        isAuth: true,
-      };
-    }
-    case "SINGOUT_OK": {
-      return {
-        ...state,
-        userIsAuthenticated: false,
-      };
-    }
-
+      //       ...state,
+      //       cards: [...state.cards].sort((a, b) =>
+      //         a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+      //       ),
+      //     };
+      //   };
   
-
-    default:
-      return state;
-  }
-}
-
+      // case "ORDER_BY_PRICE":
+      //   if (action.payload === "low") {
+      //     return {
+      //       ...state,
+      //       cards: [...state.cards].sort((a, b) => {
+        //         if (a.price > b.price) return 1;
+      //         if (a.price < b.price) return -1;
+      //         else return 0;
+      //       }),
+      //     };
+      //   } else {
+      //     return {
+      //       ...state,
+      //       cards: [...state.cards].sort((a, b) => {
+        //         if (a.price < b.price) return 1;
+      //         if (a.price > b.price) return -1;
+      //         else return 0;
+      //       }),
+      //     };
+      //   };
+        // case "GET_NFT_ALL2":
+        //   console.log("ESTA EN EL REDUCER 2", action.payload)
+        //   return{
+        //     ...state,
+        //     allCards:[...state.allCards,...action.payload],
+        //     cards:[...state.cards,...action.payload]
+        //   };
+        //   case "GET_NFT_ALL3":
+        //     console.log("ESTA EN EL REDUCER 2", action.payload)
+        //     return{
+        //       ...state,
+        //       allCards:[...state.allCards,...action.payload],
+        //       cards:[...state.cards,...action.payload]
+        //     };
