@@ -93,14 +93,16 @@
 }
 
 .imagen {
-  height: 300px;
+  height: 500px;
+  transition: 0.5s;
   margin-right: 50px;
-  object-fit: contain;
+  object-fit: cover;
   box-shadow: 5px 5px 50px 5px #fff;
   border-radius: 10px;
   border: 10px solid #c19a6b;
   border-style: groove;
 }
+
 .footer {
   width: 100%;
 }

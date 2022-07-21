@@ -18,7 +18,6 @@ export default function Favorite({ eliminarFavorito, favorito }) {
   let handleClick = (e) => {
     Swal.fire({
       title: "Are you sure you want to remove from favorites?",
-
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -31,13 +30,18 @@ export default function Favorite({ eliminarFavorito, favorito }) {
       }
     });
   };
+
+  const back = () => {
+    window.history.back();
+  };
   return (
     <div>
       <Navbar />
       <div className={styles.general}>
-        <Link to="/home">
-          <button className={styles.botonR}>Go Back</button>
-        </Link>
+        <button onClick={back} className={styles.botonR}>
+          Go Back
+        </button>
+
         <div>
           <h1 className={styles.titulo}>
             {BsFillStarFill()}Your favorite NFT collection
