@@ -5,7 +5,7 @@ import styles from "./Form.module.css";
 import { useDispatch } from "react-redux";
 import { createNft } from "../../redux/actions";
 import { useMoralis, useMoralisFile } from "react-moralis";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { BsTrash } from "react-icons/bs";
 
 export default function Form() {
@@ -142,6 +142,11 @@ export default function Form() {
   return (
     <div className={styles.containerPadre}>
       <Navbar />
+      <Link to="/home">
+              <button className={styles.botonR}>
+                Go Back
+              </button>
+            </Link>
       <div className={styles.padre}>
         <div className={styles.container}>
           <h1 className={styles.colorh1}>CREATE YOUR NFT.</h1>
