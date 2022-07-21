@@ -296,6 +296,7 @@ export default function reducer(state = initialState, action) {
       };
     case "LOGIN_DATA":
       const profile = action.payload;
+
       if (profile) {
         localStorage.setItem("profiles", JSON.stringify(profile));
       }
@@ -325,7 +326,7 @@ export default function reducer(state = initialState, action) {
     case "GET_PROFILE":
       return {
         ...state,
-        profile: action.payload,
+        profile: [action.payload],
       };
     case "GET_PROFILE_GOOGLE":
       return {
@@ -388,8 +389,6 @@ export default function reducer(state = initialState, action) {
         userIsAuthenticated: false,
       };
     }
-
-  
 
     default:
       return state;
