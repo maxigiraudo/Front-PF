@@ -20,10 +20,10 @@ const initialState = {
   userRegister: false,
   collectionArt: [],
   collectionCol: [],
-  collectionPho:[],
-  collectionGam:[],
-  collectionMus:[],
-  collectionSpo:[],
+  collectionPho: [],
+  collectionGam: [],
+  collectionMus: [],
+  collectionSpo: [],
   userInfo: {},
   isAuth: false,
   profileGoogle: [],
@@ -48,6 +48,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         collectionArt: art,
       };
+
       case "GET_COLLECTION_COL":
         const sinCur = action.payload;
         const sinCurso1 = sinCur.filter((e) => e.name);
@@ -253,6 +254,7 @@ export default function reducer(state = initialState, action) {
                   userData: profile,
                 };
 
+
               case "LOGIN_ERROR":
                 return {
                   ...state,
@@ -342,6 +344,7 @@ export default function reducer(state = initialState, action) {
             }
           }
 
+
         // case "ORDER_BY_NAME":
         //   if (action.payload === "desc") {
         //     return {
@@ -393,3 +396,61 @@ export default function reducer(state = initialState, action) {
           //       allCards:[...state.allCards,...action.payload],
           //       cards:[...state.cards,...action.payload]
           //     };
+
+    case "REGISTER_USER_REQUEST": {
+      return {
+        ...state,
+        useGoogle: {},
+        userInfo: {},
+        error: false,
+        loading: true,
+        userIsAuthenticated: true,
+      };
+    }
+    case "REGISTER_USER_SUCCESS": {
+      const profileGoogle = action.payload;
+      console.log("ESTE ES EL REGISTER_USER_SUCCES", profileGoogle);
+      if (profileGoogle) {
+        localStorage.setItem("profileGoogle", JSON.stringify(profileGoogle));
+      }
+      return {
+        ...state,
+        useGoogle: profileGoogle,
+        userInfo: profileGoogle,
+        loading: false,
+        error: false,
+      };
+    }
+    case "REGISTER_USER_ERROR": {
+      return {
+        ...state,
+        useGoogle: {},
+        loading: false,
+        error: true,
+      };
+    }
+    case "USER_LOGIN_SUCCESS": {
+      return {
+        ...state,
+        useGoogle: {},
+        userInfo: action.payload,
+        loading: false,
+        error: false,
+        // userIsAuthenticated: true,
+        isAuth: true,
+      };
+    }
+    case "SINGOUT_OK": {
+      return {
+        ...state,
+        userIsAuthenticated: false,
+      };
+    }
+
+  
+
+    default:
+      return state;
+  }
+}
+

@@ -10,14 +10,18 @@ import FormRegister from "./components/FormRegister/FormRegister";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Login from "./components/Login/Login.jsx";
 import Payment from "./components/Payment/Payment";
+import NotFound from "./components/NotFound/NotFound";
 import Favorite from "./components/Favorite/Favorite";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Profile from "./components/Profile/Profile";
 import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 import MyCollections from "./components/MyCollections/MyCollections";
+import MyOrders from "./components/MyOrders/MyOrders";
 
 function App() {
+
+  
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
 
@@ -144,6 +148,7 @@ function App() {
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/notfound" element={<NotFound/>} />
         <Route path="/formRegister" element={<FormRegister />} />
         <Route
           path="/cart"
@@ -165,6 +170,7 @@ function App() {
           }
         />
         <Route path="/mycollections" element={<MyCollections />} />
+        <Route path="/myorders" element={<MyOrders />} />
       </Routes>
     </div>
   );

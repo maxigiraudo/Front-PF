@@ -72,11 +72,12 @@
   margin: 0 30px;
   cursor: pointer;
 }
+
 .padreDrop {
   display: flex;
 }
 .dropdown {
-  margin-top: 15px;
+  margin-top: 12px;
 }
 .wallet:hover {
   color: #9f9bf3;

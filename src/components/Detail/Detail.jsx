@@ -26,6 +26,7 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
 
   const handleClean = () => {
     dispatch(resState());
+    window.history.back();
   };
 
   const card = useSelector((state) => state.detail);
@@ -54,11 +55,11 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
         <div className={styles.containerPadre}>
           <div className={styles.navbar}>
             <Navbar />
-            <Link to="/home">
-              <button onClick={() => handleClean()} className={styles.botonR}>
-                Go Back
-              </button>
-            </Link>
+           
+            <button onClick={() => handleClean()} className={styles.botonR}>
+              Go Back
+            </button>
+            
           </div>
           <div className={styles.padre}>
             <div className={styles.todos}>
@@ -107,10 +108,17 @@ export default function Detail({ agregarCarrito, agregarFavorito }) {
                 </div>
               </div>
             </div>
-
-             
-            </div>
-
+            {/* <br></br>
+            <p className={styles.charge}>
+              If you don't have enough money in your metamask wallet to make an
+              offer or buy a nft, you can charge it with your credit card in a
+              few simple steps.
+            </p>
+            <br></br>
+            <Link to="/payment">
+              <button className={styles.buttonBuy}>CHARGE</button>
+            </Link> */}
+          </div>
           <div className={styles.footer}>
             <Footer />
           </div>

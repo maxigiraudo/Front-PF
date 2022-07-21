@@ -139,14 +139,18 @@ export default function Form() {
     console.log(newImgs);
     setFiles(newImgs);
   }
+
+  const back = () => {
+    window.history.back();
+  };
   return (
     <div className={styles.containerPadre}>
       <Navbar />
-      <Link to="/home">
-              <button className={styles.botonR}>
-                Go Back
-              </button>
-            </Link>
+
+      <button onClick={back} className={styles.botonR}>
+        Go Back
+      </button>
+
       <div className={styles.padre}>
         <div className={styles.container}>
           <h1 className={styles.colorh1}>CREATE YOUR NFT.</h1>
