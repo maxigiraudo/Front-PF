@@ -21,8 +21,13 @@ export default function Dropdown() {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Sing Out", "You have logged out", "success");
-        localStorage.removeItem("profiles");
-        localStorage.removeItem("profileGoogle");
+
+        if (JSON.parse(localStorage.getItem("profiles"))) {
+          localStorage.removeItem("profiles");
+        } else if (JSON.parse(localStorage.getItem("profileGoogle"))) {
+          localStorage.removeItem("profileGoogle");
+        }
+
         dispatch(singoutOk());
         window.location.href = "https://wallaby-neon.vercel.app/home";
       }

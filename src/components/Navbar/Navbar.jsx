@@ -10,6 +10,7 @@ import DropDownWallet from "../DropwdownWallet/DropDownWallet.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getNft } from "../../redux/actions";
 import { useEffect } from "react";
+import DropdownNft from "../DropdownNft/DropdownNft";
 
 export default function Navbar() {
   // const logged = useSelector((state) => state.userIsAuthenticated);
@@ -40,12 +41,6 @@ export default function Navbar() {
             <div className={styles.padreDrop}>
               <div>
                 <div>
-                  <NavLink to="/form">
-                    <li>Create NFT</li>
-                  </NavLink>
-                  <NavLink to="/mycollections">
-                    <li>My Collection</li>
-                  </NavLink>
                   <NavLink to="/about">
                     <li>About</li>
                   </NavLink>
@@ -57,12 +52,6 @@ export default function Navbar() {
             </div>
           ) : (
             <div>
-              <NavLink to="/form">
-                <li>Create NFT</li>
-              </NavLink>
-              <NavLink to="/mycollections">
-                <li>My Collection</li>
-              </NavLink>
               <NavLink to="/about">
                 <li>About</li>
               </NavLink>
@@ -75,7 +64,10 @@ export default function Navbar() {
             </div>
           )}
         </ul>
-        <div className={styles.dropdown}>
+        <div>
+          <DropdownNft className={styles.wallet}></DropdownNft>
+        </div>
+        <div>
           <DropDownWallet className={styles.wallet}></DropDownWallet>
         </div>
         {/* <div className={styles.tooltip}>

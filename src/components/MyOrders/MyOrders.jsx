@@ -1,8 +1,9 @@
 import React from "react";
+import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import styles from "./MyCollections.module.css";
+import styles from "./MyOrders.module.css";
 
-export default function MyCollections() {
+export default function MyOrders() {
   const back = () => {
     window.history.back();
   };
@@ -12,7 +13,8 @@ export default function MyCollections() {
       <button className={styles.botonR} onClick={back}>
         Go Back
       </button>
-      <div className={styles.tt}>My Collections!</div>;
+      <div className={styles.tt}>My Orders!</div>;
+      <Footer />
     </div>
   );
 }
