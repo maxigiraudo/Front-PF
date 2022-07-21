@@ -19,6 +19,7 @@ import MyCollections from "./components/MyCollections/MyCollections";
 
 function App() {
 
+  
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
 

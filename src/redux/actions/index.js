@@ -1,6 +1,7 @@
 import axios from "axios";
-import Moralis from "moralis";
+import Moralis from 'moralis'
 import Swal from "sweetalert2";
+
 
 export function orderByPrice(payload) {
   return {
@@ -171,7 +172,7 @@ const uploadFile = async (file) => {
 export function getSliderNftArt() {
   return async function (dispatch) {
     try {
-      let json = await axios.get("http://localhost:4000/api/nftcollection");
+      let json = await axios.get("https://henry-proyecto-nft.herokuapp.com/api/nftcollection");
       console.log("ESTA ES LA COLECCION", json);
       return dispatch({
         type: "GET_SLIDER_NFT",
