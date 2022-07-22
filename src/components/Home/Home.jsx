@@ -145,7 +145,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
-          are looking.
+          are looking for.
         </h1>
         <div className={style.carousel}>
           <Slider {...settings}>
