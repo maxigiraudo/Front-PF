@@ -28,6 +28,12 @@ const initialState = {
   isAuth: false,
   profileGoogle: [],
   usersDashboard: [],
+  recoverPassword:false,
+  passwordUpdate:"",
+  newPass:"",
+  olvidoContraseña:false,
+  recuperoLaContraseña:false,
+  nftPorName:[]
 };
 
 export default function reducer(state = initialState, action) {
@@ -37,8 +43,21 @@ export default function reducer(state = initialState, action) {
       const sinCurs = sinC.filter((e) => e.name);
       return {
         ...state,
-        cards: sinCurs,
+        nftPorName: sinCurs,
+        cards: [],
+        allCards: [],
       };
+    case "PUT_UPDATE_PASSWORD":
+      return{
+        ...state,
+        passwordUpdate:action.payload
+      }
+
+      case "NEW_PASSWORD":
+        return{
+          ...state,
+          newPass:action.payload
+        }
 
     case "GET_COLLECTION_ART":
       const sinCu = action.payload;
@@ -49,7 +68,21 @@ export default function reducer(state = initialState, action) {
         ...state,
         collectionArt: art,
       };
+      case "OLVIDO_CONTRASEÑA":
+        return{
+          ...state,
+          olvidoContraseña:action.payload
+        }
 
+      case "ESTA_POR_CAMBIAR_CONTRASEÑA":
+        return{
+          ...state
+        }
+      case "ESTA_SERA_NUEVA_CONTRASEÑA":
+        return{
+          ...state,
+          recuperoLaContraseña:true
+        }
       case "GET_COLLECTION_COL":
         const sinCur = action.payload;
         const sinCurso1 = sinCur.filter((e) => e.name);
@@ -116,6 +149,12 @@ export default function reducer(state = initialState, action) {
                 collectionMus:[],
                 collectionSpo:spo
               };
+
+              case "RECOVER_PASSWORD":
+                return{
+                  ...state,
+                  recoverPassword:action.payload
+                }
               case "GET_NFT":
                 // const getInfo = action.payload
                 // const getInfoRenderizar = getInfo.filter((e)=> e.name)
@@ -135,7 +174,8 @@ export default function reducer(state = initialState, action) {
                   collectionPho: [],
                   collectionGam: [],
                   collectionMus: [],
-                  collectionSpo: []
+                  collectionSpo: [],
+                  nftPorName:[]
                 };
                 case "GET_NFT_HOME":
                 // const getInfo = action.payload
@@ -168,6 +208,7 @@ export default function reducer(state = initialState, action) {
                   cursor: cursor2,
                   allCards: [...state.allCards, ...getInfoFinal],
                   cards: [...state.cards, ...getInfoFinal],
+                  nftPorName:[]
                 };
                 case "GET_DETAILS":
                   return {
@@ -261,7 +302,6 @@ export default function reducer(state = initialState, action) {
                   userData: profile,
                 };
 
-
               case "LOGIN_ERROR":
                 return {
                   ...state,
@@ -279,16 +319,17 @@ export default function reducer(state = initialState, action) {
                   favorite: state.favorite.filter((e) => e !== action.payload),
                 };
 
-              case "GET_PROFILE":
-                return {
-                  ...state,
-                  profile: action.payload,
-                };
-              case "GET_PROFILE_GOOGLE":
-                return {
-                  ...state,
-                  profileGoogle: action.payload,
-                };
+    case "GET_PROFILE":
+      return {
+        ...state,
+        profile: [action.payload],
+      };
+    case "GET_PROFILE_GOOGLE":
+      return {
+        ...state,
+        profileGoogle: action.payload,
+      };
+
 
               case "UPDATED_PROFILE_BY_ID":
                 return {
@@ -364,7 +405,6 @@ export default function reducer(state = initialState, action) {
           
       
 
-
       // case "ORDER_BY_NAME":
       //   if (action.payload === "desc") {
       //     return {
@@ -409,10 +449,11 @@ export default function reducer(state = initialState, action) {
         //     allCards:[...state.allCards,...action.payload],
         //     cards:[...state.cards,...action.payload]
         //   };
-        //   case "GET_NFT_ALL3":
+        //   case "3":
         //     console.log("ESTA EN EL REDUCER 2", action.payload)
         //     return{
         //       ...state,
         //       allCards:[...state.allCards,...action.payload],
         //       cards:[...state.cards,...action.payload]
         //     };
+
