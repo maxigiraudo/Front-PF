@@ -43,15 +43,19 @@ import CollectionSpo from "../Collections/CollectionSpo/CollectionSpo";
 export default function Home({ agregarCarrito, agregarFavorito }) {
   const allCard = useSelector((state) => state.cards);
   const cursori = useSelector((state) => state.cursor);
+
+
+  const nftName = useSelector((state)=> state.nftPorName)
   const [loading, setLoading] = useState(true)
+
+
 
   console.log("CURSOR DEL HOME", cursori);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (allCard.length === 0) dispatch(getNft()).then(() => setLoading(false))
-   return () => setLoading(false)
+    if (allCard.length === 0) dispatch(getNft()).then(() => setLoading(false));
+    return () => setLoading(false);
   }, [dispatch, cursori]);
-
 
   const catArt = useSelector((state) => state.collectionArt);
   const catCol = useSelector((state) => state.collectionCol);
@@ -59,7 +63,6 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   const catGam = useSelector((state) => state.collectionGam);
   const catMus = useSelector((state) => state.collectionMus);
   const catSpo = useSelector((state) => state.collectionSpo);
-
 
   console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catArt);
   console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catCol);
@@ -129,16 +132,16 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
-    if (nftPerPage >= 1500) {
+    if (nftPerPage >= 1500 ) {
       setHasMore(false);
     }
-    dispatch(getNftAll(cursori));
+    if(nftName.length === 0){
+    dispatch(getNftAll(cursori));}
   }, [currentPage, dispatch]);
 
   // function handleFilterByName(e) {
   //   dispatch(getNameNft(e));
   // }
-
 
   return (
     <div className={style.containergeneral}>
@@ -269,13 +272,13 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
           </div>
           {
             loading ? <Loading/> :
-          currentNft.length === 0 ? <NotFound/> :
-              <InfiniteScroll
-                className={style.cardHome}
-                dataLength={currentNft.length} //This is important field to render the next data
-                next={() => setCurrentPage((prevPage) => prevPage + 1)}
-                hasMore={hasMore}
-              >
+          currentNft.length === 0 && nftName.length === 0 ? <NotFound/> : null }
+                <InfiniteScroll
+                      className={style.cardHome}
+                      dataLength={currentNft.length} //This is important field to render the next data
+                      next={() => setCurrentPage((prevPage) => prevPage + 1)}
+                      hasMore={hasMore}
+                    >
                 {currentNft?.map((e, index) => (
                   <Card
                     agregarFavorito={agregarFavorito}
@@ -289,9 +292,32 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                     token_address={e.token_address}
                     collection={e.collection}
                   />
+                   
                 ))}
-              </InfiniteScroll> 
-          }
+                </InfiniteScroll>
+                <InfiniteScroll
+                      className={style.cardHome}
+                      dataLength={currentNft.length} //This is important field to render the next data
+                      next={() => setCurrentPage((prevPage) => prevPage + 1)}
+                      hasMore={hasMore}
+                    >
+                {nftName?.map((e, index) => (
+
+                  <Card
+                    agregarFavorito={agregarFavorito}
+                    agregarCarrito={agregarCarrito}
+                    id={e._id}
+                    key={index}
+                    price={e.price}
+                    name={e.name}
+                    image={e.image}
+                    created={e.created}
+                    token_address={e.token_address}
+                    collection={e.collection}
+                  />
+                 
+                ))} 
+                </InfiniteScroll>
         </div>
       )}
       <div className={style.footer}>
@@ -299,6 +325,4 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
       </div>
     </div>
   );
- 
 }
-
