@@ -27,6 +27,7 @@ const initialState = {
   userInfo: {},
   isAuth: false,
   profileGoogle: [],
+  usersDashboard: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -344,11 +345,24 @@ export default function reducer(state = initialState, action) {
                   userIsAuthenticated: false,
                 };
               }
+
+              case "GET_USERS_DASHBOARD":
+                return {
+                  ...state,
+                  usersDashboard: action.payload,
+                  // usersDashboard: [...state.usersDashboard],
+                  // userDashboard: [...state.userDashboard],
+                };
+
+
               
               default:
                 return state;
             }
-          }          
+          }        
+          
+          
+      
 
 
       // case "ORDER_BY_NAME":

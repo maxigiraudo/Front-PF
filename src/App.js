@@ -18,6 +18,8 @@ import Profile from "./components/Profile/Profile";
 import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 import MyCollections from "./components/MyCollections/MyCollections";
 import MyOrders from "./components/MyOrders/MyOrders";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Listusers from "./components/Dashboard/Listusers/Listusers.jsx"
 
 function App() {
 
@@ -163,6 +165,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/FormEditProfile" element={<FormEditProfile />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Dashboard/Listusers" element={<Listusers/>} />
+
         <Route
           path="/favorite"
           element={
