@@ -7,6 +7,8 @@ import { createNft } from "../../redux/actions";
 import { useMoralis, useMoralisFile } from "react-moralis";
 import { useNavigate } from "react-router-dom";
 import { BsTrash } from "react-icons/bs";
+import photo from "./pngcreacion.png"
+
 
 export default function Form() {
   const [card, setCard] = useState({ name: "", description: "" });
@@ -60,6 +62,7 @@ export default function Form() {
 
     console.log(file);
     dispatch(createNft({ name, description, file }));
+
     navigate("/home");
   };
 
@@ -146,6 +149,7 @@ export default function Form() {
   return (
     <div className={styles.containerPadre}>
       <Navbar />
+      
       <button onClick={back} className={styles.botonR}>
         Go Back
       </button>
@@ -232,11 +236,17 @@ export default function Form() {
                 <br />
 
                 <input
-                  disabled={Object.keys(error).length === 0 ? false : true}
+                  disabled={Object.keys(error).length === 0 ? false 
+                    : true} 
                   value="CREATE"
                   type="submit"
                   className={styles.inputEnviar}
+
+
+
+
                 />
+
                 <br />
                 {Object.keys(error).length === 0 ? null : (
                   <p style={{ color: "red", textAlign: "center" }}>
