@@ -260,7 +260,6 @@ export default function reducer(state = initialState, action) {
                   userData: profile,
                 };
 
-
               case "LOGIN_ERROR":
                 return {
                   ...state,
@@ -278,16 +277,17 @@ export default function reducer(state = initialState, action) {
                   favorite: state.favorite.filter((e) => e !== action.payload),
                 };
 
-              case "GET_PROFILE":
-                return {
-                  ...state,
-                  profile: action.payload,
-                };
-              case "GET_PROFILE_GOOGLE":
-                return {
-                  ...state,
-                  profileGoogle: action.payload,
-                };
+    case "GET_PROFILE":
+      return {
+        ...state,
+        profile: [action.payload],
+      };
+    case "GET_PROFILE_GOOGLE":
+      return {
+        ...state,
+        profileGoogle: action.payload,
+      };
+
 
               case "UPDATED_PROFILE_BY_ID":
                 return {
@@ -350,7 +350,6 @@ export default function reducer(state = initialState, action) {
             }
           }          
 
-
       // case "ORDER_BY_NAME":
       //   if (action.payload === "desc") {
       //     return {
@@ -402,3 +401,4 @@ export default function reducer(state = initialState, action) {
         //       allCards:[...state.allCards,...action.payload],
         //       cards:[...state.cards,...action.payload]
         //     };
+
