@@ -4,9 +4,14 @@ import style from './CollectionCol.module.css'
 import {MdVerified} from 'react-icons/md'
 
 
+
 export default function CollectionCol(){
 
     const catCol = useSelector((state) =>state.collectionCol)   
+
+
+   
+
 
       return(
         <div className={style.carousel}>
@@ -19,6 +24,7 @@ export default function CollectionCol(){
                   src={catCol[9].image}
                   alt="*"
                   value="art"
+                
                 />
               </div>
             <div className={style.divH}></div>
@@ -36,6 +42,7 @@ export default function CollectionCol(){
                   src={catCol[1].image}
                   alt="*"
                   value="art"
+               
                 />
               </div>
             <div className={style.divH}></div>
@@ -54,6 +61,7 @@ export default function CollectionCol(){
                   src={catCol[2].image}
                   alt="*"
                   value="art"
+                
                 />
               </div>
             <div className={style.divH}></div>
@@ -72,6 +80,7 @@ export default function CollectionCol(){
                   src={catCol[3].image}
                   alt="*"
                   value="art"
+                
                 />
               </div>
             <div className={style.divH}></div>
@@ -89,6 +98,7 @@ export default function CollectionCol(){
                   src={catCol[4].image}
                   alt="*"
                   value="art"
+                  
                 />
               </div>
             <div className={style.divH}></div>
@@ -107,6 +117,7 @@ export default function CollectionCol(){
                   src={catCol[5].image}
                   alt="*"
                   value="art"
+                  
                 />
               </div>
             <div className={style.divH}></div>
@@ -125,6 +136,7 @@ export default function CollectionCol(){
                   src={catCol[6].image}
                   alt="*"
                   value="art"
+                 
                 />
               </div>
             <div className={style.divH}></div>
@@ -142,6 +154,7 @@ export default function CollectionCol(){
                   src={catCol[7].image}
                   alt="*"
                   value="art"
+                 
                 />
               </div>
             <div className={style.divH}></div>
@@ -160,6 +173,7 @@ export default function CollectionCol(){
                   src={catCol[8].image}
                   alt="*"
                   value="art"
+                
                 />
               </div>
             <div className={style.divH}></div>

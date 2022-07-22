@@ -3,7 +3,6 @@ import style from './payment.module.css'
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import { Link } from "react-router-dom";
-import Loading from "../Loading/Loading"
 
 
 const getPayment = () => {
