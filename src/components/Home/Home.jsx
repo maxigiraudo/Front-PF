@@ -130,7 +130,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
-    if (nftPerPage >= 1500 || nftPerPage < 20) {
+    if (nftPerPage >= 1500 ) {
       setHasMore(false);
     }
     if(nftName.length === 0){
@@ -149,7 +149,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
       <div className={style.container2}>
         <h1 className={style.text}>
           Search the categories that you like the most and find the NFT that you
-          are looking for.
+          are looking.
         </h1>
         <div className={style.carousel}>
           <Slider {...settings}>
@@ -270,13 +270,13 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
           </div>
           {
             loading ? <Loading/> :
-          currentNft.length === 0 && nftName.length === 0 ? <NotFound/> :
-              <InfiniteScroll
-                className={style.cardHome}
-                dataLength={currentNft.length} //This is important field to render the next data
-                next={() => setCurrentPage((prevPage) => prevPage + 1)}
-                hasMore={hasMore}
-              >
+          currentNft.length === 0 && nftName.length === 0 ? <NotFound/> : null }
+                <InfiniteScroll
+                      className={style.cardHome}
+                      dataLength={currentNft.length} //This is important field to render the next data
+                      next={() => setCurrentPage((prevPage) => prevPage + 1)}
+                      hasMore={hasMore}
+                    >
                 {currentNft?.map((e, index) => (
                   <Card
                     agregarFavorito={agregarFavorito}
@@ -290,8 +290,17 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                     token_address={e.token_address}
                     collection={e.collection}
                   />
+                   
                 ))}
+                </InfiniteScroll>
+                <InfiniteScroll
+                      className={style.cardHome}
+                      dataLength={currentNft.length} //This is important field to render the next data
+                      next={() => setCurrentPage((prevPage) => prevPage + 1)}
+                      hasMore={hasMore}
+                    >
                 {nftName?.map((e, index) => (
+
                   <Card
                     agregarFavorito={agregarFavorito}
                     agregarCarrito={agregarCarrito}
@@ -304,9 +313,9 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                     token_address={e.token_address}
                     collection={e.collection}
                   />
-                ))}
-              </InfiniteScroll> 
-          }
+                 
+                ))} 
+                </InfiniteScroll>
         </div>
       )}
       <div className={style.footer}>

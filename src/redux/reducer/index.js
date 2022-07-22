@@ -173,7 +173,8 @@ export default function reducer(state = initialState, action) {
                   collectionPho: [],
                   collectionGam: [],
                   collectionMus: [],
-                  collectionSpo: []
+                  collectionSpo: [],
+                  nftPorName:[]
                 };
                 case "GET_NFT_HOME":
                 // const getInfo = action.payload
