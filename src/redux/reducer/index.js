@@ -27,6 +27,11 @@ const initialState = {
   userInfo: {},
   isAuth: false,
   profileGoogle: [],
+  recoverPassword:false,
+  passwordUpdate:"",
+  newPass:"",
+  olvidoContraseña:false,
+  recuperoLaContraseña:false
 };
 
 export default function reducer(state = initialState, action) {
@@ -38,6 +43,17 @@ export default function reducer(state = initialState, action) {
         ...state,
         cards: sinCurs,
       };
+    case "PUT_UPDATE_PASSWORD":
+      return{
+        ...state,
+        passwordUpdate:action.payload
+      }
+
+      case "NEW_PASSWORD":
+        return{
+          ...state,
+          newPass:action.payload
+        }
 
     case "GET_COLLECTION_ART":
       const sinCu = action.payload;
@@ -48,7 +64,21 @@ export default function reducer(state = initialState, action) {
         ...state,
         collectionArt: art,
       };
+      case "OLVIDO_CONTRASEÑA":
+        return{
+          ...state,
+          olvidoContraseña:action.payload
+        }
 
+      case "ESTA_POR_CAMBIAR_CONTRASEÑA":
+        return{
+          ...state
+        }
+      case "ESTA_SERA_NUEVA_CONTRASEÑA":
+        return{
+          ...state,
+          recuperoLaContraseña:true
+        }
       case "GET_COLLECTION_COL":
         const sinCur = action.payload;
         const sinCurso1 = sinCur.filter((e) => e.name);
@@ -115,6 +145,12 @@ export default function reducer(state = initialState, action) {
                 collectionMus:[],
                 collectionSpo:spo
               };
+
+              case "RECOVER_PASSWORD":
+                return{
+                  ...state,
+                  recoverPassword:action.payload
+                }
               case "GET_NFT":
                 // const getInfo = action.payload
                 // const getInfoRenderizar = getInfo.filter((e)=> e.name)
@@ -394,7 +430,7 @@ export default function reducer(state = initialState, action) {
         //     allCards:[...state.allCards,...action.payload],
         //     cards:[...state.cards,...action.payload]
         //   };
-        //   case "GET_NFT_ALL3":
+        //   case "3":
         //     console.log("ESTA EN EL REDUCER 2", action.payload)
         //     return{
         //       ...state,

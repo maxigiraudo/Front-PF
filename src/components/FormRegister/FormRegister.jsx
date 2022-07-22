@@ -15,8 +15,10 @@ export default function FormRegister() {
   const [error, setError] = useState({
     error: "You must select a name",
   });
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
   const { nombre, email, password } = user;
   console.log(user);
 

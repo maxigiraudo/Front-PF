@@ -18,7 +18,11 @@ import Profile from "./components/Profile/Profile";
 import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 import MyCollections from "./components/MyCollections/MyCollections";
 import MyOrders from "./components/MyOrders/MyOrders";
+
+import RecoverPassword from "./components/recoverPassword/RecoverPassword";
+
 import Star from "./components/Star/Star";
+
 
 function App() {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
@@ -170,7 +174,11 @@ function App() {
         />
         <Route path="/mycollections" element={<MyCollections />} />
         <Route path="/myorders" element={<MyOrders />} />
+
+        <Route path="/:email/recoverpassword" element={<RecoverPassword/>} />
+
         <Route path="/star" element={<Star />} />
+
       </Routes>
     </div>
   );

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfile, getProfileGoogle } from "../../redux/actions";
+import { getProfile, getProfileGoogle, newPassword, recoverPassword, updatePassword } from "../../redux/actions";
 import { useEffect } from "react";
 import styles from "./Profile.module.css";
 import Footer from "../Footer/Footer";
@@ -10,10 +10,7 @@ import Navbar from "../Navbar/Navbar";
 export default function Profile() {
   //console.log(props)
   const dispatch = useDispatch();
-  // const token = useSelector((state) => state.userData.email);
-  // const emailGoogle = useSelector((state)=> state.useGoogle)
-
-  var paraContraseña = "";
+const recover = useSelector((state)=> state.recoverPassword)
 
   const userrr = JSON.parse(localStorage.getItem("profiles"));
   const userrrGoogle = JSON.parse(localStorage.getItem("profileGoogle"));
@@ -33,6 +30,10 @@ export default function Profile() {
   console.log(profile);
   console.log(profileGoogle);
 
+
+  const [newPass, setNewPass]= useState("")
+
+
   // const profiles = useSelector((state) => state.profile);
   //console.log(profile)
 
@@ -41,13 +42,25 @@ export default function Profile() {
     window.history.back();
   };
 
-  // function cambioC() {
-  //   paraContraseña = token;
-  // }
-  console.log("EN UN PRIMER MOMENTO", paraContraseña);
-  console.log("EN UN SEGUNDO MOMENTO", paraContraseña);
 
-  console.log("ESTO HAY EN PROFILE", profileGoogle);
+  function cambioC(){
+    dispatch(recoverPassword())
+  }
+
+  function handleInput(e){
+    e.preventDefault();
+    setNewPass(e.target.value)
+  }
+
+  function handleClick(){
+    dispatch((updatePassword({password:newPass,
+    email:emailData})))
+  }
+
+  console.log(newPass)
+
+  console.log("ESTO HAY EN PROFILE",profileGoogle)
+
 
   return (
     <div className={styles.containerPadre}>
@@ -81,7 +94,21 @@ export default function Profile() {
                   <br />
                 </div>
               )}
-              {/* <button onClick={() => cambioC()}>Modifica tu contraseña</button> */}
+               <button onClick={() => cambioC()}>Modifica tu contraseña</button>
+               {recover === true && 
+            <div>
+
+              <input  
+                type='password'
+                onChange={(e)=>handleInput(e)}
+              />
+              <input
+                type='submit'
+                onClick={()=>handleClick()}
+              />
+            </div>
+
+              }
               <Link to="/favorite">
                 <button className={styles.inputEnviar}>
                   Go to my favorite NFTs!
