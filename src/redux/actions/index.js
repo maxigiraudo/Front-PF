@@ -636,7 +636,7 @@ export function estaSeraLaContraseña(todo){
   console.log("ESTE ES EL EMIAL DE LA ACTION", email)
   console.log("ESTA ES LA PASSWORD DE LA ACTION", body)
   return async function(dispatch){
-    let json = await axios.put(`https://henry-proyecto-nft.herokuapp.com/${email}/recoverpassword`,body);
+    let json = await axios.put(`https://henry-proyecto-nft.herokuapp.com/${email}/newpassword`,body);
     return dispatch({
       type:"ESTA_SERA_NUEVA_CONTRASEÑA",
       payload:json.data
