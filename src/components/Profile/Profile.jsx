@@ -54,7 +54,7 @@ const recover = useSelector((state)=> state.recoverPassword)
 
   function handleClick(){
     dispatch((updatePassword({password:newPass,
-    email:emailData})))
+    email:userrr.email})))
   }
 
   console.log(newPass)
