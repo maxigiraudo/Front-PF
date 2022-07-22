@@ -3,6 +3,7 @@
 .generalApp {
   font-family: "Oswald", sans-serif;
 }
+
 .App {
   text-align: center;
 }
@@ -41,8 +42,6 @@
     transform: rotate(360deg);
   }
 }
-
-
 
 .container {
   width: 100%;
@@ -428,21 +427,17 @@
     width: 100%;
   }
 
-
   ::-webkit-scrollbar {
     width: 10px;
   }
-  
-  
+
   ::-webkit-scrollbar-track {
-    background:black;
+    background: black;
   }
-  
-  
+
   ::-webkit-scrollbar-thumb {
     border: black;
     background: linear-gradient(90deg, #cf4bffc5 0%, #6c63ff 100%);
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
-  
 }
