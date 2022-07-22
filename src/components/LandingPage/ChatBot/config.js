@@ -69,7 +69,7 @@ const config = {
                     },
                     {
                         text: "Add favorites",
-                        url:`https://wallaby-neon.vercel.app/home`, 
+                        url:`https://wallaby-neon.vercel.app/login`, 
                         id: 2,
                     },
                 ],

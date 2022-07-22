@@ -1,16 +1,27 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfile, getProfileGoogle, newPassword, recoverPassword, updatePassword } from "../../redux/actions";
+import {
+  getProfile,
+  getProfileGoogle,
+  newPassword,
+  recoverPassword,
+  updatePassword,
+} from "../../redux/actions";
 import { useEffect } from "react";
 import styles from "./Profile.module.css";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import Swal from "sweetalert2";
 
 export default function Profile() {
   //console.log(props)
   const dispatch = useDispatch();
-const recover = useSelector((state)=> state.recoverPassword)
+  const navigate = useNavigate();
+  const recover = useSelector((state) => state.recoverPassword);
+  const [errorContra, setErrorContra] = useState({
+    error: "You must enter a correct password",
+  });
 
   const userrr = JSON.parse(localStorage.getItem("profiles"));
   const userrrGoogle = JSON.parse(localStorage.getItem("profileGoogle"));
@@ -25,14 +36,25 @@ const recover = useSelector((state)=> state.recoverPassword)
     dispatch(getProfileGoogle(userrrGoogle));
   }, []);
 
+  function validationForm(value) {
+    let errors = {};
+    if (
+      !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(
+        value.password
+      )
+    ) {
+      errors.password =
+        "*It should have 8 characters, 1 capital letter, and a number";
+    }
+    return errors;
+  }
+
   const profile = useSelector((state) => state.profile);
   const profileGoogle = useSelector((state) => state.profileGoogle);
   console.log(profile);
   console.log(profileGoogle);
 
-
-  const [newPass, setNewPass]= useState("")
-
+  const [newPass, setNewPass] = useState("");
 
   // const profiles = useSelector((state) => state.profile);
   //console.log(profile)
@@ -42,25 +64,35 @@ const recover = useSelector((state)=> state.recoverPassword)
     window.history.back();
   };
 
-
-  function cambioC(){
-    dispatch(recoverPassword())
+  function cambioC() {
+    dispatch(recoverPassword());
   }
 
-  function handleInput(e){
+  function handleInput(e) {
     e.preventDefault();
-    setNewPass(e.target.value)
+    setNewPass(e.target.value);
+    setErrorContra(
+      validationForm({
+        [e.target.name]: e.target.value,
+      })
+    );
   }
 
-  function handleClick(){
-    dispatch((updatePassword({password:newPass,
-    email:userrr.email})))
+  function handleClick() {
+    dispatch(updatePassword({ password: newPass, email: userrr.email }));
+    navigate("/home");
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Password Changed",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }
 
-  console.log(newPass)
+  console.log(newPass);
 
-  console.log("ESTO HAY EN PROFILE",profileGoogle)
-
+  console.log("ESTO HAY EN PROFILE", profileGoogle);
 
   return (
     <div className={styles.containerPadre}>
@@ -94,21 +126,35 @@ const recover = useSelector((state)=> state.recoverPassword)
                   <br />
                 </div>
               )}
-               <button onClick={() => cambioC()}>Modifica tu contraseña</button>
-               {recover === true && 
-            <div>
-
-              <input  
-                type='password'
-                onChange={(e)=>handleInput(e)}
-              />
-              <input
-                type='submit'
-                onClick={()=>handleClick()}
-              />
-            </div>
-
-              }
+              <button
+                className={styles.changePassword}
+                onClick={() => cambioC()}
+              >
+                <a>Change your password.</a>
+              </button>
+              {recover === true && (
+                <div>
+                  <input
+                    className={styles.input}
+                    // value={newPass}
+                    name="password"
+                    type="password"
+                    onChange={(e) => handleInput(e)}
+                  />
+                  <input
+                    disabled={
+                      Object.keys(errorContra).length === 0 ? false : true
+                    }
+                    className={styles.inputEnviarr}
+                    value="Change"
+                    type="submit"
+                    onClick={() => handleClick()}
+                  />
+                  {errorContra.password ? (
+                    <p className={styles.pError}> {errorContra.password} </p>
+                  ) : null}
+                </div>
+              )}
               <Link to="/favorite">
                 <button className={styles.inputEnviar}>
                   Go to my favorite NFTs!

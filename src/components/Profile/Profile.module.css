@@ -119,7 +119,7 @@
   border-bottom-color: #d04bff;
   background-color: #cf4bff34;
   border-radius: 5px;
-  width: 250px;
+  width: 200px;
   padding: 10px;
   font-size: 1rem;
   margin: 15px;
@@ -159,4 +159,30 @@
 }
 .name {
   color: #d04bff;
+}
+
+.changePassword {
+  background: none;
+  cursor: pointer;
+  border: none;
+}
+.inputEnviarr {
+  background: linear-gradient(90deg, #cf4bffc5 0%, #6c63ff 100%);
+  border-radius: 5px;
+  color: white;
+  width: fit-content;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 15px;
+  font-family: inherit;
+}
+
+.inputEnviarr:hover {
+  background: #16161a;
+  border-color: #d04bff;
+  color: #d04bff;
+}
+.pError {
+  color: red;
 }

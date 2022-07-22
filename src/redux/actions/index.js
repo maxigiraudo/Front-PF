@@ -569,6 +569,28 @@ export function singoutOk() {
 }
 
 
+export const usersDashboard = (body) => async (dispatch) => {
+  
+  const body = {email: "ikp123456722890@gmail.com", password: "Ivann@n"}
+  const config = {
+    headers: { "Content-Type": "application/json" },
+  }
+  try {
+    const{data} = await axios.post(
+      "http://localhost:4000/admin/users",
+      body
+    );
+    console.log(data);
+    return dispatch({
+      type: "GET_USERS_DASHBOARD",
+      payload: data,
+    });
+  } catch(error) {
+    console.log(error)
+  }
+};
+
+
 
 export function updatePassword(todo) {
   const email = todo.email
@@ -621,5 +643,6 @@ export function estaSeraLaContraseña(todo){
     })
   }
 }
+
 
 
