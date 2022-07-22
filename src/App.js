@@ -18,6 +18,7 @@ import Profile from "./components/Profile/Profile";
 import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 import MyCollections from "./components/MyCollections/MyCollections";
 import MyOrders from "./components/MyOrders/MyOrders";
+import RecoverPassword from "./components/recoverPassword/RecoverPassword";
 
 function App() {
 
@@ -171,6 +172,7 @@ function App() {
         />
         <Route path="/mycollections" element={<MyCollections />} />
         <Route path="/myorders" element={<MyOrders />} />
+        <Route path="/:email/recoverpassword" element={<RecoverPassword/>} />
       </Routes>
     </div>
   );

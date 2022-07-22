@@ -9,7 +9,7 @@ import validateForm from "../Login/validation.js";
 import { Link, useNavigate } from "react-router-dom";
 
 import imgLogin from "./imgLogin.png";
-import { postLogin } from "../../redux/actions/index.js";
+import { cambioPassword, estaPorCambiarContraseña, postLogin } from "../../redux/actions/index.js";
 
 // import { useEffect } from "react";
 // import GoogleLogin from 'react-google-login';
@@ -21,7 +21,13 @@ export default function Login() {
 
   const navigate = useNavigate()
 
+  const [email,setEmail] = useState("")
+
   const logginAut = useSelector((state)=> state.userIsAuthenticated)
+
+  const olvideContraseña = useSelector((state)=> state.olvidoContraseña)
+
+  console.log("EN UN PRIMER MOMENTO OLVIDE MI CONTRASEÑA ES:", olvideContraseña)
 
   const [formData, setFormData] = useState({
     email: "",
@@ -63,6 +69,24 @@ export default function Login() {
   function alHome(){
     return navigate("/home")
   }
+
+  function olvidoLaContraseña(){
+    dispatch(cambioPassword(true))
+  }
+
+  function handleInput(e){
+    e.preventDefault();
+    setEmail(e.target.value)
+  }
+
+  function handleClick(){
+    dispatch(estaPorCambiarContraseña(email))
+    navigate('/home')
+  }
+
+  console.log(email)
+
+  console.log("EN UN SEGUNDO MOMENTO OLVIDE MI CONTRASEÑA ES:", olvideContraseña)
 
 
   // const responseGoogle = (response) => {
@@ -120,6 +144,23 @@ export default function Login() {
               {" "}
               LOGIN{" "}
             </button>
+          </div>
+          <div>
+            <button onClick={()=> olvidoLaContraseña()} >Olvide mi contraseña</button>
+            {olvideContraseña === true ?(
+              <>
+              <label>Ingrese mail de confirmacion:</label>
+              <input
+                type='text'
+                onChange={(e)=>handleInput(e)}
+              />
+              <input
+                type='submit'
+                onClick={()=>handleClick()}
+              />
+              </>
+              ): null
+            }
           </div>
 
           <div className={styles.register}>
