@@ -577,7 +577,7 @@ export function updatePassword(todo) {
   return async function (dispatch) {
     
     let json = await axios.put(
-      `http://localhost:4000/${email}/updatePassword`,body
+      `https://henry-proyecto-nft.herokuapp.com/${email}/updatePassword`,body
     );
     console.log(json);
     // let jsonB = await axios.get ("http://localhost:4000/api/tests/" + json.data.cursor)

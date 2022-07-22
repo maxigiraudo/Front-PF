@@ -49,7 +49,9 @@ export default function reducer(state = initialState, action) {
     case "PUT_UPDATE_PASSWORD":
       return{
         ...state,
-        passwordUpdate:action.payload
+        passwordUpdate:action.payload,
+        recoverPassword:false
+
       }
 
       case "NEW_PASSWORD":

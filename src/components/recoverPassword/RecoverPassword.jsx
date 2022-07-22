@@ -4,12 +4,15 @@ import Footer from '../Footer/Footer'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { estaSeraLaContraseña } from '../../redux/actions'
+import { useNavigate } from 'react-router-dom'
 
 export default function RecoverPassword(){
 
     const [password,setPassword] = useState("")
     const [email,setEmail] = useState("")
     const [passwordConfir,setPasswordConfir] = useState("")
+    const navigate = useNavigate()
+
     const dispatch = useDispatch()
 
     function handleInputPassword(e){
@@ -31,7 +34,8 @@ export default function RecoverPassword(){
     console.log("ESTA ES LA CONFIRMACION DE LA CONTRASEÑA", passwordConfir)
 
     function handleClick(){
-        dispatch(estaSeraLaContraseña({email : email,password:password, passwordConfir:passwordConfir}))
+        dispatch(estaSeraLaContraseña({email : email,password:password, passwordConfir:passwordConfir}));
+        navigate('/login')
     }
 
     return(
