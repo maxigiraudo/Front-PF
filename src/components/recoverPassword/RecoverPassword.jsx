@@ -1,3 +1,4 @@
+
 import React from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -9,9 +10,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export default function RecoverPassword() {
-  //   const [password, setPassword] = useState("");
-  //   const [email, setEmail] = useState("");
-  //   const [passwordConfir, setPasswordConfir] = useState("")
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [user, setUser] = useState({
@@ -29,6 +27,7 @@ export default function RecoverPassword() {
     let errors = {};
     if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value.email)) {
       errors.email = "*You must enter an email";
+
     }
     if (
       !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(
@@ -48,7 +47,6 @@ export default function RecoverPassword() {
     e.preventDefault();
     setUser({
       ...user,
-
       [e.target.name]: e.target.value,
     });
     setError(
@@ -111,7 +109,6 @@ export default function RecoverPassword() {
           {error.password ? (
             <p style={{ color: "red" }}> {error.password} </p>
           ) : null}
-
           <input
             className={styles.input}
             name="passwordConfir"
