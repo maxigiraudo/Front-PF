@@ -77,7 +77,7 @@ export default function Profile() {
       })
     );
   }
-
+  
   function handleClick() {
     dispatch(updatePassword({ password: newPass, email: userrr.email }));
     navigate("/home");

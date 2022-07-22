@@ -179,7 +179,9 @@ function App() {
         <Route path="/mycollections" element={<MyCollections />} />
         <Route path="/myorders" element={<MyOrders />} />
 
-        <Route path="/:email/recoverpassword" element={<RecoverPassword />} />
+
+        <Route path="/:email/newpassword" element={<RecoverPassword/>} />
+
 
         <Route path="/star" element={<Star />} />
       </Routes>
