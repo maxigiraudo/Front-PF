@@ -110,8 +110,8 @@ export default function Login() {
       position: "center",
       icon: "success",
       title: "Check your email box",
-      showConfirmButton: false,
-      timer: 1500,
+      text: "If you cant find the email, check the spam box.",
+      showConfirmButton: true,
     });
   }
 
