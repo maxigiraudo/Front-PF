@@ -31,7 +31,8 @@ const initialState = {
   passwordUpdate:"",
   newPass:"",
   olvidoContraseña:false,
-  recuperoLaContraseña:false
+  recuperoLaContraseña:false,
+  nftPorName:[]
 };
 
 export default function reducer(state = initialState, action) {
@@ -41,7 +42,9 @@ export default function reducer(state = initialState, action) {
       const sinCurs = sinC.filter((e) => e.name);
       return {
         ...state,
-        cards: sinCurs,
+        nftPorName: sinCurs,
+        cards: [],
+        allCards: [],
       };
     case "PUT_UPDATE_PASSWORD":
       return{
@@ -203,6 +206,7 @@ export default function reducer(state = initialState, action) {
                   cursor: cursor2,
                   allCards: [...state.allCards, ...getInfoFinal],
                   cards: [...state.cards, ...getInfoFinal],
+                  nftPorName:[]
                 };
                 case "GET_DETAILS":
                   return {
