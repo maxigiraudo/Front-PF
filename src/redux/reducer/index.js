@@ -33,7 +33,9 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "GET_NAME_NFT":
       const sinC = action.payload;
+      console.log('MATTT' , sinC)
       const sinCurs = sinC.filter((e) => e.name);
+      console.log('MATCURSOR', sinCurs)
       return {
         ...state,
         cards: sinCurs,
@@ -43,7 +45,7 @@ export default function reducer(state = initialState, action) {
       const sinCu = action.payload;
       const sinCurso = sinCu.filter((e) => e.name);
       const art = sinCurso.filter((e) => e.category === "art");
-      console.log("ESTA ES MI ACTION DE ART", art);
+
       return {
         ...state,
         collectionArt: art,
@@ -53,7 +55,6 @@ export default function reducer(state = initialState, action) {
         const sinCur = action.payload;
         const sinCurso1 = sinCur.filter((e) => e.name);
         const col = sinCurso1.filter((e) => e.category === "collectibles");
-        console.log("ESTA ES MI ACTION DE COL", col);
         return {
           ...state,
           collectionCol: col,
@@ -63,7 +64,6 @@ export default function reducer(state = initialState, action) {
           const sinCur1 = action.payload;
           const sinCurso2 = sinCur1.filter((e) => e.name);
           const pho = sinCurso2.filter((e) => e.category === "photography");
-          console.log("ESTA ES MI ACTION DE COL", pho);
           return {
             ...state,
             collectionPho: pho,
@@ -77,7 +77,6 @@ export default function reducer(state = initialState, action) {
           const sinCur2 = action.payload;
           const sinCurso3 = sinCur2.filter((e) => e.name);
           const gam = sinCurso3.filter((e) => e.category === "games");
-          console.log("ESTA ES MI ACTION DE COL", gam);
           return {
             ...state,
             collectionPho: [],
@@ -91,7 +90,6 @@ export default function reducer(state = initialState, action) {
             const sinCur3 = action.payload;
             const sinCurso4 = sinCur3.filter((e) => e.name);
             const mus = sinCurso4.filter((e) => e.category === "music");
-            console.log("ESTA ES MI ACTION DE COL", mus);
             return {
               ...state,
               collectionPho: [],
@@ -105,7 +103,6 @@ export default function reducer(state = initialState, action) {
               const sinCur4 = action.payload;
               const sinCurso5 = sinCur4.filter((e) => e.name);
               const spo = sinCurso5.filter((e) => e.category === "sports");
-              console.log("ESTA ES MI ACTION DE COL", spo);
               return {
                 ...state,
                 collectionPho: [],
@@ -123,7 +120,6 @@ export default function reducer(state = initialState, action) {
                 const getInfo = action.payload;
                 const cursor = getInfo[0].cursor;
                 const getInfoF = getInfo.filter((e) => e.name);
-                console.log("ESTE ES EL CURSOR 1:", cursor);
                 return {
                   ...state,
                   cursor: cursor,
@@ -144,7 +140,6 @@ export default function reducer(state = initialState, action) {
                 const getInfo1 = action.payload;
                 const cursor1 = getInfo1[0].cursor;
                 const getInfoF1 = getInfo1.filter((e) => e.name);
-                console.log("ESTE ES EL CURSOR 1:", cursor1);
                 return {
                   ...state,
                   cursor: cursor1,
@@ -161,13 +156,13 @@ export default function reducer(state = initialState, action) {
                 const getInfo2 = action.payload;
                 const cursor2 = getInfo2[0].cursor;
                 const getInfoFinal = getInfo2.filter((e) => !e.cursor);
-                console.log("ESTE ES EL CURSOR 2:", cursor2);
                 return {
                   ...state,
                   cursor: cursor2,
                   allCards: [...state.allCards, ...getInfoFinal],
                   cards: [...state.cards, ...getInfoFinal],
                 };
+                
                 case "GET_DETAILS":
                   return {
                     ...state,
@@ -222,7 +217,6 @@ export default function reducer(state = initialState, action) {
                   detail: [],
                 };
               case "ADD_TO_CART":
-                console.log(action.payload);
                 return {
                   ...state,
                   cartProducts: action.payload,
@@ -307,7 +301,6 @@ export default function reducer(state = initialState, action) {
               }
               case "REGISTER_USER_SUCCESS": {
                 const profileGoogle = action.payload;
-                console.log("ESTE ES EL REGISTER_USER_SUCCES", profileGoogle);
                 if (profileGoogle) {
                   localStorage.setItem("profileGoogle", JSON.stringify(profileGoogle));
                 }

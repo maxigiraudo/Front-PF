@@ -45,12 +45,13 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   const cursori = useSelector((state) => state.cursor);
   const [loading, setLoading] = useState(true)
 
-  console.log("CURSOR DEL HOME", cursori);
   const dispatch = useDispatch();
   useEffect(() => {
     if (allCard.length === 0) dispatch(getNft()).then(() => setLoading(false))
    return () => setLoading(false)
   }, [dispatch, cursori]);
+  console.log('asdasdas89', cursori)
+
 
 
   const catArt = useSelector((state) => state.collectionArt);
@@ -59,12 +60,6 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   const catGam = useSelector((state) => state.collectionGam);
   const catMus = useSelector((state) => state.collectionMus);
   const catSpo = useSelector((state) => state.collectionSpo);
-
-
-  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catArt);
-  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catCol);
-
-  console.log(allCard);
 
   const settings = {
     dots: true,
@@ -126,7 +121,6 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   const currentNft = allCard.slice(0, nftPerPage);
   const [hasMore, setHasMore] = useState(true);
 
-  console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
     if (nftPerPage >= 1500) {
@@ -134,10 +128,6 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
     }
     dispatch(getNftAll(cursori));
   }, [currentPage, dispatch]);
-
-  // function handleFilterByName(e) {
-  //   dispatch(getNameNft(e));
-  // }
 
 
   return (
