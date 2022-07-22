@@ -27,7 +27,7 @@ class ActionProvider {
     }
 
     handlePublicarProyecto = () => {
-        const message = this.createChatBotMessage("To create a NFT, you need to register:",
+        const message = this.createChatBotMessage("Let's create your NFT!:",
           {
             widget: "publicarProyecto",
           }

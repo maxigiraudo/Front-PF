@@ -2,6 +2,7 @@
 .adminContainer{
     align-items: center;
     justify-content: center;
+    min-height: 50rem;
 }
 
 
@@ -10,18 +11,20 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: yellow;
-    margin: 2% 0 1% 1%
+    color: #d04bff;
 }
 
 .iconAdmin{
     font-size: 40px;
-    margin: 60px;
+    margin: 40px 30px;
 }
 
 .iconAdmin1, .iconAdmin2, .iconAdmin3 {
     font-size: 40px;
     padding-bottom: 2%;
+    color: white;
+
+
 }
 
 
@@ -29,25 +32,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0 auto;
-    margin-bottom: 6%;
     padding: 6%;
-    background-color: black;
-}
-
-.Box1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5%;
-    background-color: #c23788;
-    border: 2px solid white;
-    border-radius: 20px;
-    width: 20%;
-    height: 8rem;
-    transition: .6s;
-    z-index: 3;
+    margin-bottom: 8%;
 }
 
 .featuresBox{
@@ -56,35 +42,27 @@
     align-items: center;
     justify-content: center;
     padding: 0.5%;
-    background-color: #c23788;
-    border: 2px solid white;
+    background: -webkit-linear-gradient(#d04bff, #6c63ff);
+    border: 2px solid #d04bff;
     border-radius: 20px;
     width: 20%;
     height: 8rem;
-    transition: .6s;
+    transition: .3s;
     z-index: 3;
+    margin: 2%;
 }
 
-.Box2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5%;
-    background-color: #c23788;
-    border: 2px solid white;
-    border-radius: 20px;
-    width: 20%;
-    height: 8rem;
-    transition: .6s;
-    z-index: 3;
-
+.featuresBox:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 
-.title-feature-admin {
+.titleAdmin{
     color: white;
-    font-size: 1.3rem;
-    text-shadow: 1px 2px 3px rgb(0, 0, 0);
-    margin: 18px;
+    font-size: 30px;
+}
+
+.titleAdmin:hover {
+    letter-spacing: 1px;
 }
