@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import DropdownNft from "../DropdownNft/DropdownNft";
 
 export default function Navbar() {
-  // const logged = useSelector((state) => state.userIsAuthenticated);
+  const logged = useSelector((state) => state.userIsAuthenticated);
 
   const userrr = JSON.parse(localStorage.getItem("profiles"));
   const userrrGoogle = JSON.parse(localStorage.getItem("profileGoogle"));
@@ -39,7 +39,7 @@ export default function Navbar() {
       </NavLink>
       <nav className={styles.navBar}>
         <ul>
-          {userrr || userrrGoogle ? (
+          {logged && (userrr || userrrGoogle) ? (
             <div className={styles.padreDrop}>
               <div>
                 <div>
