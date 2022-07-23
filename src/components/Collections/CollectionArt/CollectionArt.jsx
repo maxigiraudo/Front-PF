@@ -3,9 +3,16 @@ import { useSelector } from "react-redux";
 import style from "./CollectionArt.module.css";
 import { MdVerified } from "react-icons/md";
 import Star from "../../Star/Star";
+import {useNFTTokenIds} from  "../../../hooks/useNFTTokenIds"
 
 export default function CollectionArt() {
   const catArt = useSelector((state) => state.collectionArt);
+
+  const { NFTTokenIds,fetchSuccess} = useNFTTokenIds("0xA98cC213495B178Bc0AA690223325bBed2Dbbc71");
+
+  console.log("ESTO ES EL CONSOLE.LOG ",NFTTokenIds)
+  console.log("SERA TRUE O FALSE?",fetchSuccess)
+  console.log("HOLA CRISTIAN LAIR")
 
   return (
     <div className={style.carousel}>
