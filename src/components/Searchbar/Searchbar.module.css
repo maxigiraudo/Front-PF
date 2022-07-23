@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: right;
+  margin-top: 10px;
 }
 
 .inputDiv {
@@ -50,7 +51,7 @@
   color: #d04bff;
 }
 
-.btn{
+.btn {
   color: white;
   background-color: white;
 }

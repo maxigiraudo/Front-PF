@@ -44,11 +44,8 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   const allCard = useSelector((state) => state.cards);
   const cursori = useSelector((state) => state.cursor);
 
-
-  const nftName = useSelector((state)=> state.nftPorName)
-  const [loading, setLoading] = useState(true)
-
-
+  const nftName = useSelector((state) => state.nftPorName);
+  const [loading, setLoading] = useState(true);
 
   console.log("CURSOR DEL HOME", cursori);
   const dispatch = useDispatch();
@@ -132,11 +129,12 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
-    if (nftPerPage >= 1500 ) {
+    if (nftPerPage >= 1500) {
       setHasMore(false);
     }
-    if(nftName.length === 0){
-    dispatch(getNftAll(cursori));}
+    if (nftName.length === 0) {
+      dispatch(getNftAll(cursori));
+    }
   }, [currentPage, dispatch]);
 
   // function handleFilterByName(e) {
@@ -270,54 +268,53 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
               {/* <Order /> */}
             </div>
           </div>
-          {
-            loading ? <Loading/> :
-          currentNft.length === 0 && nftName.length === 0 ? <NotFound/> : null }
-                <InfiniteScroll
-                      className={style.cardHome}
-                      dataLength={currentNft.length} //This is important field to render the next data
-                      next={() => setCurrentPage((prevPage) => prevPage + 1)}
-                      hasMore={hasMore}
-                    >
-                {currentNft?.map((e, index) => (
-                  <Card
-                    agregarFavorito={agregarFavorito}
-                    agregarCarrito={agregarCarrito}
-                    id={e._id}
-                    key={index}
-                    price={e.price}
-                    name={e.name}
-                    image={e.image}
-                    created={e.created}
-                    token_address={e.token_address}
-                    collection={e.collection}
-                  />
-                   
-                ))}
-                </InfiniteScroll>
-                <InfiniteScroll
-                      className={style.cardHome}
-                      dataLength={currentNft.length} //This is important field to render the next data
-                      next={() => setCurrentPage((prevPage) => prevPage + 1)}
-                      hasMore={hasMore}
-                    >
-                {nftName?.map((e, index) => (
-
-                  <Card
-                    agregarFavorito={agregarFavorito}
-                    agregarCarrito={agregarCarrito}
-                    id={e._id}
-                    key={index}
-                    price={e.price}
-                    name={e.name}
-                    image={e.image}
-                    created={e.created}
-                    token_address={e.token_address}
-                    collection={e.collection}
-                  />
-                 
-                ))} 
-                </InfiniteScroll>
+          {loading ? (
+            <Loading />
+          ) : currentNft.length === 0 && nftName.length === 0 ? (
+            <NotFound />
+          ) : null}
+          <InfiniteScroll
+            className={style.cardHome}
+            dataLength={currentNft.length} //This is important field to render the next data
+            next={() => setCurrentPage((prevPage) => prevPage + 1)}
+            hasMore={hasMore}
+          >
+            {currentNft?.map((e, index) => (
+              <Card
+                agregarFavorito={agregarFavorito}
+                agregarCarrito={agregarCarrito}
+                id={e._id}
+                key={index}
+                price={e.price}
+                name={e.name}
+                image={e.image}
+                created={e.created}
+                token_address={e.token_address}
+                collection={e.collection}
+              />
+            ))}
+          </InfiniteScroll>
+          <InfiniteScroll
+            className={style.cardHome}
+            dataLength={currentNft.length} //This is important field to render the next data
+            next={() => setCurrentPage((prevPage) => prevPage + 1)}
+            hasMore={hasMore}
+          >
+            {nftName?.map((e, index) => (
+              <Card
+                agregarFavorito={agregarFavorito}
+                agregarCarrito={agregarCarrito}
+                id={e._id}
+                key={index}
+                price={e.price}
+                name={e.name}
+                image={e.image}
+                created={e.created}
+                token_address={e.token_address}
+                collection={e.collection}
+              />
+            ))}
+          </InfiniteScroll>
         </div>
       )}
       <div className={style.footer}>
