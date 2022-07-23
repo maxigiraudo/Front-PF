@@ -10,6 +10,7 @@ import Navbar from "../Navbar/Navbar";
 import NotFound from "../NotFound/NotFound";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
+import Collections from "../Collections/Collections";
 import {
   getNft,
   getNftAll,
@@ -21,6 +22,7 @@ import {
   getCollectionGam,
   getCollectionMus,
   getCollectionSpo,
+  getCollections,
 } from "../../redux/actions";
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
@@ -54,15 +56,15 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
     return () => setLoading(false);
   }, [dispatch, cursori]);
 
-  const catArt = useSelector((state) => state.collectionArt);
-  const catCol = useSelector((state) => state.collectionCol);
-  const catPho = useSelector((state) => state.collectionPho);
-  const catGam = useSelector((state) => state.collectionGam);
-  const catMus = useSelector((state) => state.collectionMus);
-  const catSpo = useSelector((state) => state.collectionSpo);
+  const collections = useSelector((state) => state.collection);
+  // const catCol = useSelector((state) => state.collectionCol);
+  // const catPho = useSelector((state) => state.collectionPho);
+  // const catGam = useSelector((state) => state.collectionGam);
+  // const catMus = useSelector((state) => state.collectionMus);
+  // const catSpo = useSelector((state) => state.collectionSpo);
 
-  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catArt);
-  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catCol);
+  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", collections);
+
 
   console.log(allCard);
 
@@ -102,24 +104,24 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
       },
     ],
   };
-  function handleFilterByCategoryArt(e) {
-    dispatch(getCollectionArt(e));
+  function handleFilterByCollection(e) {
+    dispatch(getCollections(e));
   }
-  function handleFilterByCategoryCol(e) {
-    dispatch(getCollectionCol(e));
-  }
-  function handleFilterByCategoryPho(e) {
-    dispatch(getCollectionPho(e));
-  }
-  function handleFilterByCategoryGam(e) {
-    dispatch(getCollectionGam(e));
-  }
-  function handleFilterByCategoryMus(e) {
-    dispatch(getCollectionMus(e));
-  }
-  function handleFilterByCategorySpo(e) {
-    dispatch(getCollectionSpo(e));
-  }
+  // function handleFilterByCategoryCol(e) {
+  //   dispatch(getCollectionCol(e));
+  // }
+  // function handleFilterByCategoryPho(e) {
+  //   dispatch(getCollectionPho(e));
+  // }
+  // function handleFilterByCategoryGam(e) {
+  //   dispatch(getCollectionGam(e));
+  // }
+  // function handleFilterByCategoryMus(e) {
+  //   dispatch(getCollectionMus(e));
+  // }
+  // function handleFilterByCategorySpo(e) {
+  //   dispatch(getCollectionSpo(e));
+  // }
 
   const [currentPage, setCurrentPage] = useState(1);
   const [nftPerPage, setNftPerPage] = useState(6);
@@ -161,7 +163,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={art}
                   alt="*"
                   value="art"
-                  onClick={(e) => handleFilterByCategoryArt("art")}
+                  onClick={(e) => handleFilterByCollection("art")}
                 />
               </div>
             </div>
@@ -173,7 +175,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={collectibles}
                   alt="*"
                   value="crypto"
-                  onClick={(e) => handleFilterByCategoryCol("collectibles")}
+                  onClick={(e) => handleFilterByCollection("collectibles")}
                 />
               </div>
             </div>
@@ -185,7 +187,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={games}
                   alt="*"
                   value="games"
-                  onClick={(e) => handleFilterByCategoryGam("games")}
+                  onClick={(e) => handleFilterByCollection("games")}
                 />
               </div>
             </div>
@@ -197,7 +199,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={music}
                   alt="*"
                   value="music"
-                  onClick={(e) => handleFilterByCategoryMus("music")}
+                  onClick={(e) => handleFilterByCollection("music")}
                 />
               </div>
             </div>
@@ -209,7 +211,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={photography}
                   alt="*"
                   value="photography"
-                  onClick={(e) => handleFilterByCategoryPho("photography")}
+                  onClick={(e) => handleFilterByCollection("photography")}
                 />
               </div>
             </div>
@@ -221,7 +223,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={sports}
                   alt="*"
                   value="sports"
-                  onClick={(e) => handleFilterByCategorySpo("sports")}
+                  onClick={(e) => handleFilterByCollection("sports")}
                 />
               </div>
             </div>
@@ -229,31 +231,14 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
         </div>
       </div>
 
-      {catArt.length > 0 ? (
-        <div className={style.sli}>
-          <CollectionArt />
+      {collections.length > 0? collections.map((e)=>(
+        <div className={style.cardHome}>
+          <Collections
+          image={e.image}
+          name={e.name}
+           />
         </div>
-      ) : catCol.length > 0 ? (
-        <div className={style.sli}>
-          <CollectionCol />
-        </div>
-      ) : catPho.length > 0 ? (
-        <div className={style.sli}>
-          <CollectionPho />
-        </div>
-      ) : catGam.length > 0 ? (
-        <div className={style.sli}>
-          <CollectionGam />
-        </div>
-      ) : catMus.length > 0 ? (
-        <div className={style.sli}>
-          <CollectionMus />
-        </div>
-      ) : catSpo.length > 0 ? (
-        <div className={style.sli}>
-          <CollectionSpo />
-        </div>
-      ) : (
+      )) :  (
         <div>
           <div className={style.orderSearch}>
             <div className={style.navDos}>
