@@ -19,9 +19,12 @@ import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 import MyCollections from "./components/MyCollections/MyCollections";
 import MyOrders from "./components/MyOrders/MyOrders";
 
-function App() {
+import RecoverPassword from "./components/recoverPassword/RecoverPassword";
 
-  
+import Star from "./components/Star/Star";
+
+
+function App() {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
 
@@ -148,7 +151,7 @@ function App() {
         <Route path="/form" element={<Form />} />
         <Route path="/about" element={<About />} />
         <Route path="/payment" element={<Payment />} />
-        <Route path="/notfound" element={<NotFound/>} />
+        <Route path="/notfound" element={<NotFound />} />
         <Route path="/formRegister" element={<FormRegister />} />
         <Route
           path="/cart"
@@ -171,6 +174,11 @@ function App() {
         />
         <Route path="/mycollections" element={<MyCollections />} />
         <Route path="/myorders" element={<MyOrders />} />
+
+        <Route path="/:email/recoverpassword" element={<RecoverPassword/>} />
+
+        <Route path="/star" element={<Star />} />
+
       </Routes>
     </div>
   );
