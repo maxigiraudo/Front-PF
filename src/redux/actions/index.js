@@ -570,8 +570,8 @@ export function singoutOk() {
 
 
 export const usersDashboard = (body) => async (dispatch) => {
-  
-  const body = {email: "ikp123456722890@gmail.com", password: "Ivann@n"}
+  //reemplazar el body con el body que viene por el params para funcionamiento total
+  const body = {email: "miaumiau@gmail.com", password: "Miau1234"}
   const config = {
     headers: { "Content-Type": "application/json" },
   }
@@ -589,6 +589,46 @@ export const usersDashboard = (body) => async (dispatch) => {
     console.log(error)
   }
 };
+
+export const updateUserToAdmin = (dataa) => async (dispatch) => {
+  //reemplazar el body con "dataa" que viene por el params para funcionamiento total
+const userEmail = dataa.userEmail
+  const body = {email: "miaumiau@gmail.com", password: "Miau1234"}
+  try {
+    const{data} = await axios.put(
+      `http://localhost:4000/admin/edit/${userEmail}`,
+      body
+    );
+    return dispatch({
+      type: "CHANGE_USER_TO_ADMIN",
+      payload: data,
+    });
+  } catch(error) {
+    console.log(error)
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
