@@ -181,7 +181,7 @@ export default function Login() {
                     onBlur={handleInputOnBlur}
                   />
                   <button className={styles.myContainer} onClick={switchShown}>
-                    {shown ? BsFillEyeSlashFill() : BsFillEyeFill()}
+                    {shown ? BsFillEyeFill() : BsFillEyeSlashFill()}
                   </button>
                 </div>
 

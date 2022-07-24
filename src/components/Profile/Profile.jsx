@@ -155,7 +155,7 @@ export default function Profile() {
                       className={styles.myContainer}
                       onClick={switchShown}
                     >
-                      {shown ? BsFillEyeSlashFill() : BsFillEyeFill()}
+                      {shown ? BsFillEyeFill() : BsFillEyeSlashFill()}
                     </button>
                     <input
                       disabled={

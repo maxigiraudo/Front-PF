@@ -139,7 +139,7 @@ export default function FormRegister() {
                         className={styles.myContainer}
                         onClick={switchShown}
                       >
-                        {shown ? BsFillEyeSlashFill() : BsFillEyeFill()}
+                        {shown ? BsFillEyeFill() : BsFillEyeSlashFill()}
                       </button>
                     </div>
                     {error.password ? (
