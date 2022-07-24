@@ -14,18 +14,19 @@ export const useNFTTokenIds = (addr) => {
   };
 
   useEffect(() => {
-    const respuesta = [];
+    const respuesta = {};
+    respuesta.results = []
     function fetchData() {
       Web3Api.token
         .getAllTokenIds(options)
         .then((data) => {
           const NFTs = data.result;
-          respuesta.push({
+          respuesta.info = {
             page: data.page,
             total_pages: Math.ceil(data.total / data.page_size),
             cursor: data.cursor,
             total_items: data.total,
-          });
+          };
           setFetchSuccess(true);
           for (let NFT of NFTs) {
             if (NFT?.metadata) {
