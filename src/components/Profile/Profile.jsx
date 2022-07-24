@@ -32,10 +32,11 @@ export default function Profile() {
   const userrr = JSON.parse(localStorage.getItem("profiles"));
   const userrrGoogle = JSON.parse(localStorage.getItem("profileGoogle"));
   console.log("ESTE ES EL USEE GOOGLE", userrrGoogle);
-  console.log("ESTE ES EL USER COMUN", userrr);
+  const newUsuario = JSON.parse(userrr);
+  console.log("ESTE ES EL USER COMUN", newUsuario);
 
   useEffect(() => {
-    dispatch(getProfile(userrr));
+    dispatch(getProfile(newUsuario));
   }, []);
 
   useEffect(() => {
