@@ -31,14 +31,14 @@ export const useNFTTokenIds = (addr) => {
           for (let NFT of NFTs) {
             if (NFT?.metadata) {
               const metadata = JSON.parse(NFT.metadata);
-              const image = (metadata.image = resolveLink(NFT.metadata?.image));
+              
               respuesta.push({
                 _id: NFT.token_id,
                 token_address: NFT.token_address,
                 token_hash: NFT.token_hash,
                 collection: NFT.name,
                 name: metadata.name,
-                image: image,
+                image: metadata.image,
                 description: metadata.description,
               });
             } else if (NFT?.token_uri) {
@@ -54,7 +54,7 @@ export const useNFTTokenIds = (addr) => {
               });
             }
           }
-          setNFTTokenIds(data.result);
+          setNFTTokenIds(respuesta);
         })
         .catch((error) => {
           setFetchSuccess(false);
