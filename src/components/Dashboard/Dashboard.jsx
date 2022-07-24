@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../Dashboard/Dashboard.module.css";
 import Navbar from "../Navbar/Navbar.jsx"
 import Footer from "../Footer/Footer";
-import { MdSupervisedUserCircle, MdWork, MdInsertChart } from "react-icons/md";
+import { MdSupervisedUserCircle, MdWork, MdInsertChart, MdNotificationImportant } from "react-icons/md";
 import { RiAdminFill } from "react-icons/ri";
 import { Link } from 'react-router-dom'
 
@@ -50,6 +50,14 @@ export default function Dashboard () {
                             <h5 className={styles.titleAdmin}>Statistics</h5>
                         </Link>
                     </div>
+
+                    <div className={styles.featuresBox}>
+                        <MdNotificationImportant className={styles.iconAdmin4} />
+                        <Link className='link-home-admin' to='/Dashboard/reports'>
+                            <h5 className={styles.titleAdmin}>Reports</h5>
+                        </Link>
+                    </div>
+
                 </div>
                 <Footer/>
             </div>

@@ -12,6 +12,8 @@ import { getNft } from "../../redux/actions";
 import { useEffect } from "react";
 import DropdownNft from "../DropdownNft/DropdownNft";
 
+
+
 export default function Navbar() {
   const logged = useSelector((state) => state.userIsAuthenticated);
 
@@ -24,11 +26,15 @@ export default function Navbar() {
 
   // }, [])
 
+  
   const dispatch = useDispatch();
+
 
   function cargarHome() {
     dispatch(getNft());
   }
+
+
 
   return (
     <header className={styles.container}>
@@ -40,6 +46,13 @@ export default function Navbar() {
       <nav className={styles.navBar}>
         <ul>
           {logged && (userrr || userrrGoogle) ? (
+            userrr.email && userrr.email === 'usuarioadmin@gmail.com' ? (
+              <div>
+              <NavLink to="/Dashboard">
+                <li>ADMIN</li>
+              </NavLink>
+            </div>
+            ) : (           
             <div className={styles.padreDrop}>
               <div>
                 <div>
@@ -52,7 +65,7 @@ export default function Navbar() {
                 <Dropdown className={styles.wallet}></Dropdown>
               </div>
             </div>
-          ) : (
+          )) : (
             <div>
               <NavLink to="/about">
                 <li>About</li>
