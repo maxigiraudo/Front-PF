@@ -89,6 +89,8 @@ export default function Form() {
       alert(
         `NFT successfully minted. Contract address - ${nft_contract_address} and Token ID - ${tokenId}`
       )
+
+      navigate('/mycollections')
       
       
       
