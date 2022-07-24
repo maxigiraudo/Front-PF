@@ -121,7 +121,7 @@ export default function RecoverPassword() {
               onChange={(e) => onChange(e)}
             />
             <button className={styles.myContainer} onClick={switchShown}>
-              {shown ? BsFillEyeSlashFill() : BsFillEyeFill()}
+              {shown ? BsFillEyeFill() : BsFillEyeSlashFill()}
             </button>
           </div>
           {error.password ? (
