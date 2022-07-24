@@ -4,11 +4,14 @@ import { MdVerified } from "react-icons/md";
 import style from './Collections.module.css'
 import {useNFTTokenIds} from  "../../hooks/useNFTTokenIds"
 
-export default function Collections({image,name,address}){
+export default function Collections({image,name,}){
 
-    const { NFTTokenIds,fetchSuccess} = useNFTTokenIds()
+    const { NFTTokenIds,fetchSuccess} = useNFTTokenIds("0x6e941b9F70BC34Bd0083c1088603c3a5B0B2ab17")
 
-    console.log(NFTTokenIds)
+
+
+
+    console.log("ESTA ES LA COLECCION ",NFTTokenIds)
     console.log(fetchSuccess)
 
     return(
