@@ -15,10 +15,11 @@ import DropdownNft from "../DropdownNft/DropdownNft";
 
 
 export default function Navbar() {
-  const logged = useSelector((state) => state.userIsAuthenticated);
+  // const logged = useSelector((state) => state.userIsAuthenticated);
 
   const userrr = JSON.parse(localStorage.getItem("profiles"));
   const userrrGoogle = JSON.parse(localStorage.getItem("profileGoogle"));
+
   console.log("ESTE ES EL USEE GOOGLE", userrrGoogle);
   console.log("ESTE ES EL USER COMUN", userrr);
 
@@ -53,9 +54,13 @@ export default function Navbar() {
               </NavLink>
             </div>
             ) : (           
+
             <div className={styles.padreDrop}>
               <div>
                 <div>
+                  <NavLink to="/market">
+                    <li>Market</li>
+                  </NavLink>
                   <NavLink to="/about">
                     <li>About</li>
                   </NavLink>
@@ -67,6 +72,9 @@ export default function Navbar() {
             </div>
           )) : (
             <div>
+              <NavLink to="/market">
+                <li>Market</li>
+              </NavLink>
               <NavLink to="/about">
                 <li>About</li>
               </NavLink>

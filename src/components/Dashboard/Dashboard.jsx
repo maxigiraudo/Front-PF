@@ -1,24 +1,17 @@
 import React from "react";
 import styles from "../Dashboard/Dashboard.module.css";
-import Navbar from "../Navbar/Navbar.jsx"
+import Navbar from "../Navbar/Navbar.jsx";
 import Footer from "../Footer/Footer";
 import { MdSupervisedUserCircle, MdWork, MdInsertChart, MdNotificationImportant } from "react-icons/md";
 import { RiAdminFill } from "react-icons/ri";
-import { Link } from 'react-router-dom'
-
-
+import { Link } from "react-router-dom";
 
 //const [ usersDashboard, setusersDashboard] = useState([])
 //const [ userDashboard, setuserDashboard] = useState()
 //{email: "ikp123456722890@gmail.com", password: "Ivann@n"}
 
-
-export default function Dashboard () {
-
-
-
-
-    return (
+export default function Dashboard() {
+  return (
        
         <div className={styles.adminContainer}>
              <Navbar/>
@@ -50,6 +43,7 @@ export default function Dashboard () {
                             <h5 className={styles.titleAdmin}>Statistics</h5>
                         </Link>
                     </div>
+                    
 
                     <div className={styles.featuresBox}>
                         <MdNotificationImportant className={styles.iconAdmin4} />
@@ -64,5 +58,3 @@ export default function Dashboard () {
         </div>
     )
 }
-
-

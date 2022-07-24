@@ -10,6 +10,7 @@ import Navbar from "../Navbar/Navbar";
 import NotFound from "../NotFound/NotFound";
 // import Order from "../Order/Order";
 import Card from "../Card/Card";
+import Collections from "../Collections/Collections";
 import {
   getNft,
   getNftAll,
@@ -21,6 +22,7 @@ import {
   getCollectionGam,
   getCollectionMus,
   getCollectionSpo,
+  getCollections,
 } from "../../redux/actions";
 import style from "./Home.module.css";
 import Searchbar from "../Searchbar/Searchbar";
@@ -44,11 +46,8 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   const allCard = useSelector((state) => state.cards);
   const cursori = useSelector((state) => state.cursor);
 
-
-  const nftName = useSelector((state)=> state.nftPorName)
-  const [loading, setLoading] = useState(true)
-
-
+  const nftName = useSelector((state) => state.nftPorName);
+  const [loading, setLoading] = useState(true);
 
   console.log("CURSOR DEL HOME", cursori);
   const dispatch = useDispatch();
@@ -57,15 +56,14 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
     return () => setLoading(false);
   }, [dispatch, cursori]);
 
-  const catArt = useSelector((state) => state.collectionArt);
-  const catCol = useSelector((state) => state.collectionCol);
-  const catPho = useSelector((state) => state.collectionPho);
-  const catGam = useSelector((state) => state.collectionGam);
-  const catMus = useSelector((state) => state.collectionMus);
-  const catSpo = useSelector((state) => state.collectionSpo);
+  const collections = useSelector((state) => state.collection);
+  // const catCol = useSelector((state) => state.collectionCol);
+  // const catPho = useSelector((state) => state.collectionPho);
+  // const catGam = useSelector((state) => state.collectionGam);
+  // const catMus = useSelector((state) => state.collectionMus);
+  // const catSpo = useSelector((state) => state.collectionSpo);
 
-  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catArt);
-  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", catCol);
+  console.log("ESTO ME LLEGA AL HOME DE LA CATEGORIA ART", collections);
 
   console.log(allCard);
 
@@ -105,24 +103,24 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
       },
     ],
   };
-  function handleFilterByCategoryArt(e) {
-    dispatch(getCollectionArt(e));
+  function handleFilterByCollection(e) {
+    dispatch(getCollections(e));
   }
-  function handleFilterByCategoryCol(e) {
-    dispatch(getCollectionCol(e));
-  }
-  function handleFilterByCategoryPho(e) {
-    dispatch(getCollectionPho(e));
-  }
-  function handleFilterByCategoryGam(e) {
-    dispatch(getCollectionGam(e));
-  }
-  function handleFilterByCategoryMus(e) {
-    dispatch(getCollectionMus(e));
-  }
-  function handleFilterByCategorySpo(e) {
-    dispatch(getCollectionSpo(e));
-  }
+  // function handleFilterByCategoryCol(e) {
+  //   dispatch(getCollectionCol(e));
+  // }
+  // function handleFilterByCategoryPho(e) {
+  //   dispatch(getCollectionPho(e));
+  // }
+  // function handleFilterByCategoryGam(e) {
+  //   dispatch(getCollectionGam(e));
+  // }
+  // function handleFilterByCategoryMus(e) {
+  //   dispatch(getCollectionMus(e));
+  // }
+  // function handleFilterByCategorySpo(e) {
+  //   dispatch(getCollectionSpo(e));
+  // }
 
   const [currentPage, setCurrentPage] = useState(1);
   const [nftPerPage, setNftPerPage] = useState(6);
@@ -132,11 +130,12 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   console.log(currentNft);
   useEffect(() => {
     setNftPerPage((prevNft) => prevNft + 12);
-    if (nftPerPage >= 1500 ) {
+    if (nftPerPage >= 1500) {
       setHasMore(false);
     }
-    if(nftName.length === 0){
-    dispatch(getNftAll(cursori));}
+    if (nftName.length === 0) {
+      dispatch(getNftAll(cursori));
+    }
   }, [currentPage, dispatch]);
 
   // function handleFilterByName(e) {
@@ -163,7 +162,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={art}
                   alt="*"
                   value="art"
-                  onClick={(e) => handleFilterByCategoryArt("art")}
+                  onClick={(e) => handleFilterByCollection("art")}
                 />
               </div>
             </div>
@@ -175,7 +174,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={collectibles}
                   alt="*"
                   value="crypto"
-                  onClick={(e) => handleFilterByCategoryCol("collectibles")}
+                  onClick={(e) => handleFilterByCollection("collectibles")}
                 />
               </div>
             </div>
@@ -187,7 +186,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={games}
                   alt="*"
                   value="games"
-                  onClick={(e) => handleFilterByCategoryGam("games")}
+                  onClick={(e) => handleFilterByCollection("games")}
                 />
               </div>
             </div>
@@ -199,7 +198,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={music}
                   alt="*"
                   value="music"
-                  onClick={(e) => handleFilterByCategoryMus("music")}
+                  onClick={(e) => handleFilterByCollection("music")}
                 />
               </div>
             </div>
@@ -211,7 +210,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={photography}
                   alt="*"
                   value="photography"
-                  onClick={(e) => handleFilterByCategoryPho("photography")}
+                  onClick={(e) => handleFilterByCollection("photography")}
                 />
               </div>
             </div>
@@ -223,103 +222,85 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                   src={sports}
                   alt="*"
                   value="sports"
-                  onClick={(e) => handleFilterByCategorySpo("sports")}
+                  onClick={(e) => handleFilterByCollection("sports")}
                 />
               </div>
             </div>
           </Slider>
         </div>
       </div>
-
-      {catArt.length > 0 ? (
-        <div className={style.sli}>
-          <CollectionArt />
-        </div>
-      ) : catCol.length > 0 ? (
-        <div className={style.sli}>
-          <CollectionCol />
-        </div>
-      ) : catPho.length > 0 ? (
-        <div className={style.sli}>
-          <CollectionPho />
-        </div>
-      ) : catGam.length > 0 ? (
-        <div className={style.sli}>
-          <CollectionGam />
-        </div>
-      ) : catMus.length > 0 ? (
-        <div className={style.sli}>
-          <CollectionMus />
-        </div>
-      ) : catSpo.length > 0 ? (
-        <div className={style.sli}>
-          <CollectionSpo />
-        </div>
-      ) : (
-        <div>
-          <div className={style.orderSearch}>
-            <div className={style.navDos}>
-              <div className={style.searchBar}>
-                <Searchbar setCurrentPage={setCurrentPage} />
-              </div>
-              <Link to="/cart">
-                <div className={style.carrito}>
-                  <h2>{FaShoppingCart()} View Cart</h2>
-                </div>
-              </Link>
-              {/* <Order /> */}
+      <div className={style.colectionPadre}>
+        {collections.length > 0 ? (
+          collections.map((e) => (
+            <div className={style.colectionHome}>
+              <Collections image={e.image} name={e.name} />
             </div>
+          ))
+        ) : (
+          <div>
+            <div className={style.orderSearch}>
+              <div className={style.navDos}>
+                <div className={style.searchBar}>
+                  <Searchbar setCurrentPage={setCurrentPage} />
+                </div>
+                <Link to="/cart">
+                  <div className={style.carrito}>
+                    <h2>{FaShoppingCart()} View Cart</h2>
+                  </div>
+                </Link>
+                {/* <Order /> */}
+              </div>
+            </div>
+            {loading ? (
+              <Loading />
+            ) : currentNft.length === 0 && nftName.length === 0 ? (
+              <NotFound />
+            ) : null}
+            <InfiniteScroll
+              className={style.cardHome}
+              dataLength={currentNft.length} //This is important field to render the next data
+              next={() => setCurrentPage((prevPage) => prevPage + 1)}
+              hasMore={hasMore}
+            >
+              {currentNft?.map((e, index) => (
+                <Card
+                  agregarFavorito={agregarFavorito}
+                  agregarCarrito={agregarCarrito}
+                  id={e._id}
+                  key={index}
+                  price={e.price}
+                  name={e.name}
+                  image={e.image}
+                  created={e.created}
+                  token_address={e.token_address}
+                  collection={e.collection}
+                />
+              ))}
+            </InfiniteScroll>
+            <InfiniteScroll
+              className={style.cardHome}
+              dataLength={currentNft.length} //This is important field to render the next data
+              next={() => setCurrentPage((prevPage) => prevPage + 1)}
+              hasMore={hasMore}
+            >
+              {nftName?.map((e, index) => (
+                <Card
+                  agregarFavorito={agregarFavorito}
+                  agregarCarrito={agregarCarrito}
+                  id={e._id}
+                  key={index}
+                  price={e.price}
+                  name={e.name}
+                  image={e.image}
+                  created={e.created}
+                  token_address={e.token_address}
+                  collection={e.collection}
+                />
+              ))}
+            </InfiniteScroll>
           </div>
-          {
-            loading ? <Loading/> :
-          currentNft.length === 0 && nftName.length === 0 ? <NotFound/> : null }
-                <InfiniteScroll
-                      className={style.cardHome}
-                      dataLength={currentNft.length} //This is important field to render the next data
-                      next={() => setCurrentPage((prevPage) => prevPage + 1)}
-                      hasMore={hasMore}
-                    >
-                {currentNft?.map((e, index) => (
-                  <Card
-                    agregarFavorito={agregarFavorito}
-                    agregarCarrito={agregarCarrito}
-                    id={e._id}
-                    key={index}
-                    price={e.price}
-                    name={e.name}
-                    image={e.image}
-                    created={e.created}
-                    token_address={e.token_address}
-                    collection={e.collection}
-                  />
-                   
-                ))}
-                </InfiniteScroll>
-                <InfiniteScroll
-                      className={style.cardHome}
-                      dataLength={currentNft.length} //This is important field to render the next data
-                      next={() => setCurrentPage((prevPage) => prevPage + 1)}
-                      hasMore={hasMore}
-                    >
-                {nftName?.map((e, index) => (
-
-                  <Card
-                    agregarFavorito={agregarFavorito}
-                    agregarCarrito={agregarCarrito}
-                    id={e._id}
-                    key={index}
-                    price={e.price}
-                    name={e.name}
-                    image={e.image}
-                    created={e.created}
-                    token_address={e.token_address}
-                    collection={e.collection}
-                  />
-                 
-                ))} 
-                </InfiniteScroll>
-        </div>
-      )}
+        )}
+      </div>
       <div className={style.footer}>
         <Footer />
       </div>

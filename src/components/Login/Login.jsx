@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import validateForm from "../Login/validation.js";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import imgLogin from "./imgLogin.png";
 import {
   cambioPassword,
@@ -22,9 +22,10 @@ import GoogleBtn from "../Google";
 
 export default function Login() {
   const dispatch = useDispatch();
-
+  const [shown, setShown] = React.useState(false);
   const navigate = useNavigate();
-
+  const switchShown = () => setShown(!shown);
+  const [password, setPassword] = React.useState("");
   const [email, setEmail] = useState("");
 
   const logginAut = useSelector((state) => state.userIsAuthenticated);
@@ -51,6 +52,7 @@ export default function Login() {
   });
 
   const handleInputChange = (e) => {
+    setPassword(e.value);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -168,15 +170,21 @@ export default function Login() {
                 {formErrors.email && (
                   <p className={styles.formErrors}>{formErrors.email}</p>
                 )}
-                <input
-                  className={styles.loginInput}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  onBlur={handleInputOnBlur}
-                />
+                <div>
+                  <input
+                    className={styles.loginInputt}
+                    type={shown ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    onBlur={handleInputOnBlur}
+                  />
+                  <button className={styles.myContainer} onClick={switchShown}>
+                    {shown ? BsFillEyeFill() : BsFillEyeSlashFill()}
+                  </button>
+                </div>
+
                 {formErrors.password && (
                   <p className={styles.formErrors}>{formErrors.password}</p>
                 )}
