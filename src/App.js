@@ -19,14 +19,16 @@ import FormEditProfile from "./components/FormEditProfile/FormEditProfile";
 import MyCollections from "./components/MyCollections/MyCollections";
 import MyOrders from "./components/MyOrders/MyOrders";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Listusers from "./components/Dashboard/Listusers/Listusers.jsx"
-
+import Listusers from "./components/Dashboard/Listusers/Listusers.jsx";
 import RecoverPassword from "./components/recoverPassword/RecoverPassword";
-
 import Star from "./components/Star/Star";
-
+import Market from "./components/Market/Market";
 
 function App() {
+  useEffect(() => {
+    JSON.parse(window.localStorage.getItem("profiles"));
+  }, []);
+
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
 
@@ -47,10 +49,6 @@ function App() {
   }
 
   const [favorito, setFavorito] = useState(favoritoInicial);
-
-  useEffect(() => {
-    JSON.parse(localStorage.getItem("profiles"));
-  }, []);
 
   useEffect(() => {
     let favoritoInicial = JSON.parse(localStorage.getItem("favorito"));
@@ -154,6 +152,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/notfound" element={<NotFound />} />
+        <Route path="/market" element={<Market />} />
         <Route path="/formRegister" element={<FormRegister />} />
         <Route
           path="/cart"
@@ -169,7 +168,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/FormEditProfile" element={<FormEditProfile />} />
         <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/Dashboard/Listusers" element={<Listusers/>} />
+        <Route path="/Dashboard/Listusers" element={<Listusers />} />
 
         <Route
           path="/favorite"
@@ -180,10 +179,9 @@ function App() {
         <Route path="/mycollections" element={<MyCollections />} />
         <Route path="/myorders" element={<MyOrders />} />
 
-        <Route path="/:email/recoverpassword" element={<RecoverPassword/>} />
+        <Route path="/:email/newpassword" element={<RecoverPassword />} />
 
         <Route path="/star" element={<Star />} />
-
       </Routes>
     </div>
   );

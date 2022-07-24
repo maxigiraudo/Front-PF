@@ -53,7 +53,7 @@ export const useNFTTokenIds = (addr) => {
               });
             }
           }
-          setNFTTokenIds(respuesta);
+          setNFTTokenIds(data.result);
         })
         .catch((error) => {
           setFetchSuccess(false);

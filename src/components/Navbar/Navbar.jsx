@@ -43,6 +43,9 @@ export default function Navbar() {
             <div className={styles.padreDrop}>
               <div>
                 <div>
+                  <NavLink to="/market">
+                    <li>Market</li>
+                  </NavLink>
                   <NavLink to="/about">
                     <li>About</li>
                   </NavLink>
@@ -54,6 +57,9 @@ export default function Navbar() {
             </div>
           ) : (
             <div>
+              <NavLink to="/market">
+                <li>Market</li>
+              </NavLink>
               <NavLink to="/about">
                 <li>About</li>
               </NavLink>

@@ -18,12 +18,12 @@ const initialState = {
   userData: {},
   nftCreados: [],
   userRegister: false,
-  collectionArt: [],
-  collectionCol: [],
-  collectionPho: [],
-  collectionGam: [],
-  collectionMus: [],
-  collectionSpo: [],
+  collection: [],
+  // collectionCol: [],
+  // collectionPho: [],
+  // collectionGam: [],
+  // collectionMus: [],
+  // collectionSpo: [],
   userInfo: {},
   isAuth: false,
   profileGoogle: [],
@@ -50,7 +50,9 @@ export default function reducer(state = initialState, action) {
     case "PUT_UPDATE_PASSWORD":
       return{
         ...state,
-        passwordUpdate:action.payload
+        passwordUpdate:action.payload,
+        recoverPassword:false
+
       }
 
       case "NEW_PASSWORD":
@@ -59,14 +61,10 @@ export default function reducer(state = initialState, action) {
           newPass:action.payload
         }
 
-    case "GET_COLLECTION_ART":
-      const sinCu = action.payload;
-      const sinCurso = sinCu.filter((e) => e.name);
-      const art = sinCurso.filter((e) => e.category === "art");
-      console.log("ESTA ES MI ACTION DE ART", art);
+    case "GET_COLLECTIONS":
       return {
         ...state,
-        collectionArt: art,
+        collection: action.payload,
       };
       case "OLVIDO_CONTRASEÑA":
         return{
@@ -83,72 +81,72 @@ export default function reducer(state = initialState, action) {
           ...state,
           recuperoLaContraseña:true
         }
-      case "GET_COLLECTION_COL":
-        const sinCur = action.payload;
-        const sinCurso1 = sinCur.filter((e) => e.name);
-        const col = sinCurso1.filter((e) => e.category === "collectibles");
-        console.log("ESTA ES MI ACTION DE COL", col);
-        return {
-          ...state,
-          collectionCol: col,
-          collectionArt:[]
-        };
-        case "GET_COLLECTION_PHO":
-          const sinCur1 = action.payload;
-          const sinCurso2 = sinCur1.filter((e) => e.name);
-          const pho = sinCurso2.filter((e) => e.category === "photography");
-          console.log("ESTA ES MI ACTION DE COL", pho);
-          return {
-            ...state,
-            collectionPho: pho,
-            collectionArt:[],
-            collectionCol:[],
-            collectionGam:[],
-            collectionMus:[],
-            collectionSpo:[]
-          };
-          case "GET_COLLECTION_GAM":
-          const sinCur2 = action.payload;
-          const sinCurso3 = sinCur2.filter((e) => e.name);
-          const gam = sinCurso3.filter((e) => e.category === "games");
-          console.log("ESTA ES MI ACTION DE COL", gam);
-          return {
-            ...state,
-            collectionPho: [],
-            collectionArt:[],
-            collectionCol:[],
-            collectionGam:gam,
-            collectionMus:[],
-            collectionSpo:[]
-          };
-          case "GET_COLLECTION_MUS":
-            const sinCur3 = action.payload;
-            const sinCurso4 = sinCur3.filter((e) => e.name);
-            const mus = sinCurso4.filter((e) => e.category === "music");
-            console.log("ESTA ES MI ACTION DE COL", mus);
-            return {
-              ...state,
-              collectionPho: [],
-              collectionArt:[],
-              collectionCol:[],
-              collectionGam:[],
-              collectionSpo:[],
-              collectionMus:mus
-            };
-            case "GET_COLLECTION_SPO":
-              const sinCur4 = action.payload;
-              const sinCurso5 = sinCur4.filter((e) => e.name);
-              const spo = sinCurso5.filter((e) => e.category === "sports");
-              console.log("ESTA ES MI ACTION DE COL", spo);
-              return {
-                ...state,
-                collectionPho: [],
-                collectionArt:[],
-                collectionCol:[],
-                collectionGam:[],
-                collectionMus:[],
-                collectionSpo:spo
-              };
+      // case "GET_COLLECTION_COL":
+      //   const sinCur = action.payload;
+      //   const sinCurso1 = sinCur.filter((e) => e.name);
+      //   const col = sinCurso1.filter((e) => e.category === "collectibles");
+      //   console.log("ESTA ES MI ACTION DE COL", col);
+      //   return {
+      //     ...state,
+      //     collectionCol: col,
+      //     collectionArt:[]
+      //   };
+      //   case "GET_COLLECTION_PHO":
+      //     const sinCur1 = action.payload;
+      //     const sinCurso2 = sinCur1.filter((e) => e.name);
+      //     const pho = sinCurso2.filter((e) => e.category === "photography");
+      //     console.log("ESTA ES MI ACTION DE COL", pho);
+      //     return {
+      //       ...state,
+      //       collectionPho: pho,
+      //       collectionArt:[],
+      //       collectionCol:[],
+      //       collectionGam:[],
+      //       collectionMus:[],
+      //       collectionSpo:[]
+      //     };
+      //     case "GET_COLLECTION_GAM":
+      //     const sinCur2 = action.payload;
+      //     const sinCurso3 = sinCur2.filter((e) => e.name);
+      //     const gam = sinCurso3.filter((e) => e.category === "games");
+      //     console.log("ESTA ES MI ACTION DE COL", gam);
+      //     return {
+      //       ...state,
+      //       collectionPho: [],
+      //       collectionArt:[],
+      //       collectionCol:[],
+      //       collectionGam:gam,
+      //       collectionMus:[],
+      //       collectionSpo:[]
+      //     };
+      //     case "GET_COLLECTION_MUS":
+      //       const sinCur3 = action.payload;
+      //       const sinCurso4 = sinCur3.filter((e) => e.name);
+      //       const mus = sinCurso4.filter((e) => e.category === "music");
+      //       console.log("ESTA ES MI ACTION DE COL", mus);
+      //       return {
+      //         ...state,
+      //         collectionPho: [],
+      //         collectionArt:[],
+      //         collectionCol:[],
+      //         collectionGam:[],
+      //         collectionSpo:[],
+      //         collectionMus:mus
+      //       };
+      //       case "GET_COLLECTION_SPO":
+      //         const sinCur4 = action.payload;
+      //         const sinCurso5 = sinCur4.filter((e) => e.name);
+      //         const spo = sinCurso5.filter((e) => e.category === "sports");
+      //         console.log("ESTA ES MI ACTION DE COL", spo);
+      //         return {
+      //           ...state,
+      //           collectionPho: [],
+      //           collectionArt:[],
+      //           collectionCol:[],
+      //           collectionGam:[],
+      //           collectionMus:[],
+      //           collectionSpo:spo
+      //         };
 
               case "RECOVER_PASSWORD":
                 return{
@@ -169,12 +167,7 @@ export default function reducer(state = initialState, action) {
                   cursor: cursor,
                   allCards: getInfoF,
                   cards: getInfoF,
-                  collectionArt: [],
-                  collectionCol: [],
-                  collectionPho: [],
-                  collectionGam: [],
-                  collectionMus: [],
-                  collectionSpo: [],
+                  collection: [],
                   nftPorName:[]
                 };
                 case "GET_NFT_HOME":
