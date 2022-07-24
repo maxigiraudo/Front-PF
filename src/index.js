@@ -1,3 +1,4 @@
+import './polyfill'
 import * as React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -8,6 +9,8 @@ import store from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { MoralisProvider } from "react-moralis";
+
+
 
 axios.defaults.baseURL = process.env.REACT_APP || "http://localhost:4000";
 
