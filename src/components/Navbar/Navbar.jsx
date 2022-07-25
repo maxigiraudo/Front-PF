@@ -46,7 +46,7 @@ export default function Navbar() {
       </NavLink>
       <nav className={styles.navBar}>
         <ul>
-          {logged && (userrr || userrrGoogle) ? (
+          {userrr || userrrGoogle ? (
             userrr.email && userrr.email === 'usuarioadmin@gmail.com' ? (
               <div>
               <NavLink to="/Dashboard">
