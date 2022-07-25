@@ -178,6 +178,7 @@ a {
   background-color: #9d57ff;
   border: none;
   cursor: pointer;
+  background: none;
 }
 .heart:hover {
   color: red;
@@ -189,6 +190,7 @@ a {
   background-color: #9d57ff;
   border: none;
   cursor: pointer;
+  background: none;
 }
 .car:hover {
   color: rgba(233, 233, 29, 0.938);
@@ -201,5 +203,7 @@ a {
   background-color: #9d57ff;
   border: none;
   cursor: pointer;
-  color: grey;
+  color: #130ab8;
+  opacity: 50%;
+  background: none;
 }

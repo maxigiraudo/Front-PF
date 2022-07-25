@@ -33,7 +33,7 @@ const config = {
                 options: [
                     {
                         text: "Register",
-                        url: `https://wallaby-neon.vercel.app/FormRegister`, 
+                        url: `https://wallaby-neon.vercel.app/form`, 
                         id: 1,
                     },
                 ],
@@ -69,7 +69,7 @@ const config = {
                     },
                     {
                         text: "Add favorites",
-                        url:`https://wallaby-neon.vercel.app/home`, 
+                        url:`https://wallaby-neon.vercel.app/login`, 
                         id: 2,
                     },
                 ],
@@ -83,6 +83,11 @@ const config = {
                     {
                         text: "Buy NFT",
                         url: `https://wallaby-neon.vercel.app/home`, 
+                        id: 1,
+                    },
+                    {
+                        text: "Create NFT",
+                        url: `https://wallaby-neon.vercel.app/form`, 
                         id: 1,
                     },
                     {
