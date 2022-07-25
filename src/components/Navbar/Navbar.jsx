@@ -42,9 +42,11 @@ export default function Navbar() {
       </NavLink>
       <nav className={styles.navBar}>
         <ul>
+
           {newUser || userrrGoogle ? (
             newUser.email && newUser.email === "usuarioadmin@gmail.com" ? (
               <div className={styles.padreDrop}>
+
                 <div>
                   <NavLink to="/Dashboard">
                     <li>Admin</li>

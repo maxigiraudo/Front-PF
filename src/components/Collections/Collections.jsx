@@ -1,14 +1,19 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import { MdVerified } from "react-icons/md";
 import style from './Collections.module.css'
 import {useNFTTokenIds} from  "../../hooks/useNFTTokenIds"
+import { getNameNft } from '../../redux/actions';
 
-export default function Collections({image,name,}){
+export default function Collections({image,name}){
 
-    const { NFTTokenIds,fetchSuccess} = useNFTTokenIds("0x6e941b9F70BC34Bd0083c1088603c3a5B0B2ab17")
+    const { NFTTokenIds,fetchSuccess} = useNFTTokenIds("0x61097cc82C503Ff2d95ce11eDD93e0f0CAB30c59")
 
+    const dispatch = useDispatch()
 
+    function buscarNftColeccion(e){
+        dispatch(getNameNft(e))
+    }
 
 
     console.log("ESTA ES LA COLECCION ",NFTTokenIds)
@@ -25,14 +30,15 @@ export default function Collections({image,name,}){
                                 src={image}
                                 alt="*"
                                 value="art"
+                                onClick={()=>buscarNftColeccion(name)}
                                     />
                         </div>
                         <div className={style.divH}></div>
                                 <h1 className={style.nameC}>{name}</h1>
                                 <p className={style.veri}>{MdVerified()}</p>
-                        </div>): null}
+                        </div>
+                        ): null}
                     </div>
-                </div>
-           
+                </div>          
     )
 }

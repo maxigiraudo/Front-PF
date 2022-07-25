@@ -46,6 +46,7 @@ export default function reducer(state = initialState, action) {
         nftPorName: sinCurs,
         cards: [],
         allCards: [],
+        collection:[]
       };
     case "PUT_UPDATE_PASSWORD":
       return {
