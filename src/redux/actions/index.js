@@ -103,13 +103,13 @@ export function getNameNft(name) {
   };
 }
 
-export function recoverPassword(){
-  return function(dispatch){
+export function recoverPassword() {
+  return function (dispatch) {
     dispatch({
-      type:"RECOVER_PASSWORD",
-      payload:true
-    })
-  }
+      type: "RECOVER_PASSWORD",
+      payload: true,
+    });
+  };
 }
 
 export function createNft({ name, description, file }) {
@@ -190,17 +190,19 @@ const uploadFile = async (file) => {
   return imageURI;
 };
 
-export function getCollections(value){
-  return async function(dispatch){
-    let json= await axios.get("https://henry-proyecto-nft.herokuapp.com/api/nftcollection");
-    const sinCursor =json.data.filter((e) => e.name)
-    const type = sinCursor.filter((e) => e.category === value)
-    console.log("ESTO ES MI COLECCION", type)
+export function getCollections(value) {
+  return async function (dispatch) {
+    let json = await axios.get(
+      "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
+    );
+    const sinCursor = json.data.filter((e) => e.name);
+    const type = sinCursor.filter((e) => e.category === value);
+    console.log("ESTO ES MI COLECCION", type);
     return dispatch({
       type: "GET_COLLECTIONS",
-      payload:type
-    })
-  }
+      payload: type,
+    });
+  };
 }
 
 // export function getCollectionArt(type) {
@@ -535,10 +537,13 @@ export const login =
         type: "USER_LOGIN_REQUEST",
       });
 
-      const data = await axios.post(`http://localhost:4000/auth/api/signin`, {
-        email,
-        // password,
-      });
+      const data = await axios.post(
+        `https://henry-proyecto-nft.herokuapp.com/auth/api/signin`,
+        {
+          email,
+          // password,
+        }
+      );
       console.log("choclochoclo", data.request);
       switch (data.request.status) {
         case 200:
@@ -581,16 +586,15 @@ export function singoutOk() {
   };
 }
 
-
 export const usersDashboard = (body) => async (dispatch) => {
   //reemplazar el body con el body que viene por el params para funcionamiento total
-  const body = {email: "miaumiau@gmail.com", password: "Miau1234"}
+  const body = { email: "miaumiau@gmail.com", password: "Miau1234" };
   const config = {
     headers: { "Content-Type": "application/json" },
-  }
+  };
   try {
-    const{data} = await axios.post(
-      "http://localhost:4000/admin/users",
+    const { data } = await axios.post(
+      "https://henry-proyecto-nft.herokuapp.com/admin/users",
       body
     );
     console.log(data);
@@ -598,77 +602,55 @@ export const usersDashboard = (body) => async (dispatch) => {
       type: "GET_USERS_DASHBOARD",
       payload: data,
     });
-  } catch(error) {
-    console.log(error)
+  } catch (error) {
+    console.log(error);
   }
 };
 
 export const updateUserToAdmin = (dataa) => async (dispatch) => {
   //reemplazar el body con "dataa" que viene por el params para funcionamiento total
-const userEmail = dataa.userEmail
-  const body = {email: "miaumiau@gmail.com", password: "Miau1234"}
+  const userEmail = dataa.userEmail;
+  const body = { email: "miaumiau@gmail.com", password: "Miau1234" };
   try {
-    const{data} = await axios.put(
-      `http://localhost:4000/admin/edit/${userEmail}`,
+    const { data } = await axios.put(
+      `https://henry-proyecto-nft.herokuapp.com/admin/edit/${userEmail}`,
       body
     );
     return dispatch({
       type: "CHANGE_USER_TO_ADMIN",
       payload: data,
     });
-  } catch(error) {
-    console.log(error)
+  } catch (error) {
+    console.log(error);
   }
-}
-
+};
 
 export const updateAdminToUser = (dataa) => async (dispatch) => {
   //reemplazar el body con "dataa" que viene por el params para funcionamiento total
-const userEmail = dataa.userEmail
-  const body = {email: "miaumiau@gmail.com", password: "Miau1234"}
+  const userEmail = dataa.userEmail;
+  const body = { email: "miaumiau@gmail.com", password: "Miau1234" };
   try {
-    const{data} = await axios.put(
-      `http://localhost:4000/admin/edituser/${userEmail}`,
+    const { data } = await axios.put(
+      `https://henry-proyecto-nft.herokuapp.com/admin/edituser/${userEmail}`,
       body
     );
     return dispatch({
       type: "CHANGE_ADMIN_TO_USER",
       payload: data,
     });
-  } catch(error) {
-    console.log(error)
+  } catch (error) {
+    console.log(error);
   }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
 
 export function updatePassword(todo) {
-  const email = todo.email
-  const body = {password : todo.password}
-  console.log("ESTO ES MI EMAIL", email, "ESTO ES MI PASSWORD", body)
+  const email = todo.email;
+  const body = { password: todo.password };
+  console.log("ESTO ES MI EMAIL", email, "ESTO ES MI PASSWORD", body);
   return async function (dispatch) {
-    
     let json = await axios.put(
-      `https://henry-proyecto-nft.herokuapp.com/${email}/updatePassword`,body
+      `https://henry-proyecto-nft.herokuapp.com/${email}/updatePassword`,
+      body
     );
     console.log(json);
     // let jsonB = await axios.get ("http://localhost:4000/api/tests/" + json.data.cursor)
@@ -679,39 +661,51 @@ export function updatePassword(todo) {
   };
 }
 
-export function cambioPassword(payload){
-  return function(dispatch){
+export function cambioPassword(payload) {
+  return function (dispatch) {
     return dispatch({
-      type:"OLVIDO_CONTRASEÑA",
-      payload:payload
-    })
-  }
+      type: "OLVIDO_CONTRASEÑA",
+      payload: payload,
+    });
+  };
 }
 
-export function estaPorCambiarContraseña(email){
-  return async function (dispatch){
-    let json = await axios.get(`https://henry-proyecto-nft.herokuapp.com/${email}/recoverpassword`);
+export function estaPorCambiarContraseña(email) {
+  return async function (dispatch) {
+    let json = await axios.get(
+      `https://henry-proyecto-nft.herokuapp.com/${email}/recoverpassword`
+    );
     return dispatch({
-      type:"ESTA_POR_CAMBIAR_CONTRASEÑA",
-      payload:json.data
-    })
-  }
+      type: "ESTA_POR_CAMBIAR_CONTRASEÑA",
+      payload: json.data,
+    });
+  };
 }
 
-export function estaSeraLaContraseña(todo){
-  console.log("ESTO ES LO PRIMERO QUE ME LLEGA A LA ACTION",todo)
-  const email = todo.email
-  const body= {password:todo.password, confirmPassword: todo.passwordConfir}
-  console.log("ESTE ES EL EMIAL DE LA ACTION", email)
-  console.log("ESTA ES LA PASSWORD DE LA ACTION", body)
-  return async function(dispatch){
-    let json = await axios.put(`https://henry-proyecto-nft.herokuapp.com/${email}/newpassword`,body);
+export function estaSeraLaContraseña(todo) {
+  console.log("ESTO ES LO PRIMERO QUE ME LLEGA A LA ACTION", todo);
+  const email = todo.email;
+  const body = {
+    password: todo.password,
+    confirmPassword: todo.passwordConfir,
+  };
+  console.log("ESTE ES EL EMIAL DE LA ACTION", email);
+  console.log("ESTA ES LA PASSWORD DE LA ACTION", body);
+  return async function (dispatch) {
+    let json = await axios.put(
+      `https://henry-proyecto-nft.herokuapp.com/${email}/newpassword`,
+      body
+    );
     return dispatch({
-      type:"ESTA_SERA_NUEVA_CONTRASEÑA",
-      payload:json.data
-    })
-  }
+      type: "ESTA_SERA_NUEVA_CONTRASEÑA",
+      payload: json.data,
+    });
+  };
 }
 
-
-
+export function publishMarket(e) {
+  return {
+    type: "PUBLISH_MARKET",
+    payload: e,
+  };
+}

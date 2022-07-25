@@ -66,6 +66,21 @@
   transform: translate(-50%, -50%);
   color: white;
 }
+
+.botoncito {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  z-index: 1;
+  padding: 10px;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
 /* .card {
   display: flex;
   flex-direction: column;

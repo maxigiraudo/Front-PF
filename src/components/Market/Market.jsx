@@ -3,6 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import styles from "./Market.module.css";
 
 export default function Market() {
+  //   const market = useSelector((state) => state.market);
   const back = () => {
     window.history.back();
   };
@@ -12,7 +13,7 @@ export default function Market() {
       <button className={styles.botonR} onClick={back}>
         Go Back
       </button>
-      <div className={styles.tt}>Market</div>;
+      <div className={styles.tt}>Market</div>
     </div>
   );
 }
