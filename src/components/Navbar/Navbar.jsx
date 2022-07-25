@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getNft } from "../../redux/actions";
 import { useEffect } from "react";
 import DropdownNft from "../DropdownNft/DropdownNft";
+import { useRaribleSellOrder } from "react-moralis";
 
 export default function Navbar() {
   // const logged = useSelector((state) => state.userIsAuthenticated);
@@ -18,7 +19,8 @@ export default function Navbar() {
   const userrr = JSON.parse(localStorage.getItem("profiles"));
   const userrrGoogle = JSON.parse(localStorage.getItem("profileGoogle"));
 
-  const newUser = JSON.parse(userrr);
+  // const newUser = JSON.parse(userrr);
+  const newUser = userrr;
 
   console.log("ESTE ES EL USEE GOOGLE", userrrGoogle);
   console.log("ESTE ES EL USER COMUN", userrr);
@@ -33,6 +35,7 @@ export default function Navbar() {
     dispatch(getNft());
   }
 
+  console.log("ESTE ES", newUser)
   return (
     <header className={styles.container}>
       <NavLink to="/home" className={styles.home}>

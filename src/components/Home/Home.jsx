@@ -52,7 +52,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   console.log("CURSOR DEL HOME", cursori);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (allCard.length === 0) dispatch(getNft()).then(() => setLoading(false));
+    if (allCard.length === 0 && nftName.length === 0) dispatch(getNft()).then(() => setLoading(false));
     return () => setLoading(false);
   }, [dispatch, cursori]);
 
@@ -145,7 +145,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   return (
     <div className={style.containergeneral}>
       <div className={style.containerNav}>
-        <Navbar />
+        <Navbar /> 
       </div>
       <div className={style.container2}>
         <h1 className={style.text}>
@@ -251,7 +251,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
                 {/* <Order /> */}
               </div>
             </div>
-            {loading ? (
+            {loading === true ? (
               <Loading />
             ) : currentNft.length === 0 && nftName.length === 0 ? (
               <NotFound />
