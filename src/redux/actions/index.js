@@ -569,6 +569,28 @@ export function singoutOk() {
 }
 
 
+export const usersDashboard = (body) => async (dispatch) => {
+  
+  const body = {email: "ikp123456722890@gmail.com", password: "Ivann@n"}
+  const config = {
+    headers: { "Content-Type": "application/json" },
+  }
+  try {
+    const{data} = await axios.post(
+      "http://localhost:4000/admin/users",
+      body
+    );
+    console.log(data);
+    return dispatch({
+      type: "GET_USERS_DASHBOARD",
+      payload: data,
+    });
+  } catch(error) {
+    console.log(error)
+  }
+};
+
+
 
 export function updatePassword(todo) {
   const email = todo.email
@@ -577,7 +599,7 @@ export function updatePassword(todo) {
   return async function (dispatch) {
     
     let json = await axios.put(
-      `http://localhost:4000/${email}/updatePassword`,body
+      `https://henry-proyecto-nft.herokuapp.com/${email}/updatePassword`,body
     );
     console.log(json);
     // let jsonB = await axios.get ("http://localhost:4000/api/tests/" + json.data.cursor)
@@ -614,12 +636,13 @@ export function estaSeraLaContraseña(todo){
   console.log("ESTE ES EL EMIAL DE LA ACTION", email)
   console.log("ESTA ES LA PASSWORD DE LA ACTION", body)
   return async function(dispatch){
-    let json = await axios.put(`https://henry-proyecto-nft.herokuapp.com/${email}/recoverpassword`,body);
+    let json = await axios.put(`https://henry-proyecto-nft.herokuapp.com/${email}/newpassword`,body);
     return dispatch({
       type:"ESTA_SERA_NUEVA_CONTRASEÑA",
       payload:json.data
     })
   }
 }
+
 
 

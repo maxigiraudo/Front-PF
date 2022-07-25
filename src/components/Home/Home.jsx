@@ -44,8 +44,10 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
   const allCard = useSelector((state) => state.cards);
   const cursori = useSelector((state) => state.cursor);
 
+
   const nftName = useSelector((state)=> state.nftPorName)
   const [loading, setLoading] = useState(true)
+
 
 
   console.log("CURSOR DEL HOME", cursori);

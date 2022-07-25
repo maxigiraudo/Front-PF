@@ -1,13 +1,18 @@
+<<<<<<< HEAD
 
 .container {  
     display: flex;
     justify-content: center;
     margin-top: 100px;
 
+=======
+.container {
+  margin-top: 150px;
+  margin-bottom: 150px;
+>>>>>>> 4636d76af0de1170137179797d20d69033e740f2
 }
 
-.h1{
-   color: #d04bff;
-    align-items: center;
+.h1 {
+  color: #d04bff;
+  text-align: center;
 }
-
