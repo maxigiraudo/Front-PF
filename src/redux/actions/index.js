@@ -190,103 +190,116 @@ const uploadFile = async (file) => {
   return imageURI;
 };
 
-export function getCollectionArt() {
-  return async function (dispatch) {
-    try {
-      let json = await axios.get(
-        "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
-      );
-      console.log("ESTA ES LA COLECCION", json);
-      return dispatch({
-        type: "GET_COLLECTION_ART",
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export function getCollections(value){
+  return async function(dispatch){
+    let json= await axios.get("https://henry-proyecto-nft.herokuapp.com/api/nftcollection");
+    const sinCursor =json.data.filter((e) => e.name)
+    const type = sinCursor.filter((e) => e.category === value)
+    console.log("ESTO ES MI COLECCION", type)
+    return dispatch({
+      type: "GET_COLLECTIONS",
+      payload:type
+    })
+  }
 }
 
-export function getCollectionCol() {
-  return async function (dispatch) {
-    try {
-      let json = await axios.get(
-        "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
-      );
-      console.log("ESTA ES LA COLECCION", json);
-      return dispatch({
-        type: "GET_COLLECTION_COL",
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
-export function getCollectionPho() {
-  return async function (dispatch) {
-    try {
-      let json = await axios.get(
-        "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
-      );
-      console.log("ESTA ES LA COLECCION", json);
-      return dispatch({
-        type: "GET_COLLECTION_PHO",
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
-export function getCollectionGam() {
-  return async function (dispatch) {
-    try {
-      let json = await axios.get(
-        "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
-      );
-      console.log("ESTA ES LA COLECCION", json);
-      return dispatch({
-        type: "GET_COLLECTION_GAM",
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
-export function getCollectionMus() {
-  return async function (dispatch) {
-    try {
-      let json = await axios.get(
-        "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
-      );
-      console.log("ESTA ES LA COLECCION", json);
-      return dispatch({
-        type: "GET_COLLECTION_MUS",
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
-export function getCollectionSpo() {
-  return async function (dispatch) {
-    try {
-      let json = await axios.get(
-        "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
-      );
-      console.log("ESTA ES LA COLECCION", json);
-      return dispatch({
-        type: "GET_COLLECTION_SPO",
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
+// export function getCollectionArt(type) {
+//   return async function (dispatch) {
+//     try {
+//       let json = await axios.get(
+//         "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
+//       );
+//       console.log("ESTA ES LA COLECCION", json);
+//       return dispatch({
+//         type: "GET_COLLECTION_ART",
+//         payload: json.data,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }
+
+// export function getCollectionCol() {
+//   return async function (dispatch) {
+//     try {
+//       let json = await axios.get(
+//         "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
+//       );
+//       console.log("ESTA ES LA COLECCION", json);
+//       return dispatch({
+//         type: "GET_COLLECTION_COL",
+//         payload: json.data,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }
+// export function getCollectionPho() {
+//   return async function (dispatch) {
+//     try {
+//       let json = await axios.get(
+//         "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
+//       );
+//       console.log("ESTA ES LA COLECCION", json);
+//       return dispatch({
+//         type: "GET_COLLECTION_PHO",
+//         payload: json.data,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }
+// export function getCollectionGam() {
+//   return async function (dispatch) {
+//     try {
+//       let json = await axios.get(
+//         "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
+//       );
+//       console.log("ESTA ES LA COLECCION", json);
+//       return dispatch({
+//         type: "GET_COLLECTION_GAM",
+//         payload: json.data,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }
+// export function getCollectionMus() {
+//   return async function (dispatch) {
+//     try {
+//       let json = await axios.get(
+//         "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
+//       );
+//       console.log("ESTA ES LA COLECCION", json);
+//       return dispatch({
+//         type: "GET_COLLECTION_MUS",
+//         payload: json.data,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }
+// export function getCollectionSpo() {
+//   return async function (dispatch) {
+//     try {
+//       let json = await axios.get(
+//         "https://henry-proyecto-nft.herokuapp.com/api/nftcollection"
+//       );
+//       console.log("ESTA ES LA COLECCION", json);
+//       return dispatch({
+//         type: "GET_COLLECTION_SPO",
+//         payload: json.data,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }
 export function resState() {
   return {
     type: "RES_STATE",

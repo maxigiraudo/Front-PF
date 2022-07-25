@@ -13,23 +13,30 @@ import styles from "./Profile.module.css";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import Swal from "sweetalert2";
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 
 export default function Profile() {
   //console.log(props)
+  const [shown, setShown] = React.useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const recover = useSelector((state) => state.recoverPassword);
   const [errorContra, setErrorContra] = useState({
     error: "You must enter a correct password",
   });
-
+  const switchShown = (e) => {
+    e.preventDefault();
+    setShown(!shown);
+  };
+  const [passwordd, setPassword] = React.useState("");
   const userrr = JSON.parse(localStorage.getItem("profiles"));
   const userrrGoogle = JSON.parse(localStorage.getItem("profileGoogle"));
   console.log("ESTE ES EL USEE GOOGLE", userrrGoogle);
-  console.log("ESTE ES EL USER COMUN", userrr);
+  const newUsuario = JSON.parse(userrr);
+  console.log("ESTE ES EL USER COMUN", newUsuario);
 
   useEffect(() => {
-    dispatch(getProfile(userrr));
+    dispatch(getProfile(newUsuario));
   }, []);
 
   useEffect(() => {
@@ -70,6 +77,7 @@ export default function Profile() {
 
   function handleInput(e) {
     e.preventDefault();
+    setPassword(e.value);
     setNewPass(e.target.value);
     setErrorContra(
       validationForm({
@@ -77,10 +85,12 @@ export default function Profile() {
       })
     );
   }
-  
+
   function handleClick() {
     dispatch(updatePassword({ password: newPass, email: userrr.email }));
-    navigate("/home");
+    JSON.parse(localStorage.getItem("profiles"));
+    localStorage.removeItem("profiles");
+    window.location.href = "https://wallaby-neon.vercel.app/home";
     Swal.fire({
       position: "center",
       icon: "success",
@@ -104,7 +114,7 @@ export default function Profile() {
 
       <div className={styles.padre}>
         <div className={styles.container}>
-          <h1 className={styles.colorh1}>Hi .</h1>
+          <h1 className={styles.colorh1}>Hello!</h1>
 
           <div className={styles.two}>
             <div className={styles.nameEnviar}>
@@ -134,22 +144,31 @@ export default function Profile() {
               </button>
               {recover === true && (
                 <div>
-                  <input
-                    className={styles.input}
-                    // value={newPass}
-                    name="password"
-                    type="password"
-                    onChange={(e) => handleInput(e)}
-                  />
-                  <input
-                    disabled={
-                      Object.keys(errorContra).length === 0 ? false : true
-                    }
-                    className={styles.inputEnviarr}
-                    value="Change"
-                    type="submit"
-                    onClick={() => handleClick()}
-                  />
+                  <div>
+                    <input
+                      className={styles.loginInputt}
+                      // value={newPass}
+                      name="password"
+                      type={shown ? "text" : "password"}
+                      onChange={(e) => handleInput(e)}
+                    />
+                    <button
+                      className={styles.myContainer}
+                      onClick={switchShown}
+                    >
+                      {shown ? BsFillEyeFill() : BsFillEyeSlashFill()}
+                    </button>
+                    <input
+                      disabled={
+                        Object.keys(errorContra).length === 0 ? false : true
+                      }
+                      className={styles.inputEnviarr}
+                      value="Change"
+                      type="submit"
+                      onClick={() => handleClick()}
+                    />
+                  </div>
+
                   {errorContra.password ? (
                     <p className={styles.pError}> {errorContra.password} </p>
                   ) : null}

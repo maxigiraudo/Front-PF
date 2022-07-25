@@ -1,4 +1,3 @@
-
 import React from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -8,8 +7,22 @@ import { estaSeraLaContraseña } from "../../redux/actions";
 import styles from "./RecoverPassword.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 
 export default function RecoverPassword() {
+  const [shown, setShown] = React.useState(false);
+  const [shownn, setShownn] = React.useState(false);
+
+  const switchShown = (e) => {
+    e.preventDefault();
+    setShown(!shown);
+  };
+
+  const switchShownn = (e) => {
+    e.preventDefault();
+    setShownn(!shownn);
+  };
+  const [passwordd, setPassword] = React.useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [user, setUser] = useState({
@@ -27,7 +40,6 @@ export default function RecoverPassword() {
     let errors = {};
     if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value.email)) {
       errors.email = "*You must enter an email";
-
     }
     if (
       !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(
@@ -45,6 +57,8 @@ export default function RecoverPassword() {
 
   const onChange = (e) => {
     e.preventDefault();
+    setPassword(e.value);
+
     setUser({
       ...user,
       [e.target.name]: e.target.value,
@@ -97,26 +111,35 @@ export default function RecoverPassword() {
             onChange={(e) => onChange(e)}
           />
           {error.email ? <p style={{ color: "red" }}> {error.email} </p> : null}
-
-          <input
-            className={styles.input}
-            name="password"
-            value={password}
-            placeholder="Enter your new password"
-            type="password"
-            onChange={(e) => onChange(e)}
-          />
+          <div>
+            <input
+              className={styles.loginInputt}
+              name="password"
+              value={password}
+              placeholder="Enter your new password"
+              type={shown ? "text" : "password"}
+              onChange={(e) => onChange(e)}
+            />
+            <button className={styles.myContainer} onClick={switchShown}>
+              {shown ? BsFillEyeFill() : BsFillEyeSlashFill()}
+            </button>
+          </div>
           {error.password ? (
             <p style={{ color: "red" }}> {error.password} </p>
           ) : null}
-          <input
-            className={styles.input}
-            name="passwordConfir"
-            value={passwordConfir}
-            placeholder="Confirm your password"
-            type="password"
-            onChange={(e) => onChange(e)}
-          />
+          <div>
+            <input
+              className={styles.loginInputt}
+              name="passwordConfir"
+              value={passwordConfir}
+              placeholder="Confirm your password"
+              type={shownn ? "text" : "password"}
+              onChange={(e) => onChange(e)}
+            />
+            <button className={styles.myContainer} onClick={switchShownn}>
+              {shownn ? BsFillEyeSlashFill() : BsFillEyeFill()}
+            </button>
+          </div>
           {error.passwordConfir ? (
             <p style={{ color: "red" }}> {error.passwordConfir} </p>
           ) : null}

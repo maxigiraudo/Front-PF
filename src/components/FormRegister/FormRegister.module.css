@@ -164,3 +164,48 @@
   align-items: center;
   justify-content: center;
 }
+
+.myContainer {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #d04bff;
+  background-color: #cf4bff34;
+  border-radius: 0 5px 5px 0;
+  color: white;
+  width: 40px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  font-family: inherit;
+  margin-top: 15px;
+  margin-right: 17px;
+  border-bottom-style: groove;
+}
+
+.myContainer:hover {
+  color: #7d07a8;
+}
+
+.loginInputt {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #d04bff;
+  background-color: #cf4bff34;
+  border-radius: 5px 0 0 5px;
+  width: 210px;
+  padding: 10px;
+  color: white;
+  font-size: 1rem;
+  margin: 15px;
+  margin-right: 0px;
+  font-family: inherit;
+  border-bottom-style: groove;
+}
+.loginInputt:focus {
+  outline: none;
+}
