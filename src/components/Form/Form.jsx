@@ -7,13 +7,12 @@ import { createNft } from "../../redux/actions";
 import { useMoralis, useMoralisFile } from "react-moralis";
 import { useNavigate } from "react-router-dom";
 import { BsTrash } from "react-icons/bs";
-import Moralis from 'moralis';
-import Web3 from 'web3';
+import Moralis from "moralis";
+import Web3 from "web3";
 import { contractABI, nft_contract_address } from "../../contract";
+import Swal from "sweetalert2";
 
-
-
-const web3 = new Web3(Web3.givenProvider)
+const web3 = new Web3(Web3.givenProvider);
 
 export default function Form() {
   const [card, setCard] = useState({ name: "", description: "" });
@@ -65,45 +64,48 @@ export default function Form() {
 
     if (name === "" || description === "" || file === "") return;
     try {
-      console.log('ADENTRO TRYYYYYY')
-      const file1 = new Moralis.File(file.name, file)
-      console.log('file1', file1)
+      console.log("ADENTRO TRYYYYYY");
+      const file1 = new Moralis.File(file.name, file);
+      console.log("file1", file1);
       await file1.saveIPFS();
       const file1url = file1.ipfs();
-      console.log('file1url', file1url)
+      console.log("file1url", file1url);
 
       const metadata = {
-        name, description, image : file1url
-      }
+        name,
+        description,
+        image: file1url,
+      };
 
-      const file2 = new Moralis.File("metadata.json", {base64 : btoa(JSON.stringify(metadata))});
+      const file2 = new Moralis.File("metadata.json", {
+        base64: btoa(JSON.stringify(metadata)),
+      });
 
-      console.log('file2', file2)
+      console.log("file2", file2);
       await file2.saveIPFS();
-      const metadataurl = file2.ipfs()
+      const metadataurl = file2.ipfs();
 
       const contract = new web3.eth.Contract(contractABI, nft_contract_address);
-      const response = await contract.methods.mint(metadataurl).send({ from : user.get('ethAddress')})
+      const response = await contract.methods
+        .mint(metadataurl)
+        .send({ from: user.get("ethAddress") });
       const tokenId = response.events.Transfer.returnValues.tokenId;
 
-      alert(
-        `NFT successfully minted. Contract address - ${nft_contract_address} and Token ID - ${tokenId}`
-      )
+      Swal.fire({
+        icon: "success",
+        title: "Good job!",
+        text: `NFT successfully minted. Contract address - ${nft_contract_address} and Token ID - ${tokenId}, look for it in "My Collections!"`,
+        showConfirmButton: true,
+      });
 
-      navigate('/mycollections')
-      
-      
-      
+      navigate("/home");
     } catch (error) {
-      console.log(`ERROR ${error}`)
+      console.log(`ERROR ${error}`);
     }
 
-    
     //dispatch(createNft({ name, description, file }));
-   
   };
 
-  
   console.log(image);
 
   const onChange = (e) => {
@@ -285,6 +287,11 @@ export default function Form() {
                     errors.
                   </p>
                 )}
+                {onSubmit()
+                  ? setTimeout(() => {
+                      "Loading";
+                    }, 5000)
+                  : null}
               </div>
             </div>
           </form>
