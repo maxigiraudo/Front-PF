@@ -15,7 +15,7 @@ export const useNFTTokenIds = (addr) => {
 
   useEffect(() => {
     const respuesta = {};
-    respuesta.results = []
+    respuesta.results = [];
     function fetchData() {
       Web3Api.token
         .getAllTokenIds(options)
@@ -31,8 +31,8 @@ export const useNFTTokenIds = (addr) => {
           for (let NFT of NFTs) {
             if (NFT?.metadata) {
               const metadata = JSON.parse(NFT.metadata);
-              
-              respuesta.push({
+
+              respuesta.results.push({
                 _id: NFT.token_id,
                 token_address: NFT.token_address,
                 token_hash: NFT.token_hash,
@@ -43,7 +43,7 @@ export const useNFTTokenIds = (addr) => {
               });
             } else if (NFT?.token_uri) {
               const token_uri = JSON.parse(NFT.token_uri.slice(22));
-              respuesta.push({
+              respuesta.results.push({
                 _id: NFT.token_id,
                 token_address: NFT.token_address,
                 token_hash: NFT.token_hash,
@@ -57,6 +57,7 @@ export const useNFTTokenIds = (addr) => {
           setNFTTokenIds(respuesta);
         })
         .catch((error) => {
+          console.log("ERROR DEL CATCH", error);
           setFetchSuccess(false);
         });
     }
