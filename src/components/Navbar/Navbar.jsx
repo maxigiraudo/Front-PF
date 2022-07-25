@@ -18,6 +18,8 @@ export default function Navbar() {
   const userrr = JSON.parse(localStorage.getItem("profiles"));
   const userrrGoogle = JSON.parse(localStorage.getItem("profileGoogle"));
 
+  const newUser = JSON.parse(userrr);
+
   console.log("ESTE ES EL USEE GOOGLE", userrrGoogle);
   console.log("ESTE ES EL USER COMUN", userrr);
 
@@ -40,12 +42,20 @@ export default function Navbar() {
       </NavLink>
       <nav className={styles.navBar}>
         <ul>
-          {userrr || userrrGoogle ? (
-            userrr.email && userrr.email === "usuarioadmin@gmail.com" ? (
-              <div>
-                <NavLink to="/Dashboard">
-                  <li>ADMIN</li>
-                </NavLink>
+          {newUser || userrrGoogle ? (
+            newUser.email && newUser.email === "usuarioadmin@gmail.com" ? (
+              <div className={styles.padreDrop}>
+                <div>
+                  <NavLink to="/Dashboard">
+                    <li>Admin</li>
+                  </NavLink>
+                  <NavLink to="/market">
+                    <li>Market</li>
+                  </NavLink>
+                </div>
+                <div className={styles.dropdown}>
+                  <Dropdown className={styles.wallet}></Dropdown>
+                </div>
               </div>
             ) : (
               <div className={styles.padreDrop}>
