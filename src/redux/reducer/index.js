@@ -329,6 +329,14 @@ export default function reducer(state = initialState, action) {
         profile: action.payload,
       };
 
+
+
+              
+                 
+          
+          
+      
+
     case "REGISTER_USER_REQUEST": {
       return {
         ...state,
@@ -386,6 +394,17 @@ export default function reducer(state = initialState, action) {
         // usersDashboard: [...state.usersDashboard],
         // userDashboard: [...state.userDashboard],
       };
+      
+                    // case "CHANGE_USER_TO_ADMIN":
+              //   return {
+              //     ...state,
+              //     stateCUANDOcambiasDErol???
+              //   }
+              //   case "CHANGE_ADMIN_TO_USER":
+              //   return {
+              //     ...state,
+              //     stateCUANDOcambiasDErol???
+              //   }
 
     default:
       return state;

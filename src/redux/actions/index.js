@@ -622,7 +622,23 @@ const userEmail = dataa.userEmail
 }
 
 
-
+export const updateAdminToUser = (dataa) => async (dispatch) => {
+  //reemplazar el body con "dataa" que viene por el params para funcionamiento total
+const userEmail = dataa.userEmail
+  const body = {email: "miaumiau@gmail.com", password: "Miau1234"}
+  try {
+    const{data} = await axios.put(
+      `http://localhost:4000/admin/edituser/${userEmail}`,
+      body
+    );
+    return dispatch({
+      type: "CHANGE_ADMIN_TO_USER",
+      payload: data,
+    });
+  } catch(error) {
+    console.log(error)
+  }
+}
 
 
 
