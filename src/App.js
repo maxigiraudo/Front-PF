@@ -23,6 +23,7 @@ import Listusers from "./components/Dashboard/Listusers/Listusers.jsx";
 import RecoverPassword from "./components/recoverPassword/RecoverPassword";
 import Star from "./components/Star/Star";
 import Market from "./components/Market/Market";
+import Collection from "./components/Collection/Collection";
 
 function App() {
   useEffect(() => {
@@ -154,6 +155,7 @@ function App() {
         <Route path="/notfound" element={<NotFound />} />
         <Route path="/market" element={<Market />} />
         <Route path="/formRegister" element={<FormRegister />} />
+        <Route path="/collection/:address" element={<Collection />} />
         <Route
           path="/cart"
           element={
