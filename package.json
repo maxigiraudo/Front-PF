@@ -15,10 +15,12 @@
     "crypto-browserify": "^3.12.0",
     "framer-motion": "^6.5.1",
     "gapi-script": "^1.2.0",
+    "http": "^0.0.1-security",
     "https-browserify": "^1.0.0",
     "install": "^0.13.0",
     "magic-sdk": "^8.1.1",
     "moralis": "^1.9.0",
+    "node-polyfill-webpack-plugin": "^2.0.0",
     "npm": "^8.13.2",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
@@ -74,6 +76,7 @@
   },
   "devDependencies": {
     "buffer": "^6.0.3",
-    "dotenv-webpack": "^8.0.0"
+    "dotenv-webpack": "^8.0.0",
+    "process": "^0.11.10"
   }
 }
