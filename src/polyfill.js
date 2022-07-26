@@ -30,3 +30,4 @@ function override(config) {
   console.log(config);
   return config;
 }
+config.ignoreWarnings = [/Failed to parse source map/];
