@@ -11,4 +11,9 @@ global.process = {
       crypto: require.resolve("crypto-browserify"),
     },
   },
+  resolve: {
+    fallback: {
+      stream: require.resolve("stream-browserify"),
+    },
+  },
 };
