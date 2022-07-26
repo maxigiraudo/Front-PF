@@ -8,7 +8,7 @@ global.process = {
   nextTick: require("next-tick"),
   resolve: {
     fallback: {
-      http: require.resolve("stream-http"),
+      http: false,
     },
   },
 };
