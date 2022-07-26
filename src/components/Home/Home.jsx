@@ -233,7 +233,7 @@ export default function Home({ agregarCarrito, agregarFavorito }) {
         {collections.length > 0 ? (
           collections.map((e) => (
             <div className={style.colectionHome}>
-              <Collections image={e.image} name={e.name} />
+              <Collections address={e.address} image={e.image} name={e.name} />
             </div>
           ))
         ) : (
