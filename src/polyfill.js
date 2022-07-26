@@ -27,6 +27,6 @@ function override(config) {
       plugins: [new Dotenv()],
     }),
   ]);
-
+  console.log(config);
   return config;
 }
