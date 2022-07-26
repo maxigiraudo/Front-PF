@@ -6,6 +6,11 @@ global.process = {
   env: { DEBUG: undefined },
   version: "",
   nextTick: require("next-tick"),
+  resolve: {
+    fallback: {
+      http: require.resolve("stream-http"),
+    },
+  },
 };
 
 function override(config) {
@@ -17,7 +22,7 @@ function override(config) {
     https: require.resolve("https-browserify"),
     os: require.resolve("os-browserify"),
     url: require.resolve("url"),
-    http: require.resolve("stream-http"),
+    // http: require.resolve("stream-http"),
   });
   config.resolve.fallback = fallback;
   config.plugins = (config.plugins || []).concat([
